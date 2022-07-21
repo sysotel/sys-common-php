@@ -1,6 +1,6 @@
 <?php
 
-namespace SYOSTEL\APP\Common\Contracts;
+namespace SYSOTEL\APP\Common\Contracts;
 
 trait HasStaticConstructor
 {
