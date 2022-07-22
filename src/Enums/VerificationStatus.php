@@ -1,6 +1,6 @@
 <?php
 
-namespace SYSOTEL\APP\Common\Enums\Master;
+namespace SYSOTEL\APP\Common\Enums;
 
 use SYSOTEL\APP\Common\Enums\EnumLabelExtension;
 
