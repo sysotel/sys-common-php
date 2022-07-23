@@ -2,16 +2,9 @@
     "name": "sysotel/sys-common-php",
     "description": "SYSOTEL APP common package for PHP projects",
     "keywords": [],
-    "repositories": [
-        {
-            "url": "https://github.com/delta4op/laravel-mongodb",
-            "type": "git"
-        }
-    ],
     "require": {
         "php": "^8.1",
         "alexanderpas/http-enum": "^1.0",
-        "delta4op/laravel-mongodb": "^1.0",
         "illuminate/contracts": "^9.0",
         "spatie/laravel-package-tools": "^1.9.2"
     },
