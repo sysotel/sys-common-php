@@ -2,7 +2,7 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Geo;
 
-use Delta4op\MongoODM\Documents\Document;
+use Delta4op\Mongodb\Documents\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\GeoPoint;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\PropertyCount;

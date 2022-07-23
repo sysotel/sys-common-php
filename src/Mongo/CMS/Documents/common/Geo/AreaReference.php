@@ -3,7 +3,7 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use Delta4op\MongoODM\Documents\EmbeddedDocument;
+use Delta4op\Mongodb\Documents\EmbeddedDocument;
 use MongoDB\BSON\ObjectId;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Geo\Area;
 

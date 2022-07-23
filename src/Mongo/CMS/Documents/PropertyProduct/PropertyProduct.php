@@ -2,7 +2,7 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyProduct;
 
-use \Delta4op\MongoODM\Documents\Document;
+use \Delta4op\Mongodb\Documents\Document;
 use Delta4op\MongoODM\Facades\DocumentManager;
 use Delta4op\MongoODM\Traits\CanResolveIntegerID;
 use Delta4op\MongoODM\Traits\HasDefaultAttributes;

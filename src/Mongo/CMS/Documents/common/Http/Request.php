@@ -5,7 +5,7 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Http;
 use Delta4op\MongoODM\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use Delta4op\MongoODM\Documents\EmbeddedDocument;
+use Delta4op\Mongodb\Documents\EmbeddedDocument;
 use SYSOTEL\APP\Common\Enums\HttpRequestMethod;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\KeyValueItem;
 

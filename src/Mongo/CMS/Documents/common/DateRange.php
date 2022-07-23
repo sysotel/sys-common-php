@@ -4,7 +4,7 @@ namespace SYSOTEL\OTA\Common\Mongo\CMS\Documents\common;
 
 use Carbon\Carbon;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use Delta4op\MongoODM\Documents\EmbeddedDocument;
+use Delta4op\Mongodb\Documents\EmbeddedDocument;
 
 /**
  * @ODM\EmbeddedDocument

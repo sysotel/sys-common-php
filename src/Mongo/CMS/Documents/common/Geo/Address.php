@@ -2,8 +2,8 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\common;
 
+use Delta4op\Mongodb\Documents\EmbeddedDocument;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use Delta4op\MongoODM\Documents\EmbeddedDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\AreaReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CityReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference;

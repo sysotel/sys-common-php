@@ -3,7 +3,7 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyImage;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use Delta4op\MongoODM\Documents\EmbeddedDocument;
+use Delta4op\Mongodb\Documents\EmbeddedDocument;
 use function SYSOTEL\APP\Common\Functions\arrayFilter;
 use function SYSOTEL\APP\Common\Functions\toArrayOrNull;
 

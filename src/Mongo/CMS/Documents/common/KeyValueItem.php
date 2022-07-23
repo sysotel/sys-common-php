@@ -5,7 +5,7 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\common;
 use Carbon\Carbon;
 use Delta4op\MongoODM\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use Delta4op\MongoODM\Documents\EmbeddedDocument;
+use Delta4op\Mongodb\Documents\EmbeddedDocument;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpKernel\Exception\HttpException;

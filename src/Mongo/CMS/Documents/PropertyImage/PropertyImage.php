@@ -3,7 +3,7 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyImage;
 
 use Carbon\Carbon;
-use Delta4op\MongoODM\Documents\Document;
+use Delta4op\Mongodb\Documents\Document;
 use Delta4op\MongoODM\Facades\DocumentManager;
 use Delta4op\MongoODM\Traits\HasDefaultAttributes;
 use Delta4op\MongoODM\Traits\HasTimestamps;

@@ -3,7 +3,7 @@
 namespace SYSOTEL\OTA\Common\Mongo\CMS\Documents\common;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use Delta4op\MongoODM\Documents\EmbeddedDocument;
+use Delta4op\Mongodb\Documents\EmbeddedDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Address;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Email;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\RawAddress;
