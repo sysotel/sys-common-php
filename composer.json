@@ -4,13 +4,12 @@
     "keywords": [],
     "repositories": [
         {
-            "url": "https://github.com/delta4op/laravel-mongodb-odm",
+            "url": "https://github.com/delta4op/laravel-mongodb",
             "type": "git"
         }
     ],
     "require": {
         "php": "^8.1",
-        "delta4op/laravel-mongodb-odm": "2.*",
         "alexanderpas/http-enum": "^1.0",
         "spatie/laravel-package-tools": "^1.9.2",
         "illuminate/contracts": "^9.0"
