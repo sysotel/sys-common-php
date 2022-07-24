@@ -94,6 +94,7 @@ class Property extends Document
      */
     public $status;
 
+
     protected $defaults = [
         'baseCurrency' => Currency::INR,
         'status'       => PropertyStatus::ACTIVE,
