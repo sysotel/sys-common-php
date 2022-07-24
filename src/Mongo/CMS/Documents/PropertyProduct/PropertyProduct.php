@@ -3,14 +3,12 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyProduct;
 
 use \Delta4op\Mongodb\Documents\Document;
-use Delta4op\MongoODM\Facades\DocumentManager;
-use Delta4op\MongoODM\Traits\CanResolveIntegerID;
-use Delta4op\MongoODM\Traits\HasDefaultAttributes;
-use Delta4op\MongoODM\Traits\HasTimestamps;
+use Delta4op\Mongodb\Traits\CanResolveIntegerID;
+use Delta4op\Mongodb\Traits\HasDefaultAttributes;
+use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\MealPlanCode;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyProductStatus;
-use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyProductRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 
 /**
@@ -98,15 +96,5 @@ class PropertyProduct extends Document
                 default => []
             });
         }
-    }
-
-    /**
-     * User Repository
-     *
-     * @return PropertyProductRepository
-     */
-    public static function repository(): PropertyProductRepository
-    {
-        return DocumentManager::getRepository(self::class);
     }
 }

@@ -3,23 +3,20 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Property;
 
 use Delta4op\Mongodb\Documents\Document;
-use Delta4op\MongoODM\Facades\DocumentManager;
-use Delta4op\MongoODM\Traits\CanResolveIntegerID;
-use Delta4op\MongoODM\Traits\HasDefaultAttributes;
-use Delta4op\MongoODM\Traits\HasTimestamps;
+use Delta4op\Mongodb\Traits\CanResolveIntegerID;
+use Delta4op\Mongodb\Traits\HasDefaultAttributes;
+use Delta4op\Mongodb\Traits\HasTimestamps;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyStarRating;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyType;
-use SYSOTEL\APP\Common\Enums\Master\Currency;
+use SYSOTEL\APP\Common\Enums\Currency;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Address;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\RawAddress;
-use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyRepository;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 
 /**
  * @ODM\Document(
- *     collection="cms_properties",
+ *     collection="properties",
  *     repositoryClass=SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyRepository::class
  * )
  * @ODM\HasLifecycleCallbacks
@@ -30,7 +27,6 @@ class Property extends Document
     use CanResolveIntegerID;
     use HasTimestamps;
     use HasDefaultAttributes;
-
 
     /**
      * @var string
@@ -69,12 +65,6 @@ class Property extends Document
     public $type;
 
     /**
-     * @var RawAddress
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\RawAddress::class)
-     */
-    public $rawAddress;
-
-    /**
      * @var Address
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\Address::class)
      */
@@ -108,12 +98,4 @@ class Property extends Document
         'baseCurrency' => Currency::INR,
         'status'       => PropertyStatus::ACTIVE,
     ];
-
-    /**
-     * @return PropertyRepository
-     */
-    public static function repository(): PropertyRepository
-    {
-        return DocumentManager::getRepository(self::class);
-    }
 }

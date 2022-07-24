@@ -2,8 +2,8 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Geo;
 
-use Delta4op\MongoODM\Facades\DocumentManager;
-use Delta4op\MongoODM\Traits\HasTimestamps;
+use Delta4op\Mongodb\Facades\DocumentManager;
+use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\CountryReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\StateReference;

@@ -2,7 +2,7 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Traits;
 
-use Delta4op\MongoODM\Traits\CanResolveIntegerID;
+use Delta4op\Mongodb\Traits\CanResolveIntegerID;
 
 trait HasAutoIncrementId
 {

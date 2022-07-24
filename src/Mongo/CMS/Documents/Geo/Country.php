@@ -2,9 +2,9 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Geo;
 
-use Delta4op\MongoODM\Facades\DocumentManager;
-use Delta4op\MongoODM\Traits\CanResolveStringID;
-use Delta4op\MongoODM\Traits\HasTimestamps;
+use Delta4op\Mongodb\Facades\DocumentManager;
+use Delta4op\Mongodb\Traits\CanResolveStringID;
+use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Illuminate\Support\Collection;
 use SYSOTEL\APP\Common\Mongo\CMS\Repositories\CountryRepository;

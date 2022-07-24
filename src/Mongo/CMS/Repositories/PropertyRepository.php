@@ -2,7 +2,7 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Repositories;
 
-use Delta4op\MongoODM\DocumentRepositories\DocumentRepository;
+use Delta4op\Mongodb\DocumentRepositories\DocumentRepository;
 
 class PropertyRepository extends DocumentRepository
 {

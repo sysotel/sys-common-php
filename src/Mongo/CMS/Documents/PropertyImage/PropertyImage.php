@@ -4,9 +4,9 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyImage;
 
 use Carbon\Carbon;
 use Delta4op\Mongodb\Documents\Document;
-use Delta4op\MongoODM\Facades\DocumentManager;
-use Delta4op\MongoODM\Traits\HasDefaultAttributes;
-use Delta4op\MongoODM\Traits\HasTimestamps;
+use Delta4op\Mongodb\Facades\DocumentManager;
+use Delta4op\Mongodb\Traits\HasDefaultAttributes;
+use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Illuminate\Support\Traits\Macroable;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Verification;

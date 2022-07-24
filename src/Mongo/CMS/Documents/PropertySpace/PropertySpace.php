@@ -3,10 +3,9 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertySpace;
 
 use Delta4op\Mongodb\Documents\Document;
-use Delta4op\MongoODM\Facades\DocumentManager;
-use Delta4op\MongoODM\Traits\CanResolveIntegerID;
-use Delta4op\MongoODM\Traits\HasDefaultAttributes;
-use Delta4op\MongoODM\Traits\HasTimestamps;
+use Delta4op\Mongodb\Traits\CanResolveIntegerID;
+use Delta4op\Mongodb\Traits\HasDefaultAttributes;
+use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PropertySpaceStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertySpaceRepository;
@@ -14,7 +13,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 
 /**
  * @ODM\Document(
- *     collection="cms_propertySpaces",
+ *     collection="propertySpaces",
  *     repositoryClass=SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertySpaceRepository::class
  * ),
  * @ODM\HasLifecycleCallbacks
@@ -98,12 +97,4 @@ class PropertySpace extends Document
     public $defaults = [
         'status' => PropertySpaceStatus::ACTIVE,
     ];
-
-    /**
-     * @return PropertySpaceRepository
-     */
-    public static function repository(): PropertySpaceRepository
-    {
-        return DocumentManager::getRepository(self::class);
-    }
 }
