@@ -48,11 +48,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "SYSOTEL\\APP\\Common\\ServiceProvider",
-                "SYSOTEL\\APP\\Common\\Services\\IAMConnector\\IAMConnectorServiceProvider"
+                "SYSOTEL\\APP\\Common\\ServiceProvider"
             ],
             "aliases": {
-                "IAM": "SYSOTEL\\APP\\Common\\Services\\IAM"
+
             }
         }
     },
