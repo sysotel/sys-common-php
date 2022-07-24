@@ -49,7 +49,7 @@
         "laravel": {
             "providers": [
                 "SYSOTEL\\APP\\Common\\ServiceProvider",
-                "SYSOTEL\\APP\\Common\\Services\\IAMConnectorServiceProvider"
+                "SYSOTEL\\APP\\Common\\Services\\IAMConnector\\IAMConnectorServiceProvider"
             ],
             "aliases": {
                 "IAM": "SYSOTEL\\APP\\Common\\Services\\IAM"
