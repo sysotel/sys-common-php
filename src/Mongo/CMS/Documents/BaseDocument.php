@@ -1,6 +1,6 @@
 <?php
 
-namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Property;
+namespace SYSOTEL\APP\Common\Mongo\CMS\Documents;
 
 use Delta4op\Mongodb\Documents\Document;
 
