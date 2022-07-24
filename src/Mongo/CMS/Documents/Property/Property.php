@@ -12,6 +12,7 @@ use SYSOTEL\APP\Common\Enums\Currency;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Address;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 
 /**
@@ -23,6 +24,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
  */
 class Property extends Document
 {
+    use HasAccountId;
     use HasAutoIncrementId;
     use CanResolveIntegerID;
     use HasTimestamps;

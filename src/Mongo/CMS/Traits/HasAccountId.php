@@ -2,13 +2,13 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Traits;
 
-use SYSOTEL\APP\Common\Enums\AccountId;
+use SYSOTEL\APP\Common\Enums\CMS\Account;
 
 trait HasAccountId
 {
     /**
-     * @var AccountId
-     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\AccountId::class)
+     * @var Account
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\Account::class)
      */
     public $accountId;
 }
