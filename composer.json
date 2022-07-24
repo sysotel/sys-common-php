@@ -4,6 +4,7 @@
     "keywords": [],
     "require": {
         "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.4",
         "alexanderpas/http-enum": "^1.0",
         "illuminate/contracts": "^9.0",
         "spatie/laravel-package-tools": "^1.9.2"
@@ -47,10 +48,11 @@
     "extra": {
         "laravel": {
             "providers": [
-                "SYSOTEL\\APP\\Common\\ServiceProvider"
+                "SYSOTEL\\APP\\Common\\ServiceProvider",
+                "SYSOTEL\\APP\\Common\\Services\\IAMConnectorServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "IAM": "SYSOTEL\\APP\\Common\\Services\\IAM"
             }
         }
     },
