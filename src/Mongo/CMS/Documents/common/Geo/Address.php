@@ -9,11 +9,12 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CityReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference;
+use SYSOTEL\OTA\Common\DB\MongoODM\Documents\common\AddressContract;
 
 /**
  * @ODM\EmbeddedDocument
  */
-class Address extends EmbeddedDocument
+class Address extends EmbeddedDocument implements AddressContract
 {
     /**
      * @var string
@@ -62,4 +63,35 @@ class Address extends EmbeddedDocument
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint::class)
      */
     public $geoLocation;
+
+
+    public function getAddressLine(): ?string
+    {
+        return $this->addressLine ?? null;
+    }
+
+    public function getAreaName(): ?string
+    {
+        return $this->area->name ?? null;
+    }
+
+    public function getCityName(): ?string
+    {
+        return $this->city->name ?? null;
+    }
+
+    public function getStateName(): ?string
+    {
+        return $this->state->name ?? null;
+    }
+
+    public function getCountryName(): ?string
+    {
+        return $this->country->name ?? null;
+    }
+
+    public function getPostalCode(): ?string
+    {
+        return $this->postalCode ?? null;
+    }
 }

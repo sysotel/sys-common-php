@@ -4,12 +4,13 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
+use SYSOTEL\OTA\Common\DB\MongoODM\Documents\common\AddressContract;
 
 /**
  * @ODM\EmbeddedDocument
  * @ODM\HasLifecycleCallbacks
  */
-class RawAddress extends EmbeddedDocument
+class RawAddress extends EmbeddedDocument implements AddressContract
 {
     /**
      * @var string
@@ -64,4 +65,34 @@ class RawAddress extends EmbeddedDocument
      * @ODM\Field(type="double")
      */
     public $latitude;
+
+    public function getPostalCode(): string|null
+    {
+        return $this->postalCode;
+    }
+
+    public function getAddressLine(): string|null
+    {
+        return $this->addressLine;
+    }
+
+    public function getAreaName(): string|null
+    {
+        return $this->area;
+    }
+
+    public function getCityName(): string|null
+    {
+        return $this->city;
+    }
+
+    public function getStateName(): string|null
+    {
+        return $this->state;
+    }
+
+    public function getCountryName(): string|null
+    {
+        return $this->country;
+    }
 }

@@ -6,12 +6,14 @@ use Delta4op\Mongodb\Documents\Document;
 use Delta4op\Mongodb\Traits\CanResolveIntegerID;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
+use Illuminate\Support\Str;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyStarRating;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyType;
 use SYSOTEL\APP\Common\Enums\Currency;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Address;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\RawAddress;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 
@@ -101,4 +103,36 @@ class Property extends Document
         'baseCurrency' => Currency::INR,
         'status'       => PropertyStatus::ACTIVE,
     ];
+
+    public function generateSlug(): string
+    {
+        /** @var Property $result */
+        if (!$this->displayName) {
+            abort(500, 'Cannot generate slug without displayName value');
+        }
+
+        $nameSlug = Str::slug($this->displayName);
+        $result = Property::repository()->findBySlug($nameSlug);
+        if (!$result || $result->id === $this->id) {
+            return $nameSlug;
+        }
+
+        /** @var Address|RawAddress|null $address */
+        $address = $this->rawAddress ?? $this->address ?? null;
+
+        if($address && $address->getCityName()) {
+
+            $citySlug = Str::slug($address->getCityName());
+            $nameCitySlug = "{$nameSlug}-{$citySlug}";
+            $result = self::repository()->findBySlug($nameCitySlug);
+
+            if (!$result || $result->id === $this->id) {
+                return $nameCitySlug;
+            }
+
+            return "{$nameCitySlug}-{$this->id}";
+        }
+
+        return "{$nameSlug}-{$this->id}";
+    }
 }
