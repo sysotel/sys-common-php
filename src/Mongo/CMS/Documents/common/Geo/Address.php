@@ -8,6 +8,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Contracts\AddressContract;
 
 /**
  * @ODM\EmbeddedDocument
+ * @ODM\HasLifecycleCallbacks
  */
 class Address extends EmbeddedDocument implements AddressContract
 {
