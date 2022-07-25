@@ -10,17 +10,6 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\Geo\State;
 class StateRepository extends DocumentRepository
 {
     /**
-     * @param string $id
-     * @return State|null
-     */
-    public function findByTgrID(string $id): ?State
-    {
-        return $this->findOneBy([
-            'supplierDetails.tgr.id' => $id
-        ]);
-    }
-
-    /**
      * @param string|Country $country
      * @param array $criteria
      * @param array $orderBy

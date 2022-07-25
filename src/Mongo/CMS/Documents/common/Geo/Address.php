@@ -1,6 +1,6 @@
 <?php
 
-namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\common;
+namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo;
 
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
