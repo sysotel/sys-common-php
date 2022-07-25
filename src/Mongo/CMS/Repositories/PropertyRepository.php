@@ -27,7 +27,7 @@ class PropertyRepository extends DocumentRepository
     public function findByAccountSlug(Account $account, string $slug): ?Property
     {
         return $this->findOneBy([
-            'accountId' => $account->id,
+            'accountId' => $account->value,
             'accountSlug' => $slug
         ]);
     }
