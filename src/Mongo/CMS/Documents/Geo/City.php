@@ -2,14 +2,10 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Geo;
 
-use Delta4op\Mongodb\Facades\DocumentManager;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\CountryReference;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\StateReference;
-use SYSOTEL\APP\Common\Mongo\CMS\Repositories\CityRepository;
-use function SYSOTEL\APP\Common\Functions\arrayFilter;
-use function SYSOTEL\APP\Common\Functions\toArrayOrNull;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference;
 
 /**
  * @ODM\Document(
@@ -24,23 +20,13 @@ class City extends LocationItem
 
     /**
      * @var CountryReference
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\CountryReference::class)
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference::class)
      */
     public $country;
 
     /**
      * @var StateReference
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\StateReference::class)
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference::class)
      */
     public $state;
-
-    /**
-     * User Repository
-     *
-     * @return CityRepository
-     */
-    public static function repository(): CityRepository
-    {
-        return DocumentManager::getRepository(self::class);
-    }
 }
