@@ -21,7 +21,7 @@ class Address extends EmbeddedDocument implements AddressContract
      * @var string
      * @ODM\Field(type="string")
      */
-    public $addressLine;
+    public $line1;
 
     /**
      * @var AreaReference
@@ -62,7 +62,7 @@ class Address extends EmbeddedDocument implements AddressContract
 
     public function getAddressLine(): ?string
     {
-        return $this->addressLine ?? null;
+        return $this->line1 ?? null;
     }
 
     public function getAreaName(): ?string
