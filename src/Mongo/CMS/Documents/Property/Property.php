@@ -7,6 +7,7 @@ use Delta4op\Mongodb\Traits\CanResolveIntegerID;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Illuminate\Support\Str;
+use SYSOTEL\APP\Common\Enums\CMS\Account;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyStarRating;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyType;
 use SYSOTEL\APP\Common\Enums\Currency;
@@ -35,18 +36,12 @@ class Property extends Document
 
     /**
      * @var string
-     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\Account::class)
-     */
-    public $accountId;
-
-    /**
-     * @var string
      * @ODM\Field(type="string")
      */
     public $slug;
 
     /**
-     * @var string
+     * @var STRING
      * @ODM\Field(type="string")
      */
     public $accountSlug;
