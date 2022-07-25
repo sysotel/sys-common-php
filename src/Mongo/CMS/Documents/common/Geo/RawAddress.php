@@ -4,7 +4,7 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
-use SYSOTEL\OTA\Common\DB\MongoODM\Documents\common\AddressContract;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\AddressContract;
 
 /**
  * @ODM\EmbeddedDocument

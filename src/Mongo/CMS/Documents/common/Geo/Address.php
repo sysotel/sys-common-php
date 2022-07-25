@@ -9,7 +9,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CityReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference;
-use SYSOTEL\OTA\Common\DB\MongoODM\Documents\common\AddressContract;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\AddressContract;
 
 /**
  * @ODM\EmbeddedDocument
