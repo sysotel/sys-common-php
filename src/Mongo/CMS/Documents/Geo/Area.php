@@ -2,13 +2,11 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Geo;
 
-use Delta4op\Mongodb\Facades\DocumentManager;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CityReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference;
-use SYSOTEL\APP\Common\Mongo\CMS\Repositories\AreaRepository;
 
 /**
  * @ODM\Document(
@@ -38,14 +36,4 @@ class Area extends LocationItem
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\CityReference::class)
      */
     public $city;
-
-    /**
-     * User Repository
-     *
-     * @return AreaRepository
-     */
-    public static function repository(): AreaRepository
-    {
-        return DocumentManager::getRepository(self::class);
-    }
 }
