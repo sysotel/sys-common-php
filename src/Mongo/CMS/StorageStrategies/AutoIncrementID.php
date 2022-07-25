@@ -4,14 +4,13 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\StorageStrategies;
 
 use Doctrine\ODM\MongoDB\DocumentManager as BaseDocumentManager;
 use Doctrine\ODM\MongoDB\Id\IdGenerator;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\Master\Counter\Counter;
-use function SYSOTEL\App\Helpers\Functions\dm;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Counter\Counter;
 
 class AutoIncrementID implements IdGenerator
 {
     public function generate(BaseDocumentManager $dm, object $document)
     {
-        $metadata = dm()->getClassMetadata(get_class($document));
+        $metadata = get_class($document)::getManager()->getClassMetadata();
 
         if(!isset($metadata, $metadata->collection)) {
             abort(500,'Failed to find collection name');

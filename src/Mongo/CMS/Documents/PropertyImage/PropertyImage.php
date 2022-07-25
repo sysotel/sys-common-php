@@ -4,7 +4,6 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyImage;
 
 use Carbon\Carbon;
 use Delta4op\Mongodb\Documents\Document;
-use Delta4op\Mongodb\Facades\DocumentManager;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
@@ -157,41 +156,5 @@ class PropertyImage extends Document
     public function url(string $ratio = PropertyImage::RATIO_STANDARD, string $size = PropertyImage::SIZE_MD): string
     {
         return ImageStorageManager::imageURL($this->filePath, $ratio, $size);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function toArray(): array
-    {
-        return array_filter([
-            'id'  => $this->id,
-            'propertyID'      => $this->propertyID,
-            'spaceID'         => $this->spaceID,
-            'title'           => $this->title,
-            'description'     => $this->description,
-            'filePath'        => $this->filePath,
-            'url'             => $this->url(),
-            'category'        => $this->category,
-            'metadata'        => toArrayOrNull($this->metadata),
-            'verification'    => toArrayOrNull($this->verification),
-            'tgrDetails'          => toArrayOrNull($this->tgrDetails),
-            'isFeatured'      => $this->isFeatured,
-            'status'          => $this->status,
-            'sortOrder'       => $this->sortOrder,
-            'createdAt'       => $this->createdAt,
-            'updatedAt'       => $this->updatedAt,
-            'deletedAt'       => $this->deletedAt,
-        ]);
-    }
-
-    /**
-     * User Repository
-     *
-     * @return PropertyImageRepository
-     */
-    public static function repository(): PropertyImageRepository
-    {
-        return DocumentManager::getRepository(self::class);
     }
 }
