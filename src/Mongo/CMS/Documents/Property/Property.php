@@ -37,6 +37,12 @@ class Property extends Document
      * @var string
      * @ODM\Field(type="string")
      */
+    public $accountId;
+
+    /**
+     * @var string
+     * @ODM\Field(type="string")
+     */
     public $slug;
 
     /**
