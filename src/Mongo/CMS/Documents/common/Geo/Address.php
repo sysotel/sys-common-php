@@ -63,7 +63,7 @@ class Address extends EmbeddedDocument implements AddressContract
     /**
      * @ODM\PrePersist
      */
-    protected function prePersist()
+    public function prePersist()
     {
         if(!$this->fullAddress) {
             $this->fullAddress = $this->generateFullAddress();

@@ -7,7 +7,6 @@ use Delta4op\Mongodb\Traits\CanResolveIntegerID;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Illuminate\Support\Str;
-use SYSOTEL\APP\Common\Enums\CMS\Account;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyStarRating;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyType;
 use SYSOTEL\APP\Common\Enums\Currency;
@@ -16,6 +15,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\Address;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\RawAddress;
 use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyRepository;
+use SYSOTEL\APP\Common\Mongo\CMS\Support\NumericIdGenerator;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 
@@ -29,10 +29,15 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 class Property extends Document
 {
     use HasAccountId;
-    use HasAutoIncrementId;
     use CanResolveIntegerID;
     use HasTimestamps;
     use HasDefaultAttributes;
+
+    /**
+     * @var int
+     * @ODM\Id(strategy="NONE", type="int"))
+     */
+    public $id;
 
     /**
      * @var string
@@ -105,6 +110,16 @@ class Property extends Document
         'baseCurrency' => Currency::INR,
         'status'       => PropertyStatus::ACTIVE,
     ];
+
+    /**
+     * @ODM\PrePersist
+    */
+    public function attachSlugs()
+    {
+        $this->id = NumericIdGenerator::generateNewId($this);
+        $this->slug = $this->generateSlug();
+        $this->accountSlug = $this->generateAccountSlug();
+    }
 
     public function generateSlug(): string
     {
