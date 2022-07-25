@@ -4,12 +4,7 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo;
 
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\AreaReference;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CityReference;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\AddressContract;
+use SYSOTEL\APP\Common\Mongo\CMS\Contracts\AddressContract;
 
 /**
  * @ODM\EmbeddedDocument
