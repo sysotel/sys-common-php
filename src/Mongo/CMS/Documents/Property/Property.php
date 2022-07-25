@@ -35,7 +35,7 @@ class Property extends Document
 
     /**
      * @var string
-     * @ODM\Field(type="string")
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\Account::class)
      */
     public $accountId;
 
