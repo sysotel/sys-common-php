@@ -6,12 +6,14 @@ use Delta4op\Mongodb\Documents\Document;
 use Delta4op\Mongodb\Traits\CanResolveIntegerID;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
+use SYSOTEL\APP\Common\Enums\CMS\PropertyCreationType;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyStarRating;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyType;
 use SYSOTEL\APP\Common\Enums\Currency;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyStatus;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\Address;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Support\NumericIdGenerator;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 
@@ -101,6 +103,18 @@ class Property extends Document
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyStatus::class)
      */
     public $status;
+
+    /**
+     * @var PropertyCreationType
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyCreationType::class)
+     */
+    public $creationType;
+
+    /**
+     * @var UserReference
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference::class)
+     */
+    public $creator;
 
 
     protected $defaults = [
