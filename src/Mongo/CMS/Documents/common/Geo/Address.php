@@ -59,6 +59,24 @@ class Address extends EmbeddedDocument implements AddressContract
      */
     public $geoPoint;
 
+    /**
+     * @ODM\PrePersist
+    */
+    protected function prePersist()
+    {
+        if(!$this->fullAddress) {
+            $this->fullAddress = $this->generateFullAddress();
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function generateFullAddress(): string
+    {
+        return $this->fullAddress = "{$this->line1}, {$this->area}, {$this->city}, {$this->state}, {$this->postalCode}";
+    }
+
 
     public function getAddressLine(): ?string
     {
