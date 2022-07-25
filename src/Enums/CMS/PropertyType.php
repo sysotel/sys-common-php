@@ -22,4 +22,14 @@ enum PropertyType: string
     case DHARAMSHALA = 'DHARAMSHALA';
     case COTTAGE = 'COTTAGE';
     case CAMP = 'CAMP';
+
+    public function propertyLabel(): string
+    {
+        return 'hotel';
+    }
+
+    public function spaceLabel(): string
+    {
+        return 'room';
+    }
 }
