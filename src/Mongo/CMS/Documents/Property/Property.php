@@ -14,6 +14,7 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertyStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Address;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\RawAddress;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 
@@ -107,12 +108,14 @@ class Property extends Document
     public function generateSlug(): string
     {
         /** @var Property $result */
+        /** @var PropertyRepository $repository */
+        $repository = Property::repository();
         if (!$this->displayName) {
             abort(500, 'Cannot generate slug without displayName value');
         }
 
         $nameSlug = Str::slug($this->displayName);
-        $result = Property::repository()->findBySlug($nameSlug);
+        $result = $repository->findBySlug($nameSlug);
         if (!$result || $result->id === $this->id) {
             return $nameSlug;
         }
@@ -125,6 +128,40 @@ class Property extends Document
             $citySlug = Str::slug($address->getCityName());
             $nameCitySlug = "{$nameSlug}-{$citySlug}";
             $result = self::repository()->findBySlug($nameCitySlug);
+
+            if (!$result || $result->id === $this->id) {
+                return $nameCitySlug;
+            }
+
+            return "{$nameCitySlug}-{$this->id}";
+        }
+
+        return "{$nameSlug}-{$this->id}";
+    }
+
+    public function generateAccountSlug(): string
+    {
+        /** @var Property $result */
+        /** @var PropertyRepository $repository */
+        $repository = Property::repository();
+        if (!$this->displayName) {
+            abort(500, 'Cannot generate slug without displayName value');
+        }
+
+        $nameSlug = Str::slug($this->displayName);
+        $result = $repository->findByAccountSlug($this->accountId, $nameSlug);
+        if (!$result || $result->id === $this->id) {
+            return $nameSlug;
+        }
+
+        /** @var Address|RawAddress|null $address */
+        $address = $this->rawAddress ?? $this->address ?? null;
+
+        if($address && $address->getCityName()) {
+
+            $citySlug = Str::slug($address->getCityName());
+            $nameCitySlug = "{$nameSlug}-{$citySlug}";
+            $result = $repository->findByAccountSlug($this->accountId, $nameCitySlug);
 
             if (!$result || $result->id === $this->id) {
                 return $nameCitySlug;
