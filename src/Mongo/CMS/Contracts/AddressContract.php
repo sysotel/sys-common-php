@@ -1,6 +1,6 @@
 <?php
 
-namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\common;
+namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Contracts;
 
 interface AddressContract
 {
