@@ -71,6 +71,18 @@ class Address extends EmbeddedDocument implements AddressContract
     }
 
     /**
+     * @param float $longitude
+     * @param float $latitude
+     * @return $this
+     */
+    public function setGeoPoint(float $longitude, float $latitude): static
+    {
+        $this->geoPoint = GeoPoint::createFromCoordinates($longitude, $latitude);
+
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function generateFullAddress(): string
