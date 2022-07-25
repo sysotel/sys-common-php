@@ -25,6 +25,12 @@ class StateReference extends EmbeddedDocument
     public $name;
 
     /**
+     * @var string
+     * @ODM\Field(type="string")
+     */
+    public $slug;
+
+    /**
      * @param State $state
      * @return StateReference
      */
@@ -33,6 +39,7 @@ class StateReference extends EmbeddedDocument
         return new self([
             'id' => new ObjectId($state->id),
             'name' => $state->name,
+            'slug' => $state->slug,
         ]);
     }
 }

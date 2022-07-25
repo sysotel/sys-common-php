@@ -25,6 +25,12 @@ class CityReference extends EmbeddedDocument
     public $name;
 
     /**
+     * @var string
+     * @ODM\Field(type="string")
+     */
+    public $slug;
+
+    /**
      * @param City $city
      * @return CityReference
      */
@@ -33,6 +39,7 @@ class CityReference extends EmbeddedDocument
         return new self([
             'id' => new ObjectId($city->id),
             'name' => $city->name,
+            'slug' => $city->slug,
         ]);
     }
 }
