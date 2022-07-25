@@ -6,18 +6,14 @@ use Delta4op\Mongodb\Documents\Document;
 use Delta4op\Mongodb\Traits\CanResolveIntegerID;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
-use Illuminate\Support\Str;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyStarRating;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyType;
 use SYSOTEL\APP\Common\Enums\Currency;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyStatus;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\Address;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\RawAddress;
-use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Support\NumericIdGenerator;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
-use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 
 /**
  * @ODM\Document(
@@ -28,6 +24,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
  */
 class Property extends Document
 {
+    use SlugGenerators;
     use HasAccountId;
     use CanResolveIntegerID;
     use HasTimestamps;
@@ -112,6 +109,9 @@ class Property extends Document
     ];
 
     /**
+     * Generates primary key
+     * Creates slug and accountSlug
+     *
      * @ODM\PrePersist
     */
     public function prePersist()
@@ -119,73 +119,5 @@ class Property extends Document
         $this->id = NumericIdGenerator::get($this);
         $this->slug = $this->generateSlug();
         $this->accountSlug = $this->generateAccountSlug();
-    }
-
-    protected function generateSlug(): string
-    {
-        /** @var Property $result */
-        /** @var PropertyRepository $repository */
-        $repository = Property::repository();
-        if (!$this->displayName) {
-            abort(500, 'Cannot generate slug without displayName value');
-        }
-
-        $nameSlug = Str::slug($this->displayName);
-        $result = $repository->findBySlug($nameSlug);
-        if (!$result || $result->id === $this->id) {
-            return $nameSlug;
-        }
-
-        /** @var Address|RawAddress|null $address */
-        $address = $this->rawAddress ?? $this->address ?? null;
-
-        if($address && $address->getCityName()) {
-
-            $citySlug = Str::slug($address->getCityName());
-            $nameCitySlug = "{$nameSlug}-{$citySlug}";
-            $result = self::repository()->findBySlug($nameCitySlug);
-
-            if (!$result || $result->id === $this->id) {
-                return $nameCitySlug;
-            }
-
-            return "{$nameCitySlug}-{$this->id}";
-        }
-
-        return "{$nameSlug}-{$this->id}";
-    }
-
-    protected function generateAccountSlug(): string
-    {
-        /** @var Property $result */
-        /** @var PropertyRepository $repository */
-        $repository = Property::repository();
-        if (!$this->displayName) {
-            abort(500, 'Cannot generate slug without displayName value');
-        }
-
-        $nameSlug = Str::slug($this->displayName);
-        $result = $repository->findByAccountSlug($this->accountId, $nameSlug);
-        if (!$result || $result->id === $this->id) {
-            return $nameSlug;
-        }
-
-        /** @var Address|RawAddress|null $address */
-        $address = $this->rawAddress ?? $this->address ?? null;
-
-        if($address && $address->getCityName()) {
-
-            $citySlug = Str::slug($address->getCityName());
-            $nameCitySlug = "{$nameSlug}-{$citySlug}";
-            $result = $repository->findByAccountSlug($this->accountId, $nameCitySlug);
-
-            if (!$result || $result->id === $this->id) {
-                return $nameCitySlug;
-            }
-
-            return "{$nameCitySlug}-{$this->id}";
-        }
-
-        return "{$nameSlug}-{$this->id}";
     }
 }
