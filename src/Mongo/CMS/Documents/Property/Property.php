@@ -114,14 +114,14 @@ class Property extends Document
     /**
      * @ODM\PrePersist
     */
-    public function attachSlugs()
+    public function prePersist()
     {
-        $this->id = NumericIdGenerator::generateNewId($this);
+        $this->id = NumericIdGenerator::get($this);
         $this->slug = $this->generateSlug();
         $this->accountSlug = $this->generateAccountSlug();
     }
 
-    public function generateSlug(): string
+    protected function generateSlug(): string
     {
         /** @var Property $result */
         /** @var PropertyRepository $repository */
@@ -155,7 +155,7 @@ class Property extends Document
         return "{$nameSlug}-{$this->id}";
     }
 
-    public function generateAccountSlug(): string
+    protected function generateAccountSlug(): string
     {
         /** @var Property $result */
         /** @var PropertyRepository $repository */

@@ -7,7 +7,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\Counter\Counter;
 
 class NumericIdGenerator
 {
-    public static function generateNewId(Document $document)
+    public static function get(Document $document)
     {
         $metadata = get_class($document)::getManager()->getClassMetadata(get_class($document));
 
