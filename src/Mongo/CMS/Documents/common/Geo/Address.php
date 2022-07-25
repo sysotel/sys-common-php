@@ -62,7 +62,7 @@ class Address extends EmbeddedDocument implements AddressContract
      * @var GeoPoint
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint::class)
      */
-    public $geoLocation;
+    public $geoPoint;
 
 
     public function getAddressLine(): ?string
