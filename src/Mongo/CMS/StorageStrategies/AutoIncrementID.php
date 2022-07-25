@@ -10,7 +10,8 @@ class AutoIncrementID implements IdGenerator
 {
     public function generate(BaseDocumentManager $dm, object $document)
     {
-        $metadata = get_class($document)::getManager()->getClassMetadata();
+        $documentClass = get_class($document);
+        $metadata = get_class($documentClass)::getManager()->getClassMetadata($documentClass);
 
         if(!isset($metadata, $metadata->collection)) {
             abort(500,'Failed to find collection name');
