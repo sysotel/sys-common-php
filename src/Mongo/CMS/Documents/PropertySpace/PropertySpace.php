@@ -9,6 +9,7 @@ use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PropertySpaceStatus;
 use SYSOTEL\APP\Common\Enums\CMS\SpaceOwnershipType;
+use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 
 /**
@@ -20,6 +21,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
  */
 class PropertySpace extends Document
 {
+    use HasAccountId;
     use HasAutoIncrementId;
     use CanResolveIntegerID;
     use HasTimestamps;

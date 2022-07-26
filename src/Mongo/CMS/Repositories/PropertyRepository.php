@@ -9,6 +9,17 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\Property\Property;
 class PropertyRepository extends DocumentRepository
 {
     /**
+     * @param Account $account
+     * @return mixed
+     */
+    public function getAllForAccount(Account $account): mixed
+    {
+        return $this->findOneBy([
+            'accountId' => $account
+        ]);
+    }
+
+    /**
      * @param string $slug
      * @return Property|null
      */
