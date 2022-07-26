@@ -14,19 +14,19 @@ class SpaceOccupancy extends EmbeddedDocument
      * @var int
      * @ODM\Field(type="int")
      */
-    public $baseOccupancy;
+    public $baseCount;
 
     /**
      * @var int
      * @ODM\Field(type="int")
      */
-    public $maxOccupancy;
+    public $maxCount;
 
     /**
      * @var int
      * @ODM\Field(type="int")
      */
-    public $maxExtraBeds;
+    public $maxExtraCount;
 
     /**
      * @var int
