@@ -8,7 +8,7 @@ use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PropertySpaceStatus;
-use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertySpaceRepository;
+use SYSOTEL\APP\Common\Enums\CMS\SpaceOwnershipType;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 
 /**
@@ -80,6 +80,12 @@ class PropertySpace extends Document
     public $nonSmoking;
 
     /**
+     * @var SpaceOwnershipType
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\SpaceOwnershipType::class)
+     */
+    public $ownershipType;
+
+    /**
      * @var PropertySpaceStatus
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertySpaceStatus::class)
      */
@@ -96,5 +102,6 @@ class PropertySpace extends Document
      */
     public $defaults = [
         'status' => PropertySpaceStatus::ACTIVE,
+        'ownershipType' => SpaceOwnershipType::PRIVATE
     ];
 }

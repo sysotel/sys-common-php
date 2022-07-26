@@ -4,7 +4,6 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertySpace;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
-use function SYSOTEL\APP\Common\Functions\arrayFilter;
 
 /**
  * @ODM\EmbeddedDocument
@@ -16,4 +15,16 @@ class SpaceSize extends EmbeddedDocument
      * @ODM\Field(type="int")
      */
     public $areaSQFT;
+//
+//    /**
+//     * @var float
+//     * @ODM\Field(type="float")
+//     */
+//    public $value;
+//
+//    /**
+//     * @var SpaceSize
+//     * @ODM\Field(type="string")
+//     */
+//    public $unit;
 }
