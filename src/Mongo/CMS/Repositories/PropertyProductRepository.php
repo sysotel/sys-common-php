@@ -16,7 +16,7 @@ class PropertyProductRepository extends DocumentRepository
      */
     public function findAllForSpace(PropertySpace|int $space, array $criteria = [], array $orderBy = []): array
     {
-        $criteria = array_merge(['propertyId' => PropertySpace::resolveID($space)], $criteria);
+        $criteria = array_merge(['spaceId' => PropertySpace::resolveID($space)], $criteria);
 
         return $this->findBy($criteria, $orderBy);
     }

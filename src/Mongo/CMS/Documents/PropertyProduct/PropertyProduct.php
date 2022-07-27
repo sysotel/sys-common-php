@@ -14,7 +14,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 
 /**
  * @ODM\Document(
- *     collection="cms_propertyProducts",
+ *     collection="propertyProducts",
  *     repositoryClass=SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyProductRepository::class
  * )
  * @ODM\HasLifecycleCallbacks
@@ -31,13 +31,13 @@ class PropertyProduct extends Document
      * @var int
      * @ODM\Field(type="int")
      */
-    public $propertyID;
+    public $propertyId;
 
     /**
      * @var int
      * @ODM\Field(type="int")
      */
-    public $spaceID;
+    public $spaceId;
 
     /**
      * @var string
@@ -87,8 +87,9 @@ class PropertyProduct extends Document
 
     /**
      * @ODM\PrePersist
+     * @ODM\PreUpdate
      */
-    public function prePersist()
+    public function autofillInclusions()
     {
         if(!$this->inclusions) {
             $this->inclusions = $this->mealPlanCode->inclusions();

@@ -14,13 +14,13 @@ class PaymentMode extends EmbeddedDocument
 {
     /**
      * @var PropertyProductPaymentType
-     * @ODM\Field(type="int", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyProductPaymentType::class)
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyProductPaymentType::class)
      */
     public $type;
 
     /**
      * @var PartialAmountType
-     * @ODM\Field(type="int", enumType=SYSOTEL\APP\Common\Enums\CMS\PartialAmountType::class)
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PartialAmountType::class)
      */
     public $partialAmountType;
 
