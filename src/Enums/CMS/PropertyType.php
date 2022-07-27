@@ -25,11 +25,11 @@ enum PropertyType: string
 
     public function propertyLabel(): string
     {
-        return 'hotel';
+        return 'Hotel';
     }
 
     public function spaceLabel(): string
     {
-        return 'room';
+        return 'Room';
     }
 }
