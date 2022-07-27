@@ -134,4 +134,20 @@ class Property extends Document
         $this->slug = $this->generateSlug();
         $this->accountSlug = $this->generateAccountSlug();
     }
+
+    /**
+     * @return string
+     */
+    public function propertyLabel(): string
+    {
+        return $this->type->propertyLabel();
+    }
+
+    /**
+     * @return string
+     */
+    public function spaceLabel(): string
+    {
+        return $this->type->spaceLabel();
+    }
 }
