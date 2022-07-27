@@ -5,7 +5,7 @@ namespace SYSOTEL\APP\Common\Services\Api\Helpers;
 use Alexanderpas\Common\HTTP\StatusCode;
 use Illuminate\Http\JsonResponse;
 
-class ApiControllerHelpers
+trait ApiControllerHelpers
 {
     /**
      * @param string $message
