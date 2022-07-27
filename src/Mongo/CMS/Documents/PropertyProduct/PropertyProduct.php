@@ -9,6 +9,7 @@ use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\MealPlanCode;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyProductStatus;
+use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 
 /**
@@ -20,6 +21,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
  */
 class PropertyProduct extends Document
 {
+    use HasAccountId;
     use HasAutoIncrementId;
     use CanResolveIntegerID;
     use HasTimestamps;
@@ -80,7 +82,7 @@ class PropertyProduct extends Document
     public $status;
 
     protected $defaults = [
-        'status'     => PropertyProductStatus::ACTIVE,
+        'status' => PropertyProductStatus::ACTIVE,
     ];
 
     /**
@@ -89,12 +91,7 @@ class PropertyProduct extends Document
     public function prePersist()
     {
         if(!$this->inclusions) {
-            $this->inclusions = array_merge(match($this->mealPlanCode){
-                MealPlanCode::CP  => ['FREE Breakfast'],
-                MealPlanCode::MAP => ['FREE Breakfast', 'FREE Lunch or Dinner'],
-                MealPlanCode::AP  => ['FREE Breakfast', 'All Meals FREE'],
-                default => []
-            });
+            $this->inclusions = $this->mealPlanCode->inclusions();
         }
     }
 }

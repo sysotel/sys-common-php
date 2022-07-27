@@ -4,7 +4,8 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyProduct;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
-use function SYSOTEL\APP\Common\Functions\arrayFilter;
+use SYSOTEL\APP\Common\Enums\CMS\PartialAmountType;
+use SYSOTEL\APP\Common\Enums\CMS\PropertyProductPaymentType;
 
 /**
  * @ODM\EmbeddedDocument
@@ -12,26 +13,20 @@ use function SYSOTEL\APP\Common\Functions\arrayFilter;
 class PaymentMode extends EmbeddedDocument
 {
     /**
-     * @var string
-     * @ODM\Field(type="string")
+     * @var PropertyProductPaymentType
+     * @ODM\Field(type="int", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyProductPaymentType::class)
      */
     public $type;
-    public const TYPE_PAY_NOW = 'PAY_NOW';
-    public const TYPE_PAY_AT_PROPERTY = 'PAY_AT_PROPERTY';
-    public const TYPE_PAY_PARTIAL = 'PAY_PARTIAL';
-    public const TYPE_LATER = 'PAY_LATER';
 
     /**
-     * @var string
-     * @ODM\Field(type="string")
+     * @var PartialAmountType
+     * @ODM\Field(type="int", enumType=SYSOTEL\APP\Common\Enums\CMS\PartialAmountType::class)
      */
-    public $payPartialAmountType;
-    public const PAY_PARTIAL_AMOUNT_TYPE_FLAT = 'FLAT';
-    public const PAY_PARTIAL_AMOUNT_TYPE_PERC = 'PERC';
+    public $partialAmountType;
 
     /**
      * @var float
      * @ODM\Field(type="float")
      */
-    public $payPartialAmount;
+    public $partialAmount;
 }

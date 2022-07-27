@@ -4,7 +4,6 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyProduct;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
-use function SYSOTEL\APP\Common\Functions\arrayFilter;
 
 /**
  * @ODM\EmbeddedDocument
