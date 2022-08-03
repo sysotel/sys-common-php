@@ -9,7 +9,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\Geo\City;
 
 class AreaRepository extends DocumentRepository
 {
-    public function getForCity(string|City $city, array $criteria = [], array $orderBy = []): Collection
+    public function findForCity(string|City $city, array $criteria = [], array $orderBy = []): array
     {
         $cityID = $city instanceof City ? $city->id : $city;
 
@@ -21,6 +21,6 @@ class AreaRepository extends DocumentRepository
             'name' => 1
         ], $orderBy);
 
-        return $this->getCollectionBy($criteria, $orderBy);
+        return $this->findBy($criteria, $orderBy);
     }
 }

@@ -10,7 +10,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\Geo\State;
 
 class CityRepository extends DocumentRepository
 {
-    public function getForState(string|State $state, array $criteria = [], array $orderBy = []): Collection
+    public function findAllForState(string|State $state, array $criteria = [], array $orderBy = []): array
     {
         $stateID = $state instanceof State ? $state->id : $state;
 
@@ -22,7 +22,7 @@ class CityRepository extends DocumentRepository
             'name' => 1
         ], $orderBy);
 
-        return $this->getCollectionBy($criteria, $orderBy);
+        return $this->findBy($criteria, $orderBy);
     }
 
     /**
