@@ -3,7 +3,6 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\Repositories;
 
 use Delta4op\Mongodb\Repositories\DocumentRepository;
-use Illuminate\Support\Collection;
 use MongoDB\BSON\ObjectId;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Geo\City;
 

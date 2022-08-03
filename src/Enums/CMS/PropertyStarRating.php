@@ -18,7 +18,7 @@ enum PropertyStarRating: int
      */
     public function label(): string
     {
-        return match ($this->value) {
+        return match ($this) {
             self::ONE_STAR => '1 Star',
             self::TWO_STAR => '2 Star',
             self::THREE_STAR => '3 Star',
