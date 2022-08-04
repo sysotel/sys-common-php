@@ -31,15 +31,15 @@
     "autoload": {
         "psr-4": {
             "SYSOTEL\\APP\\Common\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "SYSOTEL\\APP\\Common\\Tests\\": "tests"
         },
         "files":  [
             "src/Helpers/Helpers.php"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SYSOTEL\\APP\\Common\\Tests\\": "tests"
+        }
     },
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse",
