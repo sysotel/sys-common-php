@@ -9,6 +9,6 @@ trait EnumLabelExtension
      */
     public function label(): string
     {
-        return readableConstant($this);
+        return readableConstant($this->value);
     }
 }
