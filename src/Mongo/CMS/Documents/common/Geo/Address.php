@@ -87,7 +87,7 @@ class Address extends EmbeddedDocument implements AddressContract
      */
     public function generateFullAddress(): string
     {
-        return $this->fullAddress = "{$this->line1}, {$this->area->name}, {$this->city->name}, {$this->state->name}, {$this->postalCode}";
+        return $this->fullAddress = "{$this->line1}, {$this->area->name}, {$this->city->name}, {$this->state->name}, {$this->country->name} - {$this->postalCode}";
     }
 
 
