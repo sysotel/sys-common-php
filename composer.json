@@ -38,7 +38,7 @@
             "SYSOTEL\\APP\\Common\\Tests\\": "tests"
         },
         "files":  [
-            "src/Helpers/helpers.php"
+            "src/Helpers/Helpers.php"
         ]
     },
     "scripts": {
