@@ -120,4 +120,28 @@ class Address extends EmbeddedDocument implements AddressContract
     {
         return $this->postalCode ?? null;
     }
+
+    /**
+     * @return string
+     */
+    public function areaCityString(): string
+    {
+        return "{$this->area->name}, {$this->city->name}";
+    }
+
+    /**
+     * @return string
+     */
+    public function cityStateString(): string
+    {
+        return "{$this->city->name}, {$this->state->name}";
+    }
+
+    /**
+     * @return string
+     */
+    public function cityStateCountryString(): string
+    {
+        return "{$this->cityStateString()}, {$this->country->name}";
+    }
 }
