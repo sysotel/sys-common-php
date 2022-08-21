@@ -30,14 +30,8 @@ class UserReference extends EmbeddedDocument
     public $name;
 
     /**
-     * @var Email
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Email::class)
+     * @var string
+     * @ODM\Field(type="string")
      */
     public $email;
-
-    /**
-     * @var Mobile
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Mobile::class)
-     */
-    public $mobile;
 }

@@ -7,12 +7,10 @@ use Delta4op\Mongodb\Documents\Document;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use Illuminate\Support\Traits\Macroable;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Verification;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\Supplier;
-use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyImageRepository;
-use SYSOTEL\APP\Common\Services\ImageServices\Facades\ImageStorageManager;
-use function SYSOTEL\APP\Common\Functions\toArrayOrNull;
+use SYSOTEL\APP\Common\Enums\CMS\PropertyImageStatus;
+use SYSOTEL\APP\Common\Enums\CMS\PropertyImageTarget;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference;
+use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 
 /**
  * @ODM\Document(
@@ -23,26 +21,13 @@ use function SYSOTEL\APP\Common\Functions\toArrayOrNull;
  */
 class PropertyImage extends Document
 {
-    use Macroable, HasTimestamps, HasDefaultAttributes;
-
-    public const RATIO_SQUARE = 'square';
-    public const RATIO_STANDARD = 'standard';
-
-    public const SIZE_SM = 'sm';
-    public const SIZE_MD = 'md';
-    public const SIZE_LG = 'lg';
+    use HasAccountId, HasTimestamps, HasDefaultAttributes;
 
     /**
      * @var string
      * @ODM\Id
      */
     public $id;
-
-    /**
-     * @var string
-     * @ODM\Field(type="string")
-     */
-    public $accountID;
 
     /**
      * @var string
@@ -63,12 +48,10 @@ class PropertyImage extends Document
     public $spaceID;
 
     /**
-     * @var string
-     * @ODM\Field(type="string")
+     * @var PropertyImageTarget
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyImageTarget::class)
      */
-    public $category;
-    public const CATEGORY_PROPERTY = 'PROPERTY';
-    public const CATEGORY_SPACE = 'SPACE';
+    public $target;
 
     /**
      * @var string
@@ -83,12 +66,6 @@ class PropertyImage extends Document
     public $description;
 
     /**
-     * @var string
-     * @ODM\Field (type="string")
-     */
-    public $filePath;
-
-    /**
      * @var ImageMetadata
      * @ODM\EmbedOne (targetDocument=ImageMetadata::class)
      */
@@ -101,31 +78,28 @@ class PropertyImage extends Document
     public $sortOrder;
 
     /**
+     * @var int
+     * @ODM\Field(type="int")
+     */
+    public $targetSortOrder;
+
+    /**
      * @var bool
      * @ODM\Field(type="bool")
      */
     public $isFeatured;
 
     /**
-     * @var string
-     * @ODM\Field(type="string")
+     * @var PropertyImageStatus
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyImageStatus::class)
      */
     public $status;
-    public const STATUS_ACTIVE = 'ACTIVE';
-    public const STATUS_INACTIVE = 'INACTIVE';
-    public const STATUS_DELETED = 'DELETED';
 
     /**
-     * @var Verification
-     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Verification::class)
+     * @var UserReference
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference::class)
      */
-    public $verification;
-
-    /**
-     * @var TgrDetails
-     * @ODM\EmbedOne(targetDocument=TgrDetails::class)
-     */
-    public $tgrDetails;
+    public $uploadedBy;
 
     /**
      * @var Carbon
@@ -133,28 +107,13 @@ class PropertyImage extends Document
      */
     public $deletedAt;
 
-    public $defaults = [
-        'isFeatured' => false,
-        'supplierID' => Supplier::ID_SELF,
-    ];
-
     /**
      * @return $this
      */
     public function markAsDeleted(): static
     {
-        $this->status = self::STATUS_DELETED;
+        $this->status = PropertyImageStatus::DELETED;
         $this->deletedAt = now();
         return $this;
-    }
-
-    /**
-     * @param string $ratio
-     * @param string $size
-     * @return string
-     */
-    public function url(string $ratio = PropertyImage::RATIO_STANDARD, string $size = PropertyImage::SIZE_MD): string
-    {
-        return ImageStorageManager::imageURL($this->filePath, $ratio, $size);
     }
 }
