@@ -49,7 +49,13 @@ class PropertySpace extends Document
      * @var string|null
      * @ODM\Field(type="string")
      */
-    public $description;
+    public $shortDescription;
+
+    /**
+     * @var string|null
+     * @ODM\Field(type="string")
+     */
+    public $longDescription;
 
     /**
      * @var ?int
