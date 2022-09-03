@@ -82,6 +82,12 @@ class PropertySpace extends Document
     public $nonSmoking;
 
     /**
+     * @var InventorySettings
+     * @ODM\EmbedOne(targetDocument=InventorySettings::class)
+     */
+    public $inventorySettings;
+
+    /**
      * @var SpaceStayType
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\SpaceStayType::class)
      */
