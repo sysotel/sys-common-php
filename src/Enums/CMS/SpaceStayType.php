@@ -2,7 +2,7 @@
 
 namespace SYSOTEL\APP\Common\Enums\CMS;
 
-enum SpaceOwnershipType: string
+enum SpaceStayType: string
 {
     case PRIVATE = 'PRIVATE';
     case SHARED = 'SHARED';

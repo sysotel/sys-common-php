@@ -26,12 +26,6 @@ class SpaceOccupancy extends EmbeddedDocument
      * @var int
      * @ODM\Field(type="int")
      */
-    public $maxExtraCount;
-
-    /**
-     * @var int
-     * @ODM\Field(type="int")
-     */
     public $minAdultCount;
 
     /**
