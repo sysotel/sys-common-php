@@ -8,7 +8,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
-use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasProductId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasSpaceId;
 
@@ -17,7 +16,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasSpaceId;
  */
 class PropertyAmenity extends Document
 {
-    use HasObjectIdKey, HasPropertyId, HasAccountId, HasProductId, HasSpaceId;
+    use HasObjectIdKey, HasAccountId, HasPropertyId, HasSpaceId;
     use HasTimestamps;
 
     /**

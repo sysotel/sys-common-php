@@ -9,8 +9,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyContactStatus;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyContactType;
-use SYSOTEL\APP\Common\Enums\CMS\PropertyStatus;
-use SYSOTEL\APP\Common\Enums\Currency;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\ContactNumber;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Email;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
