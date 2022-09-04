@@ -15,7 +15,8 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
  */
 class Country extends LocationItem
 {
-    use HasTimestamps, CanResolveStringID;
+    use HasTimestamps;
+    use CanResolveStringID;
 
     /**
      * @var string

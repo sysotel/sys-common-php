@@ -14,7 +14,8 @@ use SYSOTEL\APP\Common\Enums\CMS\AmenityTemplateType;
  */
 class AmenityDetailsTemplate extends EmbeddedDocument
 {
-    use CanResolveStringID, HasTimestamps;
+    use HasTimestamps;
+    use CanResolveStringID;
 
     /**
      * @var AmenityTemplateType

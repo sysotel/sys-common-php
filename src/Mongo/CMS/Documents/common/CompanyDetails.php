@@ -4,10 +4,10 @@ namespace SYSOTEL\OTA\Common\Mongo\CMS\Documents\common;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Address;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Email;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\Address;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\RawAddress;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Mobile;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\ContactNumber;
 
 /**
  * @ODM\EmbeddedDocument
@@ -40,10 +40,10 @@ class CompanyDetails extends EmbeddedDocument
     public $email;
 
     /**
-     * @var Mobile
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Mobile::class)
+     * @var ContactNumber
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\ContactNumber::class)
      */
-    public $mobile;
+    public $contactNumber;
 
     /**
      * @var Url

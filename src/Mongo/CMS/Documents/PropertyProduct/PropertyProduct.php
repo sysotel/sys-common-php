@@ -11,6 +11,8 @@ use SYSOTEL\APP\Common\Enums\CMS\MealPlanCode;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyProductStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
+use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
+use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasSpaceId;
 
 /**
  * @ODM\Document(
@@ -21,23 +23,8 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
  */
 class PropertyProduct extends Document
 {
-    use HasAccountId;
-    use HasAutoIncrementId;
-    use CanResolveIntegerID;
-    use HasTimestamps;
-    use HasDefaultAttributes;
-
-    /**
-     * @var int
-     * @ODM\Field(type="int")
-     */
-    public $propertyId;
-
-    /**
-     * @var int
-     * @ODM\Field(type="int")
-     */
-    public $spaceId;
+    use HasAutoIncrementId, HasAccountId, HasPropertyId, HasSpaceId, HasTimestamps;
+    use CanResolveIntegerID, HasDefaultAttributes;
 
     /**
      * @var string

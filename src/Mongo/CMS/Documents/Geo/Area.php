@@ -7,6 +7,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CityReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference;
+use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 
 /**
  * @ODM\Document(

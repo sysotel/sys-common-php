@@ -11,6 +11,8 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertyImageStatus;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyImageTarget;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
+use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasProductId;
+use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasSpaceId;
 
 /**
  * @ODM\Document(
@@ -21,7 +23,8 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
  */
 class PropertyImage extends Document
 {
-    use HasAccountId, HasTimestamps, HasDefaultAttributes;
+    use HasAccountId, HasProductId, HasSpaceId, HasTimestamps;
+    use HasDefaultAttributes;
 
     /**
      * @var string
@@ -34,18 +37,6 @@ class PropertyImage extends Document
      * @ODM\Field(type="string")
      */
     public $supplierID;
-
-    /**
-     * @var int
-     * @ODM\Field(type="int")
-     */
-    public $propertyID;
-
-    /**
-     * @var int
-     * @ODM\Field(type="int")
-     */
-    public $spaceID;
 
     /**
      * @var PropertyImageTarget

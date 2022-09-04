@@ -11,6 +11,7 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertySpaceStatus;
 use SYSOTEL\APP\Common\Enums\CMS\SpaceStayType;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
+use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 
 /**
  * @ODM\Document(
@@ -22,16 +23,11 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 class PropertySpace extends Document
 {
     use HasAccountId;
+    use HasPropertyId;
     use HasAutoIncrementId;
     use CanResolveIntegerID;
     use HasTimestamps;
     use HasDefaultAttributes;
-
-    /**
-     * @var int
-     * @ODM\Field(type="int")
-     */
-    public $propertyId;
 
     /**
      * @var string

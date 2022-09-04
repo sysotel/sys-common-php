@@ -10,7 +10,7 @@ use SYSOTEL\APP\Common\Enums\CountryCode;
  * @ODM\EmbeddedDocument
  * @ODM\HasLifecycleCallbacks
  */
-class Mobile extends EmbeddedDocument
+class ContactNumber extends EmbeddedDocument
 {
     /**
      * @var CountryCode

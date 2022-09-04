@@ -14,7 +14,8 @@ use SYSOTEL\APP\Common\Enums\CMS\AmenityTemplateType;
  */
 class TemplateAttribute extends EmbeddedDocument
 {
-    use CanResolveStringID, HasTimestamps;
+    use HasTimestamps;
+    use CanResolveStringID;
 
     /**
      * @var int

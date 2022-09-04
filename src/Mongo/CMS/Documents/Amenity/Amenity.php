@@ -5,7 +5,6 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Amenity;
 use Delta4op\Mongodb\Documents\Document;
 use Delta4op\Mongodb\Traits\CanResolveStringID;
 use Delta4op\Mongodb\Traits\HasTimestamps;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\AmenityCategory;
 use SYSOTEL\APP\Common\Enums\CMS\AmenityStatus;
@@ -16,10 +15,11 @@ use SYSOTEL\APP\Common\Enums\CMS\AmenityTarget;
  */
 class Amenity extends Document
 {
-    use CanResolveStringID, HasTimestamps;
+    use HasTimestamps;
+    use CanResolveStringID;
 
     /**
-     * @var Amenity
+     * @var string
      * @ODM\Id(strategy="none", type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\AmenityTarget::class))
      */
     public $id;
