@@ -4,6 +4,7 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Geo;
 
 use Delta4op\Mongodb\Documents\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\PropertyCount;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
@@ -11,7 +12,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 /**
  * @ODM\MappedSuperclass
  */
-abstract class LocationItem extends Document
+abstract class LocationItem extends BaseDocument
 {
     use HasObjectIdKey;
 

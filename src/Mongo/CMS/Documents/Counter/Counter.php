@@ -5,11 +5,12 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Counter;
 use Delta4op\Mongodb\Documents\Document;
 use Delta4op\Mongodb\Traits\CanResolveStringID;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 
 /**
  * @ODM\Document(collection="counters")
  */
-class Counter extends Document
+class Counter extends BaseDocument
 {
     use CanResolveStringID;
 

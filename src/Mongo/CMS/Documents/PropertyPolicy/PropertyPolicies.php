@@ -8,6 +8,7 @@ use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyPolicyStatus;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
@@ -20,7 +21,7 @@ use SYSOTEL\OTA\Common\Mongo\CMS\Documents\PropertyAmenity\CustomPolicyItem;
 /**
  * @ODM\Document(collection="propertyPolicies")
  */
-class PropertyPolicies extends Document
+class PropertyPolicies extends BaseDocument
 {
     use HasObjectIdKey, HasAccountId, HasPropertyId, HasSpaceId, HasTimestamps;
 

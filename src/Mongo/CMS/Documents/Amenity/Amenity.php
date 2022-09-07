@@ -9,11 +9,12 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\AmenityCategory;
 use SYSOTEL\APP\Common\Enums\CMS\AmenityStatus;
 use SYSOTEL\APP\Common\Enums\CMS\AmenityTarget;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 
 /**
  * @ODM\Document(collection="emenities")
  */
-class Amenity extends Document
+class Amenity extends BaseDocument
 {
     use HasTimestamps;
     use CanResolveStringID;

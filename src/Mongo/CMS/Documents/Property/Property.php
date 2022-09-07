@@ -12,6 +12,7 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertyType;
 use SYSOTEL\APP\Common\Enums\Currency;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyStatus;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\Address;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Support\NumericIdGenerator;
@@ -24,7 +25,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
  * )
  * @ODM\HasLifecycleCallbacks
  */
-class Property extends Document
+class Property extends BaseDocument
 {
     use SlugGenerators;
     use HasAccountId;

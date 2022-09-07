@@ -9,6 +9,7 @@ use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyImageStatus;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyImageTarget;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasProductId;
@@ -21,7 +22,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasSpaceId;
  * )
  * @ODM\HasLifecycleCallbacks
  */
-class PropertyImage extends Document
+class PropertyImage extends BaseDocument
 {
     use HasAccountId, HasProductId, HasSpaceId, HasTimestamps;
     use HasDefaultAttributes;

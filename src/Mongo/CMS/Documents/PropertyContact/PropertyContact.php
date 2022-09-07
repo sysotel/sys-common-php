@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyContactStatus;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyContactType;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\ContactNumber;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Email;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
@@ -18,7 +19,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 /**
  * @ODM\Document(collection="emenities")
  */
-class PropertyContact extends Document
+class PropertyContact extends BaseDocument
 {
     use HasObjectIdKey, HasAccountId, HasPropertyId, HasTimestamps;
     use HasDefaultAttributes;
