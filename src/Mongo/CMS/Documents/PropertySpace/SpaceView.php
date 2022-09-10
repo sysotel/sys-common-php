@@ -8,7 +8,6 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertySpaceViewCode;
 
 /**
  * @ODM\EmbeddedDocument
- * @ODM\EmbeddedDocument
  */
 class SpaceView extends EmbeddedDocument
 {

@@ -22,5 +22,5 @@ class InventorySettings extends EmbeddedDocument
      * @var ArrayCollection & int[]
      * @ODM\Field(type="collection")
      */
-    public $bookingHourlySlots = [];
+    public $bookingSlots = [];
 }
