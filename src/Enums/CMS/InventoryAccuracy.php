@@ -9,5 +9,5 @@ enum InventoryAccuracy: string
     use EnumLabelExtension;
 
     case DAILY = 'DAILY';
-    case TIMELY = 'TIMELY';
+    case TIME_BASED = 'TIME_BASED';
 }
