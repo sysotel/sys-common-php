@@ -10,5 +10,5 @@ enum PropertyBookingType: string
     use BackedEnumHelpers, EnumLabelExtension;
 
     case DAILY = 'DAILY';
-    case HOURLY = 'HOURLY';
+    case TIME_BASED = 'TIME_BASED';
 }
