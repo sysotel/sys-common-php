@@ -75,8 +75,8 @@ class Property extends BaseDocument
     public $type;
 
     /**
-     * @var PropertyStatus
-     * @ODM\Field(type="collection", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyBookingType::class)
+     * @var array
+     * @ODM\Field(type="collection")
      */
     public $allowedBookingTypes;
 
@@ -133,7 +133,7 @@ class Property extends BaseDocument
      * Creates slug and accountSlug
      *
      * @ODM\PrePersist
-    */
+     */
     public function prePersist()
     {
         $this->id = NumericIdGenerator::get($this);
