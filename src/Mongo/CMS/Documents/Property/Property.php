@@ -2,7 +2,6 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Property;
 
-use Delta4op\Mongodb\Documents\Document;
 use Delta4op\Mongodb\Traits\CanResolveIntegerID;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
@@ -74,6 +73,12 @@ class Property extends BaseDocument
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyType::class)
      */
     public $type;
+
+    /**
+     * @var PropertyStatus
+     * @ODM\Field(type="collection", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyBookingType::class)
+     */
+    public $allowedBookingTypes;
 
     /**
      * @var Address
