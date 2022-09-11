@@ -2,7 +2,6 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertySpace;
 
-use Delta4op\Mongodb\Documents\Document;
 use Delta4op\Mongodb\Traits\CanResolveIntegerID;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
