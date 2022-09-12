@@ -6,6 +6,7 @@ use Delta4op\Mongodb\Traits\CanResolveIntegerID;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use Exception;
 use SYSOTEL\APP\Common\Enums\CMS\MealPlanCode;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyProductStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
@@ -79,13 +80,14 @@ class PropertyProduct extends BaseDocument
     ];
 
     /**
-     * @ODM\PrePersist
-     * @ODM\PreUpdate
+     * @return $this
      */
-    public function autofillInclusions()
+    public function autofillInclusions(): static
     {
         if(!$this->inclusions) {
             $this->inclusions = $this->mealPlanCode->inclusions();
         }
+
+        return $this;
     }
 }
