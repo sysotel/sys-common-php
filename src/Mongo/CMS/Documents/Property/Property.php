@@ -105,6 +105,24 @@ class Property extends BaseDocument
     public $buildYear;
 
     /**
+     * @var string
+     * @ODM\Field(type="string")
+     */
+    public $propertyLabel;
+
+    /**
+     * @var string
+     * @ODM\Field(type="string")
+     */
+    public $spaceLabel;
+
+    /**
+     * @var string
+     * @ODM\Field(type="string")
+     */
+    public $productLabel;
+
+    /**
      * @var PropertyStatus
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyStatus::class)
      */
@@ -146,7 +164,7 @@ class Property extends BaseDocument
      */
     public function propertyLabel(): string
     {
-        return $this->type->propertyLabel();
+        return $this->type->propertyLabel;
     }
 
     /**
@@ -154,6 +172,14 @@ class Property extends BaseDocument
      */
     public function spaceLabel(): string
     {
-        return $this->type->spaceLabel();
+        return $this->type->spaceLabel;
+    }
+
+    /**
+     * @return string
+     */
+    public function productLabel(): string
+    {
+        return $this->type->productLabel;
     }
 }
