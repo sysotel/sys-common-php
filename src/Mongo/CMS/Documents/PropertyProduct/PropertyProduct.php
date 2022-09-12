@@ -42,7 +42,13 @@ class PropertyProduct extends BaseDocument
      * @var string|null
      * @ODM\Field(type="string")
      */
-    public $description;
+    public $shortDescription;
+
+    /**
+     * @var string|null
+     * @ODM\Field(type="string")
+     */
+    public $longDescription;
 
     /**
      * @var PaymentMode
