@@ -4,6 +4,7 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\common;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
+use SYSOTEL\APP\Common\Enums\CMS\ContactNumberType;
 use SYSOTEL\APP\Common\Enums\CountryCode;
 
 /**
@@ -12,6 +13,12 @@ use SYSOTEL\APP\Common\Enums\CountryCode;
  */
 class ContactNumber extends EmbeddedDocument
 {
+    /**
+     * @var ContactNumberType
+     * @ODM\Field(type="int", enumType=SYSOTEL\APP\Common\Enums\ContactNumberType::class)
+     */
+    public $type;
+
     /**
      * @var CountryCode
      * @ODM\Field(type="int", enumType=SYSOTEL\APP\Common\Enums\CountryCode::class)
