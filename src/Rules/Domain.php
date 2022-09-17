@@ -21,6 +21,6 @@ class Domain extends RegexRule
      */
     public function message(): string
     {
-        return 'Invalid PAN number';
+        return 'Invalid domain';
     }
 }
