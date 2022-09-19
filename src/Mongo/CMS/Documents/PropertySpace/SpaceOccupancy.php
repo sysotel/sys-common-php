@@ -45,4 +45,34 @@ class SpaceOccupancy extends EmbeddedDocument
      * @ODM\Field(type="int")
      */
     public $maxChildCount;
+
+    /**
+     * @return array
+     */
+    public function baseRateCounts(): array
+    {
+        if($this->baseCount > 0) {
+            return range(1, $this->baseCount);
+        }
+        return [];
+    }
+
+    /**
+     * @return array
+     */
+    public function extraAdultCounts(): array
+    {
+        if(($this->maxCount - $this->baseCount) > 0) {
+            return range(1, ($this->maxCount - $this->baseCount));
+        }
+        return [];
+    }
+
+    /**
+     * @return array
+     */
+    public function extraChildCounts(): array
+    {
+        return $this->extraAdultCounts();
+    }
 }
