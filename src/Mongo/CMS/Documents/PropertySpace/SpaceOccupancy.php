@@ -60,7 +60,7 @@ class SpaceOccupancy extends EmbeddedDocument
     /**
      * @return array
      */
-    public function extraAdultCounts(): array
+    public function extraAdultRateCounts(): array
     {
         if(($this->maxCount - $this->baseCount) > 0) {
             return range(1, ($this->maxCount - $this->baseCount));
@@ -71,8 +71,8 @@ class SpaceOccupancy extends EmbeddedDocument
     /**
      * @return array
      */
-    public function extraChildCounts(): array
+    public function extraChildRateCounts(): array
     {
-        return $this->extraAdultCounts();
+        return $this->extraAdultRateCounts();
     }
 }
