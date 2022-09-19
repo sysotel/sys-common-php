@@ -164,7 +164,7 @@ class Property extends BaseDocument
      */
     public function propertyLabel(): string
     {
-        return $this->type->propertyLabel;
+        return $this->propertyLabel;
     }
 
     /**
@@ -172,7 +172,7 @@ class Property extends BaseDocument
      */
     public function spaceLabel(): string
     {
-        return $this->type->spaceLabel;
+        return $this->spaceLabel;
     }
 
     /**
@@ -180,6 +180,6 @@ class Property extends BaseDocument
      */
     public function productLabel(): string
     {
-        return $this->type->productLabel;
+        return $this->productLabel;
     }
 }
