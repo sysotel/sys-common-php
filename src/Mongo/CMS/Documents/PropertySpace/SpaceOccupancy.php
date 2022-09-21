@@ -59,6 +59,50 @@ class SpaceOccupancy extends EmbeddedDocument
     }
 
     /**
+     * @return array
+     */
+    public function baseRateCountsDetails(): array
+    {
+        $items = [];
+        foreach($this->baseRateCounts() as $count) {
+            $items[] = [
+                'count' => $count,
+                'label' => match($count) {
+                    1 => 'Single',
+                    2 => 'Double',
+                    3 => 'Triple',
+                    4 => 'Quad',
+                    default => "$count Person",
+                }
+            ];
+        }
+
+        return $items;
+    }
+
+    /**
+     * @param AgeCode $ageCode
+     * @return array
+     */
+    public function extraRateCountsDetails(AgeCode $ageCode): array
+    {
+        $items = [];
+        $prefix = match($ageCode) {
+          AgeCode::ADULT => 'Extra Adult ',
+          AgeCode::CHILD => 'Extra Child ',
+          default => 'Extra Person '
+        };
+        foreach($this->extraRateCounts($ageCode) as $count) {
+            $items[] = [
+                'count' => $count,
+                'label' => "$prefix $count"
+            ];
+        }
+
+        return $items;
+    }
+
+    /**
      * @param AgeCode $ageCode
      * @return array
      */
@@ -69,4 +113,6 @@ class SpaceOccupancy extends EmbeddedDocument
         }
         return [];
     }
+
+
 }
