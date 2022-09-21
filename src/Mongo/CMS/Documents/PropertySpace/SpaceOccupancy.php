@@ -61,7 +61,7 @@ class SpaceOccupancy extends EmbeddedDocument
     /**
      * @return array
      */
-    public function baseRateCountsDetails(): array
+    public function baseRateCountDetails(): array
     {
         $items = [];
         foreach($this->baseRateCounts() as $count) {
@@ -84,7 +84,7 @@ class SpaceOccupancy extends EmbeddedDocument
      * @param AgeCode $ageCode
      * @return array
      */
-    public function extraRateCountsDetails(AgeCode $ageCode): array
+    public function extraRateCountDetails(AgeCode $ageCode): array
     {
         $items = [];
         $prefix = match($ageCode) {
