@@ -88,14 +88,15 @@ class SpaceOccupancy extends EmbeddedDocument
     {
         $items = [];
         $prefix = match($ageCode) {
-          AgeCode::ADULT => 'Extra Adult ',
-          AgeCode::CHILD => 'Extra Child ',
-          default => 'Extra Person '
+            AgeCode::ADULT => 'Extra Adult ',
+            AgeCode::CHILD => 'Extra Child ',
+            default => 'Extra Person '
         };
         foreach($this->extraRateCounts($ageCode) as $count) {
             $items[] = [
                 'count' => $count,
-                'label' => "$prefix $count"
+                'label' => "$prefix $count",
+                'ageCode' => $ageCode
             ];
         }
 
