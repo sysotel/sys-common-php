@@ -4,6 +4,7 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertySpace;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
+use SYSOTEL\APP\Common\Enums\CMS\AgeCode;
 
 /**
  * @ODM\EmbeddedDocument
@@ -58,21 +59,14 @@ class SpaceOccupancy extends EmbeddedDocument
     }
 
     /**
+     * @param AgeCode $ageCode
      * @return array
      */
-    public function extraAdultRateCounts(): array
+    public function extraRateCounts(AgeCode $ageCode): array
     {
         if(($this->maxCount - $this->baseCount) > 0) {
             return range(1, ($this->maxCount - $this->baseCount));
         }
         return [];
-    }
-
-    /**
-     * @return array
-     */
-    public function extraChildRateCounts(): array
-    {
-        return $this->extraAdultRateCounts();
     }
 }
