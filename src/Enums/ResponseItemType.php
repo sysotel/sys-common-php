@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums;
+namespace SYSOTEL\APP\Common\Enums;
 
 enum ResponseItemType: string
 {
