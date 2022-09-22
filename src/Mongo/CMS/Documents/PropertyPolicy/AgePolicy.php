@@ -21,7 +21,7 @@ class AgePolicy extends EmbeddedDocument
      * @var int
      * @ODM\Field(type="int")
      */
-    public $childAgeTopThreshold;
+    public $childAgeThreshold;
 
     /**
      * @var int
@@ -34,4 +34,39 @@ class AgePolicy extends EmbeddedDocument
      * @ODM\Field(type="int")
      */
     public $noOfFreeChildGranted;
+
+    /**
+     * @return string
+     */
+    public function infantAgeDefinition(): string
+    {
+        return "Guest with age {$this->infantAgeThreshold} or below is considered an infant.";
+    }
+
+    /**
+     * @return string
+     */
+    public function childAgeDefinition(): string
+    {
+        return "Guest with age between {$this->infantAgeThreshold} and {$this->childAgeThreshold} is considered a child.";
+    }
+
+    /**
+     * @return string
+     */
+    public function adultAgeDefinition(): string
+    {
+        return "Guest with age above {$this->childAgeThreshold} is considered an adult.";
+    }
+
+    /**
+     * @return string
+     */
+    public function freeChildDefinition(): string
+    {
+        $guest = $this->noOfFreeChildGranted != 1 ? 'guests' : 'guest';
+        $is = $this->noOfFreeChildGranted != 1 ? 'area' : 'is';
+
+        return "{$this->noOfFreeChildGranted} $guest below age {$this->freeChildThreshold} {$is} allowed for FREE when used existing bedding.";
+    }
 }
