@@ -12,7 +12,6 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy\Rules\UnmarriedCoupleR
 
 /**
  * @ODM\EmbeddedDocument
- * @ODM\HasLifecycleCallbacks
  */
 class PropertyRules extends EmbeddedDocument
 {
