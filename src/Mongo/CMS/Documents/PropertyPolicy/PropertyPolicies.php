@@ -45,6 +45,12 @@ class PropertyPolicies extends BaseDocument
     public $checkOutPolicy;
 
     /**
+     * @var PropertyRules
+     * @ODM\EmbedOne (targetDocument=PropertyRules::class)
+     */
+    public $rules;
+
+    /**
      * @var ArrayCollection & CustomPolicyItem[]
      * @ODM\EmbedMany (targetDocument=CustomPolicyItem::class)
      */
