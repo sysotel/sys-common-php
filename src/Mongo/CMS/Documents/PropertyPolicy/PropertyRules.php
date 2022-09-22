@@ -4,6 +4,11 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\PropertyPolicy\BachelorsRule;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\PropertyPolicy\GuestDocumentRule;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\PropertyPolicy\OutsideFoodRule;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\PropertyPolicy\PetsRule;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\PropertyPolicy\UnmarriedCoupleRule;
 
 /**
  * @ODM\EmbeddedDocument
@@ -13,31 +18,31 @@ class PropertyRules extends EmbeddedDocument
 {
     /**
      * @var GuestDocumentRule
-     * @ODM\EmbedOne (targetDocument=GuestDocumentRule::class)
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\GuestDocumentRule::class)
      */
     public $guestDocumentRule;
 
     /**
      * @var UnmarriedCoupleRule
-     * @ODM\EmbedOne (targetDocument=UnmarriedCoupleRule::class)
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\UnmarriedCoupleRule::class)
      */
     public $unmarriedCoupleRule;
 
     /**
      * @var BachelorsRule
-     * @ODM\EmbedOne (targetDocument=BachelorsRule::class)
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\BachelorsRule::class)
      */
     public $bachelorsRule;
 
     /**
      * @var PetsRule
-     * @ODM\EmbedOne (targetDocument=PetsRule::class)
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\PetsRule::class)
      */
     public $petsRule;
 
     /**
      * @var OutsideFoodRule
-     * @ODM\EmbedOne (targetDocument=OutsideFoodRule::class)
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\OutsideFoodRule::class)
      */
     public $outsideFoodRule;
 }

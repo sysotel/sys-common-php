@@ -1,6 +1,6 @@
 <?php
 
-namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy;
+namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\PropertyPolicy;
 
 trait HasDetails
 {
