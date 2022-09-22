@@ -73,6 +73,6 @@ class CheckInPolicy extends EmbeddedDocument
             $str .= $this->details;
         }
 
-        return $str;
+        return trim($str);
     }
 }
