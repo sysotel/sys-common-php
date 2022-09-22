@@ -17,31 +17,31 @@ class PropertyRules extends EmbeddedDocument
 {
     /**
      * @var GuestDocumentRule
-     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\GuestDocumentRule::class)
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy\Rules\GuestDocumentRule::class)
      */
     public $guestDocumentRule;
 
     /**
      * @var UnmarriedCoupleRule
-     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\UnmarriedCoupleRule::class)
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy\Rules\UnmarriedCoupleRule::class)
      */
     public $unmarriedCoupleRule;
 
     /**
      * @var BachelorsRule
-     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\BachelorsRule::class)
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy\Rules\BachelorsRule::class)
      */
     public $bachelorsRule;
 
     /**
      * @var PetsRule
-     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\PetsRule::class)
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy\Rules\PetsRule::class)
      */
     public $petsRule;
 
     /**
      * @var OutsideFoodRule
-     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\OutsideFoodRule::class)
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy\Rules\OutsideFoodRule::class)
      */
     public $outsideFoodRule;
 }
