@@ -57,11 +57,21 @@ class CheckOutPolicy extends EmbeddedDocument
         };
     }
 
+    /**
+     * @return string
+     */
     public function fullDescription(): string
     {
-        $str = $this->checkOutTimeDescription() . ' ' . $this->lateCheckoutDescription();
-        if($this->note){
-            $str .= ' ' . $this->note;
+        $str = $this->checkOutTimeDescription();
+
+        if(!empty($str)) $str .= ' ';
+
+        $str = $this->lateCheckoutDescription();
+
+        if(!empty($str)) $str .= ' ';
+
+        if($this->details){
+            $str .= $this->details;
         }
 
         return $str;

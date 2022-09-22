@@ -56,11 +56,21 @@ class CheckInPolicy extends EmbeddedDocument
         };
     }
 
+    /**
+     * @return string
+     */
     public function fullDescription(): string
     {
-        $str = $this->checkInTimeDescription() . ' ' . $this->earlyCheckInDescription();
-        if($this->note){
-            $str .= ' ' . $this->note;
+        $str = $this->checkInTimeDescription();
+
+        if(!empty($str)) $str .= ' ';
+
+        $str = $this->earlyCheckInDescription();
+
+        if(!empty($str)) $str .= ' ';
+
+        if($this->details){
+            $str .= $this->details;
         }
 
         return $str;
