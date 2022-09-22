@@ -15,6 +15,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 
 /**
  * @ODM\Document(collection="propertyPolicies")
+ * @ODM\HasLifecycleCallbacks
  */
 class PropertyPolicies extends BaseDocument
 {
