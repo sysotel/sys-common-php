@@ -65,7 +65,7 @@ class CheckInPolicy extends EmbeddedDocument
 
         if(!empty($str)) $str .= ' ';
 
-        $str = $this->earlyCheckInDescription();
+        $str .= $this->earlyCheckInDescription();
 
         if(!empty($str)) $str .= ' ';
 

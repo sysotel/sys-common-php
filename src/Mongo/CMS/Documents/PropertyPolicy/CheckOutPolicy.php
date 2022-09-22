@@ -66,7 +66,7 @@ class CheckOutPolicy extends EmbeddedDocument
 
         if(!empty($str)) $str .= ' ';
 
-        $str = $this->lateCheckoutDescription();
+        $str .= $this->lateCheckoutDescription();
 
         if(!empty($str)) $str .= ' ';
 
