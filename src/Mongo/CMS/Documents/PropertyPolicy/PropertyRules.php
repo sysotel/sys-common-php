@@ -4,11 +4,6 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity\BachelorsRule;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity\GuestDocumentRule;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity\OutsideFoodRule;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity\PetsRule;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity\UnmarriedCoupleRule;
 
 /**
  * @ODM\EmbeddedDocument
