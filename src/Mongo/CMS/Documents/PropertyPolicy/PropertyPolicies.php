@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyPolicyStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
@@ -60,6 +61,12 @@ class PropertyPolicies extends BaseDocument
      * @ODM\Field(type="carbon")
      */
     public $expiredAt;
+
+    /**
+     * @var UserReference
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference::class)
+     */
+    public $causer;
 
 
     protected $defaults = [
