@@ -1,6 +1,6 @@
 <?php
 
-namespace SYSOTEL\OTA\Common\Mongo\CMS\Documents\PropertyAmenity;
+namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;

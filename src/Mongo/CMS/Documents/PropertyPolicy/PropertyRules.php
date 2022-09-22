@@ -1,9 +1,14 @@
 <?php
 
-namespace SYSOTEL\OTA\Common\Mongo\CMS\Documents\PropertyAmenity;
+namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity\BachelorsRule;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity\GuestDocumentRule;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity\OutsideFoodRule;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity\PetsRule;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity\UnmarriedCoupleRule;
 
 /**
  * @ODM\EmbeddedDocument
@@ -12,38 +17,32 @@ use Delta4op\Mongodb\Documents\EmbeddedDocument;
 class PropertyRules extends EmbeddedDocument
 {
     /**
-     * @var bool
-     * @ODM\Field(type="bool")
+     * @var GuestDocumentRule
+     * @ODM\EmbedOne (targetDocument=GuestDocumentRule::class)
      */
-    public $localIdAllowed;
+    public $guestDocumentRule;
 
     /**
-     * @var bool
-     * @ODM\Field(type="bool")
+     * @var UnmarriedCoupleRule
+     * @ODM\EmbedOne (targetDocument=UnmarriedCoupleRule::class)
      */
-    public $documentsRequiredOnCheckIn;
+    public $unmarriedCoupleRule;
 
     /**
-     * @var string[]
-     * @ODM\Field(type="collection")
+     * @var BachelorsRule
+     * @ODM\EmbedOne (targetDocument=BachelorsRule::class)
      */
-    public $acceptedIdentityProofs;
+    public $bachelorsRule;
 
     /**
-     * @var bool
-     * @ODM\Field(type="bool")
+     * @var PetsRule
+     * @ODM\EmbedOne (targetDocument=PetsRule::class)
      */
-    public $unmarriedCoupleAllowed;
+    public $petsRule;
 
     /**
-     * @var bool
-     * @ODM\Field(type="bool")
+     * @var OutsideFoodRule
+     * @ODM\EmbedOne (targetDocument=OutsideFoodRule::class)
      */
-    public $bachelorsAllowed;
-
-    /**
-     * @var bool
-     * @ODM\Field(type="bool")
-     */
-    public $guestBelow18Allowed;
+    public $outsideFoodRule;
 }

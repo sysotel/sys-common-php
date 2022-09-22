@@ -3,7 +3,6 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy;
 
 use Carbon\Carbon;
-use Delta4op\Mongodb\Documents\Document;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
@@ -12,18 +11,13 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
-use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasSpaceId;
-use SYSOTEL\OTA\Common\Mongo\CMS\Documents\PropertyAmenity\AgePolicy;
-use SYSOTEL\OTA\Common\Mongo\CMS\Documents\PropertyAmenity\CheckInPolicy;
-use SYSOTEL\OTA\Common\Mongo\CMS\Documents\PropertyAmenity\CheckOutPolicy;
-use SYSOTEL\OTA\Common\Mongo\CMS\Documents\PropertyAmenity\CustomPolicyItem;
 
 /**
  * @ODM\Document(collection="propertyPolicies")
  */
 class PropertyPolicies extends BaseDocument
 {
-    use HasObjectIdKey, HasAccountId, HasPropertyId, HasSpaceId, HasTimestamps;
+    use HasObjectIdKey, HasAccountId, HasPropertyId, HasTimestamps;
 
     /**
      * @var CustomPolicyItem
