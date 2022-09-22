@@ -72,6 +72,8 @@ class PropertyRules extends EmbeddedDocument
             $rules[] = $this->guestDocumentRule->description();
         }
 
-        return $rules;
+        return array_filter($rules, function($rule){
+            return !empty($rule);
+        });
     }
 }
