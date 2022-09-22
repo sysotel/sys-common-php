@@ -3,6 +3,7 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy;
 
 use Carbon\Carbon;
+use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
@@ -20,6 +21,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 class PropertyPolicies extends BaseDocument
 {
     use HasObjectIdKey, HasAccountId, HasPropertyId, HasTimestamps;
+    use HasDefaultAttributes;
 
     /**
      * @var CustomPolicyItem
