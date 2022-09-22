@@ -79,4 +79,14 @@ class PropertyPolicies extends BaseDocument
 
         $this->customPolicies = new ArrayCollection;
     }
+
+    /**
+     * @return $this
+     */
+    public function markAsExpired(): self
+    {
+        $this->status = PropertyPolicyStatus::EXPIRED;
+        $this->expiredAt = now();
+        return $this;
+    }
 }
