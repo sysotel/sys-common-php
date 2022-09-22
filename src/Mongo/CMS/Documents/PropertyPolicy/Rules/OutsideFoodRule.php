@@ -12,4 +12,19 @@ use Delta4op\Mongodb\Documents\EmbeddedDocument;
 class OutsideFoodRule extends EmbeddedDocument
 {
     use HasIsAllowedFlag, HasDetails;
+
+    /**
+     * @return string
+     */
+    public function description(): string
+    {
+        $str = '';
+        if(isset($this->isAllowed)) {
+            $str .= 'Outside food is ' . ($this->isAllowed ? 'Allowed ' : 'NOT Allowed ');
+
+            $str .= $this->details ?? '';
+        }
+
+        return $str;
+    }
 }

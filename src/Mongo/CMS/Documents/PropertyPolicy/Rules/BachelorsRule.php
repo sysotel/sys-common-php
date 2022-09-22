@@ -12,4 +12,19 @@ use Delta4op\Mongodb\Documents\EmbeddedDocument;
 class BachelorsRule extends EmbeddedDocument
 {
     use HasIsAllowedFlag, HasDetails;
+
+    /**
+     * @return string
+     */
+    public function description(): string
+    {
+        $str = '';
+        if(isset($this->isAllowed)) {
+            $str .= 'Bachelors are ' . ($this->isAllowed ? 'Allowed ' : 'NOT Allowed ');
+
+            $str .= $this->details ?? '';
+        }
+
+        return $str;
+    }
 }
