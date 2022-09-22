@@ -1,6 +1,6 @@
 <?php
 
-namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Rules\PropertyPolicy;
+namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy\Rules;;
 
 trait HasIsAllowedFlag
 {
