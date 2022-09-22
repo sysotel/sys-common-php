@@ -69,4 +69,16 @@ class AgePolicy extends EmbeddedDocument
 
         return "{$this->noOfFreeChildGranted} $guest below age {$this->freeChildThreshold} {$is} allowed for FREE when used existing bedding.";
     }
+
+    /**
+     * @return string[]
+     */
+    public function fullDescriptionArray(): array
+    {
+        return [
+            $this->infantAgeDefinition(),
+            $this->childAgeDefinition(),
+            $this->adultAgeDefinition(),
+        ];
+    }
 }
