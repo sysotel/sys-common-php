@@ -44,4 +44,31 @@ class PropertyRules extends EmbeddedDocument
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy\Rules\OutsideFoodRule::class)
      */
     public $outsideFoodRule;
+
+    public function description()
+    {
+        $rules = [];
+
+        if($this->bachelorsRule) {
+            $rules[] = $this->bachelorsRule->description();
+        }
+
+        if($this->petsRule) {
+            $rules[] = $this->petsRule->description();
+        }
+
+        if($this->unmarriedCoupleRule) {
+            $rules[] = $this->unmarriedCoupleRule->description();
+        }
+
+        if($this->guestDocumentRule) {
+            $rules[] = $this->guestDocumentRule->description();
+        }
+
+        if($this->outsideFoodRule) {
+            $rules[] = $this->guestDocumentRule->description();
+        }
+
+        return $rules;
+    }
 }
