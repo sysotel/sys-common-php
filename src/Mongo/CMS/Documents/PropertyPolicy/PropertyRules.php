@@ -45,7 +45,10 @@ class PropertyRules extends EmbeddedDocument
      */
     public $outsideFoodRule;
 
-    public function description()
+    /**
+     * @return array
+     */
+    public function description(): array
     {
         $rules = [];
 

@@ -38,7 +38,7 @@ class CheckOutPolicy extends EmbeddedDocument
     public function checkOutTimeDescription(): string
     {
         if($this->dailyStandardTime) {
-            return 'Standard daily check-in time is ' . Carbon::createFromFormat('H:i', $this->from)->format('h:i A');
+            return 'Standard daily check-in time is ' . Carbon::createFromFormat('H:i', $this->dailyStandardTime)->format('h:i A');
         }
 
         return '';
