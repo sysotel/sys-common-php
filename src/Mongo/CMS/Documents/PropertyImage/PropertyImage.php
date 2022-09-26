@@ -19,8 +19,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasSpaceId;
 
 /**
  * @ODM\Document(
- *     collection="propertyImages",
- *     repositoryClass=SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyImageRepository::class
+ *     collection="propertyImages"
  * )
  * @ODM\HasLifecycleCallbacks
  */
