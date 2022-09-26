@@ -2,6 +2,8 @@
 
 namespace SYSOTEL\APP\Common\Enums;
 
+use Exception;
+
 enum ImageFileExtension: string
 {
     case PNG = 'PNG';
@@ -12,6 +14,7 @@ enum ImageFileExtension: string
     /**
      * @param string $mime
      * @return ImageFileExtension|null
+     * @throws Exception
      */
     public static function createFromMime(string $mime): ?ImageFileExtension
     {
@@ -19,7 +22,7 @@ enum ImageFileExtension: string
             'image/jpeg', 'image/jpg' => self::JPG,
             'image/png' => self::PNG,
             'image/webp' => self::WEBP,
-            default => null
+            default => throw new Exception('Unknown mime received ' . $mime)
         };
     }
 }
