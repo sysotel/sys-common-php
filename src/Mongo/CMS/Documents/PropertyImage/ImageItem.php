@@ -14,7 +14,7 @@ class ImageItem extends EmbeddedDocument
 {
     /**
      * @var PropertyImageVersion
-     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyStatus::class)
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyImageVersion::class)
      */
     public $version;
 

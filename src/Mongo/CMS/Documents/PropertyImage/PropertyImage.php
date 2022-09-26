@@ -60,7 +60,7 @@ class PropertyImage extends BaseDocument
 
     /**
      * @var ArrayCollection & ImageItem[]
-     * @ODM\EmbedMany (targetDocument=ImageItem::class)
+     * @ODM\Field (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyImage\ImageItem::class)
      */
     public $items;
 
