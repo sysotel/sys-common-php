@@ -22,7 +22,7 @@ class ImageItem extends EmbeddedDocument
      * @var string
      * @ODM\Field(type="string")
      */
-    public $url;
+    public $filePath;
 
     /**
      * @var ImageMetadata
