@@ -22,7 +22,7 @@ enum PropertyImageVersion: string
     /**
      * @return array|null
      */
-    public function dimentions(): ?array
+    public function dimensions(): ?array
     {
         return match ($this) {
             self::SQUARE_SMALL => [100, 100],

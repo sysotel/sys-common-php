@@ -12,7 +12,6 @@
         "delta4op/laravel-mongodb": "dev-main",
         "guzzlehttp/guzzle": "^7.4",
         "illuminate/contracts": "^9.0",
-        "intervention/image": "^2.7",
         "spatie/laravel-package-tools": "^1.9.2"
     },
     "require-dev": {

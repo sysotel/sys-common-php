@@ -3,7 +3,6 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyImage;
 
 use Carbon\Carbon;
-use Delta4op\Mongodb\Documents\Document;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -15,7 +14,6 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Verification;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
-use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasProductId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasSpaceId;
 
@@ -121,9 +119,20 @@ class PropertyImage extends BaseDocument
 
     /**
      * @param PropertyImageVersion $version
+     * @return string|null
+     */
+    public function url(PropertyImageVersion $version): string|null
+    {
+        $imageItem = $this->imageItem($version);
+
+        return $imageItem->url ?? null;
+    }
+
+    /**
+     * @param PropertyImageVersion $version
      * @return ImageItem|null
      */
-    public function getImageItem(PropertyImageVersion $version): ImageItem|null
+    public function imageItem(PropertyImageVersion $version): ?ImageItem
     {
         foreach($this->items as $imageItem) {
             if($imageItem->version === $version) {
