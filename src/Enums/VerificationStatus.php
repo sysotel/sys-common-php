@@ -9,6 +9,6 @@ enum VerificationStatus: string
     use EnumLabelExtension;
 
     case PENDING = 'PENDING';
-    case VERIFIED = 'VERIFIED';
+    case APPROVED = 'APPROVED';
     case REJECTED = 'REJECTED';
 }

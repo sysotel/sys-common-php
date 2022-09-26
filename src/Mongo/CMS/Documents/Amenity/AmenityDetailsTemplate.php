@@ -31,8 +31,8 @@ class AmenityDetailsTemplate extends EmbeddedDocument
 
     public function __construct(array $attributes = [])
     {
-        parent::__construct($attributes);
-
         $this->attributes = new ArrayCollection;
+
+        parent::__construct($attributes);
     }
 }

@@ -22,7 +22,7 @@ class Verification extends EmbeddedDocument
      * @var bool
      * @ODM\Field(type="bool")
      */
-    public $isAutoApproved;
+    public $isAutoVerified;
 
     /**
      * @var string
@@ -37,6 +37,12 @@ class Verification extends EmbeddedDocument
     public $verifiedAt;
 
     /**
+     * @var UserReference
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference::class)
+     */
+    public $causer;
+
+    /**
      * @return Verification
      */
     public static function defaultDocument(): Verification
@@ -44,5 +50,26 @@ class Verification extends EmbeddedDocument
         return new self([
             'status' => VerificationStatus::PENDING
         ]);
+    }
+
+    /**
+     * @return Verification
+     */
+    public static function autoVerifiedDocument(): Verification
+    {
+        return (new self([
+            'isAutoVerified' => true,
+        ]))->verify(VerificationStatus::APPROVED);
+    }
+
+    /**
+     * @param VerificationStatus $status
+     * @return $this
+     */
+    public function verify(VerificationStatus $status): static
+    {
+        $this->status = $status;
+        $this->verifiedAt = now();
+        return $this;
     }
 }

@@ -2,10 +2,9 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyImage;
 
-use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyImageVersion;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference;
 
 /**
  * @ODM\EmbeddedDocument
@@ -14,7 +13,7 @@ class ImageItem extends EmbeddedDocument
 {
     /**
      * @var PropertyImageVersion
-     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyStatus::class)
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyImageVersion::class)
      */
     public $version;
 
@@ -26,7 +25,7 @@ class ImageItem extends EmbeddedDocument
 
     /**
      * @var ImageMetadata
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyImage\ImageMetadata::class)
+     * @ODM\EmbedOne(targetDocument=ImageMetadata::class)
      */
     public $meta;
 }
