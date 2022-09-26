@@ -59,7 +59,7 @@ class Verification extends EmbeddedDocument
     {
         return (new self([
             'isAutoVerified' => true,
-        ]))->verify(VerificationStatus::VERIFIED);
+        ]))->verify(VerificationStatus::APPROVED);
     }
 
     /**
