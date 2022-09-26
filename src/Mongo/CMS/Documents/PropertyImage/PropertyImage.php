@@ -100,6 +100,12 @@ class PropertyImage extends BaseDocument
      */
     public $deletedAt;
 
+    protected $defaults = [
+        'isFeatured' => false,
+        'sortOrder' => 0,
+        'targetSortOrder' => 0,
+    ];
+
     /**
      * @return $this
      */
