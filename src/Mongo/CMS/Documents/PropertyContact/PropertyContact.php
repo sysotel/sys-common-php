@@ -68,9 +68,9 @@ class PropertyContact extends BaseDocument
 
     public function __construct(array $attributes = [])
     {
-        parent::__construct($attributes);
-
         $this->emails = new ArrayCollection;
         $this->contactNumbers = new ArrayCollection;
+
+        parent::__construct($attributes);
     }
 }

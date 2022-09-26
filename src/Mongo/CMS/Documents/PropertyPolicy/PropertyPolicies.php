@@ -84,9 +84,9 @@ class PropertyPolicies extends BaseDocument
 
     public function __construct(array $attributes = [])
     {
-        parent::__construct($attributes);
-
         $this->customPolicies = new ArrayCollection;
+
+        parent::__construct($attributes);
     }
 
     /**

@@ -28,8 +28,8 @@ class PropertyAmenity extends BaseDocument
 
     public function __construct(array $attributes = [])
     {
-        parent::__construct($attributes);
-
         $this->amenities = new ArrayCollection;
+
+        parent::__construct($attributes);
     }
 }

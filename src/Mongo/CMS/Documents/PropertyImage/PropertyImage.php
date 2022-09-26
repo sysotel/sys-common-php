@@ -118,9 +118,9 @@ class PropertyImage extends BaseDocument
 
     public function __construct(array $attributes = [])
     {
-        parent::__construct($attributes);
-
         $this->items = new ArrayCollection;
+
+        parent::__construct($attributes);
     }
 
     /**
