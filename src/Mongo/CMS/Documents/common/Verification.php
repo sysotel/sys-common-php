@@ -51,4 +51,25 @@ class Verification extends EmbeddedDocument
             'status' => VerificationStatus::PENDING
         ]);
     }
+
+    /**
+     * @return Verification
+     */
+    public static function autoVerifiedDocument(): Verification
+    {
+        return (new self([
+            'isAutoVerified' => true,
+        ]))->verify(VerificationStatus::VERIFIED);
+    }
+
+    /**
+     * @param VerificationStatus $status
+     * @return $this
+     */
+    public function verify(VerificationStatus $status): static
+    {
+        $this->status = $status;
+        $this->verifiedAt = now();
+        return $this;
+    }
 }

@@ -8,6 +8,7 @@ enum PropertyImageTarget: string
 {
     use BackedEnumHelpers;
 
+    case BANNER = 'BANNER';
     case PROPERTY = 'PROPERTY';
     case SPACE = 'SPACE';
     case AMENITY = 'AMENITY';
