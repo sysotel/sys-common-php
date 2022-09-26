@@ -38,7 +38,7 @@ class Verification extends EmbeddedDocument
 
     /**
      * @var UserReference
-     * @ODM\Field(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference::class)
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference::class)
      */
     public $causer;
 

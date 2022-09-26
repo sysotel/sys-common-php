@@ -66,7 +66,7 @@ class PropertyImage extends BaseDocument
 
     /**
      * @var Verification
-     * @ODM\EmbedOne  (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Verification::class)
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Verification::class)
      */
     public $verification;
 
