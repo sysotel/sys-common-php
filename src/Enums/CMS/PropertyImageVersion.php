@@ -9,7 +9,6 @@ enum PropertyImageVersion: string
     use BackedEnumHelpers;
 
     case ORIGINAL = 'ORG';
-    case ORIGINAL_NORMALIZED = 'ORG_NORM';
 
     case SQUARE_SMALL = 'SQ_SM';
     case SQUARE_MEDIUM = 'SQ_MD';
