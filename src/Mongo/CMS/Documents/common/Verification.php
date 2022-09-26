@@ -22,7 +22,7 @@ class Verification extends EmbeddedDocument
      * @var bool
      * @ODM\Field(type="bool")
      */
-    public $isAutoApproved;
+    public $isAutoVerified;
 
     /**
      * @var string
@@ -35,6 +35,12 @@ class Verification extends EmbeddedDocument
      * @ODM\Field(type="carbon")
      */
     public $verifiedAt;
+
+    /**
+     * @var UserReference
+     * @ODM\Field(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference::class)
+     */
+    public $causer;
 
     /**
      * @return Verification
