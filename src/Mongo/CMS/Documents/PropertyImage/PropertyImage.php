@@ -118,20 +118,20 @@ class PropertyImage extends BaseDocument
 
     public function __construct(array $attributes = [])
     {
-        $this->items = new ArrayCollection;
-
         parent::__construct($attributes);
+
+        $this->items = new ArrayCollection;
     }
 
     /**
      * @param PropertyImageVersion $version
      * @return string|null
      */
-    public function url(PropertyImageVersion $version): string|null
+    public function filePath(PropertyImageVersion $version): string|null
     {
         $imageItem = $this->imageItem($version);
 
-        return $imageItem->url ?? null;
+        return $imageItem->filePath ?? null;
     }
 
     /**

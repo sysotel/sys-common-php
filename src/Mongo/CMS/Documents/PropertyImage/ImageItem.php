@@ -5,7 +5,6 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyImage;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyImageVersion;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference;
 
 /**
  * @ODM\EmbeddedDocument
