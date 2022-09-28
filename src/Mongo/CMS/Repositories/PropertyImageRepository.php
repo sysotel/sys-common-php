@@ -16,7 +16,7 @@ class PropertyImageRepository extends DocumentRepository
         $criteria = [
             'propertyId' => Property::resolveID($property),
             'target' => PropertyImageTarget::LOGO,
-            ['status' => ['$eq' => PropertyImageStatus::ACTIVE]]
+            'status' => ['$eq' => PropertyImageStatus::ACTIVE]
         ];
 
         $orderBy = [
