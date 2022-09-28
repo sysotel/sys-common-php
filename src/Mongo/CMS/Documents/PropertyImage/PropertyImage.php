@@ -100,6 +100,7 @@ class PropertyImage extends BaseDocument
         'isFeatured' => false,
         'sortOrder' => 0,
         'targetSortOrder' => 0,
+        'status' => PropertyImageStatus::ACTIVE,
     ];
 
     /**
