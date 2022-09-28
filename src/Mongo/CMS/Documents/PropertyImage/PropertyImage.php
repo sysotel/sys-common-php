@@ -112,6 +112,15 @@ class PropertyImage extends BaseDocument
         return $this;
     }
 
+    /**
+     * @return $this
+     */
+    public function markAsFeatured(): static
+    {
+        $this->isFeatured = true;
+        return $this;
+    }
+
     public function __construct(array $attributes = [])
     {
         $this->items = new ArrayCollection;
