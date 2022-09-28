@@ -11,6 +11,21 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertySpace\PropertySpace;
 
 class PropertyImageRepository extends DocumentRepository
 {
+    public function getPropertyLogo(Property|int $property): PropertyImage|null
+    {
+        $criteria = [
+            'propertyId' => Property::resolveID($property),
+            'target' => PropertyImageTarget::LOGO,
+            ['status' => ['$eq' => PropertyImageStatus::ACTIVE]]
+        ];
+
+        $orderBy = [
+            'createdAt' => -1
+        ];
+
+        return $this->findOneBy($criteria, $orderBy);
+    }
+
     /**
      * @param Property|int $property
      * @return PropertyImage[]
