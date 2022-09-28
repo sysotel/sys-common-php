@@ -123,6 +123,18 @@ class Property extends BaseDocument
     public $productLabel;
 
     /**
+     * @var string
+     * @ODM\Field(type="string")
+     */
+    public $shortDescription;
+
+    /**
+     * @var string
+     * @ODM\Field(type="string")
+     */
+    public $longDescription;
+
+    /**
      * @var PropertyStatus
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyStatus::class)
      */
