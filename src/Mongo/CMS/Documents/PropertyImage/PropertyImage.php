@@ -121,6 +121,15 @@ class PropertyImage extends BaseDocument
         return $this;
     }
 
+    /**
+     * @return $this
+     */
+    public function removeFeaturedFlag(): static
+    {
+        $this->isFeatured = false;
+        return $this;
+    }
+
     public function __construct(array $attributes = [])
     {
         $this->items = new ArrayCollection;
