@@ -163,7 +163,7 @@ class PropertyImageRepository extends DocumentRepository
     public function getAllSpaceImages(PropertySpace|int $space, array $criteria = [], array $orderBy = []): array
     {
         $criteria = array_merge([
-            'propertyId' => PropertySpace::resolveID($space),
+            'spaceId' => PropertySpace::resolveID($space),
             'target' => PropertyImageTarget::SPACE,
         ], $criteria);
 
