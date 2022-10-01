@@ -100,6 +100,7 @@ class PropertyImage extends BaseDocument
         'isFeatured' => false,
         'sortOrder' => 0,
         'targetSortOrder' => 0,
+        'status' => PropertyImageStatus::ACTIVE,
     ];
 
     /**
@@ -109,6 +110,24 @@ class PropertyImage extends BaseDocument
     {
         $this->status = PropertyImageStatus::DELETED;
         $this->deletedAt = now();
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function markAsFeatured(): static
+    {
+        $this->isFeatured = true;
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function removeFeaturedFlag(): static
+    {
+        $this->isFeatured = false;
         return $this;
     }
 
