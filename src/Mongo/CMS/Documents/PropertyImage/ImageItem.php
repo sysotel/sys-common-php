@@ -18,7 +18,7 @@ class ImageItem extends EmbeddedDocument
     public $version;
 
     /**
-     * @var string
+     * @var string`
      * @ODM\Field(type="string")
      */
     public $filePath;

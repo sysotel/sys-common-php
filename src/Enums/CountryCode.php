@@ -2,7 +2,7 @@
 
 namespace SYSOTEL\APP\Common\Enums;
 
-enum CountryCode: int
+enum CountryCode: string
 {
-    case INDIA = 91;
+    case INDIA = 'IND';
 }
