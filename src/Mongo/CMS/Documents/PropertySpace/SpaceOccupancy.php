@@ -81,18 +81,23 @@ class SpaceOccupancy extends EmbeddedDocument
     }
 
     /**
-     * @param AgeCode $ageCode
+     * @param AgeCode|string $ageCode
      * @return array
      */
-    public function extraRateCountDetails(AgeCode $ageCode): array
+    public function extraRateCountDetails(AgeCode|string $ageCode): array
     {
+        if(is_string($ageCode)) {
+            AgeCode::from($ageCode);
+        }
+
         $items = [];
         $prefix = match($ageCode) {
             AgeCode::ADULT => 'Extra Adult ',
             AgeCode::CHILD => 'Extra Child ',
             default => 'Extra Person '
         };
-        foreach($this->extraRateCounts($ageCode) as $count) {
+
+        foreach($this->extraRateCounts() as $count) {
             $items[] = [
                 'count' => $count,
                 'label' => "$prefix $count",
@@ -104,16 +109,13 @@ class SpaceOccupancy extends EmbeddedDocument
     }
 
     /**
-     * @param AgeCode $ageCode
      * @return array
      */
-    public function extraRateCounts(AgeCode $ageCode): array
+    public function extraRateCounts(): array
     {
         if(($this->maxCount - $this->baseCount) > 0) {
             return range(1, ($this->maxCount - $this->baseCount));
         }
         return [];
     }
-
-
 }
