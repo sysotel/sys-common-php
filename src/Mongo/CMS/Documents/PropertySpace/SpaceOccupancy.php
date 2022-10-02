@@ -109,10 +109,15 @@ class SpaceOccupancy extends EmbeddedDocument
     }
 
     /**
+     * @param AgeCode|string $ageCode
      * @return array
      */
-    public function extraRateCounts(): array
+    public function extraRateCounts(AgeCode|string $ageCode): array
     {
+        if(is_string($ageCode)) {
+            AgeCode::from($ageCode);
+        }
+
         if(($this->maxCount - $this->baseCount) > 0) {
             return range(1, ($this->maxCount - $this->baseCount));
         }
