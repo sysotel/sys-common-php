@@ -87,7 +87,7 @@ class SpaceOccupancy extends EmbeddedDocument
     public function extraRateCountDetails(AgeCode|string $ageCode): array
     {
         if(is_string($ageCode)) {
-            AgeCode::from($ageCode);
+            $ageCode = AgeCode::from($ageCode);
         }
 
         $items = [];
@@ -97,7 +97,7 @@ class SpaceOccupancy extends EmbeddedDocument
             default => 'Extra Person '
         };
 
-        foreach($this->extraRateCounts() as $count) {
+        foreach($this->extraRateCounts($ageCode) as $count) {
             $items[] = [
                 'count' => $count,
                 'label' => "$prefix $count",
@@ -115,7 +115,7 @@ class SpaceOccupancy extends EmbeddedDocument
     public function extraRateCounts(AgeCode|string $ageCode): array
     {
         if(is_string($ageCode)) {
-            AgeCode::from($ageCode);
+            $ageCode = AgeCode::from($ageCode);
         }
 
         if(($this->maxCount - $this->baseCount) > 0) {
