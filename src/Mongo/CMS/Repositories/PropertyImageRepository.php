@@ -11,6 +11,37 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertySpace\PropertySpace;
 
 class PropertyImageRepository extends DocumentRepository
 {
+    /**
+     * @param Property|int $property
+     * @return PropertyImage[]
+     */
+    public function getAllIActiveImages(Property|int $property): array
+    {
+        return $this->getAllImages(
+            $property,
+            ['status' => ['$eq' => PropertyImageStatus::ACTIVE]]
+        );
+    }
+
+    /**
+     * @param Property|int $property
+     * @param array $criteria
+     * @param array $orderBy
+     * @return PropertyImage[]
+     */
+    public function getAllImages(Property|int $property, array $criteria = [], array $orderBy = []): array
+    {
+        $criteria = array_merge([
+            'propertyId' => Property::resolveID($property),
+        ], $criteria);
+
+        $orderBy = array_merge([
+            'isFeatured' => -1,
+        ], $orderBy);
+
+        return $this->findBy($criteria, $orderBy);
+    }
+
     public function getPropertyLogo(Property|int $property): PropertyImage|null
     {
         $criteria = [
@@ -32,7 +63,7 @@ class PropertyImageRepository extends DocumentRepository
      */
     public function getActivePropertyImages(Property|int $property): array
     {
-        return $this->getAllPropertyImages(
+        return $this->getPropertyImages(
             $property,
             ['status' => ['$eq' => PropertyImageStatus::ACTIVE]]
         );
@@ -44,7 +75,7 @@ class PropertyImageRepository extends DocumentRepository
      */
     public function getFeaturedPropertyImages(Property|int $property): array
     {
-        return $this->getAllPropertyImages(
+        return $this->getPropertyImages(
             $property,
             ['isFeatured' => true]
         );
@@ -56,7 +87,7 @@ class PropertyImageRepository extends DocumentRepository
      */
     public function getFeaturedOrFirstActivePropertyImage(Property|int $property): PropertyImage|null
     {
-        $images = $this->getAllPropertyImages(
+        $images = $this->getPropertyImages(
             $property,
             ['status' => ['$eq' => PropertyImageStatus::ACTIVE]]
 
@@ -71,7 +102,7 @@ class PropertyImageRepository extends DocumentRepository
      */
     public function getActiveFeaturedPropertyImage(Property|int $property): PropertyImage|null
     {
-        $images = $this->getAllPropertyImages(
+        $images = $this->getPropertyImages(
             $property,
             ['isFeatured' => true],
             ['status' => ['$eq' => PropertyImageStatus::ACTIVE]]
@@ -87,7 +118,7 @@ class PropertyImageRepository extends DocumentRepository
      * @param array $orderBy
      * @return PropertyImage[]
      */
-    public function getAllPropertyImages(Property|int $property, array $criteria = [], array $orderBy = []): array
+    public function getPropertyImages(Property|int $property, array $criteria = [], array $orderBy = []): array
     {
         $criteria = array_merge([
             'propertyId' => Property::resolveID($property),
