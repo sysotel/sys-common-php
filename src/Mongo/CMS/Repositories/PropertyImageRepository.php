@@ -15,7 +15,7 @@ class PropertyImageRepository extends DocumentRepository
      * @param Property|int $property
      * @return PropertyImage[]
      */
-    public function getAllIActiveImages(Property|int $property): array
+    public function getAllActiveImages(Property|int $property): array
     {
         return $this->getAllImages(
             $property,
