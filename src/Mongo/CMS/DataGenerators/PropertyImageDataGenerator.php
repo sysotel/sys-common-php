@@ -31,6 +31,16 @@ class PropertyImageDataGenerator
     }
 
     /**
+     * @param PropertyImage $image
+     * @param string $baseUrl
+     * @return static
+     */
+    public static function create(PropertyImage $image, string $baseUrl): static
+    {
+        return new static($image, $baseUrl);
+    }
+
+    /**
      * @return PropertyImageDataGenerator
      */
     public function addBasicDetails(): PropertyImageDataGenerator

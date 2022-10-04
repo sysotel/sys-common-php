@@ -7,7 +7,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 trait Helpers
 {
     /**
-     * @param BaseDocument $document
+     * @param $document
      * @return static
      */
     public static function create($document): static
@@ -24,7 +24,7 @@ trait Helpers
      * @param array $append
      * @return static
      */
-    public function appendData(array $append): static
+    protected function appendData(array $append): static
     {
         $this->data = array_merge($this->data, $append);
         return $this;
