@@ -48,10 +48,12 @@ class PropertyDataGenerator
     public function addCreatorDetails(): PropertyDataGenerator
     {
         return $this->appendData([
-            'id' => $this->property->creator->id,
-            'name' => $this->property->creator->name,
-            'type' => $this->property->creator->type,
-            'email' => $this->property->creator->email->id ?? '',
+            'creator' => [
+                'id' => $this->property->creator->id,
+                'name' => $this->property->creator->name,
+                'type' => $this->property->creator->type,
+                'email' => $this->property->creator->email->id ?? '',
+            ]
         ]);
     }
 
