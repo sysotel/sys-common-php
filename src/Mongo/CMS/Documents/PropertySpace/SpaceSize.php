@@ -14,7 +14,7 @@ class SpaceSize extends EmbeddedDocument
      * @var int
      * @ODM\Field(type="int")
      */
-    public $areaSQFT;
+    public $areaSqft;
 //
 //    /**
 //     * @var float
