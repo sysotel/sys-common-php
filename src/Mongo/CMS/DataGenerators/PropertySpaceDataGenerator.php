@@ -6,7 +6,7 @@ use SYSOTEL\APP\Common\Enums\CMS\AgeCode;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertySpace\PropertySpace;
 
-class SpaceDataGenerator
+class PropertySpaceDataGenerator
 {
     use Helpers;
 
@@ -24,9 +24,9 @@ class SpaceDataGenerator
     }
 
     /**
-     * @return SpaceDataGenerator
+     * @return PropertySpaceDataGenerator
      */
-    public function addBasicDetails(): SpaceDataGenerator
+    public function addBasicDetails(): PropertySpaceDataGenerator
     {
         $data = [
             'id' => $this->space->id,
@@ -36,6 +36,10 @@ class SpaceDataGenerator
             'status' => $this->space->status,
             'longDescription' => $this->space->longDescription,
             'noOfUnits' => $this->space->noOfUnits,
+            'inventorySettings' => [
+                'accuracy' => $this->space->inventorySettings->accuracy,
+                'hourlySlots' => $this->space->inventorySettings->hourlySlots,
+            ]
         ];
 
         if ($this->space->view) {
@@ -56,9 +60,9 @@ class SpaceDataGenerator
     }
 
     /**
-     * @return SpaceDataGenerator
+     * @return PropertySpaceDataGenerator
      */
-    public function addOccupancy(): SpaceDataGenerator
+    public function addOccupancy(): PropertySpaceDataGenerator
     {
         return $this->appendData([
             'occupancy' => [
