@@ -28,6 +28,7 @@ class PropertyDataGenerator
     {
         return $this->appendData([
             'id' => $this->property->id,
+            'accountId' => $this->property->accountId,
             'displayName' => $this->property->displayName,
             'starRating' => $this->property->starRating->value,
             'type' => $this->property->type,
