@@ -22,11 +22,11 @@ class ProductDataGenerator
     }
 
     /**
-     * @return array
+     * @return static
      */
-    public function addBasicDetails(): array
+    public function addBasicDetails(): static
     {
-        return [
+        return $this->appendData([
             'id' => $this->product->id,
             'accountId' => $this->product->accountId,
             'propertyId' => $this->product->propertyId,
@@ -37,6 +37,6 @@ class ProductDataGenerator
             'mealPlanCode' => $this->product->mealPlanCode,
             'status' => $this->product->status,
             'inclusions' => $this->product->inclusions
-        ];
+        ]);
     }
 }
