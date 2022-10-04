@@ -1,6 +1,6 @@
 <?php
 
-namespace SYSOTEL\APP\Common\Mongo\CMS\ResponseItems;
+namespace SYSOTEL\APP\Common\Mongo\CMS\DataGenerators;
 
 use SYSOTEL\APP\Common\Enums\CMS\AgeCode;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
