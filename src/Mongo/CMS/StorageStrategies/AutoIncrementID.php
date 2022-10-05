@@ -16,6 +16,7 @@ class AutoIncrementID implements IdGenerator
             abort(500,'Failed to find collection name');
         }
 
+        /** @var Counter $counter */
         $counter = Counter::queryBuilder()->findAndUpdate()->returnNew()
             ->field('_id')->equals($metadata->collection)
             ->field('value')->inc(1)
@@ -25,6 +26,6 @@ class AutoIncrementID implements IdGenerator
             abort(500, 'Counter not found for ' . $metadata->collection);
         }
 
-        return $counter->value;
+        return $counter->getValue();
     }
 }

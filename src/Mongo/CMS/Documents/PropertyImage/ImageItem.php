@@ -12,20 +12,74 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertyImageVersion;
 class ImageItem extends EmbeddedDocument
 {
     /**
-     * @var PropertyImageVersion
+     * @var ?PropertyImageVersion
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyImageVersion::class)
      */
-    public $version;
+    protected $version;
 
     /**
-     * @var string`
+     * @var ?string`
      * @ODM\Field(type="string")
      */
-    public $filePath;
+    protected $filePath;
 
     /**
-     * @var ImageMetadata
+     * @var ?ImageMetadata
      * @ODM\EmbedOne(targetDocument=ImageMetadata::class)
      */
-    public $meta;
+    protected $meta;
+
+    /**
+     * @return PropertyImageVersion|null
+     */
+    public function getVersion(): ?PropertyImageVersion
+    {
+        return $this->version;
+    }
+
+    /**
+     * @param PropertyImageVersion|null $version
+     * @return ImageItem
+     */
+    public function setVersion(?PropertyImageVersion $version): ImageItem
+    {
+        $this->version = $version;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFilePath(): ?string
+    {
+        return $this->filePath;
+    }
+
+    /**
+     * @param string|null $filePath
+     * @return ImageItem
+     */
+    public function setFilePath(?string $filePath): ImageItem
+    {
+        $this->filePath = $filePath;
+        return $this;
+    }
+
+    /**
+     * @return ImageMetadata|null
+     */
+    public function getMeta(): ?ImageMetadata
+    {
+        return $this->meta;
+    }
+
+    /**
+     * @param ImageMetadata|null $meta
+     * @return ImageItem
+     */
+    public function setMeta(?ImageMetadata $meta): ImageItem
+    {
+        $this->meta = $meta;
+        return $this;
+    }
 }

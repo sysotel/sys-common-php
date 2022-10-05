@@ -12,22 +12,22 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertySpaceViewCode;
 class SpaceView extends EmbeddedDocument
 {
     /**
-     * @var PropertySpaceViewCode
+     * @var ?PropertySpaceViewCode
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertySpaceViewCode::class)
      */
-    public $code;
+    protected $code;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
-    public $name;
+    protected $name;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
-    public $description;
+    protected $description;
 
     /**
      * @ODM\PrePersist
@@ -37,5 +37,59 @@ class SpaceView extends EmbeddedDocument
         if(!isset($this->name) && isset($this->code)) {
             $this->name = readableConstant($this->code->value);
         }
+    }
+
+    /**
+     * @return PropertySpaceViewCode|null
+     */
+    public function getCode(): ?PropertySpaceViewCode
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param PropertySpaceViewCode|null $code
+     * @return SpaceView
+     */
+    public function setCode(?PropertySpaceViewCode $code): SpaceView
+    {
+        $this->code = $code;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string|null $name
+     * @return SpaceView
+     */
+    public function setName(?string $name): SpaceView
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string|null $description
+     * @return SpaceView
+     */
+    public function setDescription(?string $description): SpaceView
+    {
+        $this->description = $description;
+        return $this;
     }
 }

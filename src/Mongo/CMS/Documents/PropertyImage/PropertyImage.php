@@ -31,70 +31,70 @@ class PropertyImage extends BaseDocument
     use HasDefaultAttributes;
 
     /**
-     * @var PropertyImageTarget
+     * @var ?PropertyImageTarget
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyImageTarget::class)
      */
-    public $target;
+    protected $target;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
-    public $title;
+    protected $title;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
-    public $description;
+    protected $description;
 
     /**
-     * @var bool
+     * @var ?bool
      * @ODM\Field(type="bool")
      */
-    public $isFeatured;
+    protected $isFeatured;
 
     /**
      * @var ArrayCollection & ImageItem[]
      * @ODM\EmbedMany  (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyImage\ImageItem::class)
      */
-    public $items;
+    protected $items;
 
     /**
-     * @var Verification
+     * @var ?Verification
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Verification::class)
      */
-    public $verification;
+    protected $verification;
 
     /**
-     * @var int
+     * @var ?int
      * @ODM\Field(type="int")
      */
-    public $sortOrder;
+    protected $sortOrder;
 
     /**
-     * @var int
+     * @var ?int
      * @ODM\Field(type="int")
      */
-    public $targetSortOrder;
+    protected $targetSortOrder;
 
     /**
-     * @var PropertyImageStatus
+     * @var ?PropertyImageStatus
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyImageStatus::class)
      */
-    public $status;
+    protected $status;
 
     /**
-     * @var UserReference
+     * @var ?UserReference
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference::class)
      */
-    public $uploadedBy;
+    protected $uploadedBy;
 
     /**
-     * @var Carbon
+     * @var ?Carbon
      * @ODM\Field(type="carbon")
      */
-    public $deletedAt;
+    protected $deletedAt;
 
     protected $defaults = [
         'isFeatured' => false,
@@ -131,11 +131,9 @@ class PropertyImage extends BaseDocument
         return $this;
     }
 
-    public function __construct(array $attributes = [])
+    public function __construct()
     {
         $this->items = new ArrayCollection;
-
-        parent::__construct($attributes);
     }
 
     /**
@@ -146,7 +144,7 @@ class PropertyImage extends BaseDocument
     {
         $imageItem = $this->imageItem($version);
 
-        return $imageItem->filePath ?? null;
+        return $imageItem->getFilePath() ?? null;
     }
 
     /**
@@ -156,11 +154,238 @@ class PropertyImage extends BaseDocument
     public function imageItem(PropertyImageVersion $version): ?ImageItem
     {
         foreach($this->items as $imageItem) {
-            if($imageItem->version === $version) {
+            if($imageItem->getVersion() === $version) {
                 return $imageItem;
             }
         }
 
         return null;
+    }
+
+    /**
+     * @return PropertyImageTarget|null
+     */
+    public function getTarget(): ?PropertyImageTarget
+    {
+        return $this->target;
+    }
+
+    /**
+     * @param PropertyImageTarget|null $target
+     * @return PropertyImage
+     */
+    public function setTarget(?PropertyImageTarget $target): PropertyImage
+    {
+        $this->target = $target;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string|null $title
+     * @return PropertyImage
+     */
+    public function setTitle(?string $title): PropertyImage
+    {
+        $this->title = $title;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string|null $description
+     * @return PropertyImage
+     */
+    public function setDescription(?string $description): PropertyImage
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsFeatured(): ?bool
+    {
+        return $this->isFeatured;
+    }
+
+    /**
+     * @param bool|null $isFeatured
+     * @return PropertyImage
+     */
+    public function setIsFeatured(?bool $isFeatured): PropertyImage
+    {
+        $this->isFeatured = $isFeatured;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection|ImageItem[]
+     */
+    public function getItems(): ArrayCollection|array
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param ArrayCollection|ImageItem[] $items
+     * @return PropertyImage
+     */
+    public function setItems(ArrayCollection|array $items): PropertyImage
+    {
+        $this->items = $items instanceof ArrayCollection ? $items : new ArrayCollection($items);
+
+        return $this;
+    }
+
+    /**
+     * @param ImageItem $item
+     * @return $this
+     */
+    public function addItem(ImageItem $item): static
+    {
+        $this->items->add($item);
+        return $this;
+    }
+
+    /**
+     * @return Verification|null
+     */
+    public function getVerification(): ?Verification
+    {
+        return $this->verification;
+    }
+
+    /**
+     * @param Verification|null $verification
+     * @return PropertyImage
+     */
+    public function setVerification(?Verification $verification): PropertyImage
+    {
+        $this->verification = $verification;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getSortOrder(): ?int
+    {
+        return $this->sortOrder;
+    }
+
+    /**
+     * @param int|null $sortOrder
+     * @return PropertyImage
+     */
+    public function setSortOrder(?int $sortOrder): PropertyImage
+    {
+        $this->sortOrder = $sortOrder;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getTargetSortOrder(): ?int
+    {
+        return $this->targetSortOrder;
+    }
+
+    /**
+     * @param int|null $targetSortOrder
+     * @return PropertyImage
+     */
+    public function setTargetSortOrder(?int $targetSortOrder): PropertyImage
+    {
+        $this->targetSortOrder = $targetSortOrder;
+        return $this;
+    }
+
+    /**
+     * @return PropertyImageStatus|null
+     */
+    public function getStatus(): ?PropertyImageStatus
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param PropertyImageStatus|null $status
+     * @return PropertyImage
+     */
+    public function setStatus(?PropertyImageStatus $status): PropertyImage
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
+     * @return UserReference|null
+     */
+    public function getUploadedBy(): ?UserReference
+    {
+        return $this->uploadedBy;
+    }
+
+    /**
+     * @param UserReference|null $uploadedBy
+     * @return PropertyImage
+     */
+    public function setUploadedBy(?UserReference $uploadedBy): PropertyImage
+    {
+        $this->uploadedBy = $uploadedBy;
+        return $this;
+    }
+
+    /**
+     * @return Carbon|null
+     */
+    public function getDeletedAt(): ?Carbon
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * @param Carbon|null $deletedAt
+     * @return PropertyImage
+     */
+    public function setDeletedAt(?Carbon $deletedAt): PropertyImage
+    {
+        $this->deletedAt = $deletedAt;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDefaults(): array
+    {
+        return $this->defaults;
+    }
+
+    /**
+     * @param array $defaults
+     * @return PropertyImage
+     */
+    public function setDefaults(array $defaults): PropertyImage
+    {
+        $this->defaults = $defaults;
+        return $this;
     }
 }

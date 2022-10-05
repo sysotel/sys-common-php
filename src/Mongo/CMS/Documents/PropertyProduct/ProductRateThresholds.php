@@ -14,11 +14,47 @@ class ProductRateThresholds extends EmbeddedDocument
      * @var float
      * @ODM\Field(type="float")
      */
-    public $lowest;
+    protected $lowest;
 
     /**
      * @var float
      * @ODM\Field(type="float")
      */
-    public $highest;
+    protected $highest;
+
+    /**
+     * @return float
+     */
+    public function getLowest(): float
+    {
+        return $this->lowest;
+    }
+
+    /**
+     * @param float $lowest
+     * @return ProductRateThresholds
+     */
+    public function setLowest(float $lowest): ProductRateThresholds
+    {
+        $this->lowest = $lowest;
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getHighest(): float
+    {
+        return $this->highest;
+    }
+
+    /**
+     * @param float $highest
+     * @return ProductRateThresholds
+     */
+    public function setHighest(float $highest): ProductRateThresholds
+    {
+        $this->highest = $highest;
+        return $this;
+    }
 }

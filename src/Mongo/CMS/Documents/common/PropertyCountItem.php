@@ -12,14 +12,50 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertyType;
 class PropertyCountItem extends EmbeddedDocument
 {
     /**
-     * @var PropertyType
+     * @var ?PropertyType
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyType::class)
      */
     public $type;
 
     /**
-     * @var int
+     * @var ?int
      * @ODM\Field(type="int")
      */
     public $count;
+
+    /**
+     * @return PropertyType|null
+     */
+    public function getType(): ?PropertyType
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param PropertyType $type
+     * @return PropertyCountItem
+     */
+    public function setType(PropertyType $type): PropertyCountItem
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getCount(): ?int
+    {
+        return $this->count;
+    }
+
+    /**
+     * @param int $count
+     * @return PropertyCountItem
+     */
+    public function setCount(int $count): PropertyCountItem
+    {
+        $this->count = $count;
+        return $this;
+    }
 }

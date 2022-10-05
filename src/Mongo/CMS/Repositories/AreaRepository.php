@@ -10,10 +10,10 @@ class AreaRepository extends DocumentRepository
 {
     public function findForCity(string|City $city, array $criteria = [], array $orderBy = []): array
     {
-        $cityID = $city instanceof City ? $city->id : $city;
+        $cityID = $city instanceof City ? $city->getId() : $city;
 
         $criteria = array_merge([
-            'city.id' => new ObjectId($cityID)
+            'city.id' =>  new ObjectId($cityID)
         ], $criteria);
 
         $orderBy = array_merge([

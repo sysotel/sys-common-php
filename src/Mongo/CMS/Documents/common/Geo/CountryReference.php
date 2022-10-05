@@ -15,13 +15,13 @@ class CountryReference extends EmbeddedDocument
      * @var string
      * @ODM\Field(type="string")
      */
-    public $id;
+    protected $id;
 
     /**
      * @var string
      * @ODM\Field(type="string")
      */
-    public $name;
+    protected $name;
 
     /**
      * @param Country $country
@@ -29,9 +29,42 @@ class CountryReference extends EmbeddedDocument
      */
     public static function createFromCountry(Country $country): CountryReference
     {
-        return new self([
-            'id' => $country->id,
-            'name' => $country->name,
-        ]);
+        return self::make()->setId($country->id)->setName($country->name);
+    }
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     * @return CountryReference
+     */
+    public function setId(string $id): CountryReference
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return CountryReference
+     */
+    public function setName(string $name): CountryReference
+    {
+        $this->name = $name;
+        return $this;
     }
 }

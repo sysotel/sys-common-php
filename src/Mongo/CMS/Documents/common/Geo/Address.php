@@ -16,49 +16,49 @@ class Address extends EmbeddedDocument implements AddressContract
      * @var string
      * @ODM\Field(type="string")
      */
-    public $fullAddress;
+    protected $fullAddress;
 
     /**
      * @var string
      * @ODM\Field(type="string")
      */
-    public $line1;
+    protected $line1;
 
     /**
      * @var AreaReference
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\AreaReference::class)
      */
-    public $area;
+    protected $area;
 
     /**
      * @var CityReference
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CityReference::class)
      */
-    public $city;
+    protected $city;
 
     /**
      * @var StateReference
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference::class)
      */
-    public $state;
+    protected $state;
 
     /**
      * @var CountryReference
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference::class)
      */
-    public $country;
+    protected $country;
 
     /**
      * @var string
      * @ODM\Field(type="string")
      */
-    public $postalCode;
+    protected $postalCode;
 
     /**
      * @var GeoPoint
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint::class)
      */
-    public $geoPoint;
+    protected $geoPoint;
 
     /**
      * @ODM\PrePersist
@@ -87,7 +87,7 @@ class Address extends EmbeddedDocument implements AddressContract
      */
     public function generateFullAddress(): string
     {
-        return $this->fullAddress = "{$this->line1}, {$this->area->name}, {$this->city->name}, {$this->state->name}, {$this->country->name} - {$this->postalCode}";
+        return $this->fullAddress = "{$this->line1}, {$this->area->getName()}, {$this->city->getName()}, {$this->state->getName()}, {$this->country->getName()} - {$this->postalCode}";
     }
 
 
@@ -98,22 +98,22 @@ class Address extends EmbeddedDocument implements AddressContract
 
     public function getAreaName(): ?string
     {
-        return $this->area->name ?? null;
+        return $this->area->getName() ?? null;
     }
 
     public function getCityName(): ?string
     {
-        return $this->city->name ?? null;
+        return $this->city->getName() ?? null;
     }
 
     public function getStateName(): ?string
     {
-        return $this->state->name ?? null;
+        return $this->state->getName() ?? null;
     }
 
     public function getCountryName(): ?string
     {
-        return $this->country->name ?? null;
+        return $this->country->getName() ?? null;
     }
 
     public function getPostalCode(): ?string
@@ -126,7 +126,7 @@ class Address extends EmbeddedDocument implements AddressContract
      */
     public function areaCityString(): string
     {
-        return "{$this->area->name}, {$this->city->name}";
+        return "{$this->area->getName()}, {$this->city->getName()}";
     }
 
     /**
@@ -134,7 +134,7 @@ class Address extends EmbeddedDocument implements AddressContract
      */
     public function cityStateString(): string
     {
-        return "{$this->city->name}, {$this->state->name}";
+        return "{$this->city->getName()}, {$this->state->getName()}";
     }
 
     /**
@@ -142,6 +142,114 @@ class Address extends EmbeddedDocument implements AddressContract
      */
     public function cityStateCountryString(): string
     {
-        return "{$this->cityStateString()}, {$this->country->name}";
+        return "{$this->cityStateString()}, {$this->country->getName()}";
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullAddress(): string
+    {
+        return $this->fullAddress;
+    }
+
+    /**
+     * @param string $fullAddress
+     * @return Address
+     */
+    public function setFullAddress(string $fullAddress): Address
+    {
+        $this->fullAddress = $fullAddress;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLine1(): string
+    {
+        return $this->line1;
+    }
+
+    /**
+     * @param string $line1
+     * @return Address
+     */
+    public function setLine1(string $line1): Address
+    {
+        $this->line1 = $line1;
+        return $this;
+    }
+
+    /**
+     * @return AreaReference
+     */
+    public function getArea(): AreaReference
+    {
+        return $this->area;
+    }
+
+    /**
+     * @param AreaReference $area
+     * @return Address
+     */
+    public function setArea(AreaReference $area): Address
+    {
+        $this->area = $area;
+        return $this;
+    }
+
+    /**
+     * @return CityReference
+     */
+    public function getCity(): CityReference
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param CityReference $city
+     * @return Address
+     */
+    public function setCity(CityReference $city): Address
+    {
+        $this->city = $city;
+        return $this;
+    }
+
+    /**
+     * @return StateReference
+     */
+    public function getState(): StateReference
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param StateReference $state
+     * @return Address
+     */
+    public function setState(StateReference $state): Address
+    {
+        $this->state = $state;
+        return $this;
+    }
+
+    /**
+     * @return CountryReference
+     */
+    public function getCountry(): CountryReference
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param CountryReference $country
+     * @return Address
+     */
+    public function setCountry(CountryReference $country): Address
+    {
+        $this->country = $country;
+        return $this;
     }
 }

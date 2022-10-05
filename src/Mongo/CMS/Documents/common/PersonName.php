@@ -13,25 +13,25 @@ use SYSOTEL\APP\Common\Enums\PersonTitle;
 class PersonName extends EmbeddedDocument
 {
     /**
-     * @var PersonTitle
+     * @var ?PersonTitle
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\PersonTitle::class)
      */
     public $title;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     public $firstName;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     public $lastName;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     public $fullName;
@@ -39,10 +39,29 @@ class PersonName extends EmbeddedDocument
     /**
      * Sets full name using firstname and last name
      */
-    protected function setName(string $fn, string $ln, string $title)
+    protected function setName(string $fn, string $ln, ?string $title = null)
     {
+        $this->title = $title;
         $this->firstName = $fn;
         $this->lastName = $ln;
         $this->fullName = $fn . ' ' . $ln;
+    }
+
+    /**
+     * @return PersonTitle|null
+     */
+    public function getTitle(): ?PersonTitle
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param PersonTitle|null $title
+     * @return PersonName
+     */
+    public function setTitle(?PersonTitle $title): PersonName
+    {
+        $this->title = $title;
+        return $this;
     }
 }

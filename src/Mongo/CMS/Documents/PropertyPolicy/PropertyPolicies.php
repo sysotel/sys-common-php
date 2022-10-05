@@ -24,69 +24,247 @@ class PropertyPolicies extends BaseDocument
     use HasDefaultAttributes;
 
     /**
-     * @var CustomPolicyItem
+     * @var ?CustomPolicyItem
      * @ODM\EmbedOne (targetDocument=CustomPolicyItem::class)
      */
-    public $generalPolicy;
+    protected $generalPolicy;
 
     /**
-     * @var AgePolicy
+     * @var ?AgePolicy
      * @ODM\EmbedOne (targetDocument=AgePolicy::class)
      */
-    public $agePolicy;
+    protected $agePolicy;
 
     /**
-     * @var CheckInPolicy
+     * @var ?CheckInPolicy
      * @ODM\EmbedOne (targetDocument=CheckInPolicy::class)
      */
-    public $checkInPolicy;
+    protected $checkInPolicy;
 
     /**
-     * @var CheckOutPolicy
+     * @var ?CheckOutPolicy
      * @ODM\EmbedOne (targetDocument=CheckOutPolicy::class)
      */
-    public $checkOutPolicy;
+    protected $checkOutPolicy;
 
     /**
-     * @var PropertyRules
+     * @var ?PropertyRules
      * @ODM\EmbedOne (targetDocument=PropertyRules::class)
      */
-    public $rules;
+    protected $rules;
 
     /**
      * @var ArrayCollection & CustomPolicyItem[]
      * @ODM\EmbedMany (targetDocument=CustomPolicyItem::class)
      */
-    public $customPolicies;
+    protected $customPolicies;
 
     /**
-     * @var PropertyPolicyStatus
+     * @var ?PropertyPolicyStatus
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyPolicyStatus::class)
      */
-    public $status;
+    protected $status;
 
     /**
-     * @var Carbon
+     * @var ?Carbon
      * @ODM\Field(type="carbon")
      */
-    public $expiredAt;
+    protected $expiredAt;
 
     /**
-     * @var UserReference
+     * @var ?UserReference
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference::class)
      */
-    public $causer;
+    protected $causer;
 
 
     protected $defaults = [
         'status' => PropertyPolicyStatus::ACTIVE
     ];
 
-    public function __construct(array $attributes = [])
+    public function __construct()
     {
         $this->customPolicies = new ArrayCollection;
+    }
 
-        parent::__construct($attributes);
+    /**
+     * @return CustomPolicyItem|null
+     */
+    public function getGeneralPolicy(): ?CustomPolicyItem
+    {
+        return $this->generalPolicy;
+    }
+
+    /**
+     * @param CustomPolicyItem|null $generalPolicy
+     * @return PropertyPolicies
+     */
+    public function setGeneralPolicy(?CustomPolicyItem $generalPolicy): PropertyPolicies
+    {
+        $this->generalPolicy = $generalPolicy;
+        return $this;
+    }
+
+    /**
+     * @return AgePolicy|null
+     */
+    public function getAgePolicy(): ?AgePolicy
+    {
+        return $this->agePolicy;
+    }
+
+    /**
+     * @param AgePolicy|null $agePolicy
+     * @return PropertyPolicies
+     */
+    public function setAgePolicy(?AgePolicy $agePolicy): PropertyPolicies
+    {
+        $this->agePolicy = $agePolicy;
+        return $this;
+    }
+
+    /**
+     * @return CheckInPolicy|null
+     */
+    public function getCheckInPolicy(): ?CheckInPolicy
+    {
+        return $this->checkInPolicy;
+    }
+
+    /**
+     * @param CheckInPolicy|null $checkInPolicy
+     * @return PropertyPolicies
+     */
+    public function setCheckInPolicy(?CheckInPolicy $checkInPolicy): PropertyPolicies
+    {
+        $this->checkInPolicy = $checkInPolicy;
+        return $this;
+    }
+
+    /**
+     * @return CheckOutPolicy|null
+     */
+    public function getCheckOutPolicy(): ?CheckOutPolicy
+    {
+        return $this->checkOutPolicy;
+    }
+
+    /**
+     * @param CheckOutPolicy|null $checkOutPolicy
+     * @return PropertyPolicies
+     */
+    public function setCheckOutPolicy(?CheckOutPolicy $checkOutPolicy): PropertyPolicies
+    {
+        $this->checkOutPolicy = $checkOutPolicy;
+        return $this;
+    }
+
+    /**
+     * @return PropertyRules|null
+     */
+    public function getRules(): ?PropertyRules
+    {
+        return $this->rules;
+    }
+
+    /**
+     * @param PropertyRules|null $rules
+     * @return PropertyPolicies
+     */
+    public function setRules(?PropertyRules $rules): PropertyPolicies
+    {
+        $this->rules = $rules;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection|CustomPolicyItem[]
+     */
+    public function getCustomPolicies(): ArrayCollection|array
+    {
+        return $this->customPolicies;
+    }
+
+    /**
+     * @param ArrayCollection|CustomPolicyItem[] $customPolicies
+     * @return PropertyPolicies
+     */
+    public function setCustomPolicies(ArrayCollection|array $customPolicies): PropertyPolicies
+    {
+        $this->customPolicies = $customPolicies;
+        return $this;
+    }
+
+    /**
+     * @return PropertyPolicyStatus|null
+     */
+    public function getStatus(): ?PropertyPolicyStatus
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param PropertyPolicyStatus|null $status
+     * @return PropertyPolicies
+     */
+    public function setStatus(?PropertyPolicyStatus $status): PropertyPolicies
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
+     * @return Carbon|null
+     */
+    public function getExpiredAt(): ?Carbon
+    {
+        return $this->expiredAt;
+    }
+
+    /**
+     * @param Carbon|null $expiredAt
+     * @return PropertyPolicies
+     */
+    public function setExpiredAt(?Carbon $expiredAt): PropertyPolicies
+    {
+        $this->expiredAt = $expiredAt;
+        return $this;
+    }
+
+    /**
+     * @return UserReference|null
+     */
+    public function getCauser(): ?UserReference
+    {
+        return $this->causer;
+    }
+
+    /**
+     * @param UserReference|null $causer
+     * @return PropertyPolicies
+     */
+    public function setCauser(?UserReference $causer): PropertyPolicies
+    {
+        $this->causer = $causer;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDefaults(): array
+    {
+        return $this->defaults;
+    }
+
+    /**
+     * @param array $defaults
+     * @return PropertyPolicies
+     */
+    public function setDefaults(array $defaults): PropertyPolicies
+    {
+        $this->defaults = $defaults;
+        return $this;
     }
 
     /**

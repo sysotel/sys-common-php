@@ -1,6 +1,6 @@
 <?php
 
-namespace SYSOTEL\OTA\Common\Mongo\CMS\Documents\PropertyAmenity;
+namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
@@ -12,20 +12,74 @@ use Delta4op\Mongodb\Documents\EmbeddedDocument;
 class PropertyAmenityItem extends EmbeddedDocument
 {
     /**
-     * @var string
+     * @var ?string
      * @ODM\field(type="string")
      */
-    public $id;
+    protected $id;
 
     /**
-     * @var bool
+     * @var ?bool
      * @ODM\field(type="bool")
      */
-    public $flag;
+    protected $flag;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\field(type="string")
      */
-    public $note;
+    protected $note;
+
+    /**
+     * @return string|null
+     */
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string|null $id
+     * @return PropertyAmenityItem
+     */
+    public function setId(?string $id): PropertyAmenityItem
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getFlag(): ?bool
+    {
+        return $this->flag;
+    }
+
+    /**
+     * @param bool|null $flag
+     * @return PropertyAmenityItem
+     */
+    public function setFlag(?bool $flag): PropertyAmenityItem
+    {
+        $this->flag = $flag;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getNote(): ?string
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param string|null $note
+     * @return PropertyAmenityItem
+     */
+    public function setNote(?string $note): PropertyAmenityItem
+    {
+        $this->note = $note;
+        return $this;
+    }
 }

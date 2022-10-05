@@ -22,5 +22,23 @@ class Country extends LocationItem
      * @var string
      * @ODM\Id(type="string",strategy="none")
      */
-    public $id;
+    protected $id;
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     * @return Country
+     */
+    public function setId(string $id): Country
+    {
+        $this->id = $id;
+        return $this;
+    }
 }

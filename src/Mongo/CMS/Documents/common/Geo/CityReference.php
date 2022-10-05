@@ -16,19 +16,19 @@ class CityReference extends EmbeddedDocument
      * @var ObjectId
      * @ODM\Field(type="object_id")
      */
-    public $id;
+    protected $id;
 
     /**
      * @var string
      * @ODM\Field(type="string")
      */
-    public $name;
+    protected $name;
 
     /**
      * @var string
      * @ODM\Field(type="string")
      */
-    public $slug;
+    protected $slug;
 
     /**
      * @param City $city
@@ -36,10 +36,63 @@ class CityReference extends EmbeddedDocument
      */
     public static function createFromCity(City $city): CityReference
     {
-        return new self([
-            'id' => new ObjectId($city->id),
-            'name' => $city->name,
-            'slug' => $city->slug,
-        ]);
+        return self::make()
+            ->setId(new ObjectId($city->id))
+            ->setName($city->name)
+            ->setSlug($city->slug);
+    }
+
+    /**
+     * @return ObjectId
+     */
+    public function getId(): ObjectId
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param ObjectId $id
+     * @return CityReference
+     */
+    public function setId(ObjectId $id): CityReference
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return CityReference
+     */
+    public function setName(string $name): CityReference
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     * @return CityReference
+     */
+    public function setSlug(string $slug): CityReference
+    {
+        $this->slug = $slug;
+        return $this;
     }
 }

@@ -2,7 +2,6 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Traits;
 
-use SYSOTEL\APP\Common\Enums\CMS\Account;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 trait HasObjectIdKey
@@ -11,5 +10,23 @@ trait HasObjectIdKey
      * @var string
      * @ODM\Id
      */
-    public $id;
+    protected $id;
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     * @return static
+     */
+    public function setId(string $id): static
+    {
+        $this->id = $id;
+        return $this;
+    }
 }

@@ -18,37 +18,35 @@ class Request extends EmbeddedDocument
     use HasTimestamps;
 
     /**
-     * @var HttpRequestMethod
+     * @var ?HttpRequestMethod
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\HttpRequestMethod::class)
      */
-    public $method;
+    protected $method;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
-    public $endpoint;
+    protected $endpoint;
 
     /**
      * @var ArrayCollection & KeyValueItem
      * @ODM\EmbedMany (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\KeyValueItem::class)
      */
-    public $headers;
+    protected $headers;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
-    public $payload;
+    protected $payload;
 
     /**
      * CONSTRUCTOR
      */
-    public function __construct(array $attributes = [])
+    public function __construct()
     {
         $this->headers = new ArrayCollection;
-
-        parent::__construct($attributes);
     }
 
     public function setHeadersFromArray(array $headers): self
@@ -57,6 +55,78 @@ class Request extends EmbeddedDocument
         foreach($headers as $key => $value) {
             $this->headers->add(new KeyValueItem(compact('key', 'value')));
         }
+        return $this;
+    }
+
+    /**
+     * @return HttpRequestMethod|null
+     */
+    public function getMethod(): ?HttpRequestMethod
+    {
+        return $this->method;
+    }
+
+    /**
+     * @param HttpRequestMethod|null $method
+     * @return Request
+     */
+    public function setMethod(?HttpRequestMethod $method): Request
+    {
+        $this->method = $method;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getEndpoint(): ?string
+    {
+        return $this->endpoint;
+    }
+
+    /**
+     * @param string|null $endpoint
+     * @return Request
+     */
+    public function setEndpoint(?string $endpoint): Request
+    {
+        $this->endpoint = $endpoint;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection|KeyValueItem
+     */
+    public function getHeaders(): ArrayCollection|KeyValueItem
+    {
+        return $this->headers;
+    }
+
+    /**
+     * @param ArrayCollection|KeyValueItem $headers
+     * @return Request
+     */
+    public function setHeaders(ArrayCollection|KeyValueItem $headers): Request
+    {
+        $this->headers = $headers;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPayload(): ?string
+    {
+        return $this->payload;
+    }
+
+    /**
+     * @param string|null $payload
+     * @return Request
+     */
+    public function setPayload(?string $payload): Request
+    {
+        $this->payload = $payload;
         return $this;
     }
 }

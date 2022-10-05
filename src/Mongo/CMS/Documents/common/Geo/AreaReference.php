@@ -16,13 +16,13 @@ class AreaReference extends EmbeddedDocument
      * @var ObjectId
      * @ODM\Field(type="object_id")
      */
-    public $id;
+    protected $id;
 
     /**
      * @var string
      * @ODM\Field(type="string")
      */
-    public $name;
+    protected $name;
 
     /**
      * @param Area $area
@@ -30,9 +30,42 @@ class AreaReference extends EmbeddedDocument
      */
     public static function createFromArea(Area $area): AreaReference
     {
-        return new self([
-            'id' => new ObjectId($area->id),
-            'name' => $area->name,
-        ]);
+        return self::make()->setId($area->id)->setName($area->name);
+    }
+
+    /**
+     * @return ObjectId
+     */
+    public function getId(): ObjectId
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param ObjectId $id
+     * @return AreaReference
+     */
+    public function setId(ObjectId $id): AreaReference
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return AreaReference
+     */
+    public function setName(string $name): AreaReference
+    {
+        $this->name = $name;
+        return $this;
     }
 }

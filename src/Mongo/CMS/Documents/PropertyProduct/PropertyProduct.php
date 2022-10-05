@@ -6,7 +6,6 @@ use Delta4op\Mongodb\Traits\CanResolveIntegerID;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use Exception;
 use SYSOTEL\APP\Common\Enums\CMS\MealPlanCode;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyProductStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
@@ -28,52 +27,52 @@ class PropertyProduct extends BaseDocument
     use CanResolveIntegerID, HasDefaultAttributes;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
-    public $displayName;
+    protected $displayName;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
-    public $internalName;
-
-    /**
-     * @var string|null
-     * @ODM\Field(type="string")
-     */
-    public $shortDescription;
+    protected $internalName;
 
     /**
      * @var string|null
      * @ODM\Field(type="string")
      */
-    public $longDescription;
+    protected $shortDescription;
 
     /**
-     * @var PaymentMode
+     * @var string|null
+     * @ODM\Field(type="string")
+     */
+    protected $longDescription;
+
+    /**
+     * @var ?PaymentMode
      * @ODM\EmbedOne(targetDocument=PaymentMode::class)
      */
-    public $paymentMode;
+    protected $paymentMode;
 
     /**
-     * @var MealPlanCode
+     * @var ?MealPlanCode
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\MealPlanCode::class)
      */
-    public $mealPlanCode;
+    protected $mealPlanCode;
 
     /**
      * @var string[]
      * @ODM\Field(type="collection")
      */
-    public $inclusions;
+    protected $inclusions = [];
 
     /**
-     * @var PropertyProductStatus
+     * @var ?PropertyProductStatus
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyProductStatus::class)
      */
-    public $status;
+    protected $status;
 
     protected $defaults = [
         'status' => PropertyProductStatus::ACTIVE,
@@ -88,6 +87,150 @@ class PropertyProduct extends BaseDocument
             $this->inclusions = $this->mealPlanCode->inclusions();
         }
 
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDisplayName(): ?string
+    {
+        return $this->displayName;
+    }
+
+    /**
+     * @param string|null $displayName
+     * @return PropertyProduct
+     */
+    public function setDisplayName(?string $displayName): PropertyProduct
+    {
+        $this->displayName = $displayName;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getInternalName(): ?string
+    {
+        return $this->internalName;
+    }
+
+    /**
+     * @param string|null $internalName
+     * @return PropertyProduct
+     */
+    public function setInternalName(?string $internalName): PropertyProduct
+    {
+        $this->internalName = $internalName;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getShortDescription(): ?string
+    {
+        return $this->shortDescription;
+    }
+
+    /**
+     * @param string|null $shortDescription
+     * @return PropertyProduct
+     */
+    public function setShortDescription(?string $shortDescription): PropertyProduct
+    {
+        $this->shortDescription = $shortDescription;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLongDescription(): ?string
+    {
+        return $this->longDescription;
+    }
+
+    /**
+     * @param string|null $longDescription
+     * @return PropertyProduct
+     */
+    public function setLongDescription(?string $longDescription): PropertyProduct
+    {
+        $this->longDescription = $longDescription;
+        return $this;
+    }
+
+    /**
+     * @return PaymentMode|null
+     */
+    public function getPaymentMode(): ?PaymentMode
+    {
+        return $this->paymentMode;
+    }
+
+    /**
+     * @param PaymentMode|null $paymentMode
+     * @return PropertyProduct
+     */
+    public function setPaymentMode(?PaymentMode $paymentMode): PropertyProduct
+    {
+        $this->paymentMode = $paymentMode;
+        return $this;
+    }
+
+    /**
+     * @return MealPlanCode|null
+     */
+    public function getMealPlanCode(): ?MealPlanCode
+    {
+        return $this->mealPlanCode;
+    }
+
+    /**
+     * @param MealPlanCode|null $mealPlanCode
+     * @return PropertyProduct
+     */
+    public function setMealPlanCode(?MealPlanCode $mealPlanCode): PropertyProduct
+    {
+        $this->mealPlanCode = $mealPlanCode;
+        return $this;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getInclusions(): array
+    {
+        return $this->inclusions;
+    }
+
+    /**
+     * @param string[] $inclusions
+     * @return PropertyProduct
+     */
+    public function setInclusions(array $inclusions): PropertyProduct
+    {
+        $this->inclusions = $inclusions;
+        return $this;
+    }
+
+    /**
+     * @return PropertyProductStatus|null
+     */
+    public function getStatus(): ?PropertyProductStatus
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param PropertyProductStatus|null $status
+     * @return PropertyProduct
+     */
+    public function setStatus(?PropertyProductStatus $status): PropertyProduct
+    {
+        $this->status = $status;
         return $this;
     }
 }

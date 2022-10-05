@@ -4,7 +4,6 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyImage;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
-use function SYSOTEL\APP\Common\Functions\arrayFilter;
 
 /**
  * @ODM\EmbeddedDocument
@@ -12,25 +11,50 @@ use function SYSOTEL\APP\Common\Functions\arrayFilter;
 class ImageResolution extends EmbeddedDocument
 {
     /**
-     * @var int
+     * @var ?int
      * @ODM\Field(type="int")
      */
-    public $widthInPX;
+    protected $widthInPX;
 
     /**
-     * @var int
+     * @var ?int
      * @ODM\Field(type="int")
      */
-    public $heightInPX;
+    protected $heightInPX;
 
     /**
-     * @inheritDoc
-    */
-    public function toArray(): array
+     * @return int|null
+     */
+    public function getWidthInPX(): ?int
     {
-        return arrayFilter([
-            'widthInPX'  => $this->widthInPX,
-            'heightInPX' => $this->heightInPX,
-        ]);
+        return $this->widthInPX;
+    }
+
+    /**
+     * @param int|null $widthInPX
+     * @return ImageResolution
+     */
+    public function setWidthInPX(?int $widthInPX): ImageResolution
+    {
+        $this->widthInPX = $widthInPX;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getHeightInPX(): ?int
+    {
+        return $this->heightInPX;
+    }
+
+    /**
+     * @param int|null $heightInPX
+     * @return ImageResolution
+     */
+    public function setHeightInPX(?int $heightInPX): ImageResolution
+    {
+        $this->heightInPX = $heightInPX;
+        return $this;
     }
 }

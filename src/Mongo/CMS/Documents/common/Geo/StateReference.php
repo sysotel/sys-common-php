@@ -16,19 +16,19 @@ class StateReference extends EmbeddedDocument
      * @var ObjectId
      * @ODM\Field(type="object_id")
      */
-    public $id;
+    protected $id;
 
     /**
      * @var string
      * @ODM\Field(type="string")
      */
-    public $name;
+    protected $name;
 
     /**
      * @var string
      * @ODM\Field(type="string")
      */
-    public $slug;
+    protected $slug;
 
     /**
      * @param State $state
@@ -36,10 +36,60 @@ class StateReference extends EmbeddedDocument
      */
     public static function createFromState(State $state): StateReference
     {
-        return new self([
-            'id' => new ObjectId($state->id),
-            'name' => $state->name,
-            'slug' => $state->slug,
-        ]);
+        return self::make()->setId($state->id)->setName($state->name)->setSlug($state->slug);
+    }
+
+    /**
+     * @return ObjectId
+     */
+    public function getId(): ObjectId
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param ObjectId $id
+     * @return StateReference
+     */
+    public function setId(ObjectId $id): StateReference
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return StateReference
+     */
+    public function setName(string $name): StateReference
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     * @return StateReference
+     */
+    public function setSlug(string $slug): StateReference
+    {
+        $this->slug = $slug;
+        return $this;
     }
 }

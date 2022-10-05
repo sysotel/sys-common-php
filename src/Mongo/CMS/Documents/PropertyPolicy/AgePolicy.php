@@ -12,28 +12,100 @@ use Delta4op\Mongodb\Documents\EmbeddedDocument;
 class AgePolicy extends EmbeddedDocument
 {
     /**
-     * @var int
+     * @var ?int
      * @ODM\Field(type="int")
      */
-    public $infantAgeThreshold;
+    protected $infantAgeThreshold;
 
     /**
-     * @var int
+     * @var ?int
      * @ODM\Field(type="int")
      */
-    public $childAgeThreshold;
+    protected $childAgeThreshold;
 
     /**
-     * @var int
+     * @var ?int
      * @ODM\Field(type="int")
      */
-    public $freeChildThreshold;
+    protected $freeChildThreshold;
 
     /**
-     * @var int
+     * @var ?int
      * @ODM\Field(type="int")
      */
-    public $noOfFreeChildGranted;
+    protected $noOfFreeChildGranted;
+
+    /**
+     * @return int|null
+     */
+    public function getInfantAgeThreshold(): ?int
+    {
+        return $this->infantAgeThreshold;
+    }
+
+    /**
+     * @param int|null $infantAgeThreshold
+     * @return AgePolicy
+     */
+    public function setInfantAgeThreshold(?int $infantAgeThreshold): AgePolicy
+    {
+        $this->infantAgeThreshold = $infantAgeThreshold;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getChildAgeThreshold(): ?int
+    {
+        return $this->childAgeThreshold;
+    }
+
+    /**
+     * @param int|null $childAgeThreshold
+     * @return AgePolicy
+     */
+    public function setChildAgeThreshold(?int $childAgeThreshold): AgePolicy
+    {
+        $this->childAgeThreshold = $childAgeThreshold;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getFreeChildThreshold(): ?int
+    {
+        return $this->freeChildThreshold;
+    }
+
+    /**
+     * @param int|null $freeChildThreshold
+     * @return AgePolicy
+     */
+    public function setFreeChildThreshold(?int $freeChildThreshold): AgePolicy
+    {
+        $this->freeChildThreshold = $freeChildThreshold;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getNoOfFreeChildGranted(): ?int
+    {
+        return $this->noOfFreeChildGranted;
+    }
+
+    /**
+     * @param int|null $noOfFreeChildGranted
+     * @return AgePolicy
+     */
+    public function setNoOfFreeChildGranted(?int $noOfFreeChildGranted): AgePolicy
+    {
+        $this->noOfFreeChildGranted = $noOfFreeChildGranted;
+        return $this;
+    }
 
     /**
      * @return string

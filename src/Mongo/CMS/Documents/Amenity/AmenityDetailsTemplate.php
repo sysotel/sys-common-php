@@ -18,21 +18,55 @@ class AmenityDetailsTemplate extends EmbeddedDocument
     use CanResolveStringID;
 
     /**
-     * @var AmenityTemplateType
+     * @var ?AmenityTemplateType
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\AmenityTemplateType::class))
      */
-    public $type;
+    private $type;
 
     /**
      * @var ArrayCollection & TemplateAttribute[]
      * @ODM\EmbedMany (targetClass=TemplateAttribute::class)
      */
-    public $attributes;
+    private $attributes;
 
-    public function __construct(array $attributes = [])
+    public function __construct()
     {
         $this->attributes = new ArrayCollection;
+    }
 
-        parent::__construct($attributes);
+    /**
+     * @return AmenityTemplateType
+     */
+    public function getType(): AmenityTemplateType
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param AmenityTemplateType $type
+     * @return self
+     */
+    public function setType(AmenityTemplateType $type): self
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection|TemplateAttribute[]
+     */
+    public function getAttributes(): ArrayCollection|array
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * @param ArrayCollection|TemplateAttribute[] $attributes
+     * @return self
+     */
+    public function setAttributes(ArrayCollection|array $attributes): self
+    {
+        $this->attributes = $attributes;
+        return $this;
     }
 }

@@ -14,22 +14,77 @@ use SYSOTEL\APP\Common\Enums\CMS\EarlyCheckInStatus;
 class CheckInPolicy extends EmbeddedDocument
 {
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
-    public $dailyStandardTime;
+    protected $dailyStandardTime;
 
     /**
-     * @var EarlyCheckInStatus
+     * @var ?EarlyCheckInStatus
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\EarlyCheckInStatus::class)
      */
-    public $earlyCheckInStatus;
+    protected $earlyCheckInStatus;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
-    public $details;
+    protected $details;
+
+    /**
+     * @return string|null
+     */
+    public function getDailyStandardTime(): ?string
+    {
+        return $this->dailyStandardTime;
+    }
+
+    /**
+     * @param string|null $dailyStandardTime
+     * @return CheckInPolicy
+     */
+    public function setDailyStandardTime(?string $dailyStandardTime): CheckInPolicy
+    {
+        $this->dailyStandardTime = $dailyStandardTime;
+        return $this;
+    }
+
+    /**
+     * @return EarlyCheckInStatus|null
+     */
+    public function getEarlyCheckInStatus(): ?EarlyCheckInStatus
+    {
+        return $this->earlyCheckInStatus;
+    }
+
+    /**
+     * @param EarlyCheckInStatus|null $earlyCheckInStatus
+     * @return CheckInPolicy
+     */
+    public function setEarlyCheckInStatus(?EarlyCheckInStatus $earlyCheckInStatus): CheckInPolicy
+    {
+        $this->earlyCheckInStatus = $earlyCheckInStatus;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDetails(): ?string
+    {
+        return $this->details;
+    }
+
+    /**
+     * @param string|null $details
+     * @return CheckInPolicy
+     */
+    public function setDetails(?string $details): CheckInPolicy
+    {
+        $this->details = $details;
+        return $this;
+    }
+
 
     /**
      * @return string

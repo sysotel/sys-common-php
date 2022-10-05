@@ -15,13 +15,13 @@ class GeoPoint extends EmbeddedDocument
      * @var string
      * @ODM\Field(type="string")
      */
-    public $type = 'Point';
+    protected $type = 'Point';
 
     /**
      * @var float[]
      * @ODM\Field(type="collection")
      */
-    public $coordinates;
+    protected $coordinates = [];
 
     /**
      * @param float $longitude
@@ -30,11 +30,7 @@ class GeoPoint extends EmbeddedDocument
      */
     public static function createFromCoordinates(float $longitude, float $latitude): self
     {
-        return new self([
-            'coordinates' => [
-                $longitude, $latitude
-            ]
-        ]);
+        return self::make()->setCoordinates([$longitude, $latitude]);
     }
 
     /**
@@ -55,5 +51,23 @@ class GeoPoint extends EmbeddedDocument
     public function getLongitude(): ?float
     {
         return $this->coordinates[0] ?? null;
+    }
+
+    /**
+     * @return float[]
+     */
+    public function getCoordinates(): array
+    {
+        return $this->coordinates;
+    }
+
+    /**
+     * @param float[] $coordinates
+     * @return GeoPoint
+     */
+    public function setCoordinates(array $coordinates): GeoPoint
+    {
+        $this->coordinates = $coordinates;
+        return $this;
     }
 }

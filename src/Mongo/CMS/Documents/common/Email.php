@@ -12,7 +12,7 @@ use Delta4op\Mongodb\Documents\EmbeddedDocument;
 class Email extends EmbeddedDocument
 {
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     public $id;
@@ -22,6 +22,24 @@ class Email extends EmbeddedDocument
      */
     public function __toString(): string
     {
+        return $this->id ?? '';
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getId(): ?string
+    {
         return $this->id;
+    }
+
+    /**
+     * @param string|null $id
+     * @return Email
+     */
+    public function setId(?string $id): Email
+    {
+        $this->id = $id;
+        return $this;
     }
 }

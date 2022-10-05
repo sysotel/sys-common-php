@@ -13,14 +13,50 @@ use SYSOTEL\APP\Common\Enums\CMS\InventoryAccuracy;
 class InventorySettings extends EmbeddedDocument
 {
     /**
-     * @var InventoryAccuracy
+     * @var ?InventoryAccuracy
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\InventoryAccuracy::class)
      */
-    public $accuracy;
+    protected $accuracy;
 
     /**
      * @var ArrayCollection & int[]
      * @ODM\Field(type="collection")
      */
-    public $hourlySlots = [];
+    protected $hourlySlots = [];
+
+    /**
+     * @return InventoryAccuracy|null
+     */
+    public function getAccuracy(): ?InventoryAccuracy
+    {
+        return $this->accuracy;
+    }
+
+    /**
+     * @param InventoryAccuracy|null $accuracy
+     * @return InventorySettings
+     */
+    public function setAccuracy(?InventoryAccuracy $accuracy): InventorySettings
+    {
+        $this->accuracy = $accuracy;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection|int[]
+     */
+    public function getHourlySlots(): array|ArrayCollection
+    {
+        return $this->hourlySlots;
+    }
+
+    /**
+     * @param ArrayCollection|int[] $hourlySlots
+     * @return InventorySettings
+     */
+    public function setHourlySlots(array|ArrayCollection $hourlySlots): InventorySettings
+    {
+        $this->hourlySlots = $hourlySlots;
+        return $this;
+    }
 }

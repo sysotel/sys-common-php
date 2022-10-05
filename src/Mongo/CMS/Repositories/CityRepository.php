@@ -12,7 +12,7 @@ class CityRepository extends DocumentRepository
 {
     public function findAllForState(string|State $state, array $criteria = [], array $orderBy = []): array
     {
-        $stateID = $state instanceof State ? $state->id : $state;
+        $stateID = $state instanceof State ? $state->getId() : $state;
 
         $criteria = array_merge([
             'state.id' => new ObjectId($stateID)

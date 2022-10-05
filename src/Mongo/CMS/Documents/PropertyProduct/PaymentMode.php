@@ -13,20 +13,74 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertyProductPaymentType;
 class PaymentMode extends EmbeddedDocument
 {
     /**
-     * @var PropertyProductPaymentType
+     * @var ?PropertyProductPaymentType
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyProductPaymentType::class)
      */
-    public $type;
+    protected $type;
 
     /**
-     * @var PartialAmountType
+     * @var ?PartialAmountType
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PartialAmountType::class)
      */
-    public $partialAmountType;
+    protected $partialAmountType;
 
     /**
-     * @var float
+     * @var ?float
      * @ODM\Field(type="float")
      */
-    public $partialAmount;
+    protected $partialAmount;
+
+    /**
+     * @return PropertyProductPaymentType|null
+     */
+    public function getType(): ?PropertyProductPaymentType
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param PropertyProductPaymentType|null $type
+     * @return PaymentMode
+     */
+    public function setType(?PropertyProductPaymentType $type): PaymentMode
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    /**
+     * @return PartialAmountType|null
+     */
+    public function getPartialAmountType(): ?PartialAmountType
+    {
+        return $this->partialAmountType;
+    }
+
+    /**
+     * @param PartialAmountType|null $partialAmountType
+     * @return PaymentMode
+     */
+    public function setPartialAmountType(?PartialAmountType $partialAmountType): PaymentMode
+    {
+        $this->partialAmountType = $partialAmountType;
+        return $this;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getPartialAmount(): ?float
+    {
+        return $this->partialAmount;
+    }
+
+    /**
+     * @param float|null $partialAmount
+     * @return PaymentMode
+     */
+    public function setPartialAmount(?float $partialAmount): PaymentMode
+    {
+        $this->partialAmount = $partialAmount;
+        return $this;
+    }
 }

@@ -15,37 +15,37 @@ class SpaceOccupancy extends EmbeddedDocument
      * @var int
      * @ODM\Field(type="int")
      */
-    public $baseCount;
+    protected $baseCount;
 
     /**
      * @var int
      * @ODM\Field(type="int")
      */
-    public $maxCount;
+    protected $maxCount;
 
     /**
      * @var int
      * @ODM\Field(type="int")
      */
-    public $minAdultCount;
+    protected $minAdultCount;
 
     /**
      * @var int
      * @ODM\Field(type="int")
      */
-    public $maxAdultCount;
+    protected $maxAdultCount;
 
     /**
      * @var int
      * @ODM\Field(type="int")
      */
-    public $minChildCount;
+    protected $minChildCount;
 
     /**
      * @var int
      * @ODM\Field(type="int")
      */
-    public $maxChildCount;
+    protected $maxChildCount;
 
     /**
      * @return array
@@ -122,5 +122,113 @@ class SpaceOccupancy extends EmbeddedDocument
             return range(1, ($this->maxCount - $this->baseCount));
         }
         return [];
+    }
+
+    /**
+     * @return int
+     */
+    public function getBaseCount(): int
+    {
+        return $this->baseCount;
+    }
+
+    /**
+     * @param int $baseCount
+     * @return SpaceOccupancy
+     */
+    public function setBaseCount(int $baseCount): SpaceOccupancy
+    {
+        $this->baseCount = $baseCount;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMaxCount(): int
+    {
+        return $this->maxCount;
+    }
+
+    /**
+     * @param int $maxCount
+     * @return SpaceOccupancy
+     */
+    public function setMaxCount(int $maxCount): SpaceOccupancy
+    {
+        $this->maxCount = $maxCount;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMinAdultCount(): int
+    {
+        return $this->minAdultCount;
+    }
+
+    /**
+     * @param int $minAdultCount
+     * @return SpaceOccupancy
+     */
+    public function setMinAdultCount(int $minAdultCount): SpaceOccupancy
+    {
+        $this->minAdultCount = $minAdultCount;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMaxAdultCount(): int
+    {
+        return $this->maxAdultCount;
+    }
+
+    /**
+     * @param int $maxAdultCount
+     * @return SpaceOccupancy
+     */
+    public function setMaxAdultCount(int $maxAdultCount): SpaceOccupancy
+    {
+        $this->maxAdultCount = $maxAdultCount;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMinChildCount(): int
+    {
+        return $this->minChildCount;
+    }
+
+    /**
+     * @param int $minChildCount
+     * @return SpaceOccupancy
+     */
+    public function setMinChildCount(int $minChildCount): SpaceOccupancy
+    {
+        $this->minChildCount = $minChildCount;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMaxChildCount(): int
+    {
+        return $this->maxChildCount;
+    }
+
+    /**
+     * @param int $maxChildCount
+     * @return SpaceOccupancy
+     */
+    public function setMaxChildCount(int $maxChildCount): SpaceOccupancy
+    {
+        $this->maxChildCount = $maxChildCount;
+        return $this;
     }
 }

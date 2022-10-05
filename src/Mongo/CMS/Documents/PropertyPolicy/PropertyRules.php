@@ -16,34 +16,124 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy\Rules\UnmarriedCoupleR
 class PropertyRules extends EmbeddedDocument
 {
     /**
-     * @var GuestDocumentRule
+     * @var ?GuestDocumentRule
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy\Rules\GuestDocumentRule::class)
      */
-    public $guestDocumentRule;
+    protected $guestDocumentRule;
 
     /**
-     * @var UnmarriedCoupleRule
+     * @var ?UnmarriedCoupleRule
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy\Rules\UnmarriedCoupleRule::class)
      */
-    public $unmarriedCoupleRule;
+    protected $unmarriedCoupleRule;
 
     /**
-     * @var BachelorsRule
+     * @var ?BachelorsRule
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy\Rules\BachelorsRule::class)
      */
-    public $bachelorsRule;
+    protected $bachelorsRule;
 
     /**
-     * @var PetsRule
+     * @var ?PetsRule
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy\Rules\PetsRule::class)
      */
-    public $petsRule;
+    protected $petsRule;
 
     /**
-     * @var OutsideFoodRule
+     * @var ?OutsideFoodRule
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy\Rules\OutsideFoodRule::class)
      */
-    public $outsideFoodRule;
+    protected $outsideFoodRule;
+
+    /**
+     * @return GuestDocumentRule|null
+     */
+    public function getGuestDocumentRule(): ?GuestDocumentRule
+    {
+        return $this->guestDocumentRule;
+    }
+
+    /**
+     * @param GuestDocumentRule|null $guestDocumentRule
+     * @return PropertyRules
+     */
+    public function setGuestDocumentRule(?GuestDocumentRule $guestDocumentRule): PropertyRules
+    {
+        $this->guestDocumentRule = $guestDocumentRule;
+        return $this;
+    }
+
+    /**
+     * @return UnmarriedCoupleRule|null
+     */
+    public function getUnmarriedCoupleRule(): ?UnmarriedCoupleRule
+    {
+        return $this->unmarriedCoupleRule;
+    }
+
+    /**
+     * @param UnmarriedCoupleRule|null $unmarriedCoupleRule
+     * @return PropertyRules
+     */
+    public function setUnmarriedCoupleRule(?UnmarriedCoupleRule $unmarriedCoupleRule): PropertyRules
+    {
+        $this->unmarriedCoupleRule = $unmarriedCoupleRule;
+        return $this;
+    }
+
+    /**
+     * @return BachelorsRule|null
+     */
+    public function getBachelorsRule(): ?BachelorsRule
+    {
+        return $this->bachelorsRule;
+    }
+
+    /**
+     * @param BachelorsRule|null $bachelorsRule
+     * @return PropertyRules
+     */
+    public function setBachelorsRule(?BachelorsRule $bachelorsRule): PropertyRules
+    {
+        $this->bachelorsRule = $bachelorsRule;
+        return $this;
+    }
+
+    /**
+     * @return PetsRule|null
+     */
+    public function getPetsRule(): ?PetsRule
+    {
+        return $this->petsRule;
+    }
+
+    /**
+     * @param PetsRule|null $petsRule
+     * @return PropertyRules
+     */
+    public function setPetsRule(?PetsRule $petsRule): PropertyRules
+    {
+        $this->petsRule = $petsRule;
+        return $this;
+    }
+
+    /**
+     * @return OutsideFoodRule|null
+     */
+    public function getOutsideFoodRule(): ?OutsideFoodRule
+    {
+        return $this->outsideFoodRule;
+    }
+
+    /**
+     * @param OutsideFoodRule|null $outsideFoodRule
+     * @return PropertyRules
+     */
+    public function setOutsideFoodRule(?OutsideFoodRule $outsideFoodRule): PropertyRules
+    {
+        $this->outsideFoodRule = $outsideFoodRule;
+        return $this;
+    }
 
     /**
      * @return array

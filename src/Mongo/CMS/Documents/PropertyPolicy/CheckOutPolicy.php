@@ -15,22 +15,76 @@ use SYSOTEL\APP\Common\Enums\CMS\LateCheckOutStatus;
 class CheckOutPolicy extends EmbeddedDocument
 {
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
-    public $dailyStandardTime;
+    protected $dailyStandardTime;
 
     /**
-     * @var LateCheckOutStatus
+     * @var ?LateCheckOutStatus
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\LateCheckOutStatus::class)
      */
-    public $lateCheckOutStatus;
+    protected $lateCheckOutStatus;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
-    public $details;
+    protected $details;
+
+    /**
+     * @return string|null
+     */
+    public function getDailyStandardTime(): ?string
+    {
+        return $this->dailyStandardTime;
+    }
+
+    /**
+     * @param string|null $dailyStandardTime
+     * @return CheckOutPolicy
+     */
+    public function setDailyStandardTime(?string $dailyStandardTime): CheckOutPolicy
+    {
+        $this->dailyStandardTime = $dailyStandardTime;
+        return $this;
+    }
+
+    /**
+     * @return LateCheckOutStatus|null
+     */
+    public function getLateCheckOutStatus(): ?LateCheckOutStatus
+    {
+        return $this->lateCheckOutStatus;
+    }
+
+    /**
+     * @param LateCheckOutStatus|null $lateCheckOutStatus
+     * @return CheckOutPolicy
+     */
+    public function setLateCheckOutStatus(?LateCheckOutStatus $lateCheckOutStatus): CheckOutPolicy
+    {
+        $this->lateCheckOutStatus = $lateCheckOutStatus;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDetails(): ?string
+    {
+        return $this->details;
+    }
+
+    /**
+     * @param string|null $details
+     * @return CheckOutPolicy
+     */
+    public function setDetails(?string $details): CheckOutPolicy
+    {
+        $this->details = $details;
+        return $this;
+    }
 
     /**
      * @return string

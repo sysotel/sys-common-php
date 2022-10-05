@@ -17,7 +17,7 @@ class Counter extends BaseDocument
      * @var string
      * @ODM\Id(strategy="none"))
      */
-    public $id;
+    protected $id;
 
     /**
      * Counter value
@@ -25,7 +25,7 @@ class Counter extends BaseDocument
      * @var int
      * @ODM\Field(type="int")
      */
-    public $value;
+    protected $value;
 
     /**
      * @param int $by
@@ -34,5 +34,41 @@ class Counter extends BaseDocument
     public function increment(int $by = 1): int
     {
         return $this->value += $by;
+    }
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     * @return Counter
+     */
+    public function setId(string $id): Counter
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getValue(): int
+    {
+        return $this->value;
+    }
+
+    /**
+     * @param int $value
+     * @return Counter
+     */
+    public function setValue(int $value): Counter
+    {
+        $this->value = $value;
+        return $this;
     }
 }

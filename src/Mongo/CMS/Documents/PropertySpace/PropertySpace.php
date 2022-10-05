@@ -30,88 +30,322 @@ class PropertySpace extends BaseDocument
     use HasDefaultAttributes;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
-    public $displayName;
+    protected $displayName;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
-    public $internalName;
-
-    /**
-     * @var string|null
-     * @ODM\Field(type="string")
-     */
-    public $shortDescription;
+    protected $internalName;
 
     /**
      * @var string|null
      * @ODM\Field(type="string")
      */
-    public $longDescription;
+    protected $shortDescription;
+
+    /**
+     * @var string|null
+     * @ODM\Field(type="string")
+     */
+    protected $longDescription;
 
     /**
      * @var ?int
      * @ODM\Field(type="int")
      */
-    public $noOfUnits;
+    protected $noOfUnits;
 
     /**
-     * @var SpaceOccupancy
+     * @var ?SpaceOccupancy
      * @ODM\EmbedOne (targetDocument=SpaceOccupancy::class)
      */
-    public $occupancy;
+    protected $occupancy;
 
     /**
-     * @var SpaceView
+     * @var ?SpaceView
      * @ODM\EmbedOne(targetDocument=SpaceView::class)
      */
-    public $view;
+    protected $view;
 
     /**
-     * @var SpaceSize
+     * @var ?SpaceSize
      * @ODM\EmbedOne(targetDocument=SpaceSize::class)
      */
-    public $size;
+    protected $size;
 
     /**
      * @var ?bool
      * @ODM\Field(type="bool")
      */
-    public $nonSmoking;
+    protected $nonSmoking;
 
     /**
-     * @var InventorySettings
+     * @var ?InventorySettings
      * @ODM\EmbedOne(targetDocument=InventorySettings::class)
      */
-    public $inventorySettings;
+    protected $inventorySettings;
 
     /**
-     * @var SpaceStayType
+     * @var ?SpaceStayType
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\SpaceStayType::class)
      */
-    public $stayType;
+    protected $stayType;
 
     /**
-     * @var PropertySpaceStatus
+     * @var ?PropertySpaceStatus
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertySpaceStatus::class)
      */
-    public $status;
+    protected $status;
 
     /**
-     * @var int
+     * @var ?int
      * @ODM\Field(type="int")
      */
-    public $sortOrder;
+    protected $sortOrder;
 
     /**
      * @var array
      */
-    public $defaults = [
+    protected $defaults = [
         'status' => PropertySpaceStatus::ACTIVE,
         'stayType' => SpaceStayType::PRIVATE
     ];
+
+    /**
+     * @return string|null
+     */
+    public function getDisplayName(): ?string
+    {
+        return $this->displayName;
+    }
+
+    /**
+     * @param string|null $displayName
+     * @return PropertySpace
+     */
+    public function setDisplayName(?string $displayName): PropertySpace
+    {
+        $this->displayName = $displayName;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getInternalName(): ?string
+    {
+        return $this->internalName;
+    }
+
+    /**
+     * @param string|null $internalName
+     * @return PropertySpace
+     */
+    public function setInternalName(?string $internalName): PropertySpace
+    {
+        $this->internalName = $internalName;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getShortDescription(): ?string
+    {
+        return $this->shortDescription;
+    }
+
+    /**
+     * @param string|null $shortDescription
+     * @return PropertySpace
+     */
+    public function setShortDescription(?string $shortDescription): PropertySpace
+    {
+        $this->shortDescription = $shortDescription;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLongDescription(): ?string
+    {
+        return $this->longDescription;
+    }
+
+    /**
+     * @param string|null $longDescription
+     * @return PropertySpace
+     */
+    public function setLongDescription(?string $longDescription): PropertySpace
+    {
+        $this->longDescription = $longDescription;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getNoOfUnits(): ?int
+    {
+        return $this->noOfUnits;
+    }
+
+    /**
+     * @param int|null $noOfUnits
+     * @return PropertySpace
+     */
+    public function setNoOfUnits(?int $noOfUnits): PropertySpace
+    {
+        $this->noOfUnits = $noOfUnits;
+        return $this;
+    }
+
+    /**
+     * @return SpaceOccupancy|null
+     */
+    public function getOccupancy(): ?SpaceOccupancy
+    {
+        return $this->occupancy;
+    }
+
+    /**
+     * @param SpaceOccupancy|null $occupancy
+     * @return PropertySpace
+     */
+    public function setOccupancy(?SpaceOccupancy $occupancy): PropertySpace
+    {
+        $this->occupancy = $occupancy;
+        return $this;
+    }
+
+    /**
+     * @return SpaceView|null
+     */
+    public function getView(): ?SpaceView
+    {
+        return $this->view;
+    }
+
+    /**
+     * @param SpaceView|null $view
+     * @return PropertySpace
+     */
+    public function setView(?SpaceView $view): PropertySpace
+    {
+        $this->view = $view;
+        return $this;
+    }
+
+    /**
+     * @return SpaceSize|null
+     */
+    public function getSize(): ?SpaceSize
+    {
+        return $this->size;
+    }
+
+    /**
+     * @param SpaceSize|null $size
+     * @return PropertySpace
+     */
+    public function setSize(?SpaceSize $size): PropertySpace
+    {
+        $this->size = $size;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getNonSmoking(): ?bool
+    {
+        return $this->nonSmoking;
+    }
+
+    /**
+     * @param bool|null $nonSmoking
+     * @return PropertySpace
+     */
+    public function setNonSmoking(?bool $nonSmoking): PropertySpace
+    {
+        $this->nonSmoking = $nonSmoking;
+        return $this;
+    }
+
+    /**
+     * @return InventorySettings|null
+     */
+    public function getInventorySettings(): ?InventorySettings
+    {
+        return $this->inventorySettings;
+    }
+
+    /**
+     * @param InventorySettings|null $inventorySettings
+     * @return PropertySpace
+     */
+    public function setInventorySettings(?InventorySettings $inventorySettings): PropertySpace
+    {
+        $this->inventorySettings = $inventorySettings;
+        return $this;
+    }
+
+    /**
+     * @return SpaceStayType|null
+     */
+    public function getStayType(): ?SpaceStayType
+    {
+        return $this->stayType;
+    }
+
+    /**
+     * @param SpaceStayType|null $stayType
+     * @return PropertySpace
+     */
+    public function setStayType(?SpaceStayType $stayType): PropertySpace
+    {
+        $this->stayType = $stayType;
+        return $this;
+    }
+
+    /**
+     * @return PropertySpaceStatus|null
+     */
+    public function getStatus(): ?PropertySpaceStatus
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param PropertySpaceStatus|null $status
+     * @return PropertySpace
+     */
+    public function setStatus(?PropertySpaceStatus $status): PropertySpace
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getSortOrder(): ?int
+    {
+        return $this->sortOrder;
+    }
+
+    /**
+     * @param int|null $sortOrder
+     * @return PropertySpace
+     */
+    public function setSortOrder(?int $sortOrder): PropertySpace
+    {
+        $this->sortOrder = $sortOrder;
+        return $this;
+    }
 }

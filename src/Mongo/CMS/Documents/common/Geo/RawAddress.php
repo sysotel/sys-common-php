@@ -16,55 +16,145 @@ class RawAddress extends EmbeddedDocument implements AddressContract
      * @var string
      * @ODM\Field(type="string")
      */
-    public $fullAddress;
+    protected $fullAddress;
 
     /**
      * @var string
      * @ODM\Field(type="string")
      */
-    public $line1;
+    protected $line1;
 
     /**
      * @var string
      * @ODM\Field(type="string")
      */
-    public $area;
+    protected $area;
 
     /**
      * @var string
      * @ODM\Field(type="string")
      */
-    public $city;
+    protected $city;
 
     /**
      * @var string
      * @ODM\Field(type="string")
      */
-    public $state;
+    protected $state;
 
     /**
      * @var string
      * @ODM\Field(type="string")
      */
-    public $country;
+    protected $country;
 
     /**
      * @var int
      * @ODM\Field(type="int")
      */
-    public $postalCode;
+    protected $postalCode;
 
     /**
      * @var float
      * @ODM\Field(type="double")
      */
-    public $longitude;
+    protected $longitude;
 
     /**
      * @var float
      * @ODM\Field(type="double")
      */
-    public $latitude;
+    protected $latitude;
+
+    /**
+     * @param string $fullAddress
+     * @return RawAddress
+     */
+    public function setFullAddress(string $fullAddress): RawAddress
+    {
+        $this->fullAddress = $fullAddress;
+        return $this;
+    }
+
+    /**
+     * @param string $line1
+     * @return RawAddress
+     */
+    public function setLine1(string $line1): RawAddress
+    {
+        $this->line1 = $line1;
+        return $this;
+    }
+
+    /**
+     * @param string $area
+     * @return RawAddress
+     */
+    public function setArea(string $area): RawAddress
+    {
+        $this->area = $area;
+        return $this;
+    }
+
+    /**
+     * @param string $city
+     * @return RawAddress
+     */
+    public function setCity(string $city): RawAddress
+    {
+        $this->city = $city;
+        return $this;
+    }
+
+    /**
+     * @param string $state
+     * @return RawAddress
+     */
+    public function setState(string $state): RawAddress
+    {
+        $this->state = $state;
+        return $this;
+    }
+
+    /**
+     * @param string $country
+     * @return RawAddress
+     */
+    public function setCountry(string $country): RawAddress
+    {
+        $this->country = $country;
+        return $this;
+    }
+
+    /**
+     * @param int $postalCode
+     * @return RawAddress
+     */
+    public function setPostalCode(int $postalCode): RawAddress
+    {
+        $this->postalCode = $postalCode;
+        return $this;
+    }
+
+    /**
+     * @param float $longitude
+     * @return RawAddress
+     */
+    public function setLongitude(float $longitude): RawAddress
+    {
+        $this->longitude = $longitude;
+        return $this;
+    }
+
+    /**
+     * @param float $latitude
+     * @return RawAddress
+     */
+    public function setLatitude(float $latitude): RawAddress
+    {
+        $this->latitude = $latitude;
+        return $this;
+    }
 
     public function getPostalCode(): string|null
     {

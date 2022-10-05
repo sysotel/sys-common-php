@@ -18,20 +18,76 @@ class TemplateAttribute extends EmbeddedDocument
     use CanResolveStringID;
 
     /**
-     * @var int
+     * @var ?int
      * @ODM\Field(type="int")
      */
     public $id;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     public $name;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     public $description;
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int|null $id
+     * @return TemplateAttribute
+     */
+    public function setId(?int $id): TemplateAttribute
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string|null $name
+     * @return TemplateAttribute
+     */
+    public function setName(?string $name): TemplateAttribute
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string|null $description
+     * @return TemplateAttribute
+     */
+    public function setDescription(?string $description): TemplateAttribute
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    
 }
