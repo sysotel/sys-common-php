@@ -9,6 +9,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PropertySpaceStatus;
 use SYSOTEL\APP\Common\Enums\CMS\SpaceStayType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertySpaceRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
@@ -348,5 +349,13 @@ class PropertySpace extends BaseDocument
     {
         $this->sortOrder = $sortOrder;
         return $this;
+    }
+
+    /**
+     * @return PropertySpaceRepository
+     */
+    public static function repository(): PropertySpaceRepository
+    {
+        return parent::repository();
     }
 }

@@ -7,6 +7,8 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CityReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\AreaRepository;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertySpaceRepository;
 
 /**
  * @ODM\Document(
@@ -23,19 +25,19 @@ class Area extends LocationItem
      * @var CountryReference
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference::class)
      */
-    protected $country;
+    private $country;
 
     /**
      * @var StateReference
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference::class)
      */
-    protected $state;
+    private $state;
 
     /**
      * @var CityReference
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CityReference::class)
      */
-    protected $city;
+    private $city;
 
     /**
      * @return CountryReference
@@ -89,5 +91,13 @@ class Area extends LocationItem
     {
         $this->city = $city;
         return $this;
+    }
+
+    /**
+     * @return AreaRepository
+     */
+    public static function repository(): AreaRepository
+    {
+        return parent::repository();
     }
 }

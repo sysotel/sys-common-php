@@ -7,6 +7,7 @@ use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\CityRepository;
 
 /**
  * @ODM\Document(
@@ -65,5 +66,13 @@ class City extends LocationItem
     {
         $this->state = $state;
         return $this;
+    }
+
+    /**
+     * @return CityRepository
+     */
+    public static function repository(): CityRepository
+    {
+        return parent::repository();
     }
 }

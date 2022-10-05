@@ -9,6 +9,8 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\MealPlanCode;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyProductStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyProductRepository;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertySpaceRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
@@ -232,5 +234,13 @@ class PropertyProduct extends BaseDocument
     {
         $this->status = $status;
         return $this;
+    }
+
+    /**
+     * @return PropertyProductRepository
+     */
+    public static function repository(): PropertyProductRepository
+    {
+        return parent::repository();
     }
 }

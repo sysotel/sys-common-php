@@ -12,7 +12,7 @@ use SYSOTEL\APP\Common\Enums\CMS\AmenityTarget;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 
 /**
- * @ODM\Document(collection="emenities")
+ * @ODM\Document(collection="amenities")
  */
 class Amenity extends BaseDocument
 {

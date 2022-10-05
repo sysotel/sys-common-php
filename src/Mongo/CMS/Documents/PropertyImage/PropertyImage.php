@@ -13,6 +13,7 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertyImageVersion;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Verification;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyImageRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
@@ -387,5 +388,13 @@ class PropertyImage extends BaseDocument
     {
         $this->defaults = $defaults;
         return $this;
+    }
+
+    /**
+     * @return PropertyImageRepository
+     */
+    public static function repository(): PropertyImageRepository
+    {
+        return parent::repository();
     }
 }
