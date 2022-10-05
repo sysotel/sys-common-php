@@ -19,14 +19,4 @@ trait HasObjectIdKey
     {
         return $this->id;
     }
-
-    /**
-     * @param string $id
-     * @return static
-     */
-    public function setId(string $id): static
-    {
-        $this->id = $id;
-        return $this;
-    }
 }

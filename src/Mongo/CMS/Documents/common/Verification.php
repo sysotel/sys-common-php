@@ -47,7 +47,7 @@ class Verification extends EmbeddedDocument
      */
     public static function defaultDocument(): Verification
     {
-        return self::make()->setStatus(VerificationStatus::PENDING);
+        return (new self)->setStatus(VerificationStatus::PENDING);
     }
 
     /**
@@ -55,7 +55,7 @@ class Verification extends EmbeddedDocument
      */
     public static function autoVerifiedDocument(): Verification
     {
-        return self::make()
+        return (new self)
             ->setStatus(VerificationStatus::PENDING)
             ->setIsAutoVerified(true);
     }

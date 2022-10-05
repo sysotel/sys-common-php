@@ -44,4 +44,94 @@ abstract class LocationItem extends BaseDocument
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\PropertyCount::class)
      */
     protected $propertyCount;
+
+    /**
+     * @return string
+     */
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     * @return LocationItem
+     */
+    public function setSlug(string $slug): LocationItem
+    {
+        $this->slug = $slug;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return LocationItem
+     */
+    public function setName(string $name): LocationItem
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return GeoPoint
+     */
+    public function getGeoPoint(): GeoPoint
+    {
+        return $this->geoPoint;
+    }
+
+    /**
+     * @param GeoPoint $geoPoint
+     * @return LocationItem
+     */
+    public function setGeoPoint(GeoPoint $geoPoint): LocationItem
+    {
+        $this->geoPoint = $geoPoint;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSearchKeywords(): array
+    {
+        return $this->searchKeywords;
+    }
+
+    /**
+     * @param array $searchKeywords
+     * @return LocationItem
+     */
+    public function setSearchKeywords(array $searchKeywords): LocationItem
+    {
+        $this->searchKeywords = $searchKeywords;
+        return $this;
+    }
+
+    /**
+     * @return PropertyCount
+     */
+    public function getPropertyCount(): PropertyCount
+    {
+        return $this->propertyCount;
+    }
+
+    /**
+     * @param PropertyCount $propertyCount
+     * @return LocationItem
+     */
+    public function setPropertyCount(PropertyCount $propertyCount): LocationItem
+    {
+        $this->propertyCount = $propertyCount;
+        return $this;
+    }
 }

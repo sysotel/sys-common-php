@@ -21,10 +21,23 @@ class State extends LocationItem
      * @var CountryReference
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference::class)
      */
-    public $country;
+    protected $country;
 
     /**
-     * @var string
-     * @ODM\Field
+     * @return CountryReference
      */
+    public function getCountry(): CountryReference
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param CountryReference $country
+     * @return State
+     */
+    public function setCountry(CountryReference $country): State
+    {
+        $this->country = $country;
+        return $this;
+    }
 }

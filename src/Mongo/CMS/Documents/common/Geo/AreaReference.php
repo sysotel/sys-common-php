@@ -25,12 +25,25 @@ class AreaReference extends EmbeddedDocument
     protected $name;
 
     /**
+     * @param ObjectId|string $id
+     * @param string $name
+     */
+    public function __construct(ObjectId|string $id, string $name)
+    {
+        $this->id = is_string($id) ? new ObjectId($id) : $id;
+        $this->name = $name;
+    }
+
+    /**
      * @param Area $area
      * @return AreaReference
      */
     public static function createFromArea(Area $area): AreaReference
     {
-        return self::make()->setId($area->id)->setName($area->name);
+        return new self(
+            $area->getId(),
+            $area->getName()
+        );
     }
 
     /**
@@ -42,30 +55,10 @@ class AreaReference extends EmbeddedDocument
     }
 
     /**
-     * @param ObjectId $id
-     * @return AreaReference
-     */
-    public function setId(ObjectId $id): AreaReference
-    {
-        $this->id = $id;
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getName(): string
     {
         return $this->name;
-    }
-
-    /**
-     * @param string $name
-     * @return AreaReference
-     */
-    public function setName(string $name): AreaReference
-    {
-        $this->name = $name;
-        return $this;
     }
 }

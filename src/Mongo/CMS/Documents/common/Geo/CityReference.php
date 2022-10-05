@@ -31,15 +31,28 @@ class CityReference extends EmbeddedDocument
     protected $slug;
 
     /**
+     * @param ObjectId|string $id
+     * @param string $name
+     * @param string $slug
+     */
+    public function __construct(ObjectId|string $id, string $name, string $slug)
+    {
+        $this->id = is_string($id) ? new ObjectId($id) : $id;
+        $this->name = $name;
+        $this->slug = $slug;
+    }
+
+    /**
      * @param City $city
      * @return CityReference
      */
     public static function createFromCity(City $city): CityReference
     {
-        return self::make()
-            ->setId(new ObjectId($city->id))
-            ->setName($city->name)
-            ->setSlug($city->slug);
+        return new self(
+            $city->getId(),
+            $city->getName(),
+            $city->getSlug(),
+        );
     }
 
     /**

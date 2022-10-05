@@ -23,6 +23,11 @@ class GeoPoint extends EmbeddedDocument
      */
     protected $coordinates = [];
 
+    public function __construct(float $longitude, float $latitude)
+    {
+        $this->coordinates = [$longitude, $latitude];
+    }
+
     /**
      * @param float $longitude
      * @param float $latitude
@@ -30,7 +35,7 @@ class GeoPoint extends EmbeddedDocument
      */
     public static function createFromCoordinates(float $longitude, float $latitude): self
     {
-        return self::make()->setCoordinates([$longitude, $latitude]);
+        return new self($longitude, $latitude);
     }
 
     /**
@@ -59,15 +64,5 @@ class GeoPoint extends EmbeddedDocument
     public function getCoordinates(): array
     {
         return $this->coordinates;
-    }
-
-    /**
-     * @param float[] $coordinates
-     * @return GeoPoint
-     */
-    public function setCoordinates(array $coordinates): GeoPoint
-    {
-        $this->coordinates = $coordinates;
-        return $this;
     }
 }

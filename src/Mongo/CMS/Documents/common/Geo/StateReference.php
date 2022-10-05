@@ -31,12 +31,24 @@ class StateReference extends EmbeddedDocument
     protected $slug;
 
     /**
+     * @param ObjectId|string $id
+     * @param string $name
+     * @param string $slug
+     */
+    public function __construct(ObjectId|string $id, string $name, string $slug)
+    {
+        $this->id = is_string($id) ? new ObjectId($id) : $id;
+        $this->name = $name;
+        $this->slug = $slug;
+    }
+
+    /**
      * @param State $state
      * @return StateReference
      */
     public static function createFromState(State $state): StateReference
     {
-        return self::make()->setId($state->id)->setName($state->name)->setSlug($state->slug);
+        return new self($state->getId(), $state->getName(), $state->getSlug());
     }
 
     /**
@@ -48,16 +60,6 @@ class StateReference extends EmbeddedDocument
     }
 
     /**
-     * @param ObjectId $id
-     * @return StateReference
-     */
-    public function setId(ObjectId $id): StateReference
-    {
-        $this->id = $id;
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getName(): string
@@ -66,30 +68,10 @@ class StateReference extends EmbeddedDocument
     }
 
     /**
-     * @param string $name
-     * @return StateReference
-     */
-    public function setName(string $name): StateReference
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getSlug(): string
     {
         return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     * @return StateReference
-     */
-    public function setSlug(string $slug): StateReference
-    {
-        $this->slug = $slug;
-        return $this;
     }
 }

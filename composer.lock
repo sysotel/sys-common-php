@@ -126,7 +126,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/delta4op/laravel-mongodb",
-                "reference": "3d20069dca05aa3674fe0192e977b694c27208c4"
+                "reference": "bb9a184359e227fd819aa469a7e76dde61ac64cb"
             },
             "require": {
                 "doctrine/mongodb-odm": "2.4.*",
@@ -195,7 +195,7 @@
             ],
             "description": "A lightweight Laravel wrapper around Doctrine's mongodb-odm Document Mapper",
             "homepage": "https://github.com/delta4op/laravel-mongodb",
-            "time": "2022-10-05T05:41:56+00:00"
+            "time": "2022-10-05T08:01:09+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
