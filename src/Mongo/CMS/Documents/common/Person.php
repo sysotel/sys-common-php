@@ -18,25 +18,25 @@ class Person extends EmbeddedDocument
      * @var ?PersonName
      * @ODM\EmbedOne(targetDocument=PersonName::class")
      */
-    public $name;
+    protected $name;
 
     /**
      * @var ?MaritalStatus
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\MaritalStatus::class)
      */
-    public $maritalStatus;
+    protected $maritalStatus;
 
     /**
      * @var ?Gender
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\Gender::class)
      */
-    public $gender;
+    protected $gender;
 
     /**
      * @var ?Carbon
      * @ODM\Field(type="carbon")
      */
-    public $birthDate;
+    protected $birthDate;
 
     /**
      * @return PersonName|null

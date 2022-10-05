@@ -13,7 +13,7 @@ use SYSOTEL\APP\Common\Enums\VerificationStatus;
 class Verification extends EmbeddedDocument
 {
     /**
-     * @var ?VerificationStatus
+     * @var VerificationStatus
      * @ODM\Field (type="string", enumType=SYSOTEL\APP\Common\Enums\VerificationStatus::class)
      */
     public $status;
@@ -25,7 +25,7 @@ class Verification extends EmbeddedDocument
     public $isAutoVerified;
 
     /**
-     * @var ?string
+     * @var string
      * @ODM\Field(type="string")
      */
     public $remark;
@@ -70,9 +70,9 @@ class Verification extends EmbeddedDocument
     }
 
     /**
-     * @return VerificationStatus|null
+     * @return VerificationStatus
      */
-    public function getStatus(): ?VerificationStatus
+    public function getStatus(): VerificationStatus
     {
         return $this->status;
     }

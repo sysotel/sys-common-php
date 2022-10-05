@@ -11,24 +11,24 @@ use Delta4op\Mongodb\Documents\EmbeddedDocument;
 class SpaceSize extends EmbeddedDocument
 {
     /**
-     * @var ?int
+     * @var int
      * @ODM\Field(type="int")
      */
     protected $areaSqft;
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getAreaSqft(): ?int
+    public function getAreaSqft(): int
     {
         return $this->areaSqft;
     }
 
     /**
-     * @param int|null $areaSqft
+     * @param int $areaSqft
      * @return SpaceSize
      */
-    public function setAreaSqft(?int $areaSqft): SpaceSize
+    public function setAreaSqft(int $areaSqft): SpaceSize
     {
         $this->areaSqft = $areaSqft;
         return $this;

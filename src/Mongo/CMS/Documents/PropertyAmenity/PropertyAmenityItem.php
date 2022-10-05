@@ -12,13 +12,13 @@ use Delta4op\Mongodb\Documents\EmbeddedDocument;
 class PropertyAmenityItem extends EmbeddedDocument
 {
     /**
-     * @var ?string
+     * @var string
      * @ODM\field(type="string")
      */
     protected $id;
 
     /**
-     * @var ?bool
+     * @var bool
      * @ODM\field(type="bool")
      */
     protected $flag;
@@ -30,36 +30,36 @@ class PropertyAmenityItem extends EmbeddedDocument
     protected $note;
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getId(): ?string
+    public function getId(): string
     {
         return $this->id;
     }
 
     /**
-     * @param string|null $id
+     * @param string $id
      * @return PropertyAmenityItem
      */
-    public function setId(?string $id): PropertyAmenityItem
+    public function setId(string $id): PropertyAmenityItem
     {
         $this->id = $id;
         return $this;
     }
 
     /**
-     * @return bool|null
+     * @return bool
      */
-    public function getFlag(): ?bool
+    public function isFlag(): bool
     {
         return $this->flag;
     }
 
     /**
-     * @param bool|null $flag
+     * @param bool $flag
      * @return PropertyAmenityItem
      */
-    public function setFlag(?bool $flag): PropertyAmenityItem
+    public function setFlag(bool $flag): PropertyAmenityItem
     {
         $this->flag = $flag;
         return $this;

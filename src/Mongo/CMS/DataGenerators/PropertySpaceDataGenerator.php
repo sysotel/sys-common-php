@@ -29,30 +29,30 @@ class PropertySpaceDataGenerator
     public function addBasicDetails(): PropertySpaceDataGenerator
     {
         $data = [
-            'id' => $this->space->id,
-            'accountId' => $this->space->accountId,
-            'internalName' => $this->space->internalName,
-            'displayName' => $this->space->displayName,
-            'status' => $this->space->status,
-            'longDescription' => $this->space->longDescription,
-            'noOfUnits' => $this->space->noOfUnits,
+            'id' => $this->space->getId(),
+            'accountId' => $this->space->getAccountId(),
+            'internalName' => $this->space->getInternalName(),
+            'displayName' => $this->space->getDisplayName(),
+            'status' => $this->space->getStatus(),
+            'longDescription' => $this->space->getLongDescription(),
+            'noOfUnits' => $this->space->getNoOfUnits(),
             'inventorySettings' => [
-                'accuracy' => $this->space->inventorySettings->accuracy,
-                'hourlySlots' => $this->space->inventorySettings->hourlySlots,
+                'accuracy' => $this->space->getInventorySettings()->getAccuracy(),
+                'hourlySlots' => $this->space->getInventorySettings()->getHourlySlots(),
             ]
         ];
 
-        if ($this->space->view) {
+        if ($this->space->getView()) {
             $data['view'] = [
-                'code' => $this->space->view->code,
-                'name' => $this->space->view->name,
-                'description' => $this->space->view->description,
+                'code' => $this->space->getView()->getCode(),
+                'name' => $this->space->getView()->getName(),
+                'description' => $this->space->getView()->getDescription(),
             ];
         }
 
-        if ($this->space->size) {
+        if ($this->space->getSize()) {
             $data['size'] = [
-                'areaSqft' => $this->space->size->areaSqft
+                'areaSqft' => $this->space->getSize()->getAreaSqft()
             ];
         }
 
@@ -64,17 +64,20 @@ class PropertySpaceDataGenerator
      */
     public function addOccupancy(): PropertySpaceDataGenerator
     {
+        $occupancy = $this->space->getOccupancy();
+
         return $this->appendData([
             'occupancy' => [
-                'baseCount' => $this->space->occupancy->baseCount,
-                'maxCount' => $this->space->occupancy->maxCount,
-                'minAdultCount' => $this->space->occupancy->minAdultCount,
-                'maxAdultCount' => $this->space->occupancy->maxAdultCount,
-                'minChildCount' => $this->space->occupancy->minChildCount,
-                'maxChildCount' => $this->space->occupancy->maxChildCount,
-                'baseRateCounts' => $this->space->occupancy->baseRateCounts(),
-                'extraAdultRateCounts' => $this->space->occupancy->extraRateCounts(AgeCode::ADULT),
-                'extraChildRateCounts' => $this->space->occupancy->extraRateCounts(AgeCode::CHILD),
+                'minCount' => $occupancy->getMinCount(),
+                'baseCount' => $occupancy->getBaseCount(),
+                'maxCount' => $occupancy->getMaxCount(),
+                'minAdultCount' => $occupancy->getMinAdultCount(),
+                'maxAdultCount' => $occupancy->getMaxAdultCount(),
+                'minChildCount' => $occupancy->getMinChildCount(),
+                'maxChildCount' => $occupancy->getMaxChildCount(),
+                'baseRateCounts' => $occupancy->baseRateCounts(),
+                'extraAdultRateCounts' => $occupancy->extraRateCounts(AgeCode::ADULT),
+                'extraChildRateCounts' => $occupancy->extraRateCounts(AgeCode::CHILD),
             ],
         ]);
     }

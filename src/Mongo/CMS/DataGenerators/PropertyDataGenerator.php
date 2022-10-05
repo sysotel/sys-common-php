@@ -27,18 +27,18 @@ class PropertyDataGenerator
     public function addBasicDetails(): PropertyDataGenerator
     {
         return $this->appendData([
-            'id' => $this->property->id,
-            'accountId' => $this->property->accountId,
-            'displayName' => $this->property->displayName,
-            'starRating' => $this->property->starRating->value,
-            'type' => $this->property->type,
-            'baseCurrency' => $this->property->baseCurrency->value,
-            'allowedBookingTypes' => $this->property->allowedBookingTypes,
-            'buildYear' => $this->property->buildYear,
-            'longDescription' => $this->property->longDescription,
-            'propertyLabel' => $this->property->propertyLabel,
-            'spaceLabel' => $this->property->spaceLabel,
-            'productLabel' => $this->property->productLabel,
+            'id' => $this->property->getId(),
+            'accountId' => $this->property->getAccountId(),
+            'displayName' => $this->property->getDisplayName(),
+            'starRating' => $this->property->getStarRating()->value,
+            'type' => $this->property->getType(),
+            'baseCurrency' => $this->property->getBaseCurrency()->value ?? null,
+            'allowedBookingTypes' => $this->property->getAllowedBookingTypes(),
+            'buildYear' => $this->property->getBuildYear(),
+            'longDescription' => $this->property->getLongDescription(),
+            'propertyLabel' => $this->property->getPropertyLabel(),
+            'spaceLabel' => $this->property->getSpaceLabel(),
+            'productLabel' => $this->property->getProductLabel(),
         ]);
     }
 
@@ -49,10 +49,10 @@ class PropertyDataGenerator
     {
         return $this->appendData([
             'creator' => [
-                'id' => $this->property->creator->id,
-                'name' => $this->property->creator->name,
-                'type' => $this->property->creator->type,
-                'email' => $this->property->creator->email->id ?? '',
+                'id' => $this->property->getCreator()->getId(),
+                'name' => $this->property->getCreator()->getName(),
+                'type' => $this->property->getCreator()->getType(),
+                'email' => $this->property->getCreator()->getEmail() ?? '',
             ]
         ]);
     }
@@ -64,27 +64,30 @@ class PropertyDataGenerator
      */
     public function addAddress(bool $addCoordinates = true, bool $addAddressStrings = true): PropertyDataGenerator
     {
+        $property = $this->property;
+
+        if(!$this->property->getAddress()) return $this;
         $data['address'] = [
-            'line1' => $this->property->address->line1,
-            'area' => $this->property->address->area->name,
-            'city' => $this->property->address->city->name,
-            'state' => $this->property->address->state->name,
-            'country' => $this->property->address->country->name,
+            'line1' => $property->getAddress()->getLine1(),
+            'area' => $property->getAddress()->getArea()->getName(),
+            'city' => $property->getAddress()->getCity()->getName(),
+            'state' => $property->getAddress()->getState()->getName(),
+            'country' => $property->getAddress()->getCountry()->getName(),
         ];
 
-        if ($addCoordinates && $this->property->address->geoPoint) {
+        if ($addCoordinates && $property->getAddress()->getGeoPoint()) {
             $data['address']['coordinates'] = [
-                'longitude' => $this->property->address->geoPoint->getLongitude(),
-                'latitude' => $this->property->address->geoPoint->getLatitude(),
+                'longitude' => $property->getAddress()->getGeoPoint()->getLongitude(),
+                'latitude' => $property->getAddress()->getGeoPoint()->getLatitude(),
             ];
         }
 
         if($addAddressStrings) {
             $data['address'] = array_merge($data['address'], [
-                'cityStateString' => $this->property->address->cityStateString(),
-                'cityStateCountryString' => $this->property->address->cityStateCountryString(),
-                'areaCityString' => $this->property->address->areaCityString(),
-                'fullAddress' => $this->property->address->fullAddress,
+                'cityStateString' => $property->getAddress()->cityStateString(),
+                'cityStateCountryString' => $property->getAddress()->cityStateCountryString(),
+                'areaCityString' => $property->getAddress()->areaCityString(),
+                'fullAddress' => $property->getAddress()->getFullAddress(),
             ]);
         }
 

@@ -11,6 +11,13 @@ use SYSOTEL\APP\Common\Enums\CMS\AgeCode;
  */
 class SpaceOccupancy extends EmbeddedDocument
 {
+
+    /**
+     * @var int
+     * @ODM\Field(type="int")
+     */
+    protected $minCount;
+
     /**
      * @var int
      * @ODM\Field(type="int")
@@ -127,19 +134,17 @@ class SpaceOccupancy extends EmbeddedDocument
     /**
      * @return int
      */
-    public function getBaseCount(): int
+    public function getMinCount(): int
     {
-        return $this->baseCount;
+        return $this->minCount;
     }
 
     /**
-     * @param int $baseCount
-     * @return SpaceOccupancy
+     * @return int
      */
-    public function setBaseCount(int $baseCount): SpaceOccupancy
+    public function getBaseCount(): int
     {
-        $this->baseCount = $baseCount;
-        return $this;
+        return $this->baseCount;
     }
 
     /**
@@ -151,31 +156,11 @@ class SpaceOccupancy extends EmbeddedDocument
     }
 
     /**
-     * @param int $maxCount
-     * @return SpaceOccupancy
-     */
-    public function setMaxCount(int $maxCount): SpaceOccupancy
-    {
-        $this->maxCount = $maxCount;
-        return $this;
-    }
-
-    /**
      * @return int
      */
     public function getMinAdultCount(): int
     {
         return $this->minAdultCount;
-    }
-
-    /**
-     * @param int $minAdultCount
-     * @return SpaceOccupancy
-     */
-    public function setMinAdultCount(int $minAdultCount): SpaceOccupancy
-    {
-        $this->minAdultCount = $minAdultCount;
-        return $this;
     }
 
     /**
@@ -187,16 +172,6 @@ class SpaceOccupancy extends EmbeddedDocument
     }
 
     /**
-     * @param int $maxAdultCount
-     * @return SpaceOccupancy
-     */
-    public function setMaxAdultCount(int $maxAdultCount): SpaceOccupancy
-    {
-        $this->maxAdultCount = $maxAdultCount;
-        return $this;
-    }
-
-    /**
      * @return int
      */
     public function getMinChildCount(): int
@@ -205,30 +180,10 @@ class SpaceOccupancy extends EmbeddedDocument
     }
 
     /**
-     * @param int $minChildCount
-     * @return SpaceOccupancy
-     */
-    public function setMinChildCount(int $minChildCount): SpaceOccupancy
-    {
-        $this->minChildCount = $minChildCount;
-        return $this;
-    }
-
-    /**
      * @return int
      */
     public function getMaxChildCount(): int
     {
         return $this->maxChildCount;
-    }
-
-    /**
-     * @param int $maxChildCount
-     * @return SpaceOccupancy
-     */
-    public function setMaxChildCount(int $maxChildCount): SpaceOccupancy
-    {
-        $this->maxChildCount = $maxChildCount;
-        return $this;
     }
 }

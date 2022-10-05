@@ -12,72 +12,72 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertyImageVersion;
 class ImageItem extends EmbeddedDocument
 {
     /**
-     * @var ?PropertyImageVersion
+     * @var PropertyImageVersion
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyImageVersion::class)
      */
     protected $version;
 
     /**
-     * @var ?string`
+     * @var string`
      * @ODM\Field(type="string")
      */
     protected $filePath;
 
     /**
-     * @var ?ImageMetadata
+     * @var ImageMetadata
      * @ODM\EmbedOne(targetDocument=ImageMetadata::class)
      */
     protected $meta;
 
     /**
-     * @return PropertyImageVersion|null
+     * @return PropertyImageVersion
      */
-    public function getVersion(): ?PropertyImageVersion
+    public function getVersion(): PropertyImageVersion
     {
         return $this->version;
     }
 
     /**
-     * @param PropertyImageVersion|null $version
+     * @param PropertyImageVersion $version
      * @return ImageItem
      */
-    public function setVersion(?PropertyImageVersion $version): ImageItem
+    public function setVersion(PropertyImageVersion $version): ImageItem
     {
         $this->version = $version;
         return $this;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getFilePath(): ?string
+    public function getFilePath(): string
     {
         return $this->filePath;
     }
 
     /**
-     * @param string|null $filePath
+     * @param string $filePath
      * @return ImageItem
      */
-    public function setFilePath(?string $filePath): ImageItem
+    public function setFilePath(string $filePath): ImageItem
     {
         $this->filePath = $filePath;
         return $this;
     }
 
     /**
-     * @return ImageMetadata|null
+     * @return ImageMetadata
      */
-    public function getMeta(): ?ImageMetadata
+    public function getMeta(): ImageMetadata
     {
         return $this->meta;
     }
 
     /**
-     * @param ImageMetadata|null $meta
+     * @param ImageMetadata $meta
      * @return ImageItem
      */
-    public function setMeta(?ImageMetadata $meta): ImageItem
+    public function setMeta(ImageMetadata $meta): ImageItem
     {
         $this->meta = $meta;
         return $this;

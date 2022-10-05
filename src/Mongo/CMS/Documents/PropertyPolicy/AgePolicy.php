@@ -12,96 +12,96 @@ use Delta4op\Mongodb\Documents\EmbeddedDocument;
 class AgePolicy extends EmbeddedDocument
 {
     /**
-     * @var ?int
+     * @var int
      * @ODM\Field(type="int")
      */
     protected $infantAgeThreshold;
 
     /**
-     * @var ?int
+     * @var int
      * @ODM\Field(type="int")
      */
     protected $childAgeThreshold;
 
     /**
-     * @var ?int
+     * @var int
      * @ODM\Field(type="int")
      */
     protected $freeChildThreshold;
 
     /**
-     * @var ?int
+     * @var int
      * @ODM\Field(type="int")
      */
     protected $noOfFreeChildGranted;
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getInfantAgeThreshold(): ?int
+    public function getInfantAgeThreshold(): int
     {
         return $this->infantAgeThreshold;
     }
 
     /**
-     * @param int|null $infantAgeThreshold
+     * @param int $infantAgeThreshold
      * @return AgePolicy
      */
-    public function setInfantAgeThreshold(?int $infantAgeThreshold): AgePolicy
+    public function setInfantAgeThreshold(int $infantAgeThreshold): AgePolicy
     {
         $this->infantAgeThreshold = $infantAgeThreshold;
         return $this;
     }
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getChildAgeThreshold(): ?int
+    public function getChildAgeThreshold(): int
     {
         return $this->childAgeThreshold;
     }
 
     /**
-     * @param int|null $childAgeThreshold
+     * @param int $childAgeThreshold
      * @return AgePolicy
      */
-    public function setChildAgeThreshold(?int $childAgeThreshold): AgePolicy
+    public function setChildAgeThreshold(int $childAgeThreshold): AgePolicy
     {
         $this->childAgeThreshold = $childAgeThreshold;
         return $this;
     }
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getFreeChildThreshold(): ?int
+    public function getFreeChildThreshold(): int
     {
         return $this->freeChildThreshold;
     }
 
     /**
-     * @param int|null $freeChildThreshold
+     * @param int $freeChildThreshold
      * @return AgePolicy
      */
-    public function setFreeChildThreshold(?int $freeChildThreshold): AgePolicy
+    public function setFreeChildThreshold(int $freeChildThreshold): AgePolicy
     {
         $this->freeChildThreshold = $freeChildThreshold;
         return $this;
     }
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getNoOfFreeChildGranted(): ?int
+    public function getNoOfFreeChildGranted(): int
     {
         return $this->noOfFreeChildGranted;
     }
 
     /**
-     * @param int|null $noOfFreeChildGranted
+     * @param int $noOfFreeChildGranted
      * @return AgePolicy
      */
-    public function setNoOfFreeChildGranted(?int $noOfFreeChildGranted): AgePolicy
+    public function setNoOfFreeChildGranted(int $noOfFreeChildGranted): AgePolicy
     {
         $this->noOfFreeChildGranted = $noOfFreeChildGranted;
         return $this;

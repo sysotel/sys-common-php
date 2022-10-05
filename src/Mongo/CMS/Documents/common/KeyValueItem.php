@@ -11,37 +11,37 @@ use Delta4op\Mongodb\Documents\EmbeddedDocument;
 class KeyValueItem extends EmbeddedDocument
 {
     /**
-     * @var ?string
+     * @var string
      * @ODM\Field(type="string")
      */
-    public $key;
+    protected $key;
 
     /**
-     * @var ?mixed
+     * @var mixed
      * @ODM\Field(type="raw")
      */
-    public $value;
+    protected $value;
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getKey(): ?string
+    public function getKey(): string
     {
         return $this->key;
     }
 
     /**
-     * @param string|null $key
+     * @param string $key
      * @return KeyValueItem
      */
-    public function setKey(?string $key): KeyValueItem
+    public function setKey(string $key): KeyValueItem
     {
         $this->key = $key;
         return $this;
     }
 
     /**
-     * @return mixed|null
+     * @return mixed
      */
     public function getValue(): mixed
     {
@@ -49,7 +49,7 @@ class KeyValueItem extends EmbeddedDocument
     }
 
     /**
-     * @param mixed|null $value
+     * @param mixed $value
      * @return KeyValueItem
      */
     public function setValue(mixed $value): KeyValueItem

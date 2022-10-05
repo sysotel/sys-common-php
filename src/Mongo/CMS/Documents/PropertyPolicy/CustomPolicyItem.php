@@ -13,48 +13,48 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertyPolicyShowcaseType;
 class CustomPolicyItem extends EmbeddedDocument
 {
     /**
-     * @var ?PropertyPolicyShowcaseType
+     * @var PropertyPolicyShowcaseType
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyPolicyShowcaseType::class)
      */
     protected $showcaseType;
 
     /**
-     * @var ?string
+     * @var string
      * @ODM\field(type="string")
      */
     protected $details;
 
     /**
-     * @return PropertyPolicyShowcaseType|null
+     * @return PropertyPolicyShowcaseType
      */
-    public function getShowcaseType(): ?PropertyPolicyShowcaseType
+    public function getShowcaseType(): PropertyPolicyShowcaseType
     {
         return $this->showcaseType;
     }
 
     /**
-     * @param PropertyPolicyShowcaseType|null $showcaseType
+     * @param PropertyPolicyShowcaseType $showcaseType
      * @return CustomPolicyItem
      */
-    public function setShowcaseType(?PropertyPolicyShowcaseType $showcaseType): CustomPolicyItem
+    public function setShowcaseType(PropertyPolicyShowcaseType $showcaseType): CustomPolicyItem
     {
         $this->showcaseType = $showcaseType;
         return $this;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getDetails(): ?string
+    public function getDetails(): string
     {
         return $this->details;
     }
 
     /**
-     * @param string|null $details
+     * @param string $details
      * @return CustomPolicyItem
      */
-    public function setDetails(?string $details): CustomPolicyItem
+    public function setDetails(string $details): CustomPolicyItem
     {
         $this->details = $details;
         return $this;

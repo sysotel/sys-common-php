@@ -5,72 +5,72 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Property;
 trait HasLabelProperties
 {
     /**
-     * @var ?string
+     * @var string
      * @ODM\Field(type="string")
      */
     protected $propertyLabel;
 
     /**
-     * @var ?string
+     * @var string
      * @ODM\Field(type="string")
      */
     protected $spaceLabel;
 
     /**
-     * @var ?string
+     * @var string
      * @ODM\Field(type="string")
      */
     protected $productLabel;
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getPropertyLabel(): ?string
+    public function getPropertyLabel(): string
     {
         return $this->propertyLabel;
     }
 
     /**
-     * @param string|null $propertyLabel
-     * @return self
+     * @param string $propertyLabel
+     * @return HasLabelProperties
      */
-    public function setPropertyLabel(?string $propertyLabel): self
+    public function setPropertyLabel(string $propertyLabel): HasLabelProperties
     {
         $this->propertyLabel = $propertyLabel;
         return $this;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getSpaceLabel(): ?string
+    public function getSpaceLabel(): string
     {
         return $this->spaceLabel;
     }
 
     /**
-     * @param string|null $spaceLabel
-     * @return self
+     * @param string $spaceLabel
+     * @return HasLabelProperties
      */
-    public function setSpaceLabel(?string $spaceLabel): self
+    public function setSpaceLabel(string $spaceLabel): HasLabelProperties
     {
         $this->spaceLabel = $spaceLabel;
         return $this;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getProductLabel(): ?string
+    public function getProductLabel(): string
     {
         return $this->productLabel;
     }
 
     /**
-     * @param string|null $productLabel
-     * @return self
+     * @param string $productLabel
+     * @return HasLabelProperties
      */
-    public function setProductLabel(?string $productLabel): self
+    public function setProductLabel(string $productLabel): HasLabelProperties
     {
         $this->productLabel = $productLabel;
         return $this;

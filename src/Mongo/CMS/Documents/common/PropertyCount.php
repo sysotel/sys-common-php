@@ -18,10 +18,10 @@ class PropertyCount extends EmbeddedDocument
     public $items;
 
     /**
-     * @var ?int
+     * @var int
      * @ODM\Field(type="int")
      */
-    public $count;
+    public $count = 0;
 
     /**
      * CONSTRUCTOR
@@ -60,18 +60,18 @@ class PropertyCount extends EmbeddedDocument
     }
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getCount(): ?int
+    public function getCount(): int
     {
         return $this->count;
     }
 
     /**
-     * @param ?int $count
+     * @param int $count
      * @return PropertyCount
      */
-    public function setCount(?int $count): PropertyCount
+    public function setCount(int $count): PropertyCount
     {
         $this->count = $count;
         return $this;

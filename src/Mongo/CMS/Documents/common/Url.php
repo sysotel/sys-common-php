@@ -11,24 +11,24 @@ use Delta4op\Mongodb\Documents\EmbeddedDocument;
 class Url extends EmbeddedDocument
 {
     /**
-     * @var ?string
+     * @var string
      * @ODM\Field(type="string")
      */
     public $value;
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getValue(): ?string
+    public function getValue(): string
     {
         return $this->value;
     }
 
     /**
-     * @param string|null $value
+     * @param string $value
      * @return Url
      */
-    public function setValue(?string $value): Url
+    public function setValue(string $value): Url
     {
         $this->value = $value;
         return $this;

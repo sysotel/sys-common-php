@@ -10,7 +10,7 @@ trait HasSpaceId
      * @var ?int
      * @ODM\Field(type="int")
      */
-    public $spaceId;
+    protected $spaceId;
 
     /**
      * @return int|null

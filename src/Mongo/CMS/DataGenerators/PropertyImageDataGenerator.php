@@ -47,17 +47,17 @@ class PropertyImageDataGenerator
     {
         $data = [
             'id' => $this->image->id,
-            'accountId' => $this->image->accountId,
-            'propertyId' => $this->image->propertyId,
-            'spaceId' => $this->image->spaceId,
-            'target' => $this->image->target->value,
-            'isFeatured' => $this->image->isFeatured,
-            'title' => $this->image->title,
-            'description' => $this->image->description,
-            'status' => $this->image->status,
+            'accountId' => $this->image->getAccountId(),
+            'propertyId' => $this->image->getPropertyId(),
+            'spaceId' => $this->image->getSpaceId(),
+            'target' => $this->image->getTarget()->value,
+            'isFeatured' => $this->image->getIsFeatured(),
+            'title' => $this->image->getTitle(),
+            'description' => $this->image->getDescription(),
+            'status' => $this->image->getStatus(),
         ];
 
-        if($this->image->target === PropertyImageTarget::LOGO) {
+        if($this->image->getTarget() === PropertyImageTarget::LOGO) {
             $data['url'] = $this->url($this->image->filePath(PropertyImageVersion::ORIGINAL));
         } else {
             $data['url'] = $this->url($this->image->filePath(PropertyImageVersion::STANDARD_LARGE));

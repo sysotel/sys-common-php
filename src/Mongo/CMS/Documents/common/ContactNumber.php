@@ -14,22 +14,22 @@ use SYSOTEL\APP\Common\Enums\CountryCode;
 class ContactNumber extends EmbeddedDocument
 {
     /**
-     * @var ?ContactNumberType
+     * @var ContactNumberType
      * @ODM\Field(type="int", enumType=SYSOTEL\APP\Common\Enums\ContactNumberType::class)
      */
-    public $type;
+    protected $type;
 
     /**
-     * @var ?CountryCode
+     * @var CountryCode
      * @ODM\Field(type="int", enumType=SYSOTEL\APP\Common\Enums\CountryCode::class)
      */
-    public $countryCode;
+    protected $countryCode;
 
     /**
-     * @var ?string
+     * @var string
      * @ODM\Field(type="string")
      */
-    public $number;
+    protected $number;
 
     public function toString(): string
     {
@@ -37,54 +37,54 @@ class ContactNumber extends EmbeddedDocument
     }
 
     /**
-     * @return ContactNumberType|null
+     * @return ContactNumberType
      */
-    public function getType(): ?ContactNumberType
+    public function getType(): ContactNumberType
     {
         return $this->type;
     }
 
     /**
-     * @param ContactNumberType|null $type
+     * @param ContactNumberType $type
      * @return ContactNumber
      */
-    public function setType(?ContactNumberType $type): ContactNumber
+    public function setType(ContactNumberType $type): ContactNumber
     {
         $this->type = $type;
         return $this;
     }
 
     /**
-     * @return CountryCode|null
+     * @return CountryCode
      */
-    public function getCountryCode(): ?CountryCode
+    public function getCountryCode(): CountryCode
     {
         return $this->countryCode;
     }
 
     /**
-     * @param CountryCode|null $countryCode
+     * @param CountryCode $countryCode
      * @return ContactNumber
      */
-    public function setCountryCode(?CountryCode $countryCode): ContactNumber
+    public function setCountryCode(CountryCode $countryCode): ContactNumber
     {
         $this->countryCode = $countryCode;
         return $this;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getNumber(): ?string
+    public function getNumber(): string
     {
         return $this->number;
     }
 
     /**
-     * @param string|null $number
+     * @param string $number
      * @return ContactNumber
      */
-    public function setNumber(?string $number): ContactNumber
+    public function setNumber(string $number): ContactNumber
     {
         $this->number = $number;
         return $this;

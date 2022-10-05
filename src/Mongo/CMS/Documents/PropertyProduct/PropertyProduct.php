@@ -27,13 +27,13 @@ class PropertyProduct extends BaseDocument
     use CanResolveIntegerID, HasDefaultAttributes;
 
     /**
-     * @var ?string
+     * @var string
      * @ODM\Field(type="string")
      */
     protected $displayName;
 
     /**
-     * @var ?string
+     * @var string
      * @ODM\Field(type="string")
      */
     protected $internalName;
@@ -57,7 +57,7 @@ class PropertyProduct extends BaseDocument
     protected $paymentMode;
 
     /**
-     * @var ?MealPlanCode
+     * @var MealPlanCode
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\MealPlanCode::class)
      */
     protected $mealPlanCode;
@@ -69,7 +69,7 @@ class PropertyProduct extends BaseDocument
     protected $inclusions = [];
 
     /**
-     * @var ?PropertyProductStatus
+     * @var PropertyProductStatus
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyProductStatus::class)
      */
     protected $status;
@@ -91,36 +91,36 @@ class PropertyProduct extends BaseDocument
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getDisplayName(): ?string
+    public function getDisplayName(): string
     {
         return $this->displayName;
     }
 
     /**
-     * @param string|null $displayName
+     * @param string $displayName
      * @return PropertyProduct
      */
-    public function setDisplayName(?string $displayName): PropertyProduct
+    public function setDisplayName(string $displayName): PropertyProduct
     {
         $this->displayName = $displayName;
         return $this;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getInternalName(): ?string
+    public function getInternalName(): string
     {
         return $this->internalName;
     }
 
     /**
-     * @param string|null $internalName
+     * @param string $internalName
      * @return PropertyProduct
      */
-    public function setInternalName(?string $internalName): PropertyProduct
+    public function setInternalName(string $internalName): PropertyProduct
     {
         $this->internalName = $internalName;
         return $this;
@@ -181,18 +181,18 @@ class PropertyProduct extends BaseDocument
     }
 
     /**
-     * @return MealPlanCode|null
+     * @return MealPlanCode
      */
-    public function getMealPlanCode(): ?MealPlanCode
+    public function getMealPlanCode(): MealPlanCode
     {
         return $this->mealPlanCode;
     }
 
     /**
-     * @param MealPlanCode|null $mealPlanCode
+     * @param MealPlanCode $mealPlanCode
      * @return PropertyProduct
      */
-    public function setMealPlanCode(?MealPlanCode $mealPlanCode): PropertyProduct
+    public function setMealPlanCode(MealPlanCode $mealPlanCode): PropertyProduct
     {
         $this->mealPlanCode = $mealPlanCode;
         return $this;
@@ -217,18 +217,18 @@ class PropertyProduct extends BaseDocument
     }
 
     /**
-     * @return PropertyProductStatus|null
+     * @return PropertyProductStatus
      */
-    public function getStatus(): ?PropertyProductStatus
+    public function getStatus(): PropertyProductStatus
     {
         return $this->status;
     }
 
     /**
-     * @param PropertyProductStatus|null $status
+     * @param PropertyProductStatus $status
      * @return PropertyProduct
      */
-    public function setStatus(?PropertyProductStatus $status): PropertyProduct
+    public function setStatus(PropertyProductStatus $status): PropertyProduct
     {
         $this->status = $status;
         return $this;

@@ -21,19 +21,19 @@ class TemplateAttribute extends EmbeddedDocument
      * @var ?int
      * @ODM\Field(type="int")
      */
-    public $id;
+    protected $id;
 
     /**
      * @var ?string
      * @ODM\Field(type="string")
      */
-    public $name;
+    protected $name;
 
     /**
      * @var ?string
      * @ODM\Field(type="string")
      */
-    public $description;
+    protected $description;
 
     /**
      * @return int|null
@@ -89,5 +89,5 @@ class TemplateAttribute extends EmbeddedDocument
         return $this;
     }
 
-    
+
 }

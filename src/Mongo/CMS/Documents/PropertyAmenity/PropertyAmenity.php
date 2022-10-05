@@ -10,7 +10,6 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasSpaceId;
-use SYSOTEL\OTA\Common\Mongo\CMS\Documents\PropertyAmenity\PropertyAmenityItem;
 
 /**
  * @ODM\Document(collection="propertyAmenities")
@@ -23,7 +22,7 @@ class PropertyAmenity extends BaseDocument
      * @var PropertyAmenityItem[] & ArrayCollection
      * @ODM\EmbedMany (targetDocument=PropertyAmenityItem::class)
      */
-    public $amenities;
+    protected $amenities;
 
     public function __construct()
     {

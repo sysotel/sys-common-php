@@ -14,13 +14,13 @@ class GuestDocumentRule extends EmbeddedDocument
     use HasDetails;
 
     /**
-     * @var ?bool
+     * @var bool
      * @ODM\Field(type="bool")
      */
     protected $documentsRequiredOnCheckIn;
 
     /**
-     * @var ?bool
+     * @var bool
      * @ODM\Field(type="bool")
      */
     protected $isLocalIdAllowed;

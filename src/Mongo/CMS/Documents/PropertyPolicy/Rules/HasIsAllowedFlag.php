@@ -5,13 +5,13 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy\Rules;;
 trait HasIsAllowedFlag
 {
     /**
-     * @var ?bool
+     * @var bool
      * @ODM\Field(type="bool")
      */
     protected $isAllowed;
 
     /**
-     * @return bool|null
+     * @return bool
      */
     public function getIsAllowed(): ?bool
     {
@@ -19,10 +19,10 @@ trait HasIsAllowedFlag
     }
 
     /**
-     * @param bool|null $isAllowed
+     * @param bool $isAllowed
      * @return static
      */
-    public function setIsAllowed(?bool $isAllowed): static
+    public function setIsAllowed(bool $isAllowed): static
     {
         $this->isAllowed = $isAllowed;
         return $this;

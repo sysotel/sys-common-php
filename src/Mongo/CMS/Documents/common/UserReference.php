@@ -12,13 +12,13 @@ use SYSOTEL\APP\Common\Enums\UserType;
 class UserReference extends EmbeddedDocument
 {
     /**
-     * @var ?int
+     * @var int
      * @ODM\Field(type="int")
      */
     public $id;
 
     /**
-     * @var ?UserType
+     * @var UserType
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\UserType::class)
      */
     public $type;
@@ -36,27 +36,41 @@ class UserReference extends EmbeddedDocument
     public $email;
 
     /**
-     * @return int|null
+     * @param int $id
+     * @param UserType $type
+     * @param string|null $name
+     * @param string|null $email
      */
-    public function getId(): ?int
+    public function __construct(int $id, UserType $type, string $name = null, string $email = null)
+    {
+        $this->id = $id;
+        $this->type = $type;
+        $this->name = $name;
+        $this->email = $email;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * @param int|null $id
+     * @param int $id
      * @return UserReference
      */
-    public function setId(?int $id): UserReference
+    public function setId(int $id): UserReference
     {
         $this->id = $id;
         return $this;
     }
 
     /**
-     * @return UserType|null
+     * @return UserType
      */
-    public function getType(): ?UserType
+    public function getType(): UserType
     {
         return $this->type;
     }
@@ -80,10 +94,10 @@ class UserReference extends EmbeddedDocument
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      * @return UserReference
      */
-    public function setName(string $name): UserReference
+    public function setName(?string $name): UserReference
     {
         $this->name = $name;
         return $this;
@@ -98,10 +112,10 @@ class UserReference extends EmbeddedDocument
     }
 
     /**
-     * @param string $email
+     * @param string|null $email
      * @return UserReference
      */
-    public function setEmail(string $email): UserReference
+    public function setEmail(?string $email): UserReference
     {
         $this->email = $email;
         return $this;

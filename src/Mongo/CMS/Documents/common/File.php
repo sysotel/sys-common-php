@@ -12,72 +12,72 @@ use SYSOTEL\APP\Common\Enums\FileExtension;
 class File extends EmbeddedDocument
 {
     /**
-     * @var ?string
+     * @var string
      * @ODM\Field(type="string")
      */
-    public $path;
+    protected $path;
 
     /**
-     * @var ?FileSize
+     * @var FileSize
      * @ODM\EmbedOne(targetDocument=SYSOTEL\OTA\Common\Mongo\CMS\Documents\common\FileSize::class)
      */
-    public $size;
+    protected $size;
 
     /**
-     * @var ?FileExtension
+     * @var FileExtension
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\FileExtension::class)
      */
-    public $extension;
+    protected $extension;
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getPath(): ?string
+    public function getPath(): string
     {
         return $this->path;
     }
 
     /**
-     * @param string|null $path
+     * @param string $path
      * @return File
      */
-    public function setPath(?string $path): File
+    public function setPath(string $path): File
     {
         $this->path = $path;
         return $this;
     }
 
     /**
-     * @return FileSize|null
+     * @return FileSize
      */
-    public function getSize(): ?FileSize
+    public function getSize(): FileSize
     {
         return $this->size;
     }
 
     /**
-     * @param FileSize|null $size
+     * @param FileSize $size
      * @return File
      */
-    public function setSize(?FileSize $size): File
+    public function setSize(FileSize $size): File
     {
         $this->size = $size;
         return $this;
     }
 
     /**
-     * @return FileExtension|null
+     * @return FileExtension
      */
-    public function getExtension(): ?FileExtension
+    public function getExtension(): FileExtension
     {
         return $this->extension;
     }
 
     /**
-     * @param FileExtension|null $extension
+     * @param FileExtension $extension
      * @return File
      */
-    public function setExtension(?FileExtension $extension): File
+    public function setExtension(FileExtension $extension): File
     {
         $this->extension = $extension;
         return $this;

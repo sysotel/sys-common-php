@@ -16,13 +16,13 @@ class DateRange extends EmbeddedDocument
      * @var ?Carbon
      * @ODM\field(type="carbon")
      */
-    public $start;
+    protected $start;
 
     /**
      * @var ?Carbon
      * @ODM\field(type="carbon")
      */
-    public $end;
+    protected $end;
 
     /**
      * @return Carbon|null

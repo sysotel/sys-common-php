@@ -60,7 +60,7 @@ class PropertyPolicies extends BaseDocument
     protected $customPolicies;
 
     /**
-     * @var ?PropertyPolicyStatus
+     * @var PropertyPolicyStatus
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyPolicyStatus::class)
      */
     protected $status;
@@ -72,7 +72,7 @@ class PropertyPolicies extends BaseDocument
     protected $expiredAt;
 
     /**
-     * @var ?UserReference
+     * @var UserReference
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference::class)
      */
     protected $causer;
@@ -196,18 +196,18 @@ class PropertyPolicies extends BaseDocument
     }
 
     /**
-     * @return PropertyPolicyStatus|null
+     * @return PropertyPolicyStatus
      */
-    public function getStatus(): ?PropertyPolicyStatus
+    public function getStatus(): PropertyPolicyStatus
     {
         return $this->status;
     }
 
     /**
-     * @param PropertyPolicyStatus|null $status
+     * @param PropertyPolicyStatus $status
      * @return PropertyPolicies
      */
-    public function setStatus(?PropertyPolicyStatus $status): PropertyPolicies
+    public function setStatus(PropertyPolicyStatus $status): PropertyPolicies
     {
         $this->status = $status;
         return $this;
@@ -232,18 +232,18 @@ class PropertyPolicies extends BaseDocument
     }
 
     /**
-     * @return UserReference|null
+     * @return UserReference
      */
-    public function getCauser(): ?UserReference
+    public function getCauser(): UserReference
     {
         return $this->causer;
     }
 
     /**
-     * @param UserReference|null $causer
+     * @param UserReference $causer
      * @return PropertyPolicies
      */
-    public function setCauser(?UserReference $causer): PropertyPolicies
+    public function setCauser(UserReference $causer): PropertyPolicies
     {
         $this->causer = $causer;
         return $this;

@@ -11,7 +11,7 @@ trait HasPropertyId
      * @var ?int
      * @ODM\Field(type="int")
      */
-    public $propertyId;
+    protected $propertyId;
 
     /**
      * @return int|null

@@ -37,25 +37,25 @@ class Property extends BaseDocument
     protected $id;
 
     /**
-     * @var ?string
+     * @var string
      * @ODM\Field(type="string")
      */
     protected $slug;
 
     /**
-     * @var ?string
+     * @var string
      * @ODM\Field(type="string")
      */
     protected $accountSlug;
 
     /**
-     * @var ?Currency
+     * @var Currency
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\Currency::class)
      */
     protected $baseCurrency;
 
     /**
-     * @var ?string
+     * @var string
      * @ODM\Field(type="string")
      */
     protected $displayName;
@@ -67,7 +67,7 @@ class Property extends BaseDocument
     protected $starRating;
 
     /**
-     * @var ?PropertyType
+     * @var PropertyType
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyType::class)
      */
     protected $type;
@@ -79,7 +79,7 @@ class Property extends BaseDocument
     protected $allowedBookingTypes = [];
 
     /**
-     * @var ?Address
+     * @var Address
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\Address::class)
      */
     protected $address;
@@ -170,72 +170,72 @@ class Property extends BaseDocument
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getSlug(): ?string
+    public function getSlug(): string
     {
         return $this->slug;
     }
 
     /**
-     * @param string|null $slug
+     * @param string $slug
      * @return Property
      */
-    public function setSlug(?string $slug): Property
+    public function setSlug(string $slug): Property
     {
         $this->slug = $slug;
         return $this;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getAccountSlug(): ?string
+    public function getAccountSlug(): string
     {
         return $this->accountSlug;
     }
 
     /**
-     * @param string|null $accountSlug
+     * @param string $accountSlug
      * @return Property
      */
-    public function setAccountSlug(?string $accountSlug): Property
+    public function setAccountSlug(string $accountSlug): Property
     {
         $this->accountSlug = $accountSlug;
         return $this;
     }
 
     /**
-     * @return Currency|null
+     * @return Currency
      */
-    public function getBaseCurrency(): ?Currency
+    public function getBaseCurrency(): Currency
     {
         return $this->baseCurrency;
     }
 
     /**
-     * @param Currency|null $baseCurrency
+     * @param Currency $baseCurrency
      * @return Property
      */
-    public function setBaseCurrency(?Currency $baseCurrency): Property
+    public function setBaseCurrency(Currency $baseCurrency): Property
     {
         $this->baseCurrency = $baseCurrency;
         return $this;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getDisplayName(): ?string
+    public function getDisplayName(): string
     {
         return $this->displayName;
     }
 
     /**
-     * @param string|null $displayName
+     * @param string $displayName
      * @return Property
      */
-    public function setDisplayName(?string $displayName): Property
+    public function setDisplayName(string $displayName): Property
     {
         $this->displayName = $displayName;
         return $this;
@@ -260,18 +260,18 @@ class Property extends BaseDocument
     }
 
     /**
-     * @return PropertyType|null
+     * @return PropertyType
      */
-    public function getType(): ?PropertyType
+    public function getType(): PropertyType
     {
         return $this->type;
     }
 
     /**
-     * @param PropertyType|null $type
+     * @param PropertyType $type
      * @return Property
      */
-    public function setType(?PropertyType $type): Property
+    public function setType(PropertyType $type): Property
     {
         $this->type = $type;
         return $this;
@@ -296,18 +296,18 @@ class Property extends BaseDocument
     }
 
     /**
-     * @return Address|null
+     * @return Address
      */
-    public function getAddress(): ?Address
+    public function getAddress(): Address
     {
         return $this->address;
     }
 
     /**
-     * @param Address|null $address
+     * @param Address $address
      * @return Property
      */
-    public function setAddress(?Address $address): Property
+    public function setAddress(Address $address): Property
     {
         $this->address = $address;
         return $this;

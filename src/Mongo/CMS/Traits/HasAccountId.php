@@ -8,24 +8,24 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 trait HasAccountId
 {
     /**
-     * @var ?Account
+     * @var Account
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\Account::class)
      */
     private $accountId;
 
     /**
-     * @return ?Account
+     * @return Account
      */
-    public function getAccountId(): ?Account
+    public function getAccountId(): Account
     {
         return $this->accountId;
     }
 
     /**
-     * @param ?Account $accountId
+     * @param Account $accountId
      * @return static
      */
-    public function setAccountId(?Account $accountId): static
+    public function setAccountId(Account $accountId): static
     {
         $this->accountId = $accountId;
 

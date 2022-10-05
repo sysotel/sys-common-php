@@ -31,7 +31,7 @@ class PropertyImage extends BaseDocument
     use HasDefaultAttributes;
 
     /**
-     * @var ?PropertyImageTarget
+     * @var PropertyImageTarget
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyImageTarget::class)
      */
     protected $target;
@@ -49,7 +49,7 @@ class PropertyImage extends BaseDocument
     protected $description;
 
     /**
-     * @var ?bool
+     * @var bool
      * @ODM\Field(type="bool")
      */
     protected $isFeatured;
@@ -61,7 +61,7 @@ class PropertyImage extends BaseDocument
     protected $items;
 
     /**
-     * @var ?Verification
+     * @var Verification
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Verification::class)
      */
     protected $verification;
@@ -79,13 +79,13 @@ class PropertyImage extends BaseDocument
     protected $targetSortOrder;
 
     /**
-     * @var ?PropertyImageStatus
+     * @var PropertyImageStatus
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyImageStatus::class)
      */
     protected $status;
 
     /**
-     * @var ?UserReference
+     * @var UserReference
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference::class)
      */
     protected $uploadedBy;
@@ -163,18 +163,18 @@ class PropertyImage extends BaseDocument
     }
 
     /**
-     * @return PropertyImageTarget|null
+     * @return PropertyImageTarget
      */
-    public function getTarget(): ?PropertyImageTarget
+    public function getTarget(): PropertyImageTarget
     {
         return $this->target;
     }
 
     /**
-     * @param PropertyImageTarget|null $target
+     * @param PropertyImageTarget $target
      * @return PropertyImage
      */
-    public function setTarget(?PropertyImageTarget $target): PropertyImage
+    public function setTarget(PropertyImageTarget $target): PropertyImage
     {
         $this->target = $target;
         return $this;
@@ -318,36 +318,36 @@ class PropertyImage extends BaseDocument
     }
 
     /**
-     * @return PropertyImageStatus|null
+     * @return PropertyImageStatus
      */
-    public function getStatus(): ?PropertyImageStatus
+    public function getStatus(): PropertyImageStatus
     {
         return $this->status;
     }
 
     /**
-     * @param PropertyImageStatus|null $status
+     * @param PropertyImageStatus $status
      * @return PropertyImage
      */
-    public function setStatus(?PropertyImageStatus $status): PropertyImage
+    public function setStatus(PropertyImageStatus $status): PropertyImage
     {
         $this->status = $status;
         return $this;
     }
 
     /**
-     * @return UserReference|null
+     * @return UserReference
      */
-    public function getUploadedBy(): ?UserReference
+    public function getUploadedBy(): UserReference
     {
         return $this->uploadedBy;
     }
 
     /**
-     * @param UserReference|null $uploadedBy
+     * @param UserReference $uploadedBy
      * @return PropertyImage
      */
-    public function setUploadedBy(?UserReference $uploadedBy): PropertyImage
+    public function setUploadedBy(UserReference $uploadedBy): PropertyImage
     {
         $this->uploadedBy = $uploadedBy;
         return $this;

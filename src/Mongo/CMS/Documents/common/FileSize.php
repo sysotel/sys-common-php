@@ -12,48 +12,48 @@ use SYSOTEL\APP\Common\Enums\FileSizeUnit;
 class FileSize extends EmbeddedDocument
 {
     /**
-     * @var ?float
+     * @var float
      * @ODM\Field(type="double")
      */
-    public $value;
+    protected $value;
 
     /**
-     * @var ?FileSizeUnit
+     * @var FileSizeUnit
      * @ODM\Field(type="float", enumType=SYSOTEL\APP\Common\Enums\FileSizeUnit::class)
      */
-    public $unit;
+    protected $unit;
 
     /**
-     * @return float|null
+     * @return float
      */
-    public function getValue(): ?float
+    public function getValue(): float
     {
         return $this->value;
     }
 
     /**
-     * @param float|null $value
+     * @param float $value
      * @return FileSize
      */
-    public function setValue(?float $value): FileSize
+    public function setValue(float $value): FileSize
     {
         $this->value = $value;
         return $this;
     }
 
     /**
-     * @return FileSizeUnit|null
+     * @return FileSizeUnit
      */
-    public function getUnit(): ?FileSizeUnit
+    public function getUnit(): FileSizeUnit
     {
         return $this->unit;
     }
 
     /**
-     * @param FileSizeUnit|null $unit
+     * @param FileSizeUnit $unit
      * @return FileSize
      */
-    public function setUnit(?FileSizeUnit $unit): FileSize
+    public function setUnit(FileSizeUnit $unit): FileSize
     {
         $this->unit = $unit;
         return $this;

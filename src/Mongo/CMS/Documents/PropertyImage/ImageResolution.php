@@ -11,48 +11,48 @@ use Delta4op\Mongodb\Documents\EmbeddedDocument;
 class ImageResolution extends EmbeddedDocument
 {
     /**
-     * @var ?int
+     * @var int
      * @ODM\Field(type="int")
      */
     protected $widthInPX;
 
     /**
-     * @var ?int
+     * @var int
      * @ODM\Field(type="int")
      */
     protected $heightInPX;
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getWidthInPX(): ?int
+    public function getWidthInPX(): int
     {
         return $this->widthInPX;
     }
 
     /**
-     * @param int|null $widthInPX
+     * @param int $widthInPX
      * @return ImageResolution
      */
-    public function setWidthInPX(?int $widthInPX): ImageResolution
+    public function setWidthInPX(int $widthInPX): ImageResolution
     {
         $this->widthInPX = $widthInPX;
         return $this;
     }
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getHeightInPX(): ?int
+    public function getHeightInPX(): int
     {
         return $this->heightInPX;
     }
 
     /**
-     * @param int|null $heightInPX
+     * @param int $heightInPX
      * @return ImageResolution
      */
-    public function setHeightInPX(?int $heightInPX): ImageResolution
+    public function setHeightInPX(int $heightInPX): ImageResolution
     {
         $this->heightInPX = $heightInPX;
         return $this;

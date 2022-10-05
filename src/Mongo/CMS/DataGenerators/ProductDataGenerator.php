@@ -27,16 +27,16 @@ class ProductDataGenerator
     public function addBasicDetails(): static
     {
         return $this->appendData([
-            'id' => $this->product->id,
-            'accountId' => $this->product->accountId,
-            'propertyId' => $this->product->propertyId,
-            'spaceId' => $this->product->spaceId,
-            'displayName' => $this->product->displayName,
-            'internalName' => $this->product->internalName,
-            'longDescription' => $this->product->longDescription,
-            'mealPlanCode' => $this->product->mealPlanCode,
-            'status' => $this->product->status,
-            'inclusions' => $this->product->inclusions
+            'id' => $this->product->getId(),
+            'accountId' => $this->product->getAccountId(),
+            'propertyId' => $this->product->getPropertyId(),
+            'spaceId' => $this->product->getSpaceId(),
+            'displayName' => $this->product->getDisplayName(),
+            'internalName' => $this->product->getInternalName(),
+            'longDescription' => $this->product->getLongDescription(),
+            'mealPlanCode' => $this->product->getMealPlanCode(),
+            'status' => $this->product->getSpaceId(),
+            'inclusions' => $this->product->getInclusions()
         ]);
     }
 }

@@ -71,18 +71,6 @@ class Address extends EmbeddedDocument implements AddressContract
     }
 
     /**
-     * @param float $longitude
-     * @param float $latitude
-     * @return $this
-     */
-    public function setGeoPoint(float $longitude, float $latitude): static
-    {
-        $this->geoPoint = GeoPoint::createFromCoordinates($longitude, $latitude);
-
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function generateFullAddress(): string
@@ -250,6 +238,24 @@ class Address extends EmbeddedDocument implements AddressContract
     public function setCountry(CountryReference $country): Address
     {
         $this->country = $country;
+        return $this;
+    }
+
+    /**
+     * @return GeoPoint
+     */
+    public function getGeoPoint(): GeoPoint
+    {
+        return $this->geoPoint;
+    }
+
+    /**
+     * @param GeoPoint $geoPoint
+     * @return Address
+     */
+    public function setGeoPoint(GeoPoint $geoPoint): Address
+    {
+        $this->geoPoint = $geoPoint;
         return $this;
     }
 }

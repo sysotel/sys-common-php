@@ -13,7 +13,7 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertyProductPaymentType;
 class PaymentMode extends EmbeddedDocument
 {
     /**
-     * @var ?PropertyProductPaymentType
+     * @var PropertyProductPaymentType
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyProductPaymentType::class)
      */
     protected $type;
@@ -31,18 +31,18 @@ class PaymentMode extends EmbeddedDocument
     protected $partialAmount;
 
     /**
-     * @return PropertyProductPaymentType|null
+     * @return PropertyProductPaymentType
      */
-    public function getType(): ?PropertyProductPaymentType
+    public function getType(): PropertyProductPaymentType
     {
         return $this->type;
     }
 
     /**
-     * @param PropertyProductPaymentType|null $type
+     * @param PropertyProductPaymentType $type
      * @return PaymentMode
      */
-    public function setType(?PropertyProductPaymentType $type): PaymentMode
+    public function setType(PropertyProductPaymentType $type): PaymentMode
     {
         $this->type = $type;
         return $this;

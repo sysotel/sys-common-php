@@ -15,7 +15,7 @@ class Email extends EmbeddedDocument
      * @var ?string
      * @ODM\Field(type="string")
      */
-    public $id;
+    protected $id;
 
     /**
      * @return string
@@ -26,18 +26,18 @@ class Email extends EmbeddedDocument
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getId(): ?string
+    public function getId(): string
     {
         return $this->id;
     }
 
     /**
-     * @param string|null $id
+     * @param string $id
      * @return Email
      */
-    public function setId(?string $id): Email
+    public function setId(string $id): Email
     {
         $this->id = $id;
         return $this;

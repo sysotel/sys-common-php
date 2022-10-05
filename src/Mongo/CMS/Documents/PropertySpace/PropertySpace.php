@@ -30,13 +30,13 @@ class PropertySpace extends BaseDocument
     use HasDefaultAttributes;
 
     /**
-     * @var ?string
+     * @var string
      * @ODM\Field(type="string")
      */
     protected $displayName;
 
     /**
-     * @var ?string
+     * @var string
      * @ODM\Field(type="string")
      */
     protected $internalName;
@@ -54,13 +54,13 @@ class PropertySpace extends BaseDocument
     protected $longDescription;
 
     /**
-     * @var ?int
+     * @var int
      * @ODM\Field(type="int")
      */
     protected $noOfUnits;
 
     /**
-     * @var ?SpaceOccupancy
+     * @var SpaceOccupancy
      * @ODM\EmbedOne (targetDocument=SpaceOccupancy::class)
      */
     protected $occupancy;
@@ -84,19 +84,19 @@ class PropertySpace extends BaseDocument
     protected $nonSmoking;
 
     /**
-     * @var ?InventorySettings
+     * @var InventorySettings
      * @ODM\EmbedOne(targetDocument=InventorySettings::class)
      */
     protected $inventorySettings;
 
     /**
-     * @var ?SpaceStayType
+     * @var SpaceStayType
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\SpaceStayType::class)
      */
     protected $stayType;
 
     /**
-     * @var ?PropertySpaceStatus
+     * @var PropertySpaceStatus
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertySpaceStatus::class)
      */
     protected $status;
@@ -112,40 +112,41 @@ class PropertySpace extends BaseDocument
      */
     protected $defaults = [
         'status' => PropertySpaceStatus::ACTIVE,
-        'stayType' => SpaceStayType::PRIVATE
+        'stayType' => SpaceStayType::PRIVATE,
+        'sortOrder' => 0,
     ];
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getDisplayName(): ?string
+    public function getDisplayName(): string
     {
         return $this->displayName;
     }
 
     /**
-     * @param string|null $displayName
+     * @param string $displayName
      * @return PropertySpace
      */
-    public function setDisplayName(?string $displayName): PropertySpace
+    public function setDisplayName(string $displayName): PropertySpace
     {
         $this->displayName = $displayName;
         return $this;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getInternalName(): ?string
+    public function getInternalName(): string
     {
         return $this->internalName;
     }
 
     /**
-     * @param string|null $internalName
+     * @param string $internalName
      * @return PropertySpace
      */
-    public function setInternalName(?string $internalName): PropertySpace
+    public function setInternalName(string $internalName): PropertySpace
     {
         $this->internalName = $internalName;
         return $this;
@@ -188,36 +189,36 @@ class PropertySpace extends BaseDocument
     }
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getNoOfUnits(): ?int
+    public function getNoOfUnits(): int
     {
         return $this->noOfUnits;
     }
 
     /**
-     * @param int|null $noOfUnits
+     * @param int $noOfUnits
      * @return PropertySpace
      */
-    public function setNoOfUnits(?int $noOfUnits): PropertySpace
+    public function setNoOfUnits(int $noOfUnits): PropertySpace
     {
         $this->noOfUnits = $noOfUnits;
         return $this;
     }
 
     /**
-     * @return SpaceOccupancy|null
+     * @return SpaceOccupancy
      */
-    public function getOccupancy(): ?SpaceOccupancy
+    public function getOccupancy(): SpaceOccupancy
     {
         return $this->occupancy;
     }
 
     /**
-     * @param SpaceOccupancy|null $occupancy
+     * @param SpaceOccupancy $occupancy
      * @return PropertySpace
      */
-    public function setOccupancy(?SpaceOccupancy $occupancy): PropertySpace
+    public function setOccupancy(SpaceOccupancy $occupancy): PropertySpace
     {
         $this->occupancy = $occupancy;
         return $this;
@@ -278,54 +279,54 @@ class PropertySpace extends BaseDocument
     }
 
     /**
-     * @return InventorySettings|null
+     * @return InventorySettings
      */
-    public function getInventorySettings(): ?InventorySettings
+    public function getInventorySettings(): InventorySettings
     {
         return $this->inventorySettings;
     }
 
     /**
-     * @param InventorySettings|null $inventorySettings
+     * @param InventorySettings $inventorySettings
      * @return PropertySpace
      */
-    public function setInventorySettings(?InventorySettings $inventorySettings): PropertySpace
+    public function setInventorySettings(InventorySettings $inventorySettings): PropertySpace
     {
         $this->inventorySettings = $inventorySettings;
         return $this;
     }
 
     /**
-     * @return SpaceStayType|null
+     * @return SpaceStayType
      */
-    public function getStayType(): ?SpaceStayType
+    public function getStayType(): SpaceStayType
     {
         return $this->stayType;
     }
 
     /**
-     * @param SpaceStayType|null $stayType
+     * @param SpaceStayType $stayType
      * @return PropertySpace
      */
-    public function setStayType(?SpaceStayType $stayType): PropertySpace
+    public function setStayType(SpaceStayType $stayType): PropertySpace
     {
         $this->stayType = $stayType;
         return $this;
     }
 
     /**
-     * @return PropertySpaceStatus|null
+     * @return PropertySpaceStatus
      */
-    public function getStatus(): ?PropertySpaceStatus
+    public function getStatus(): PropertySpaceStatus
     {
         return $this->status;
     }
 
     /**
-     * @param PropertySpaceStatus|null $status
+     * @param PropertySpaceStatus $status
      * @return PropertySpace
      */
-    public function setStatus(?PropertySpaceStatus $status): PropertySpace
+    public function setStatus(PropertySpaceStatus $status): PropertySpace
     {
         $this->status = $status;
         return $this;

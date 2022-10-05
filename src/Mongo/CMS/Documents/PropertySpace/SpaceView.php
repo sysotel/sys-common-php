@@ -12,7 +12,7 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertySpaceViewCode;
 class SpaceView extends EmbeddedDocument
 {
     /**
-     * @var ?PropertySpaceViewCode
+     * @var PropertySpaceViewCode
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertySpaceViewCode::class)
      */
     protected $code;
@@ -40,7 +40,7 @@ class SpaceView extends EmbeddedDocument
     }
 
     /**
-     * @return PropertySpaceViewCode|null
+     * @return PropertySpaceViewCode
      */
     public function getCode(): ?PropertySpaceViewCode
     {
@@ -48,10 +48,10 @@ class SpaceView extends EmbeddedDocument
     }
 
     /**
-     * @param PropertySpaceViewCode|null $code
+     * @param PropertySpaceViewCode $code
      * @return SpaceView
      */
-    public function setCode(?PropertySpaceViewCode $code): SpaceView
+    public function setCode(PropertySpaceViewCode $code): SpaceView
     {
         $this->code = $code;
         return $this;

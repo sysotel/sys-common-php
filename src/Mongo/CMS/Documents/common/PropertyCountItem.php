@@ -12,21 +12,21 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertyType;
 class PropertyCountItem extends EmbeddedDocument
 {
     /**
-     * @var ?PropertyType
+     * @var PropertyType
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyType::class)
      */
-    public $type;
+    protected $type;
 
     /**
-     * @var ?int
+     * @var int
      * @ODM\Field(type="int")
      */
-    public $count;
+    protected $count;
 
     /**
-     * @return PropertyType|null
+     * @return PropertyType
      */
-    public function getType(): ?PropertyType
+    public function getType(): PropertyType
     {
         return $this->type;
     }
@@ -42,9 +42,9 @@ class PropertyCountItem extends EmbeddedDocument
     }
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getCount(): ?int
+    public function getCount(): int
     {
         return $this->count;
     }
