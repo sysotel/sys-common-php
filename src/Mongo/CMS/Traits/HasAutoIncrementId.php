@@ -12,7 +12,7 @@ trait HasAutoIncrementId
      * @var ?int
      * @ODM\Id(strategy="CUSTOM", type="int", options={"class"=SYSOTEL\APP\Common\Mongo\CMS\StorageStrategies\AutoIncrementID::class }))
      */
-    private $id;
+    protected $id;
 
     /**
      * @return int|null
