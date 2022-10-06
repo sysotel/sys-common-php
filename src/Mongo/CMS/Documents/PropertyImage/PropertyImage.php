@@ -373,24 +373,6 @@ class PropertyImage extends BaseDocument
     }
 
     /**
-     * @return array
-     */
-    public function getDefaults(): array
-    {
-        return $this->defaults;
-    }
-
-    /**
-     * @param array $defaults
-     * @return PropertyImage
-     */
-    public function setDefaults(array $defaults): PropertyImage
-    {
-        $this->defaults = $defaults;
-        return $this;
-    }
-
-    /**
      * @return PropertyImageRepository
      */
     public static function repository(): PropertyImageRepository
