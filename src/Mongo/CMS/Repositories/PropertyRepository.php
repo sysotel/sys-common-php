@@ -9,6 +9,17 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\Property\Property;
 class PropertyRepository extends DocumentRepository
 {
     /**
+     * @param int[] $ids
+     * @return array
+     */
+    public function findByIds(array $ids): array
+    {
+        return $this->findBy([
+            '_id' => ['$in' => $ids]
+        ]);
+    }
+
+    /**
      * @param Account $account
      * @return mixed
      */
