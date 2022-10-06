@@ -46,7 +46,7 @@ class PropertyImageDataGenerator
     public function addBasicDetails(): PropertyImageDataGenerator
     {
         $data = [
-            'id' => $this->image->id,
+            'id' => $this->image->getId(),
             'accountId' => $this->image->getAccountId(),
             'propertyId' => $this->image->getPropertyId(),
             'spaceId' => $this->image->getSpaceId(),
