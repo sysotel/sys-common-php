@@ -36,20 +36,6 @@ class UserReference extends EmbeddedDocument
     public $email;
 
     /**
-     * @param int $id
-     * @param UserType $type
-     * @param string|null $name
-     * @param string|null $email
-     */
-    public function __construct(int $id, UserType $type, string $name = null, string $email = null)
-    {
-        $this->id = $id;
-        $this->type = $type;
-        $this->name = $name;
-        $this->email = $email;
-    }
-
-    /**
      * @return int
      */
     public function getId(): int
