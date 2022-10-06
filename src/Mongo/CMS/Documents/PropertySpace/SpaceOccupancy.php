@@ -140,11 +140,31 @@ class SpaceOccupancy extends EmbeddedDocument
     }
 
     /**
+     * @param int $minCount
+     * @return SpaceOccupancy
+     */
+    public function setMinCount(int $minCount): SpaceOccupancy
+    {
+        $this->minCount = $minCount;
+        return $this;
+    }
+
+    /**
      * @return int
      */
     public function getBaseCount(): int
     {
         return $this->baseCount;
+    }
+
+    /**
+     * @param int $baseCount
+     * @return SpaceOccupancy
+     */
+    public function setBaseCount(int $baseCount): SpaceOccupancy
+    {
+        $this->baseCount = $baseCount;
+        return $this;
     }
 
     /**
@@ -156,11 +176,31 @@ class SpaceOccupancy extends EmbeddedDocument
     }
 
     /**
+     * @param int $maxCount
+     * @return SpaceOccupancy
+     */
+    public function setMaxCount(int $maxCount): SpaceOccupancy
+    {
+        $this->maxCount = $maxCount;
+        return $this;
+    }
+
+    /**
      * @return int
      */
     public function getMinAdultCount(): int
     {
         return $this->minAdultCount;
+    }
+
+    /**
+     * @param int $minAdultCount
+     * @return SpaceOccupancy
+     */
+    public function setMinAdultCount(int $minAdultCount): SpaceOccupancy
+    {
+        $this->minAdultCount = $minAdultCount;
+        return $this;
     }
 
     /**
@@ -172,6 +212,16 @@ class SpaceOccupancy extends EmbeddedDocument
     }
 
     /**
+     * @param int $maxAdultCount
+     * @return SpaceOccupancy
+     */
+    public function setMaxAdultCount(int $maxAdultCount): SpaceOccupancy
+    {
+        $this->maxAdultCount = $maxAdultCount;
+        return $this;
+    }
+
+    /**
      * @return int
      */
     public function getMinChildCount(): int
@@ -180,10 +230,30 @@ class SpaceOccupancy extends EmbeddedDocument
     }
 
     /**
+     * @param int $minChildCount
+     * @return SpaceOccupancy
+     */
+    public function setMinChildCount(int $minChildCount): SpaceOccupancy
+    {
+        $this->minChildCount = $minChildCount;
+        return $this;
+    }
+
+    /**
      * @return int
      */
     public function getMaxChildCount(): int
     {
         return $this->maxChildCount;
+    }
+
+    /**
+     * @param int $maxChildCount
+     * @return SpaceOccupancy
+     */
+    public function setMaxChildCount(int $maxChildCount): SpaceOccupancy
+    {
+        $this->maxChildCount = $maxChildCount;
+        return $this;
     }
 }
