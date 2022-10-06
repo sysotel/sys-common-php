@@ -16,49 +16,49 @@ class Address extends EmbeddedDocument implements AddressContract
      * @var string
      * @ODM\Field(type="string")
      */
-    protected $fullAddress;
+    private $fullAddress;
 
     /**
      * @var string
      * @ODM\Field(type="string")
      */
-    protected $line1;
+    private $line1;
 
     /**
      * @var AreaReference
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\AreaReference::class)
      */
-    protected $area;
+    private $area;
 
     /**
      * @var CityReference
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CityReference::class)
      */
-    protected $city;
+    private $city;
 
     /**
      * @var StateReference
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference::class)
      */
-    protected $state;
+    private $state;
 
     /**
      * @var CountryReference
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference::class)
      */
-    protected $country;
+    private $country;
 
     /**
      * @var string
      * @ODM\Field(type="string")
      */
-    protected $postalCode;
+    private $postalCode;
 
     /**
      * @var GeoPoint
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint::class)
      */
-    protected $geoPoint;
+    private $geoPoint;
 
     /**
      * @ODM\PrePersist
@@ -240,6 +240,17 @@ class Address extends EmbeddedDocument implements AddressContract
         $this->country = $country;
         return $this;
     }
+
+    /**
+     * @param string $postalCode
+     * @return Address
+     */
+    public function setPostalCode(string $postalCode): Address
+    {
+        $this->postalCode = $postalCode;
+        return $this;
+    }
+
 
     /**
      * @return GeoPoint
