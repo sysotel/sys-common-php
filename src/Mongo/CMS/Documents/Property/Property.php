@@ -103,13 +103,13 @@ class Property extends BaseDocument
     protected $buildYear;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     protected $shortDescription;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     protected $longDescription;
@@ -368,9 +368,9 @@ class Property extends BaseDocument
     }
 
     /**
-     * @return string
+     * @return ?string
      */
-    public function getShortDescription(): string
+    public function getShortDescription(): ?string
     {
         return $this->shortDescription;
     }
@@ -379,25 +379,25 @@ class Property extends BaseDocument
      * @param string $shortDescription
      * @return Property
      */
-    public function setShortDescription(string $shortDescription): Property
+    public function setShortDescription(?string $shortDescription): Property
     {
         $this->shortDescription = $shortDescription;
         return $this;
     }
 
     /**
-     * @return string
+     * @return ?string
      */
-    public function getLongDescription(): string
+    public function getLongDescription(): ?string
     {
         return $this->longDescription;
     }
 
     /**
-     * @param string $longDescription
+     * @param ?string $longDescription
      * @return Property
      */
-    public function setLongDescription(string $longDescription): Property
+    public function setLongDescription(?string $longDescription): Property
     {
         $this->longDescription = $longDescription;
         return $this;
