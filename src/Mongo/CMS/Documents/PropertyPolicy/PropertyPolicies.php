@@ -250,24 +250,6 @@ class PropertyPolicies extends BaseDocument
     }
 
     /**
-     * @return array
-     */
-    public function getDefaults(): array
-    {
-        return $this->defaults;
-    }
-
-    /**
-     * @param array $defaults
-     * @return PropertyPolicies
-     */
-    public function setDefaults(array $defaults): PropertyPolicies
-    {
-        $this->defaults = $defaults;
-        return $this;
-    }
-
-    /**
      * @return $this
      */
     public function markAsExpired(): self
