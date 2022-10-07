@@ -253,18 +253,18 @@ class Address extends EmbeddedDocument implements AddressContract
 
 
     /**
-     * @return GeoPoint
+     * @return ?GeoPoint
      */
-    public function getGeoPoint(): GeoPoint
+    public function getGeoPoint(): ?GeoPoint
     {
         return $this->geoPoint;
     }
 
     /**
-     * @param GeoPoint $geoPoint
+     * @param ?GeoPoint $geoPoint
      * @return Address
      */
-    public function setGeoPoint(GeoPoint $geoPoint): Address
+    public function setGeoPoint(?GeoPoint $geoPoint): Address
     {
         $this->geoPoint = $geoPoint;
         return $this;
