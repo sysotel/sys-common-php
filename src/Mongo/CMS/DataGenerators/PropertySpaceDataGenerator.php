@@ -76,8 +76,11 @@ class PropertySpaceDataGenerator
                 'minChildCount' => $occupancy->getMinChildCount(),
                 'maxChildCount' => $occupancy->getMaxChildCount(),
                 'baseRateCounts' => $occupancy->baseRateCounts(),
+                'baseRateCountDetails' => $occupancy->baseRateCountDetails(),
                 'extraAdultRateCounts' => $occupancy->extraRateCounts(AgeCode::ADULT),
+                'extraAdultRateCountDETAILSs' => $occupancy->extraRateCountDetails(AgeCode::ADULT),
                 'extraChildRateCounts' => $occupancy->extraRateCounts(AgeCode::CHILD),
+                'extraChildRateCountDetails' => $occupancy->extraRateCountDetails(AgeCode::CHILD),
             ],
         ]);
     }
