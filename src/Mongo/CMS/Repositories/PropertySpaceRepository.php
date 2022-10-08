@@ -129,7 +129,7 @@ class PropertySpaceRepository extends DocumentRepository
     {
         $propertyId = Property::resolveID($property);
 
-        PropertySpace::queryBuilder()
+        return PropertySpace::queryBuilder()
                 ->field('propertyId')->equals($propertyId)
                 ->field('status')->equals(PropertySpaceStatus::ACTIVE)
                 ->distinct('inventorySettings.hourlySlots')
