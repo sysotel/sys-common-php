@@ -124,4 +124,16 @@ class PropertySpaceRepository extends DocumentRepository
     {
         return $this->findAllForProperty($property, ['status' => PropertySpaceStatus::INACTIVE]);
     }
+
+    public function activeHourlySlots(Property|int $property)
+    {
+        $propertyId = Property::resolveID($property);
+
+        PropertySpace::queryBuilder()
+                ->field('propertyId')->equals($propertyId)
+                ->field('status')->equals(PropertySpaceStatus::ACTIVE)
+                ->distinct('inventorySettings.hourlySlots')
+                ->getQuery()
+                ->execute();
+    }
 }
