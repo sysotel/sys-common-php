@@ -11,6 +11,7 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertyType;
 use SYSOTEL\APP\Common\Enums\Currency;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyStatus;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use SYSOTEL\APP\Common\Enums\CMS\PropertyBookingType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\Address;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference;
@@ -455,6 +456,11 @@ class Property extends BaseDocument
     {
         $this->creator = $creator;
         return $this;
+    }
+
+    public function isBookingTypeAllowed(PropertyBookingType $type)
+    {
+        return in_array($type->value, $this->allowedBookingTypes);
     }
 
     /**
