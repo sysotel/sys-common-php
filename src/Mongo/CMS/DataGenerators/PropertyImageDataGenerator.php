@@ -10,39 +10,21 @@ class PropertyImageDataGenerator
 {
     use Helpers;
 
-    /**
-     * @var PropertyImage
-     */
     protected PropertyImage $image;
 
-    /**
-     * @var string
-     */
     protected string $baseUrl;
 
-    /**
-     * @param PropertyImage $image
-     * @param string $baseUrl
-     */
     protected function __construct(PropertyImage $image, string $baseUrl)
     {
         $this->image = $image;
         $this->baseUrl = $baseUrl;
     }
 
-    /**
-     * @param PropertyImage $image
-     * @param string $baseUrl
-     * @return static
-     */
     public static function create(PropertyImage $image, string $baseUrl): static
     {
         return new static($image, $baseUrl);
     }
 
-    /**
-     * @return PropertyImageDataGenerator
-     */
     public function addBasicDetails(): PropertyImageDataGenerator
     {
         $data = [
@@ -67,10 +49,6 @@ class PropertyImageDataGenerator
         return $this->appendData($data);
     }
 
-    /**
-     * @param string $path
-     * @return string
-     */
     protected function url(string $path): string
     {
         return $this->baseUrl . $path;

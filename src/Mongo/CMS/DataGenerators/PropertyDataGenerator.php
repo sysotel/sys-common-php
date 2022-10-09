@@ -8,22 +8,13 @@ class PropertyDataGenerator
 {
     use Helpers;
 
-    /**
-     * @var Property
-     */
     protected Property $property;
 
-    /**
-     * @param Property $property
-     */
     protected function __construct(Property $property)
     {
         $this->property = $property;
     }
 
-    /**
-     * @return PropertyDataGenerator
-     */
     public function addBasicDetails(): PropertyDataGenerator
     {
         return $this->appendData([
@@ -42,9 +33,13 @@ class PropertyDataGenerator
         ]);
     }
 
-    /**
-     * @return PropertyDataGenerator
-     */
+    public function addDescription(): PropertyDataGenerator
+    {
+        return $this->appendData([
+            'longDescription' => $this->property->getLongDescription(),
+        ]);
+    }
+
     public function addCreatorDetails(): PropertyDataGenerator
     {
         return $this->appendData([
@@ -57,11 +52,6 @@ class PropertyDataGenerator
         ]);
     }
 
-    /**
-     * @param bool $addCoordinates
-     * @param bool $addAddressStrings
-     * @return PropertyDataGenerator
-     */
     public function addAddress(bool $addCoordinates = true, bool $addAddressStrings = true): PropertyDataGenerator
     {
         $property = $this->property;

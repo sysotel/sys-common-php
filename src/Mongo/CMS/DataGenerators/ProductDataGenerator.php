@@ -8,22 +8,13 @@ class ProductDataGenerator
 {
     use Helpers;
 
-    /**
-     * @var PropertyProduct
-     */
     protected PropertyProduct $product;
 
-    /**
-     * @param PropertyProduct $product
-     */
     protected function __construct(PropertyProduct $product)
     {
         $this->product = $product;
     }
-
-    /**
-     * @return static
-     */
+    
     public function addBasicDetails(): static
     {
         return $this->appendData([
