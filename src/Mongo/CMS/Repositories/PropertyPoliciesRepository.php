@@ -28,7 +28,7 @@ class PropertyPoliciesRepository extends DocumentRepository
      * @param Property|int $property
      * @return PropertyPolicies|null
      */
-    public function findActivePoliies(Property|int $property)
+    public function findActivePolicies(Property|int $property)
     {
         $policies = $this->findLatestPolicies($property);
         if($policies && $policies->isStatus(PropertyPolicyStatus::ACTIVE)) {
