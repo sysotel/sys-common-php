@@ -11,6 +11,46 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertySpace\PropertySpace;
 
 class PropertyImageRepository extends DocumentRepository
 {
+    public function getFeaturedOrFirstPropertyImage(Property|int $property): ?PropertyImage
+    {
+        return $this->findOneBy([
+            'propertyId' => Property::resolveID($property),
+            'target' => PropertyImageTarget::PROPERTY,
+            'status' => PropertyImageStatus::ACTIVE,
+        ], [
+            'isFeatured' => -1,
+        ]);
+    }
+
+    public function getFeaturedPropertyImage(Property|int $property): ?PropertyImage
+    {
+        $image = $this->getFeaturedOrFirstPropertyImage($property);
+        if($image && $image->isFeatured()) {
+            return $image;   
+        }
+        return null;
+    }
+
+    public function getFeaturedOrFirstPropertySpaceImage(PropertySpace $space): ?PropertyImage
+    {
+        return $this->findOneBy([
+            'spaceId' => PropertySpace::resolveID($space),
+            'target' => PropertyImageTarget::SPACE,
+            'status' => PropertyImageStatus::ACTIVE,
+        ], [
+            'isFeatured' => -1,
+        ]);
+    }
+
+    public function getFeaturedPropertySpaceImage(PropertySpace $space): ?PropertyImage
+    {
+        $image = $this->getFeaturedOrFirstPropertySpaceImage($space);
+        if($image && $image->isFeatured()) {
+            return $image;   
+        }
+        return null;
+    }
+
     /**
      * @param Property|int $property
      * @return PropertyImage[]
@@ -19,7 +59,7 @@ class PropertyImageRepository extends DocumentRepository
     {
         return $this->getAllImages(
             $property,
-            ['status' => ['$eq' => PropertyImageStatus::ACTIVE]]
+            ['status' => PropertyImageStatus::ACTIVE]
         );
     }
 

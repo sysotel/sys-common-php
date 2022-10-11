@@ -33,7 +33,7 @@ class PropertyImageDataGenerator
             'propertyId' => $this->image->getPropertyId(),
             'spaceId' => $this->image->getSpaceId(),
             'target' => $this->image->getTarget()->value,
-            'isFeatured' => $this->image->getIsFeatured(),
+            'isFeatured' => $this->image->isFeatured(),
             'title' => $this->image->getTitle(),
             'description' => $this->image->getDescription(),
             'status' => $this->image->getStatus(),
