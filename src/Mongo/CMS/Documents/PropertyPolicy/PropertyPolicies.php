@@ -10,12 +10,16 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyPolicyStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\UserReference;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyPoliciesRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 
 /**
- * @ODM\Document(collection="propertyPolicies")
+ * @ODM\Document(
+ *      collection="propertyPolicies",
+ *      repositoryClass=SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyPoliciesRepository::class
+ * )
  * @ODM\HasLifecycleCallbacks
  */
 class PropertyPolicies extends BaseDocument
@@ -203,6 +207,11 @@ class PropertyPolicies extends BaseDocument
         return $this->status;
     }
 
+    public function isStatus($val): bool
+    {
+        return $this->status === $val;
+    }
+
     /**
      * @param PropertyPolicyStatus $status
      * @return PropertyPolicies
@@ -257,5 +266,13 @@ class PropertyPolicies extends BaseDocument
         $this->status = PropertyPolicyStatus::EXPIRED;
         $this->expiredAt = now();
         return $this;
+    }
+
+    /**
+     * @return PropertyPoliciesRepository
+     */
+    public static function repository(): PropertyPoliciesRepository
+    {
+        return parent::repository();
     }
 }
