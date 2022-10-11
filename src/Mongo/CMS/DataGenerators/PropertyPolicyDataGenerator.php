@@ -3,7 +3,6 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\DataGenerators;
 
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyPolicy\PropertyPolicies;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyProduct\PropertyProduct;
 
 class PropertyPolicyDataGenerator
 {
@@ -16,19 +15,38 @@ class PropertyPolicyDataGenerator
         $this->policies = $policies;
     }
     
-    public function addGeneralPolicy(): static
+    public function addGeneralPolicyDetails(): static
     {
-        $data = [
-            'generalPolicy' => null
-        ];
+        $details = null;
 
         if($generalPolicy = $this->policies->getGeneralPolicy()) {
-            $data['generalPolicy'] = [
-                'generalPolicy' => $generalPolicy->getDetails(),
+            $details = [
+                'description' => $generalPolicy->getDetails(),
                 'showcaseType' => $generalPolicy->getShowcaseType()
             ];
         }
 
-        return $this->appendData($data);
+        return $this->appendData([
+            'generalPolicy' => $details
+        ]);
+    }
+
+    public function addAgePolicyDetails(): static
+    {
+        $details = null;
+
+        if($agePolicy = $this->policies->getAgePolicy()) {
+            $details = [
+                'description' => [
+                    $agePolicy->infantAgeDefinition(),
+                    $agePolicy->childAgeDefinition(),
+                    $agePolicy->adultAgeDefinition(),
+                ]
+            ];
+        }
+
+        return $this->appendData([
+            'agePolicy' => $details
+        ]);
     }
 }
