@@ -142,6 +142,7 @@ class Property extends BaseDocument
 
 
     protected $defaults = [
+        'timezone' => Timezone::ASIA_KOLKATA,
         'baseCurrency' => Currency::INR,
         'status'       => PropertyStatus::ACTIVE,
     ];
