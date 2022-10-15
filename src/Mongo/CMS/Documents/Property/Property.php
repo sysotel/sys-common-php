@@ -8,6 +8,7 @@ use Delta4op\Mongodb\Traits\HasTimestamps;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyCreationType;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyStarRating;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyType;
+use SYSOTEL\APP\Common\Enums\CMS\Timezone;
 use SYSOTEL\APP\Common\Enums\Currency;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyStatus;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
@@ -114,6 +115,12 @@ class Property extends BaseDocument
      * @ODM\Field(type="string")
      */
     protected $longDescription;
+
+    /**
+     * @var Timezone
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\Timezone::class)
+     */
+    protected $timezone;
 
     /**
      * @var PropertyStatus
@@ -402,6 +409,22 @@ class Property extends BaseDocument
     {
         $this->longDescription = $longDescription;
         return $this;
+    }
+
+    /**
+     * @return Timezone
+     */
+    public function getTimezone(): Timezone
+    {
+        return $this->timezone;
+    }
+
+    /**
+     * @param Timezone $timezone
+     */
+    public function setTimezone(Timezone $timezone): void
+    {
+        $this->timezone = $timezone;
     }
 
     /**
