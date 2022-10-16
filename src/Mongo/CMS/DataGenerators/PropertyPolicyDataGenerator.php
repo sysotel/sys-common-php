@@ -86,13 +86,13 @@ class PropertyPolicyDataGenerator
         if($checkOutPolicy = $this->policies->getCheckOutPolicy()) {
             $details = [
                 'dailyStandardTime' => $checkOutPolicy->getDailyStandardTime(),
-                'earlyCheckInStatus' => $checkOutPolicy->getLateCheckOutStatus()?->value,
+                'lateCheckoutStatus' => $checkOutPolicy->getLateCheckOutStatus()?->value,
                 'details' => $checkOutPolicy->getDetails(),
             ];
 
             if($addDescription) {
                 $details['checkInDescription'] = $checkOutPolicy->checkOutTimeDescription();
-                $details['earlyCheckInDescription'] = $checkOutPolicy->lateCheckoutDescription();
+                $details['lateCheckoutDescription'] = $checkOutPolicy->lateCheckoutDescription();
                 $details['fullDescription'] = $checkOutPolicy->fullDescription();
             }
         }
