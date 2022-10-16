@@ -33,6 +33,8 @@ class PropertyDataGenerator
             'propertyLabel' => $this->property->getPropertyLabel(),
             'spaceLabel' => $this->property->getSpaceLabel(),
             'productLabel' => $this->property->getProductLabel(),
+            'createdAt' => $this->property->getCreatedAt(),
+            'createdAtString' => $this->property?->getCreatedAt()?->format('d M, Y H:i'),
         ]);
     }
 
