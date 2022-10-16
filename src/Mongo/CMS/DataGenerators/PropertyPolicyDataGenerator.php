@@ -136,6 +136,15 @@ class PropertyPolicyDataGenerator
             $details['bachelorsRule']['description'] = $rules?->getBachelorsRule()?->description();
             $details['petsRule']['description'] = $rules?->getPetsRule()?->description();
             $details['outsideRule']['description'] = $rules?->getOutsideFoodRule()?->description();
+            $details['description'] = [];
+
+            foreach($details as $ruleItem) {
+                foreach($ruleItem as $ruleName => $ruleDetails) {
+                    if(isset($ruleDetails['description'])) {
+                        $details['description'][] = $ruleDetails['description'];
+                    }
+                }
+            }
         }
 
         return $this->appendData([
