@@ -138,11 +138,9 @@ class PropertyPolicyDataGenerator
             $details['outsideRule']['description'] = $rules?->getOutsideFoodRule()?->description();
             $details['description'] = [];
 
-            foreach($details as $ruleItem) {
-                foreach($ruleItem as $ruleName => $ruleDetails) {
-                    if(isset($ruleDetails['description'])) {
-                        $details['description'][] = $ruleDetails['description'];
-                    }
+            foreach($details as $ruleName => $ruleDetails) {
+                if(isset($ruleDetails['description'])) {
+                    $details['description'][] = $ruleDetails['description'];
                 }
             }
         }
