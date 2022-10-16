@@ -9,7 +9,7 @@ class NumericIdGenerator
 {
     public static function get(Document $document)
     {
-        $metadata = get_class($document)::getManager()->getClassMetadata(get_class($document));
+        $metadata = get_class($document)::manager()->getClassMetadata(get_class($document));
 
         $counter = Counter::queryBuilder()->findAndUpdate()->returnNew()
             ->field('_id')->equals($metadata->collection)
