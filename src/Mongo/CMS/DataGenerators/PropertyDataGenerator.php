@@ -26,6 +26,8 @@ class PropertyDataGenerator
             'baseCurrency' => $this->property->getBaseCurrency()?->value,
             'timezone' => $this->property->getTimezone()?->value,
             'allowedBookingTypes' => $this->property->getAllowedBookingTypes(),
+            'noOfSpaces' => $this->property->getNoOfSpaces(),
+            'noOfFloors' => $this->property->getNoOfFloors(),
             'buildYear' => $this->property->getBuildYear(),
             'longDescription' => $this->property->getLongDescription(),
             'propertyLabel' => $this->property->getPropertyLabel(),
