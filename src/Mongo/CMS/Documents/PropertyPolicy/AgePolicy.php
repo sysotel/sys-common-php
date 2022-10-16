@@ -27,7 +27,7 @@ class AgePolicy extends EmbeddedDocument
      * @var int
      * @ODM\Field(type="int")
      */
-    protected $freeChildThreshold;
+    protected $freeChildAgeThreshold;
 
     /**
      * @var int
@@ -74,18 +74,18 @@ class AgePolicy extends EmbeddedDocument
     /**
      * @return int
      */
-    public function getFreeChildThreshold(): int
+    public function getFreeChildAgeThreshold(): int
     {
-        return $this->freeChildThreshold;
+        return $this->freeChildAgeThreshold;
     }
 
     /**
-     * @param int $freeChildThreshold
+     * @param int $freeChildAgeThreshold
      * @return AgePolicy
      */
-    public function setFreeChildThreshold(int $freeChildThreshold): AgePolicy
+    public function setFreeChildAgeThreshold(int $freeChildAgeThreshold): AgePolicy
     {
-        $this->freeChildThreshold = $freeChildThreshold;
+        $this->freeChildAgeThreshold = $freeChildAgeThreshold;
         return $this;
     }
 
@@ -139,7 +139,7 @@ class AgePolicy extends EmbeddedDocument
         $guest = $this->noOfFreeChildGranted != 1 ? 'guests' : 'guest';
         $is = $this->noOfFreeChildGranted != 1 ? 'area' : 'is';
 
-        return "{$this->noOfFreeChildGranted} $guest below age {$this->freeChildThreshold} {$is} allowed for FREE when used existing bedding.";
+        return "{$this->noOfFreeChildGranted} $guest below age {$this->freeChildAgeThreshold} {$is} allowed for FREE when used existing bedding.";
     }
 
     /**
