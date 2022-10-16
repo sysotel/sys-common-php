@@ -108,7 +108,7 @@ class PropertyPolicyDataGenerator
 
         $details = [
             'guestDocumentRule' => [
-                'documentsRequiredOnCheckIn' => $rules?->getGuestDocumentRule()?->isDocumentsRequiredOnCheckIn(),
+                'documentsRequiredOnCheckIn' => $rules?->getGuestDocumentRule()?->isIsDocumentsRequiredOnCheckIn(),
                 'isLocalIdAllowed' => $rules?->getGuestDocumentRule()?->isLocalIdAllowed(),
                 'acceptableIdentityProofs' => $rules?->getGuestDocumentRule()?->getAcceptableIdentityProofs(),
             ],

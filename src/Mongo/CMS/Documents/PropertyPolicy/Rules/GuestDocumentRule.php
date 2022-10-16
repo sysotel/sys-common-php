@@ -17,7 +17,7 @@ class GuestDocumentRule extends EmbeddedDocument
      * @var bool
      * @ODM\Field(type="bool")
      */
-    protected $documentsRequiredOnCheckIn;
+    protected $isDocumentsRequiredOnCheckIn;
 
     /**
      * @var bool
@@ -36,16 +36,16 @@ class GuestDocumentRule extends EmbeddedDocument
      */
     public function isDocumentsRequiredOnCheckIn(): bool
     {
-        return $this->documentsRequiredOnCheckIn;
+        return $this->isDocumentsRequiredOnCheckIn;
     }
 
     /**
-     * @param bool $documentsRequiredOnCheckIn
+     * @param bool $isDocumentsRequiredOnCheckIn
      * @return GuestDocumentRule
      */
-    public function setDocumentsRequiredOnCheckIn(bool $documentsRequiredOnCheckIn): GuestDocumentRule
+    public function setIsDocumentsRequiredOnCheckIn(bool $isDocumentsRequiredOnCheckIn): GuestDocumentRule
     {
-        $this->documentsRequiredOnCheckIn = $documentsRequiredOnCheckIn;
+        $this->isDocumentsRequiredOnCheckIn = $isDocumentsRequiredOnCheckIn;
         return $this;
     }
 
@@ -91,8 +91,8 @@ class GuestDocumentRule extends EmbeddedDocument
     public function description(): string
     {
         $str = '';
-        if(isset($this->documentsRequiredOnCheckIn)) {
-            $str .= 'Documents are ' . ($this->documentsRequiredOnCheckIn ? 'required ' : 'NOT required ') . 'while check in';
+        if(isset($this->isDocumentsRequiredOnCheckIn)) {
+            $str .= 'Documents are ' . ($this->isDocumentsRequiredOnCheckIn ? 'required ' : 'NOT required ') . 'while check in';
         }
 
         if(!empty($str)) $str .= ' ';
