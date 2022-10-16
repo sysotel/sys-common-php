@@ -101,4 +101,45 @@ class PropertyPolicyDataGenerator
             'checkOutPolicy' => $details
         ]);
     }
+
+    public function addRules(bool $addDescription = false): PropertyPolicyDataGenerator
+    {
+        $rules = $this->policies->getRules();
+
+        $details = [
+            'guestDocumentRule' => [
+                'documentsRequiredOnCheckIn' => $rules?->getGuestDocumentRule()?->isDocumentsRequiredOnCheckIn(),
+                'isLocalIdAllowed' => $rules?->getGuestDocumentRule()?->isLocalIdAllowed(),
+                'acceptableIdentityProofs' => $rules?->getGuestDocumentRule()?->getAcceptableIdentityProofs(),
+            ],
+            'unmarriedCoupleRule' => [
+                'isAllowed' => $rules?->getUnmarriedCoupleRule()?->isAllowed(),
+                'details' => $rules?->getUnmarriedCoupleRule()?->getDetails(),
+            ],
+            'bachelorsRule' => [
+                'isAllowed' => $rules?->getBachelorsRule()?->isAllowed(),
+                'details' => $rules?->getBachelorsRule()?->getDetails(),
+            ],
+            'petsRule' => [
+                'isAllowed' => $rules?->getPetsRule()?->isAllowed(),
+                'details' => $rules?->getPetsRule()?->getDetails(),
+            ],
+            'outsideRule' => [
+                'isAllowed' => $rules?->getOutsideFoodRule()?->isAllowed(),
+                'details' => $rules?->getOutsideFoodRule()?->getDetails(),
+            ]
+        ];
+
+        if($addDescription) {
+            $details['guestDocumentRule']['description'] = $rules?->getGuestDocumentRule()?->description();
+            $details['unmarriedCoupleRule']['description'] = $rules?->getUnmarriedCoupleRule()?->description();
+            $details['bachelorsRule']['description'] = $rules?->getBachelorsRule()?->description();
+            $details['petsRule']['description'] = $rules?->getPetsRule()?->description();
+            $details['outsideRule']['description'] = $rules?->getOutsideFoodRule()?->description();
+        }
+
+        return $this->appendData([
+            'rules' => $details
+        ]);
+    }
 }
