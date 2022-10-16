@@ -23,6 +23,7 @@ enum PropertyType: string
     case COTTAGE = 'COTTAGE';
     case CAMP = 'CAMP';
     case POD = 'POD';
+    case OTHER = 'OTHER';
 
     public function propertyLabel(): string
     {
