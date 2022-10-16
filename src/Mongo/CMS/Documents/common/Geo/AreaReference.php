@@ -41,7 +41,7 @@ class AreaReference extends EmbeddedDocument
      */
     public function getId(): ObjectId
     {
-        return $this->id;
+        return $this->id instanceof ObjectId ? $this->id : new ObjectId($this->id);
     }
 
     /**
