@@ -33,7 +33,7 @@ class CountryReference extends EmbeddedDocument
     public static function createFromCountry(Country $country): CountryReference
     {
         $instance = new self;
-        $instance->id = new ObjectId($country->getId());
+        $instance->id = $country->getId();
         $instance->name = $country->getName();
         return $instance;
     }
