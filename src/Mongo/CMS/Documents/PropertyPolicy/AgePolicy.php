@@ -27,13 +27,13 @@ class AgePolicy extends EmbeddedDocument
      * @var int
      * @ODM\Field(type="int")
      */
-    protected $freeChildAgeThreshold;
+    protected $freeChildAgeThreshold = 0;
 
     /**
      * @var int
      * @ODM\Field(type="int")
      */
-    protected $noOfFreeChildGranted;
+    protected $noOfFreeChildGranted = 0;
 
     /**
      * @return int
