@@ -66,6 +66,7 @@ class PropertyDataGenerator
         if(!$this->property->getAddress()) return $this;
         $data['address'] = [
             'line1' => $property->getAddress()->getLine1(),
+            'postalCode' => $property->getAddress()->getPostalCode(),
             'area' => $property->getAddress()->getArea()->getName(),
             'areaId' => $property->getAddress()->getArea()->getId(),
             'city' => $property->getAddress()->getCity()->getName(),
