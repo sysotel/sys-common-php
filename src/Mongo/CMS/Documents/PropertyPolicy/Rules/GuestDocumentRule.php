@@ -40,10 +40,10 @@ class GuestDocumentRule extends EmbeddedDocument
     }
 
     /**
-     * @param bool $isDocumentsRequiredOnCheckIn
+     * @param bool|null $isDocumentsRequiredOnCheckIn
      * @return GuestDocumentRule
      */
-    public function setIsDocumentsRequiredOnCheckIn(bool $isDocumentsRequiredOnCheckIn): GuestDocumentRule
+    public function setIsDocumentsRequiredOnCheckIn(bool|null $isDocumentsRequiredOnCheckIn): GuestDocumentRule
     {
         $this->isDocumentsRequiredOnCheckIn = $isDocumentsRequiredOnCheckIn;
         return $this;
@@ -58,10 +58,10 @@ class GuestDocumentRule extends EmbeddedDocument
     }
 
     /**
-     * @param bool $isLocalIdAllowed
+     * @param bool|null $isLocalIdAllowed
      * @return GuestDocumentRule
      */
-    public function setIsLocalIdAllowed(bool $isLocalIdAllowed): GuestDocumentRule
+    public function setIsLocalIdAllowed(bool|null $isLocalIdAllowed): GuestDocumentRule
     {
         $this->isLocalIdAllowed = $isLocalIdAllowed;
         return $this;
