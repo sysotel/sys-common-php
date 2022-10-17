@@ -32,9 +32,9 @@ class GuestDocumentRule extends EmbeddedDocument
     protected $acceptableIdentityProofs = [];
 
     /**
-     * @return bool
+     * @return ?bool
      */
-    public function isDocumentsRequiredOnCheckIn(): bool
+    public function isDocumentsRequiredOnCheckIn(): ?bool
     {
         return $this->isDocumentsRequiredOnCheckIn;
     }
@@ -50,9 +50,9 @@ class GuestDocumentRule extends EmbeddedDocument
     }
 
     /**
-     * @return bool
+     * @return ?bool
      */
-    public function isLocalIdAllowed(): bool
+    public function isLocalIdAllowed(): ?bool
     {
         return $this->isLocalIdAllowed;
     }
