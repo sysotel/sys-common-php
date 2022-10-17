@@ -104,9 +104,9 @@ class CheckOutPolicy extends EmbeddedDocument
     public function lateCheckoutDescription(): string
     {
         return match($this->lateCheckOutStatus) {
-            LateCheckOutStatus::ALLOWED => 'Late checkout is allowed as per availability.',
-            LateCheckOutStatus::NOT_ALLOWED => 'Late checkout is allowed.',
-            LateCheckOutStatus::AS_PER_AVAILABILITY => 'Late checkout is NOT allowed.',
+            LateCheckOutStatus::AS_PER_AVAILABILITY => 'Late checkout is allowed as per availability.',
+            LateCheckOutStatus::ALLOWED => 'Late checkout is allowed.',
+            LateCheckOutStatus::NOT_ALLOWED => 'Late checkout is NOT allowed.',
             default => ''
         };
     }

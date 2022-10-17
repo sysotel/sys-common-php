@@ -104,9 +104,9 @@ class CheckInPolicy extends EmbeddedDocument
     public function earlyCheckInDescription(): string
     {
         return match($this->earlyCheckInStatus) {
-            EarlyCheckInStatus::ALLOWED => 'Early checkin is allowed as per availability.',
-            EarlyCheckInStatus::NOT_ALLOWED => 'Early checkin is allowed.',
-            EarlyCheckInStatus::AS_PER_AVAILABILITY => 'Early checkin is NOT allowed.',
+            EarlyCheckInStatus::AS_PER_AVAILABILITY => 'Early checkin is allowed as per availability.',
+            EarlyCheckInStatus::ALLOWED => 'Early checkin is allowed.',
+            EarlyCheckInStatus::NOT_ALLOWED => 'Early checkin is NOT allowed.',
             default => ''
         };
     }
