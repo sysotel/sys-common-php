@@ -145,7 +145,7 @@ class PropertyImage extends BaseDocument
     {
         $imageItem = $this->imageItem($version);
 
-        return $imageItem->getFilePath() ?? null;
+        return $imageItem?->getFilePath();
     }
 
     /**
