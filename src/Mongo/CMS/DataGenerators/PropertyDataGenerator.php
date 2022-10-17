@@ -20,6 +20,8 @@ class PropertyDataGenerator
         return $this->appendData([
             'id' => $this->property->getId(),
             'accountId' => $this->property->getAccountId(),
+            'slug' => $this->property->getSlug(),
+            'accountSlug' => $this->property->getAccountSlug(),
             'displayName' => $this->property->getDisplayName(),
             'starRating' => $this->property->getStarRating()->value,
             'type' => $this->property->getType(),
@@ -65,15 +67,19 @@ class PropertyDataGenerator
         $data['address'] = [
             'line1' => $property->getAddress()->getLine1(),
             'area' => $property->getAddress()->getArea()->getName(),
+            'areaId' => $property->getAddress()->getArea()->getId(),
             'city' => $property->getAddress()->getCity()->getName(),
+            'cityId' => $property->getAddress()->getCity()->getId(),
             'state' => $property->getAddress()->getState()->getName(),
+            'stateId' => $property->getAddress()->getState()->getId(),
             'country' => $property->getAddress()->getCountry()->getName(),
+            'countryId' => $property->getAddress()->getCountry()->getId(),
         ];
 
         if ($addCoordinates && $property->getAddress()->getGeoPoint()) {
             $data['address']['coordinates'] = [
-                'longitude' => $property->getAddress()->getGeoPoint()->getLongitude(),
                 'latitude' => $property->getAddress()->getGeoPoint()->getLatitude(),
+                'longitude' => $property->getAddress()->getGeoPoint()->getLongitude(),
             ];
         }
 
