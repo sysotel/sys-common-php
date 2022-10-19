@@ -153,4 +153,9 @@ class AgePolicy extends EmbeddedDocument
             $this->adultAgeDefinition(),
         ];
     }
+
+    public function getFullDescription(): string
+    {
+        return implode(', ', $this->fullDescriptionArray());
+    }
 }
