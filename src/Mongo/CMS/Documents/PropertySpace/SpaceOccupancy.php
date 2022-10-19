@@ -59,7 +59,7 @@ class SpaceOccupancy extends EmbeddedDocument
      */
     public function baseRateCounts(): array
     {
-        if($this->baseCount > 0) {
+        if($this->minCount > 0 && $this->baseCount >= $this->minCount) {
             return range(1, $this->baseCount);
         }
         return [];
