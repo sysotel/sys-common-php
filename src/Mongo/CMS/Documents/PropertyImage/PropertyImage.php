@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyImageStatus;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyImageTarget;
@@ -56,7 +57,7 @@ class PropertyImage extends BaseDocument
     protected $isFeatured;
 
     /**
-     * @var ArrayCollection & ImageItem[]
+     * @var Collection & ImageItem[]
      * @ODM\EmbedMany  (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyImage\ImageItem::class)
      */
     protected $items;
@@ -236,9 +237,9 @@ class PropertyImage extends BaseDocument
     }
 
     /**
-     * @return ArrayCollection|ImageItem[]
+     * @return Collection|ImageItem[]
      */
-    public function getItems(): ArrayCollection|array
+    public function getItems(): Collection|array
     {
         return $this->items;
     }
