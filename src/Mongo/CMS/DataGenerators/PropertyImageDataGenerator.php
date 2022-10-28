@@ -41,7 +41,7 @@ class PropertyImageDataGenerator
 
         if($this->image->getTarget() === PropertyImageTarget::LOGO) {
             $data['url'] = $this->url($this->image->filePath(PropertyImageVersion::ORIGINAL));
-        } if($this->image->getTarget() === PropertyImageTarget::BANNER) {
+        } elseif($this->image->getTarget() === PropertyImageTarget::BANNER) {
             $data['url'] = $this->url($this->image->filePath(PropertyImageVersion::ORIGINAL));
         } else {
             $data['url'] = $this->url($this->image->filePath(PropertyImageVersion::STANDARD_LARGE));
