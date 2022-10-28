@@ -86,3 +86,15 @@ if (! function_exists('enumValues')) {
         return array_column($enumClass::cases(), 'value');
     }
 }
+
+if(!function_exists('googleMapUrl')) {
+    /**
+     * @param float $lat
+     * @param float $lng
+     * @return string
+     */
+    function googleMapUrl(float $lat, float $lng): string
+    {
+        return "https://www.google.com/maps?q=$lat,$lng";
+    }
+}

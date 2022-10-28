@@ -78,10 +78,16 @@ class PropertyDataGenerator
         ];
 
         if ($addCoordinates && $property->getAddress()->getGeoPoint()) {
-            $data['address']['coordinates'] = [
-                'latitude' => $property->getAddress()->getGeoPoint()->getLatitude(),
-                'longitude' => $property->getAddress()->getGeoPoint()->getLongitude(),
-            ];
+            $lat = $property->getAddress()->getGeoPoint()->getLatitude();
+            $lng = $property->getAddress()->getGeoPoint()->getLongitude();
+
+            if(is_numeric($lat) && is_numeric($lng)) {
+                $data['address']['googleMapUrl'] = googleMapUrl($lat, $lng);
+                $data['address']['coordinates'] = [
+                    'latitude' => $property->getAddress()->getGeoPoint()->getLatitude(),
+                    'longitude' => $property->getAddress()->getGeoPoint()->getLongitude(),
+                ];
+            }
         }
 
         if($addAddressStrings) {
