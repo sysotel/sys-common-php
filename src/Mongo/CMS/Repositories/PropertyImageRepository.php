@@ -26,7 +26,7 @@ class PropertyImageRepository extends DocumentRepository
     {
         $image = $this->getFeaturedOrFirstPropertyImage($property);
         if($image && $image->isFeatured()) {
-            return $image;   
+            return $image;
         }
         return null;
     }
@@ -46,7 +46,7 @@ class PropertyImageRepository extends DocumentRepository
     {
         $image = $this->getFeaturedOrFirstPropertySpaceImage($space);
         if($image && $image->isFeatured()) {
-            return $image;   
+            return $image;
         }
         return null;
     }
@@ -87,6 +87,21 @@ class PropertyImageRepository extends DocumentRepository
         $criteria = [
             'propertyId' => Property::resolveID($property),
             'target' => PropertyImageTarget::LOGO,
+            'status' => ['$eq' => PropertyImageStatus::ACTIVE]
+        ];
+
+        $orderBy = [
+            'createdAt' => -1
+        ];
+
+        return $this->findOneBy($criteria, $orderBy);
+    }
+
+    public function getPropertyBanner(Property|int $property): PropertyImage|null
+    {
+        $criteria = [
+            'propertyId' => Property::resolveID($property),
+            'target' => PropertyImageTarget::BANNER,
             'status' => ['$eq' => PropertyImageStatus::ACTIVE]
         ];
 
