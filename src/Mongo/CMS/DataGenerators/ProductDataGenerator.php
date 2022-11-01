@@ -14,7 +14,7 @@ class ProductDataGenerator
     {
         $this->product = $product;
     }
-    
+
     public function addBasicDetails(): static
     {
         return $this->appendData([
@@ -26,7 +26,7 @@ class ProductDataGenerator
             'internalName' => $this->product->getInternalName(),
             'longDescription' => $this->product->getLongDescription(),
             'mealPlanCode' => $this->product->getMealPlanCode(),
-            'status' => $this->product->getSpaceId(),
+            'status' => $this->product->getStatus()?->value,
             'inclusions' => $this->product->getInclusions()
         ]);
     }
