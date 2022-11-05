@@ -4,6 +4,7 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Repositories;
 
 use Delta4op\Mongodb\Repositories\DocumentRepository;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyProductStatus;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyProduct\PropertyProduct;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertySpace\PropertySpace;
 
 class PropertyProductRepository extends DocumentRepository
@@ -12,7 +13,7 @@ class PropertyProductRepository extends DocumentRepository
      * @param PropertySpace|int $space
      * @param array $criteria
      * @param array $orderBy
-     * @return array
+     * @return PropertyProduct[]
      */
     public function findAllForSpace(PropertySpace|int $space, array $criteria = [], array $orderBy = []): array
     {
@@ -23,16 +24,18 @@ class PropertyProductRepository extends DocumentRepository
 
     /**
      * @param PropertySpace|int $space
-     * @return array
+     * @param array $criteria
+     * @return PropertyProduct[]
      */
-    public function findAllActiveForSpace(PropertySpace|int $space): array
+    public function findAllActiveForSpace(PropertySpace|int $space, array $criteria = []): array
     {
-        return $this->findAllForSpace($space, ['status' => PropertyProductStatus::ACTIVE]);
+        $criteria = array_merge(['status' => PropertyProductStatus::ACTIVE], $criteria);
+        return $this->findAllForSpace($space, $criteria);
     }
 
     /**
      * @param PropertySpace|int $space
-     * @return array
+     * @return PropertyProduct[]
      */
     public function findAllInactiveForSpace(PropertySpace|int $space): array
     {
