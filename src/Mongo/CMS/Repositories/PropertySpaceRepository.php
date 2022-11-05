@@ -3,7 +3,6 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\Repositories;
 
 use Delta4op\Mongodb\Repositories\DocumentRepository;
-use Doctrine\ODM\MongoDB\LockMode;
 use SYSOTEL\APP\Common\Enums\CMS\InventoryAccuracy;
 use SYSOTEL\APP\Common\Enums\CMS\PropertySpaceStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Property\Property;
@@ -93,11 +92,11 @@ class PropertySpaceRepository extends DocumentRepository
      * @param Property|int $property
      * @return array
      */
-    public function findAllActiveDailySpaces(Property|int $property): array
+    public function findAllActiveDailySpaces(Property|int $property, array $criteria = []): array
     {
-        $criteria = [
+        $criteria = array_merge([
             'inventorySettings.accuracy' => InventoryAccuracy::DAILY
-        ];
+        ], $criteria);
 
         return $this->findAllActiveForProperty($property, $criteria);
     }
@@ -106,11 +105,11 @@ class PropertySpaceRepository extends DocumentRepository
      * @param Property|int $property
      * @return array
      */
-    public function findAllActiveHourlySpaces(Property|int $property): array
+    public function findAllActiveHourlySpaces(Property|int $property, array $criteria = []): array
     {
-        $criteria = [
+        $criteria = array_merge([
             'inventorySettings.accuracy' => InventoryAccuracy::HOURLY
-        ];
+        ], $criteria);
 
         return $this->findAllActiveForProperty($property, $criteria);
     }
@@ -130,10 +129,10 @@ class PropertySpaceRepository extends DocumentRepository
         $propertyId = Property::resolveID($property);
 
         return PropertySpace::queryBuilder()
-                ->field('propertyId')->equals($propertyId)
-                ->field('status')->equals(PropertySpaceStatus::ACTIVE)
-                ->distinct('inventorySettings.hourlySlots')
-                ->getQuery()
-                ->execute();
+            ->field('propertyId')->equals($propertyId)
+            ->field('status')->equals(PropertySpaceStatus::ACTIVE)
+            ->distinct('inventorySettings.hourlySlots')
+            ->getQuery()
+            ->execute();
     }
 }
