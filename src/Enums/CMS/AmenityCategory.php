@@ -49,43 +49,43 @@ enum AmenityCategory: string
 
     public function propertyCategories(): array
     {
-       return [
-           'BASIC_FACILITIES',
-           'GENERAL_SERVICES',
-           'OUTDOOR_ACTIVITIES_AND_SPORTS',
-           'COMMON_AREA',
-           'FOOD_DRINKS',
-           'BEAUTY_AND_SPA',
-           'BUSINESS',
-           'HEALTH_WELLNESS',
-           'SECURITY',
-           'TRANSFER',
-           'SHOPPING',
-           'ENTERTAINMENT',
-           'MEDIA_TECHNOLOGY',
-           'PAYMENT_SERVICES',
-           'INDOOR_ACTIVITIES_AND_SPORTS',
-           'FAMILY_AND_KIDS',
-           'SAFETY_HYGIENE',
-           'PET_ESSENTIALS'
-       ];
+        return [
+            self::BASIC_FACILITIES,
+            self::GENERAL_SERVICES,
+            self::OUTDOOR_ACTIVITIES_AND_SPORTS,
+            self::COMMON_AREA,
+            self::FOOD_DRINKS,
+            self::BEAUTY_AND_SPA,
+            self::BUSINESS,
+            self::HEALTH_WELLNESS,
+            self::SECURITY,
+            self::TRANSFER,
+            self::SHOPPING,
+            self::ENTERTAINMENT,
+            self::MEDIA_TECHNOLOGY,
+            self::PAYMENT_SERVICES,
+            self::INDOOR_ACTIVITIES_AND_SPORTS,
+            self::FAMILY_AND_KIDS,
+            self::SAFETY_HYGIENE,
+            self::PET_ESSENTIALS
+        ];
 
 
     }
 
     public function spaceCategories(): array
     {
-        return[
-            'POPULAR_WITH_GUESTS',
-           'BATHROOM',
-           'SPACE_FEATURES',
-           'MEDIA_ENTERTAINMENT',
-            'FOOD_AND_DRINKS',
-            'KITCHEN_AND_APPLIANCES',
-            'BEDS_AND_BLANKET',
-          'SAFETY_AND_SECURITY',
-            'CHILDCARE',
-             'OTHER',
+        return [
+            self::POPULAR_WITH_GUESTS,
+            self::BATHROOM,
+            self::SPACE_FEATURES,
+            self::MEDIA_ENTERTAINMENT,
+            self::FOOD_AND_DRINKS,
+            self::KITCHEN_AND_APPLIANCES,
+            self::BEDS_AND_BLANKET,
+            self::SAFETY_AND_SECURITY,
+            self::CHILDCARE,
+            self::OTHER,
         ];
     }
 }
