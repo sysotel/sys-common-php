@@ -25,7 +25,7 @@ class AmenityDetailsTemplate extends EmbeddedDocument
 
     /**
      * @var ArrayCollection & TemplateAttribute[]
-     * @ODM\EmbedMany (targetClass=TemplateAttribute::class)
+     * @ODM\EmbedMany (targetDocument=TemplateAttribute::class)
      */
     private $attributes;
 

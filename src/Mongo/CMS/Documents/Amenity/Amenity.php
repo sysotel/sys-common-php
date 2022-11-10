@@ -75,7 +75,7 @@ class Amenity extends BaseDocument
 
     /**
      * @var AmenityDetailsTemplate
-     * @ODM\EmbedOne (targetClass=AmenityDetailsTemplate::class)
+     * @ODM\EmbedOne (targetDocument=AmenityDetailsTemplate::class)
      */
     protected $template;
 
