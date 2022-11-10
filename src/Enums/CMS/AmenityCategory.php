@@ -8,6 +8,7 @@ enum AmenityCategory: string
 {
     use BackedEnumHelpers;
 
+    // amenity categories
     case BASIC_FACILITIES = 'BASIC_FACILITIES';
     case GENERAL_SERVICES = 'GENERAL_SERVICES';
     case OUTDOOR_ACTIVITIES_AND_SPORTS = 'OUTDOOR_ACTIVITIES_AND_SPORTS';
@@ -26,6 +27,8 @@ enum AmenityCategory: string
     case FAMILY_AND_KIDS = 'FAMILY_AND_KIDS';
     case SAFETY_HYGIENE = 'SAFETY_HYGIENE';
     case PET_ESSENTIALS = 'PET_ESSENTIALS';
+
+    // space categories
     case POPULAR_WITH_GUESTS = 'POPULAR_WITH_GUESTS';
     case BATHROOM = 'BATHROOM';
     case SPACE_FEATURES = 'SPACE_FEATURES';
@@ -36,4 +39,19 @@ enum AmenityCategory: string
     case SAFETY_AND_SECURITY = 'SAFETY_AND_SECURITY';
     case CHILDCARE = 'CHILDCARE';
     case OTHER = 'OTHER';
+
+    public function userFriendlyValue()
+    {
+        // return readable value
+    }
+
+    public function propertyCategories()
+    {
+        // todo
+    }
+
+    public function spaceCategories()
+    {
+        // todo
+    }
 }

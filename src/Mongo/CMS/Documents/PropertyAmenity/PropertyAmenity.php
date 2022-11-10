@@ -4,6 +4,7 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity;
 
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
@@ -19,7 +20,7 @@ class PropertyAmenity extends BaseDocument
     use HasObjectIdKey, HasAccountId, HasPropertyId, HasSpaceId, HasTimestamps;
 
     /**
-     * @var PropertyAmenityItem[] & ArrayCollection
+     * @var Collection & PropertyAmenityItem[]
      * @ODM\EmbedMany (targetDocument=PropertyAmenityItem::class)
      */
     protected $amenities;
