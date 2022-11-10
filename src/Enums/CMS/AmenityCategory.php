@@ -47,47 +47,45 @@ enum AmenityCategory: string
         return readableConstant($data);
     }
 
-    public function propertyCategories(): string
+    public function propertyCategories(): array
     {
+       return [
+           'BASIC_FACILITIES',
+           'GENERAL_SERVICES',
+           'OUTDOOR_ACTIVITIES_AND_SPORTS',
+           'COMMON_AREA',
+           'FOOD_DRINKS',
+           'BEAUTY_AND_SPA',
+           'BUSINESS',
+           'HEALTH_WELLNESS',
+           'SECURITY',
+           'TRANSFER',
+           'SHOPPING',
+           'ENTERTAINMENT',
+           'MEDIA_TECHNOLOGY',
+           'PAYMENT_SERVICES',
+           'INDOOR_ACTIVITIES_AND_SPORTS',
+           'FAMILY_AND_KIDS',
+           'SAFETY_HYGIENE',
+           'PET_ESSENTIALS'
+       ];
 
-        return match ($this) {
-            self::BASIC_FACILITIES => 'BASIC_FACILITIES',
-            self::GENERAL_SERVICES => 'GENERAL_SERVICES',
-            self::OUTDOOR_ACTIVITIES_AND_SPORTS => 'OUTDOOR_ACTIVITIES_AND_SPORTS',
-            self::COMMON_AREA => 'COMMON_AREA',
-            self::FOOD_DRINKS =>'FOOD_DRINKS',
-            self::HEALTH_WELLNESS => 'HEALTH_WELLNESS',
-            self::BUSINESS => 'BUSINESS',
-            self::BEAUTY_AND_SPA => 'BEAUTY_AND_SPA',
-            self::SECURITY => 'SECURITY',
-            self::TRANSFER => 'TRANSFER',
-            self::SHOPPING => 'SHOPPING',
-            self::ENTERTAINMENT => 'ENTERTAINMENT',
-            self::MEDIA_TECHNOLOGY => 'MEDIA_TECHNOLOGY',
-            self::PAYMENT_SERVICES => 'PAYMENT_SERVICES',
-            self::INDOOR_ACTIVITIES_AND_SPORTS => 'INDOOR_ACTIVITIES_AND_SPORTS',
-            self::FAMILY_AND_KIDS => 'FAMILY_AND_KIDS',
-            self::SAFETY_HYGIENE => 'SAFETY_HYGIENE',
-            self::PET_ESSENTIALS => 'PET_ESSENTIALS',
-            default => throw new Exception('Unexpected match value'),
-        };
+
     }
 
-    public function spaceCategories(): string
+    public function spaceCategories(): array
     {
-
-        return match ($this) {
-            self::POPULAR_WITH_GUESTS => 'POPULAR_WITH_GUESTS',
-            self::BATHROOM => 'BATHROOM',
-            self::SPACE_FEATURES => 'SPACE_FEATURES',
-            self::MEDIA_ENTERTAINMENT => 'MEDIA_ENTERTAINMENT',
-            self::FOOD_AND_DRINKS =>'FOOD_AND_DRINKS',
-            self::KITCHEN_AND_APPLIANCES => 'KITCHEN_AND_APPLIANCES',
-            self::BEDS_AND_BLANKET => 'BEDS_AND_BLANKET',
-            self::SAFETY_AND_SECURITY => 'SAFETY_AND_SECURITY',
-            self::CHILDCARE => 'CHILDCARE',
-            self::OTHER => 'OTHER',
-            default => throw new Exception('Unexpected match value'),
-        };
+        return[
+            'POPULAR_WITH_GUESTS',
+           'BATHROOM',
+           'SPACE_FEATURES',
+           'MEDIA_ENTERTAINMENT',
+            'FOOD_AND_DRINKS',
+            'KITCHEN_AND_APPLIANCES',
+            'BEDS_AND_BLANKET',
+          'SAFETY_AND_SECURITY',
+            'CHILDCARE',
+             'OTHER',
+        ];
     }
 }
