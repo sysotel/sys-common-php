@@ -21,7 +21,7 @@ class Amenity extends BaseDocument
 
     /**
      * @var ?string
-     * @ODM\Id(strategy="none", type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\AmenityTarget::class))
+     * @ODM\Id(strategy="none", type="string"))
      */
     protected $id;
 
