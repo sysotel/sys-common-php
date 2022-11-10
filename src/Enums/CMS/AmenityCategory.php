@@ -19,7 +19,7 @@ enum AmenityCategory: string
     case BUSINESS = 'BUSINESS';
     case BEAUTY_AND_SPA = 'BEAUTY_AND_SPA';
     case SECURITY = 'SECURITY';
-    case TRANSFER = 'TRANSFER';
+    case TRANSFERS = 'TRANSFERS';
     case SHOPPING = 'SHOPPING';
     case ENTERTAINMENT = 'ENTERTAINMENT';
     case MEDIA_TECHNOLOGY = 'MEDIA_TECHNOLOGY';
@@ -59,7 +59,7 @@ enum AmenityCategory: string
             self::BUSINESS,
             self::HEALTH_WELLNESS,
             self::SECURITY,
-            self::TRANSFER,
+            self::TRANSFERS,
             self::SHOPPING,
             self::ENTERTAINMENT,
             self::MEDIA_TECHNOLOGY,
