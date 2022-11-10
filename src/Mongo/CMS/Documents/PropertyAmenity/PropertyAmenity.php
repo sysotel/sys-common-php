@@ -29,4 +29,26 @@ class PropertyAmenity extends BaseDocument
     {
         $this->amenities = new ArrayCollection;
     }
+
+    /**
+     * @return ArrayCollection|Collection|PropertyAmenityItem[]
+     */
+    public function getAmenities(): array|ArrayCollection|Collection
+    {
+        return $this->amenities;
+    }
+
+    /**
+     * @param ArrayCollection|Collection|PropertyAmenityItem[] $amenities
+     */
+    public function setAmenities(array|ArrayCollection|Collection $amenities): void
+    {
+        $this->amenities = $amenities;
+    }
+
+    public function addAmenity(PropertyAmenityItem $val): static
+    {
+        $this->amenities->add($val);
+        return $this;
+    }
 }
