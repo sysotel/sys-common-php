@@ -47,7 +47,7 @@ enum AmenityCategory: string
         return readableConstant($data);
     }
 
-    public function propertyCategories(): array
+    public static function propertyCategories(): array
     {
         return [
             self::BASIC_FACILITIES,
@@ -73,7 +73,7 @@ enum AmenityCategory: string
 
     }
 
-    public function spaceCategories(): array
+    public static function spaceCategories(): array
     {
         return [
             self::POPULAR_WITH_GUESTS,
