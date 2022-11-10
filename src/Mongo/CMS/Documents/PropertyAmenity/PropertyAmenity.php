@@ -51,4 +51,15 @@ class PropertyAmenity extends BaseDocument
         $this->amenities->add($val);
         return $this;
     }
+
+    public function getAmenityItem(string $id)
+    {
+        foreach($this->amenities as $amenityItem) {
+            if($amenityItem->getId() === $id) {
+                 return $amenityItem;
+            }
+        }
+
+        return null;
+    }
 }
