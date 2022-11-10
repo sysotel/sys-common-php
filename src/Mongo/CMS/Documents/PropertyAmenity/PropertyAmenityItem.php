@@ -12,13 +12,13 @@ use Delta4op\Mongodb\Documents\EmbeddedDocument;
 class PropertyAmenityItem extends EmbeddedDocument
 {
     /**
-     * @var string
+     * @var ?string
      * @ODM\field(type="string")
      */
     protected $id;
 
     /**
-     * @var bool
+     * @var ?bool
      * @ODM\field(type="bool")
      */
     protected $flag;
@@ -30,39 +30,19 @@ class PropertyAmenityItem extends EmbeddedDocument
     protected $note;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     /**
-     * @param string $id
-     * @return PropertyAmenityItem
+     * @param string|null $id
      */
-    public function setId(string $id): PropertyAmenityItem
+    public function setId(?string $id): void
     {
         $this->id = $id;
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isFlag(): bool
-    {
-        return $this->flag;
-    }
-
-    /**
-     * @param bool $flag
-     * @return PropertyAmenityItem
-     */
-    public function setFlag(bool $flag): PropertyAmenityItem
-    {
-        $this->flag = $flag;
-        return $this;
     }
 
     /**
@@ -75,11 +55,27 @@ class PropertyAmenityItem extends EmbeddedDocument
 
     /**
      * @param string|null $note
-     * @return PropertyAmenityItem
      */
-    public function setNote(?string $note): PropertyAmenityItem
+    public function setNote(?string $note): void
     {
         $this->note = $note;
-        return $this;
     }
+
+    /**
+     * @return bool|null
+     */
+    public function getFlag(): ?bool
+    {
+        return $this->flag;
+    }
+
+    /**
+     * @param bool|null $flag
+     */
+    public function setFlag(?bool $flag): void
+    {
+        $this->flag = $flag;
+    }
+
+
 }

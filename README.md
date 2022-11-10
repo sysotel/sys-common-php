@@ -11,22 +11,6 @@ postman request
 
 
 
-```
-
-
-
-CODE
-$propertyAmenities;
-$spaceAmenities;
-
-
-
-
-
-
-```
-
-
 ```php
 
 $propertyCategories = AmenityCategory::propertyCategories();
