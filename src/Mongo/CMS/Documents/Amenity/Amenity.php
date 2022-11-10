@@ -69,7 +69,7 @@ class Amenity extends BaseDocument
 
     /**
      * @var AmenityStatus
-     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\AmenityCategory::class)
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\AmenityStatus::class)
      */
     protected $status;
 
