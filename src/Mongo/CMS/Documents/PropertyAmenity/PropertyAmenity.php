@@ -5,8 +5,8 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyAmenityRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
@@ -14,6 +14,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasSpaceId;
 
 /**
  * @ODM\Document(collection="propertyAmenities")
+ * repositoryClass=SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyAmenityRepository::class
  */
 class PropertyAmenity extends BaseDocument
 {
@@ -61,5 +62,13 @@ class PropertyAmenity extends BaseDocument
         }
 
         return null;
+    }
+
+    /**
+     * @return PropertyAmenityRepository
+     */
+    public static function repository(): PropertyAmenityRepository
+    {
+        return parent::repository();
     }
 }
