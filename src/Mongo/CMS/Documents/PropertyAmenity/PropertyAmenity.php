@@ -30,6 +30,11 @@ class PropertyAmenity extends BaseDocument
      */
     protected $amenities;
 
+    /**
+     * @var ?string
+     * @ODM\field(type="string")
+     */
+    protected $target;
 
     public function __construct()
     {
@@ -76,5 +81,22 @@ class PropertyAmenity extends BaseDocument
     {
         return parent::repository();
     }
+
+    /**
+     * @return string|null
+     */
+    public function getTarget(): ?string
+    {
+        return $this->target;
+    }
+
+    /**
+     * @param string|null $target
+     */
+    public function setTarget(?string $target): void
+    {
+        $this->target = $target;
+    }
+
 
 }
