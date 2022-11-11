@@ -13,8 +13,10 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasSpaceId;
 
 /**
- * @ODM\Document(collection="propertyAmenities")
- * repositoryClass=SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyAmenityRepository::class
+ * @ODM\Document(
+ *     collection="propertyAmenities",
+ *    repositoryClass=SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyAmenityRepository::class
+ *     )
  */
 class PropertyAmenity extends BaseDocument
 {

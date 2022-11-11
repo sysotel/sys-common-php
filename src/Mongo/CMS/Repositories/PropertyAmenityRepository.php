@@ -6,7 +6,6 @@ use Delta4op\Mongodb\Repositories\DocumentRepository;
 use SYSOTEL\APP\Common\Enums\CMS\AmenityTarget;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Property\Property;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity\PropertyAmenity;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertySpace\PropertySpace;
 
 class PropertyAmenityRepository extends DocumentRepository
 {
