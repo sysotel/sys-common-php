@@ -6,6 +6,7 @@ use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use SYSOTEL\APP\Common\Enums\CMS\AmenityTarget;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyAmenityRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
@@ -31,8 +32,8 @@ class PropertyAmenity extends BaseDocument
     protected $amenities;
 
     /**
-     * @var ?string
-     * @ODM\field(type="string")
+     * @var AmenityTarget
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\AmenityTarget::class)
      */
     protected $target;
 
@@ -83,17 +84,17 @@ class PropertyAmenity extends BaseDocument
     }
 
     /**
-     * @return string|null
+     * @return AmenityTarget
      */
-    public function getTarget(): ?string
+    public function getTarget(): AmenityTarget
     {
         return $this->target;
     }
 
     /**
-     * @param string|null $target
+     * @param AmenityTarget $target
      */
-    public function setTarget(?string $target): void
+    public function setTarget(AmenityTarget $target): void
     {
         $this->target = $target;
     }
