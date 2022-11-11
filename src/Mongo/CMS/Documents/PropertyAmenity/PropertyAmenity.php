@@ -30,11 +30,6 @@ class PropertyAmenity extends BaseDocument
      */
     protected $amenities;
 
-    /**
-     * @var ?bool
-     * @ODM\field(type="bool")
-     */
-    protected $target;
 
     public function __construct()
     {
@@ -82,19 +77,4 @@ class PropertyAmenity extends BaseDocument
         return parent::repository();
     }
 
-    /**
-     * @return bool|null
-     */
-    public function getTarget(): ?bool
-    {
-        return $this->target;
-    }
-
-    /**
-     * @param bool|null $target
-     */
-    public function setTarget(?bool $target): void
-    {
-        $this->target = $target;
-    }
 }
