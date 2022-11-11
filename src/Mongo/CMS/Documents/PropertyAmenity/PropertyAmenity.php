@@ -18,6 +18,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasSpaceId;
  *     collection="propertyAmenities",
  *     repositoryClass=SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyAmenityRepository::class
  *     )
+ * @ODM\HasLifecycleCallbacks
  */
 class PropertyAmenity extends BaseDocument
 {
