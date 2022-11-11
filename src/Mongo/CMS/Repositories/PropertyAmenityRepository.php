@@ -9,15 +9,26 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity\PropertyAmenity;
 
 class PropertyAmenityRepository extends DocumentRepository
 {
-    public function findAllForPropertyAmenities(Property|int $property): ?PropertyAmenity{
-        return $this->findOneBy([
+    /**
+     * @param Property|int $property
+     * @return PropertyAmenity[]
+     */
+    public function findAllForPropertyAmenities(Property|int $property): array
+    {
+        return $this->findBy([
             'propertyId' => Property::resolveID($property),
             'target' => AmenityTarget::PROPERTY
         ]);
     }
 
-    public function findAllSpaceAmenities(Property|int $property, int $spaceId): array{
-        return $this->findOneBy([
+    /**
+     * @param Property|int $property
+     * @param int $spaceId
+     * @return PropertyAmenity[]
+     */
+    public function findAllSpaceAmenities(Property|int $property, int $spaceId): array
+    {
+        return $this->findBy([
             'propertyId' => Property::resolveID($property),
             'spaceId' => $spaceId,
             'target' => AmenityTarget::SPACE
