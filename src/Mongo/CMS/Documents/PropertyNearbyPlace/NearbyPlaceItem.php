@@ -13,10 +13,12 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint;
  * @ODM\EmbeddedDocument
  * @ODM\HasLifecycleCallbacks
  */
-class NearbyPlaces extends EmbeddedDocument
+
+
+class NearbyPlaceItem extends EmbeddedDocument
 {
     /**
-     * @var string
+     * @var ?string
      * @ODM\field(type="string")
      */
     protected $name;
@@ -28,37 +30,37 @@ class NearbyPlaces extends EmbeddedDocument
     protected $description;
 
     /**
-     * @var int|float
-     * @ODM\field(type="int|float")
+     * @var ?float
+     * @ODM\field(type="float")
      */
     protected $distanceFromPropertyInKm;
 
 
     /**
-     * @var NearbyPlaceCategory
+     * @var ?NearbyPlaceCategory
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\NearbyPlaceCategory::class)
      */
     protected $category;
 
 
     /**
-     * @var GeoPoint
+     * @var ?GeoPoint
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint::class)
      */
     private $geoPoint;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      */
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
@@ -80,53 +82,50 @@ class NearbyPlaces extends EmbeddedDocument
     }
 
     /**
-     * @return float|int
+     * @return float|null
      */
-    public function getDistanceFromPropertyInKm(): float|int
+    public function getDistanceFromPropertyInKm(): ?float
     {
         return $this->distanceFromPropertyInKm;
     }
 
     /**
-     * @param float|int $distanceFromPropertyInKm
+     * @param float|null $distanceFromPropertyInKm
      */
-    public function setDistanceFromPropertyInKm(float|int $distanceFromPropertyInKm): void
+    public function setDistanceFromPropertyInKm(?float $distanceFromPropertyInKm): void
     {
         $this->distanceFromPropertyInKm = $distanceFromPropertyInKm;
     }
 
     /**
-     * @return NearbyPlaceCategory
+     * @return NearbyPlaceCategory|null
      */
-    public function getCategory(): NearbyPlaceCategory
+    public function getCategory(): ?NearbyPlaceCategory
     {
         return $this->category;
     }
 
     /**
-     * @param NearbyPlaceCategory $category
+     * @param NearbyPlaceCategory|null $category
      */
-    public function setCategory(NearbyPlaceCategory $category): void
+    public function setCategory(?NearbyPlaceCategory $category): void
     {
         $this->category = $category;
     }
 
     /**
-     * @return GeoPoint
+     * @return GeoPoint|null
      */
-    public function getGeoPoint(): GeoPoint
+    public function getGeoPoint(): ?GeoPoint
     {
         return $this->geoPoint;
     }
 
-
     /**
-     * @param GeoPoint $geoPoint
+     * @param GeoPoint|null $geoPoint
      */
-    public function setGeoPoint(GeoPoint $geoPoint): void
+    public function setGeoPoint(?GeoPoint $geoPoint): void
     {
         $this->geoPoint = $geoPoint;
     }
-
-
 }

@@ -22,7 +22,7 @@ class PropertyNearbyPlace extends BaseDocument
     use HasObjectIdKey, HasAccountId, HasPropertyId, HasTimestamps;
 
     /**
-     * @var Collection & NearbyPlaces[]
+     * @var Collection & NearbyPlaceItem[]
      * @ODM\EmbedMany (targetDocument=NearbyPlaces::class)
      */
     protected $places;
@@ -34,7 +34,7 @@ class PropertyNearbyPlace extends BaseDocument
     }
 
     /**
-     * @return ArrayCollection|Collection|NearbyPlaces[]
+     * @return ArrayCollection|Collection|NearbyPlaceItem[]
      */
     public function getPlaces(): array|ArrayCollection|Collection
     {
@@ -42,7 +42,7 @@ class PropertyNearbyPlace extends BaseDocument
     }
 
     /**
-     * @param ArrayCollection|Collection|NearbyPlaces[] $places
+     * @param ArrayCollection|Collection|NearbyPlaceItem[] $places
      */
     public function setPlaces(array|ArrayCollection|Collection $places): void
     {
