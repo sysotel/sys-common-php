@@ -24,7 +24,7 @@ class PropertyNearbyPlace extends BaseDocument
 
     /**
      * @var Collection & NearbyPlaceItem[]
-     * @ODM\EmbedMany (targetDocument=NearbyPlaces::class)
+     * @ODM\EmbedMany (targetDocument=NearbyPlaceItem::class)
      */
     protected $places;
 
