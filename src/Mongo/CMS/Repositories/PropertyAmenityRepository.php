@@ -11,9 +11,9 @@ class PropertyAmenityRepository extends DocumentRepository
 {
     /**
      * @param Property|int $property
-     * @return PropertyAmenity[]
+     * @return PropertyAmenity|null
      */
-    public function findPropertyAmenities(Property|int $property): array
+    public function findPropertyAmenities(Property|int $property): ?PropertyAmenity
     {
         return $this->findOneBy([
             'propertyId' => Property::resolveID($property),
@@ -24,9 +24,9 @@ class PropertyAmenityRepository extends DocumentRepository
     /**
      * @param Property|int $property
      * @param int $spaceId
-     * @return PropertyAmenity[]
+     * @return PropertyAmenity|null
      */
-    public function findSpaceAmenities(Property|int $property, int $spaceId): array
+    public function findSpaceAmenities(Property|int $property, int $spaceId): ?PropertyAmenity
     {
         return $this->findOneBy([
             'propertyId' => Property::resolveID($property),
