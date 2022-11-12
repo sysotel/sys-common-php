@@ -12,4 +12,20 @@ enum NearbyPlaceCategory: string
     case RAILWAY_STATION = 'RAILWAY_STATION';
     case BUS_STATION = 'BUS_STATION';
     CASE OTHER = 'OTHER';
+
+    public function userFriendlyValue(): string
+    {
+        $data = $this->value;
+        return readableConstant($data);
+    }
+
+    public static function nearByPlaces(): array
+    {
+        return [
+            self::AIRPORT,
+            self::RAILWAY_STATION,
+            self::BUS_STATION,
+            self::OTHER,
+        ];
+    }
 }
