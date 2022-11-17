@@ -1,6 +1,6 @@
 <?php
 
-namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\CancellationPolicy;
+namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy;
 
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
 use Delta4op\Mongodb\Traits\HasTimestamps;

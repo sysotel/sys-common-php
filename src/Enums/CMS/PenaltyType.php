@@ -8,6 +8,6 @@ enum PenaltyType: string
 {
     use BackedEnumHelpers;
 
-    case PERCENT = 'PERCENT';
+    case PERC = 'PERC';
     case FLAT = 'FLAT';
 }

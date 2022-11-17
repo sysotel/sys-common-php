@@ -1,6 +1,6 @@
 <?php
 
-namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\CancellationPolicy;
+namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy;
 
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -8,19 +8,20 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\CancellationPolicyStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity\PropertyAmenityItem;
+use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 
 /**
  * @ODM\Document(
- *     collection="propertyAmenities",
- *
+ *     collection="propertyCancellationPolicy"
  *     )
  * @ODM\HasLifecycleCallbacks
  */
-class CancellationPolicy extends BaseDocument
+class PropertyCancellationPolicy extends BaseDocument
 {
-    use HasObjectIdKey, HasPropertyId, HasTimestamps;
+    use HasObjectIdKey,HasAccountId, HasPropertyId, HasTimestamps;
 
     /**
      * @var ArrayCollection & CancellationPolicyItem[]
@@ -40,18 +41,21 @@ class CancellationPolicy extends BaseDocument
      */
    protected $status;
 
+   public function __construct(){
+       $this->rules = new ArrayCollection;
+   }
     /**
-     * @return CancellationPolicyItem|null
+     * @return ArrayCollection|Collection|CancellationPolicyItem[]
      */
-    public function getRules(): ?CancellationPolicyItem
+    public function getRules(): array|ArrayCollection|Collection
     {
         return $this->rules;
     }
 
     /**
-     * @param CancellationPolicyItem|null $rules
+     * @param ArrayCollection|Collection|CancellationPolicyItem[] $rules
      */
-    public function setRules(?CancellationPolicyItem $rules): void
+    public function setRules(array|ArrayCollection|Collection  $rules): void
     {
         $this->rules = $rules;
     }

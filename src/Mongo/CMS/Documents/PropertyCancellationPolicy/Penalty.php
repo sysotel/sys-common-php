@@ -1,6 +1,6 @@
 <?php
 
-namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\CancellationPolicy;
+namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy;
 
 use Carbon\Carbon;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
