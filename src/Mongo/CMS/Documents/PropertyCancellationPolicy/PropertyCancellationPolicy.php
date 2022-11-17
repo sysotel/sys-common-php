@@ -8,7 +8,6 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\CancellationPolicyStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity\PropertyAmenityItem;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
@@ -21,29 +20,31 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
  */
 class PropertyCancellationPolicy extends BaseDocument
 {
-    use HasObjectIdKey,HasAccountId, HasPropertyId, HasTimestamps;
+    use HasObjectIdKey, HasAccountId, HasPropertyId, HasTimestamps;
 
     /**
      * @var ArrayCollection & CancellationPolicyItem[]
-     * @ODM\EmbedOne(targetDocument=CancellationPolicyItem::class)
+     * @ODM\EmbedMany(targetDocument=CancellationPolicyItem::class)
      */
-   protected $rules;
+    protected $rules;
 
     /**
      * @var ?CancellationPolicyValidity
      * @ODM\EmbedOne(targetDocument=CancellationPolicyValidity::class)
      */
-   protected $validity;
+    protected $validity;
 
     /**
      * @var CancellationPolicyStatus
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyPolicyStatus::class)
      */
-   protected $status;
+    protected $status;
 
-   public function __construct(){
-       $this->rules = new ArrayCollection;
-   }
+    public function __construct()
+    {
+        $this->rules = new ArrayCollection;
+    }
+
     /**
      * @return ArrayCollection|Collection|CancellationPolicyItem[]
      */
@@ -55,9 +56,15 @@ class PropertyCancellationPolicy extends BaseDocument
     /**
      * @param ArrayCollection|Collection|CancellationPolicyItem[] $rules
      */
-    public function setRules(array|ArrayCollection|Collection  $rules): void
+    public function setRules(array|ArrayCollection|Collection $rules): void
     {
         $this->rules = $rules;
+    }
+
+    public function addAmenity(CancellationPolicyItem $val): static
+    {
+        $this->rules->add($val);
+        return $this;
     }
 
     /**
@@ -91,6 +98,4 @@ class PropertyCancellationPolicy extends BaseDocument
     {
         $this->validity = $validity;
     }
-
-
 }
