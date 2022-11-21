@@ -2,7 +2,6 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy;
 
-use Carbon\Carbon;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -30,8 +29,8 @@ class PropertyCancellationPolicy extends BaseDocument
     protected $rules;
 
     /**
-     * @var Carbon
-     * @ODM\Field(type="date")
+     * @var int
+     * @ODM\Field(type="int")
      */
     protected $freeCancellationBefore;
 
@@ -85,17 +84,17 @@ class PropertyCancellationPolicy extends BaseDocument
     }
 
     /**
-     * @return Carbon
+     * @return int
      */
-    public function getFreeCancellationBefore(): Carbon
+    public function getFreeCancellationBefore(): int
     {
         return $this->freeCancellationBefore;
     }
 
     /**
-     * @param Carbon $freeCancellationBefore
+     * @param int $freeCancellationBefore
      */
-    public function setFreeCancellationBefore(Carbon $freeCancellationBefore): void
+    public function setFreeCancellationBefore(int $freeCancellationBefore): void
     {
         $this->freeCancellationBefore = $freeCancellationBefore;
     }
