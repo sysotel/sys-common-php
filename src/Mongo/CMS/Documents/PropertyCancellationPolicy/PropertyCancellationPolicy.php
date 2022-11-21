@@ -29,10 +29,10 @@ class PropertyCancellationPolicy extends BaseDocument
     protected $rules;
 
     /**
-     * @var ?CancellationPolicyValidity
-     * @ODM\EmbedOne(targetDocument=CancellationPolicyValidity::class)
+     * @var int
+     * @ODM\Field(type="int")
      */
-    protected $validity;
+    protected $freeCancellationBefore;
 
     /**
      * @var CancellationPolicyStatus
@@ -84,18 +84,20 @@ class PropertyCancellationPolicy extends BaseDocument
     }
 
     /**
-     * @return CancellationPolicyValidity|null
+     * @return int
      */
-    public function getValidity(): ?CancellationPolicyValidity
+    public function getFreeCancellationBefore(): int
     {
-        return $this->validity;
+        return $this->freeCancellationBefore;
     }
 
     /**
-     * @param CancellationPolicyValidity|null $validity
+     * @param int $freeCancellationBefore
      */
-    public function setValidity(?CancellationPolicyValidity $validity): void
+    public function setFreeCancellationBefore(int $freeCancellationBefore): void
     {
-        $this->validity = $validity;
+        $this->freeCancellationBefore = $freeCancellationBefore;
     }
+
+
 }

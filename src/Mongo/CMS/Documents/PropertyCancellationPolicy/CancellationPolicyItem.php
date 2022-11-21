@@ -22,29 +22,19 @@ class CancellationPolicyItem extends EmbeddedDocument
      * @var ?int
      * @ODM\Field(type="int")
      */
-    protected $deadlineInHours;
+    protected $startInterval;
+
+    /**
+     * @var ?int
+     * @ODM\Field(type="int")
+     */
+    protected $endInterval;
 
     /**
      * @var ?Penalty
      * @ODM\EmbedOne (targetDocument=Penalty::class)
      */
     protected  $penalty;
-
-    /**
-     * @return int|null
-     */
-    public function getDeadlineInHours(): ?int
-    {
-        return $this->deadlineInHours;
-    }
-
-    /**
-     * @param int|null $deadlineInHours
-     */
-    public function setDeadlineInHours(?int $deadlineInHours): void
-    {
-        $this->deadlineInHours = $deadlineInHours;
-    }
 
     /**
      * @return Penalty|null
@@ -60,6 +50,38 @@ class CancellationPolicyItem extends EmbeddedDocument
     public function setPenalty(?Penalty $penalty): void
     {
         $this->penalty = $penalty;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getStartInterval(): ?int
+    {
+        return $this->startInterval;
+    }
+
+    /**
+     * @param int|null $startInterval
+     */
+    public function setStartInterval(?int $startInterval): void
+    {
+        $this->startInterval = $startInterval;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getEndInterval(): ?int
+    {
+        return $this->endInterval;
+    }
+
+    /**
+     * @param int|null $endInterval
+     */
+    public function setEndInterval(?int $endInterval): void
+    {
+        $this->endInterval = $endInterval;
     }
 
 }
