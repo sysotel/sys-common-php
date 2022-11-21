@@ -26,5 +26,37 @@ class Penalty extends EmbeddedDocument
      */
     protected $value;
 
+    /**
+     * @return PenaltyType
+     */
+    public function getType(): PenaltyType
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param PenaltyType $type
+     */
+    public function setType(PenaltyType $type): void
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getValue(): ?int
+    {
+        return $this->value;
+    }
+
+    /**
+     * @param int|null $value
+     */
+    public function setValue(?int $value): void
+    {
+        $this->value = $value;
+    }
+
 
 }
