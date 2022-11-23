@@ -56,16 +56,15 @@ class PropertyNearbyPlace extends BaseDocument
         return $this;
     }
 
-    public function generateNewPlaceId(NearbyPlaceItem $value): int
+    public function generateNewPlaceId(): int
     {
-        $output = 0;
         $value = 0;
         foreach($this->places as $places){
             if($places->getId() > $value){
-               $output +=  $value + 1;
+                $value +=  $places->getId();
             }
         }
-        return $output;
+        return ++$value;
     }
 
 }
