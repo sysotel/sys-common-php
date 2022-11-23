@@ -67,4 +67,15 @@ class PropertyNearbyPlace extends BaseDocument
         return ++$value;
     }
 
+    public function getPlaceById(int $id): NearbyPlaceItem|null
+    {
+        foreach ($this->getPlaces() as $place) {
+            if ($place->getId() == $id) {
+               return $place;
+            }
+        }
+
+        return null;
+    }
+
 }
