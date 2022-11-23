@@ -16,8 +16,8 @@ use SYSOTEL\APP\Common\Mongo\CMS\Repositories\NearByPlaceRepository;
 class NearbyPlaceItem extends EmbeddedDocument
 {
     /**
-     * @var ?string
-     * @ODM\field(type="string")
+     * @var ?int
+     * @ODM\field(type="int")
      */
     protected  $id;
 
@@ -134,19 +134,20 @@ class NearbyPlaceItem extends EmbeddedDocument
     }
 
     /**
-     * @return string|null
+     * @return int|null
      */
-    public function getId(): ?string
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param string|null $id
+     * @param int|null $id
      */
-    public function setId(?string $id): void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
+
 
 }
