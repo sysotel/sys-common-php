@@ -6,6 +6,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
 use SYSOTEL\APP\Common\Enums\CMS\NearbyPlaceCategory;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\NearByPlaceRepository;
 
 /**
  * @ODM\EmbeddedDocument
@@ -147,4 +148,5 @@ class NearbyPlaceItem extends EmbeddedDocument
     {
         $this->id = $id;
     }
+
 }
