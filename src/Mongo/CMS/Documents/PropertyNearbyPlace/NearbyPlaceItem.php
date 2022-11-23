@@ -18,6 +18,12 @@ class NearbyPlaceItem extends EmbeddedDocument
      * @var ?string
      * @ODM\field(type="string")
      */
+    protected  $id;
+
+    /**
+     * @var ?string
+     * @ODM\field(type="string")
+     */
     protected $name;
 
     /**
@@ -124,5 +130,21 @@ class NearbyPlaceItem extends EmbeddedDocument
     public function setGeoPoint(?GeoPoint $geoPoint): void
     {
         $this->geoPoint = $geoPoint;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string|null $id
+     */
+    public function setId(?string $id): void
+    {
+        $this->id = $id;
     }
 }
