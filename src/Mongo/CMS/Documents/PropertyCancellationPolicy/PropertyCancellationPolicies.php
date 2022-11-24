@@ -108,5 +108,14 @@ class PropertyCancellationPolicies extends BaseDocument
         return parent::repository();
     }
 
+    /**
+     * @return $this
+     */
+    public function markAsExpired(): static
+    {
+        $this->status = CancellationPolicyStatus::EXPIRED;
+        return $this;
+    }
+
 
 }
