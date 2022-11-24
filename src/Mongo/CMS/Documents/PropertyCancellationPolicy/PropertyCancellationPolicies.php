@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\CancellationPolicyStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyCancellationRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
@@ -97,6 +98,14 @@ class PropertyCancellationPolicies extends BaseDocument
     public function setFreeCancellationBefore(int $freeCancellationBefore): void
     {
         $this->freeCancellationBefore = $freeCancellationBefore;
+    }
+
+    /**
+     * @return PropertyCancellationRepository
+     */
+    public static function repository(): PropertyCancellationRepository
+    {
+        return parent::repository();
     }
 
 
