@@ -14,17 +14,17 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 
 /**
  * @ODM\Document(
- *     collection="cancellationPolicy"
+ *     collection="cancellationPolicies"
  *     )
  * @ODM\HasLifecycleCallbacks
  */
-class PropertyCancellationPolicy extends BaseDocument
+class PropertyCancellationPolicies extends BaseDocument
 {
     use HasObjectIdKey, HasAccountId, HasPropertyId, HasTimestamps;
 
     /**
-     * @var ArrayCollection & CancellationPolicyItem[]
-     * @ODM\EmbedMany(targetDocument=CancellationPolicyItem::class)
+     * @var ArrayCollection & CancellationPolicyRules[]
+     * @ODM\EmbedMany(targetDocument=CancellationPolicyRules::class)
      */
     protected $rules;
 
@@ -46,7 +46,7 @@ class PropertyCancellationPolicy extends BaseDocument
     }
 
     /**
-     * @return ArrayCollection|Collection|CancellationPolicyItem[]
+     * @return ArrayCollection|Collection|CancellationPolicyRules[]
      */
     public function getRules(): array|ArrayCollection|Collection
     {
@@ -54,14 +54,14 @@ class PropertyCancellationPolicy extends BaseDocument
     }
 
     /**
-     * @param ArrayCollection|Collection|CancellationPolicyItem[] $rules
+     * @param ArrayCollection|Collection|CancellationPolicyRules[] $rules
      */
     public function setRules(array|ArrayCollection|Collection $rules): void
     {
         $this->rules = $rules;
     }
 
-    public function addRules(CancellationPolicyItem $val): static
+    public function addRules(CancellationPolicyRules $val): static
     {
         $this->rules->add($val);
         return $this;
