@@ -58,6 +58,4 @@ class Penalty extends EmbeddedDocument
     {
         $this->value = $value;
     }
-
-
 }

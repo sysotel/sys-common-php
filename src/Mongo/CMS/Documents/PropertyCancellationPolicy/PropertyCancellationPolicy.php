@@ -61,7 +61,7 @@ class PropertyCancellationPolicy extends BaseDocument
         $this->rules = $rules;
     }
 
-    public function addAmenity(CancellationPolicyItem $val): static
+    public function addRules(CancellationPolicyItem $val): static
     {
         $this->rules->add($val);
         return $this;
