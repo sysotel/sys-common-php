@@ -9,11 +9,12 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\PropertyCa
 
 class PropertyCancellationRepository extends DocumentRepository
 {
+
     /**
      * @param Property|int $property
      * @return PropertyCancellationPolicies|null
      */
-    public function getActivePolicy(Property|int $property, array $orderBy = []): ?PropertyCancellationPolicies{
+    public function getActivePolicy(Property|int $property): ?PropertyCancellationPolicies{
 
         return $this->findOneBy([
             'propertyId' =>Property::resolveID($property),
