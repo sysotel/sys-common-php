@@ -15,7 +15,9 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 
 /**
  * @ODM\Document(
- *     collection="cancellationPolicies"
+ *     collection="cancellationPolicies",
+ *     repositoryClass=SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyCancellationRepository::class
+ *
  *     )
  * @ODM\HasLifecycleCallbacks
  */
