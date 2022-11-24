@@ -26,10 +26,10 @@ class PropertyCancellationRepository extends DocumentRepository
 
     /**
      * @param Property|int $property
-     * @return PropertyCancellationPolicies|null
+     * @return PropertyCancellationPolicies[]
      */
-    public function getAllPolicy(Property|int $property): ?PropertyCancellationPolicies{
-        return $this->findOneBy([
+    public function getAllPolicy(Property|int $property): array{
+        return $this->findBy([
             'propertyId' =>Property::resolveID($property)
         ]);
 
