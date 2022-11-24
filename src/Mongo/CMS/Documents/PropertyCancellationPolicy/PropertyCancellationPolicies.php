@@ -117,5 +117,4 @@ class PropertyCancellationPolicies extends BaseDocument
         return $this;
     }
 
-
 }
