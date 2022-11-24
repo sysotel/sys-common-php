@@ -62,7 +62,7 @@ class PropertyCancellationPolicies extends BaseDocument
         $this->rules = $rules;
     }
 
-    public function addRules(CancellationPolicyRules $val): static
+    public function addRule(CancellationPolicyRules $val): static
     {
         $this->rules->add($val);
         return $this;
