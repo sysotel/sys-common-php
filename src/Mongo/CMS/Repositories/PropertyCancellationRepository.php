@@ -3,35 +3,36 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\Repositories;
 
 use Delta4op\Mongodb\Repositories\DocumentRepository;
-use SYSOTEL\APP\Common\Enums\CMS\AmenityTarget;
 use SYSOTEL\APP\Common\Enums\CMS\CancellationPolicyStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Property\Property;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyAmenity\PropertyAmenity;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\PropertyCancellationPolicies;
 
 class PropertyCancellationRepository extends DocumentRepository
 {
 
     /**
      * @param Property|int $property
-     * @return array
+     * @return PropertyCancellationPolicies|null
      */
-    public function getActiveCancellationPolicy(Property|int $property): array{
+    public function getActivePolicy(Property|int $property): ?PropertyCancellationPolicies{
 
         return $this->findOneBy([
             'propertyId' =>Property::resolveID($property),
             'status' => CancellationPolicyStatus::ACTIVE
+        ], [
+            'createdAt' => -1
         ]);
     }
 
     /**
      * @param Property|int $property
-     * @return array
+     * @return PropertyCancellationPolicies[]
      */
-    public function getAllCancellationPolicy(Property|int $property): array{
-        return $this->findOneBy([
+    public function getAllPolicy(Property|int $property): array{
+        return $this->findBy([
             'propertyId' =>Property::resolveID($property)
-
         ]);
+
     }
 
 

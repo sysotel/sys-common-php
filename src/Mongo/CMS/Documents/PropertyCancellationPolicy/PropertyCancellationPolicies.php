@@ -8,23 +8,26 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\CancellationPolicyStatus;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyCancellationRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAccountId;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 
 /**
  * @ODM\Document(
- *     collection="cancellationPolicy"
+ *     collection="cancellationPolicies",
+ *     repositoryClass=SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertyCancellationRepository::class
+ *
  *     )
  * @ODM\HasLifecycleCallbacks
  */
-class PropertyCancellationPolicy extends BaseDocument
+class PropertyCancellationPolicies extends BaseDocument
 {
     use HasObjectIdKey, HasAccountId, HasPropertyId, HasTimestamps;
 
     /**
-     * @var ArrayCollection & CancellationPolicyItem[]
-     * @ODM\EmbedMany(targetDocument=CancellationPolicyItem::class)
+     * @var ArrayCollection & CancellationPolicyRules[]
+     * @ODM\EmbedMany(targetDocument=CancellationPolicyRules::class)
      */
     protected $rules;
 
@@ -46,7 +49,7 @@ class PropertyCancellationPolicy extends BaseDocument
     }
 
     /**
-     * @return ArrayCollection|Collection|CancellationPolicyItem[]
+     * @return ArrayCollection|Collection|CancellationPolicyRules[]
      */
     public function getRules(): array|ArrayCollection|Collection
     {
@@ -54,14 +57,14 @@ class PropertyCancellationPolicy extends BaseDocument
     }
 
     /**
-     * @param ArrayCollection|Collection|CancellationPolicyItem[] $rules
+     * @param ArrayCollection|Collection|CancellationPolicyRules[] $rules
      */
     public function setRules(array|ArrayCollection|Collection $rules): void
     {
         $this->rules = $rules;
     }
 
-    public function addAmenity(CancellationPolicyItem $val): static
+    public function addRule(CancellationPolicyRules $val): static
     {
         $this->rules->add($val);
         return $this;
@@ -99,5 +102,21 @@ class PropertyCancellationPolicy extends BaseDocument
         $this->freeCancellationBefore = $freeCancellationBefore;
     }
 
+    /**
+     * @return PropertyCancellationRepository
+     */
+    public static function repository(): PropertyCancellationRepository
+    {
+        return parent::repository();
+    }
+
+    /**
+     * @return $this
+     */
+    public function markAsExpired(): static
+    {
+        $this->status = CancellationPolicyStatus::EXPIRED;
+        return $this;
+    }
 
 }

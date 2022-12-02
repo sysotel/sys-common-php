@@ -6,6 +6,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
 use SYSOTEL\APP\Common\Enums\CMS\NearbyPlaceCategory;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\NearByPlaceRepository;
 
 /**
  * @ODM\EmbeddedDocument
@@ -14,6 +15,12 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint;
 
 class NearbyPlaceItem extends EmbeddedDocument
 {
+    /**
+     * @var ?int
+     * @ODM\field(type="int")
+     */
+    protected  $id;
+
     /**
      * @var ?string
      * @ODM\field(type="string")
@@ -125,4 +132,22 @@ class NearbyPlaceItem extends EmbeddedDocument
     {
         $this->geoPoint = $geoPoint;
     }
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int|null $id
+     */
+    public function setId(?int $id): void
+    {
+        $this->id = $id;
+    }
+
+
 }

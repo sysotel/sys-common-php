@@ -50,10 +50,32 @@ class PropertyNearbyPlace extends BaseDocument
         $this->places = $places;
     }
 
-    public function addPlaces(NearbyPlaceItem $val): static
+    public function addPlace(NearbyPlaceItem $val): static
     {
         $this->places->add($val);
         return $this;
+    }
+
+    public function generateNewPlaceId(): int
+    {
+        $value = 0;
+        foreach($this->places as $places){
+            if($places->getId() > $value){
+                $value +=  $places->getId();
+            }
+        }
+        return ++$value;
+    }
+
+    public function getPlaceById(int $id): NearbyPlaceItem|null
+    {
+        foreach ($this->getPlaces() as $place) {
+            if ($place->getId() == $id) {
+               return $place;
+            }
+        }
+
+        return null;
     }
 
 }
