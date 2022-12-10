@@ -2,6 +2,7 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Location;
 
+use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\LocationType;
@@ -13,9 +14,12 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference;
 
 /**
  * @ODM\Document(collection="locations")
+ * @ODM\HasLifecycleCallbacks
  */
 class Location extends BaseDocument
 {
+    use HasTimestamps;
+
     /**
      * @var string
      * @ODM\Id
