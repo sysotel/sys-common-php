@@ -28,7 +28,7 @@ class Location extends BaseDocument
 
     /**
      * @var ?LocationType
-     * @ODM\Field(type="int", enumType=SYSOTEL\APP\Common\Enums\CMS\LocationType::class)
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\LocationType::class)
      */
     protected $type;
 
