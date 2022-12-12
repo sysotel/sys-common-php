@@ -16,25 +16,25 @@ abstract class LocationItem extends BaseDocument
     use HasObjectIdKey;
 
     /**
-     * @var string
+     * @var >string
      * @ODM\Field
      */
     protected $slug;
 
     /**
-     * @var string
+     * @var >string
      * @ODM\Field(type="string")
      */
     protected $name;
 
     /**
-     * @var string
+     * @var >string
      * @ODM\Field(type="string")
      */
     protected $code;
 
     /**
-     * @var GeoPoint
+     * @var >GeoPoint
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\GeoLocation::class)
      */
     protected $geoPoint;
@@ -46,7 +46,7 @@ abstract class LocationItem extends BaseDocument
     protected $searchKeywords = [];
 
     /**
-     * @var PropertyCount
+     * @var >PropertyCount
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\PropertyCount::class)
      */
     protected $propertyCount;
@@ -142,9 +142,9 @@ abstract class LocationItem extends BaseDocument
     }
 
     /**
-     * @return string
+     * @return ?string
      */
-    public function getCode(): string
+    public function getCode(): ?string
     {
         return $this->code;
     }
