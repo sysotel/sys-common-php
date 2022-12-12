@@ -28,6 +28,12 @@ abstract class LocationItem extends BaseDocument
     protected $name;
 
     /**
+     * @var string
+     * @ODM\Field(type="string")
+     */
+    protected $code;
+
+    /**
      * @var GeoPoint
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\GeoLocation::class)
      */
@@ -133,5 +139,21 @@ abstract class LocationItem extends BaseDocument
     {
         $this->propertyCount = $propertyCount;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCode(): string
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param string $code
+     */
+    public function setCode(string $code): void
+    {
+        $this->code = $code;
     }
 }

@@ -7,12 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\LocationType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CityReference;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference;
-
 /**
  * @ODM\Document(collection="locations")
  * @ODM\HasLifecycleCallbacks
