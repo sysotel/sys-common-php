@@ -150,9 +150,9 @@ abstract class LocationItem extends BaseDocument
     }
 
     /**
-     * @param string $code
+     * @param ?string $code
      */
-    public function setCode(string $code): void
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }
