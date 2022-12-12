@@ -10,6 +10,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CityReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference;
 
 /**
@@ -75,20 +76,20 @@ class Location extends BaseDocument
     protected $channelDetails;
 
     /**
-     * @var CountryReference
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference::class)
+     * @var ?LocationReference
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
      */
     private $country;
 
     /**
-     * @var StateReference
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference::class)
+     * @var ?LocationReference
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
      */
     private $state;
 
     /**
-     * @var CityReference
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CityReference::class)
+     * @var ?LocationReference
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
      */
     private $city;
 
@@ -260,56 +261,50 @@ class Location extends BaseDocument
     }
 
     /**
-     * @return CountryReference
+     * @return LocationReference|null
      */
-    public function getCountry(): CountryReference
+    public function getCountry(): ?LocationReference
     {
         return $this->country;
     }
 
     /**
-     * @param CountryReference $country
-     * @return Location
+     * @param LocationReference|null $country
      */
-    public function setCountry(CountryReference $country): Location
+    public function setCountry(?LocationReference $country): void
     {
         $this->country = $country;
-        return $this;
     }
 
     /**
-     * @return StateReference
+     * @return LocationReference|null
      */
-    public function getState(): StateReference
+    public function getState(): ?LocationReference
     {
         return $this->state;
     }
 
     /**
-     * @param StateReference $state
-     * @return Location
+     * @param LocationReference|null $state
      */
-    public function setState(StateReference $state): Location
+    public function setState(?LocationReference $state): void
     {
         $this->state = $state;
-        return $this;
     }
 
     /**
-     * @return CityReference
+     * @return LocationReference|null
      */
-    public function getCity(): CityReference
+    public function getCity(): ?LocationReference
     {
         return $this->city;
     }
 
     /**
-     * @param CityReference $city
-     * @return Location
+     * @param LocationReference|null $city
      */
-    public function setCity(CityReference $city): Location
+    public function setCity(?LocationReference $city): void
     {
         $this->city = $city;
-        return $this;
     }
 }
