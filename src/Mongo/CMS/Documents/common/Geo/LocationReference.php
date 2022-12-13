@@ -5,6 +5,7 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
 use MongoDB\BSON\ObjectId;
+use SYSOTEL\APP\Common\Enums\CMS\LocationType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Location;
 
 /**
@@ -25,6 +26,12 @@ class LocationReference extends EmbeddedDocument
     protected $name;
 
     /**
+     * @var ?LocationType
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\LocationType::class)
+     */
+    protected $type;
+
+    /**
      * @param Location $location
      * @return static
      */
@@ -33,6 +40,7 @@ class LocationReference extends EmbeddedDocument
         $instance = new self;
         $instance->id = $location->getId();
         $instance->name = $location->getName();
+        $instance->type = $location->getType();
         return $instance;
     }
 
@@ -66,5 +74,21 @@ class LocationReference extends EmbeddedDocument
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return LocationType|null
+     */
+    public function getType(): ?LocationType
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param LocationType|null $type
+     */
+    public function setType(?LocationType $type): void
+    {
+        $this->type = $type;
     }
 }
