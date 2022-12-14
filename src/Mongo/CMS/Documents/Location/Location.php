@@ -2,46 +2,43 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Location;
 
+use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\LocationType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CityReference;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference;
+use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 
 /**
  * @ODM\Document(collection="locations")
+ * @ODM\HasLifecycleCallbacks
  */
 class Location extends BaseDocument
 {
-    /**
-     * @var string
-     * @ODM\Id
-     */
-    protected $id;
+    use HasObjectIdKey, HasTimestamps;
 
     /**
      * @var ?LocationType
-     * @ODM\Field(type="int", enumType=SYSOTEL\APP\Common\Enums\CMS\LocationType::class)
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\LocationType::class)
      */
     protected $type;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field
      */
     protected $code;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field
      */
     protected $slug;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     protected $name;
@@ -53,7 +50,7 @@ class Location extends BaseDocument
     protected $postalCode;
 
     /**
-     * @var GeoPoint
+     * @var ?GeoPoint
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\GeoLocation::class)
      */
     protected $geoPoint;
@@ -71,20 +68,20 @@ class Location extends BaseDocument
     protected $channelDetails;
 
     /**
-     * @var CountryReference
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference::class)
+     * @var ?LocationReference
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
      */
     private $country;
 
     /**
-     * @var StateReference
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference::class)
+     * @var ?LocationReference
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
      */
     private $state;
 
     /**
-     * @var CityReference
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CityReference::class)
+     * @var ?LocationReference
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
      */
     private $city;
 
@@ -94,21 +91,11 @@ class Location extends BaseDocument
     }
 
     /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    /**
      * @param string $id
-     * @return Location
      */
-    public function setId(string $id): Location
+    public function setId(string $id): void
     {
         $this->id = $id;
-        return $this;
     }
 
     /**
@@ -121,66 +108,58 @@ class Location extends BaseDocument
 
     /**
      * @param LocationType|null $type
-     * @return Location
      */
-    public function setType(?LocationType $type): Location
+    public function setType(?LocationType $type): void
     {
         $this->type = $type;
-        return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCode(): string
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     /**
-     * @param string $code
-     * @return Location
+     * @param string|null $code
      */
-    public function setCode(string $code): Location
+    public function setCode(?string $code): void
     {
         $this->code = $code;
-        return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getSlug(): string
+    public function getSlug(): ?string
     {
         return $this->slug;
     }
 
     /**
-     * @param string $slug
-     * @return Location
+     * @param string|null $slug
      */
-    public function setSlug(string $slug): Location
+    public function setSlug(?string $slug): void
     {
         $this->slug = $slug;
-        return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $name
-     * @return Location
+     * @param string|null $name
      */
-    public function setName(string $name): Location
+    public function setName(?string $name): void
     {
         $this->name = $name;
-        return $this;
     }
 
     /**
@@ -193,30 +172,26 @@ class Location extends BaseDocument
 
     /**
      * @param string|null $postalCode
-     * @return Location
      */
-    public function setPostalCode(?string $postalCode): Location
+    public function setPostalCode(?string $postalCode): void
     {
         $this->postalCode = $postalCode;
-        return $this;
     }
 
     /**
-     * @return GeoPoint
+     * @return GeoPoint|null
      */
-    public function getGeoPoint(): GeoPoint
+    public function getGeoPoint(): ?GeoPoint
     {
         return $this->geoPoint;
     }
 
     /**
-     * @param GeoPoint $geoPoint
-     * @return Location
+     * @param GeoPoint|null $geoPoint
      */
-    public function setGeoPoint(GeoPoint $geoPoint): Location
+    public function setGeoPoint(?GeoPoint $geoPoint): void
     {
         $this->geoPoint = $geoPoint;
-        return $this;
     }
 
     /**
@@ -229,16 +204,14 @@ class Location extends BaseDocument
 
     /**
      * @param array $searchKeywords
-     * @return Location
      */
-    public function setSearchKeywords(array $searchKeywords): Location
+    public function setSearchKeywords(array $searchKeywords): void
     {
         $this->searchKeywords = $searchKeywords;
-        return $this;
     }
 
     /**
-     * @return ArrayCollection|ChannelLocationDetailsItem
+     * @return ChannelLocationDetailsItem
      */
     public function getChannelDetails(): ChannelLocationDetailsItem|ArrayCollection
     {
@@ -246,66 +219,58 @@ class Location extends BaseDocument
     }
 
     /**
-     * @param ArrayCollection|ChannelLocationDetailsItem $channelDetails
-     * @return Location
+     * @param ChannelLocationDetailsItem $channelDetails
      */
-    public function setChannelDetails(ChannelLocationDetailsItem|ArrayCollection $channelDetails): Location
+    public function setChannelDetails(ChannelLocationDetailsItem|ArrayCollection $channelDetails): void
     {
         $this->channelDetails = $channelDetails;
-        return $this;
     }
 
     /**
-     * @return CountryReference
+     * @return LocationReference|null
      */
-    public function getCountry(): CountryReference
+    public function getCountry(): ?LocationReference
     {
         return $this->country;
     }
 
     /**
-     * @param CountryReference $country
-     * @return Location
+     * @param LocationReference|null $country
      */
-    public function setCountry(CountryReference $country): Location
+    public function setCountry(?LocationReference $country): void
     {
         $this->country = $country;
-        return $this;
     }
 
     /**
-     * @return StateReference
+     * @return LocationReference|null
      */
-    public function getState(): StateReference
+    public function getState(): ?LocationReference
     {
         return $this->state;
     }
 
     /**
-     * @param StateReference $state
-     * @return Location
+     * @param LocationReference|null $state
      */
-    public function setState(StateReference $state): Location
+    public function setState(?LocationReference $state): void
     {
         $this->state = $state;
-        return $this;
     }
 
     /**
-     * @return CityReference
+     * @return LocationReference|null
      */
-    public function getCity(): CityReference
+    public function getCity(): ?LocationReference
     {
         return $this->city;
     }
 
     /**
-     * @param CityReference $city
-     * @return Location
+     * @param LocationReference|null $city
      */
-    public function setCity(CityReference $city): Location
+    public function setCity(?LocationReference $city): void
     {
         $this->city = $city;
-        return $this;
     }
 }
