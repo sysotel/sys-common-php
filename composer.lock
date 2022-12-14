@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2ddfc291326528ec3e3dd14d7bc942fa",
+    "content-hash": "03347c8a79ff288acc554ff6c73c5ba2",
     "packages": [
         {
             "name": "alexanderpas/http-enum",
@@ -126,11 +126,11 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/delta4op/laravel-mongodb",
-                "reference": "576af62255b4604fac84a8c34656d50d9d408d0a"
+                "reference": "db0431cb5b5e00f4a67743dbe113b3f2986ed816"
             },
             "require": {
                 "doctrine/mongodb-odm": "2.4.*",
-                "ext-mongodb": "*",
+                "ext-mongodb": "1.13.*",
                 "php": "^8.1",
                 "spatie/laravel-package-tools": "^1.9.2"
             },
@@ -194,7 +194,7 @@
             ],
             "description": "A lightweight Laravel wrapper around Doctrine's mongodb-odm Document Mapper",
             "homepage": "https://github.com/delta4op/laravel-mongodb",
-            "time": "2022-10-14T13:11:08+00:00"
+            "time": "2022-12-14T14:28:53+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -10164,7 +10164,7 @@
         "php": "^8.1"
     },
     "platform-dev": {
-        "ext-mongodb": "*"
+        "ext-mongodb": "1.13.*"
     },
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }
