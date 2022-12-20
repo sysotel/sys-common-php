@@ -32,7 +32,6 @@ class PropertyCancellationRepository extends DocumentRepository
         return $this->findBy([
             'propertyId' =>Property::resolveID($property)
         ]);
-
     }
 
 
