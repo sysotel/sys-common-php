@@ -39,7 +39,7 @@ class PropertyCancellationPolicy extends BaseDocument
 
     /**
      * @var CancellationPolicyStatus
-     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PropertyPolicyStatus::class)
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\CancellationPolicyStatus::class)
      */
     protected $status;
 

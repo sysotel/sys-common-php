@@ -43,7 +43,6 @@ class PropertyCancellationPolicyDataGenerator
      */
     public function addDescription(): PropertyCancellationPolicyDataGenerator
     {
-
         return $this->appendData([
             'description' => (new CancellationPoliciesInspector($this->policy))->getAllSentences(),
         ]);
