@@ -12,7 +12,7 @@ class PropertyCancellationPolicyDataGenerator
 
     /**
      * @var PropertyCancellationPolicy
-    */
+     */
     protected PropertyCancellationPolicy $policy;
 
     /**
@@ -41,10 +41,11 @@ class PropertyCancellationPolicyDataGenerator
     /**
      * @return PropertyCancellationPolicyDataGenerator
      */
-    public function addDescription(): PropertyCancellationPolicyDataGenerator{
+    public function addDescription(): PropertyCancellationPolicyDataGenerator
+    {
 
         return $this->appendData([
-            'description' =>CancellationPoliciesInspector::class,
+            'description' => (new CancellationPoliciesInspector($this->policy))->getAllSentences(),
         ]);
 
     }
