@@ -40,12 +40,7 @@ class PropertyDataGenerator
         ]);
     }
 
-    public function addDescription(): PropertyDataGenerator
-    {
-        return $this->appendData([
-            'longDescription' => $this->property->getLongDescription(),
-        ]);
-    }
+
 
     public function addCreatorDetails(): PropertyDataGenerator
     {

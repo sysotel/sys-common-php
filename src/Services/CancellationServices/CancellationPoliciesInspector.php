@@ -6,16 +6,16 @@ use Carbon\Carbon;
 use SYSOTEL\APP\Common\Enums\CMS\PenaltyType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\CancellationPolicyRules;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\Penalty;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\PropertyCancellationPolicies;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\PropertyCancellationPolicy;
 
 class CancellationPoliciesInspector
 {
     /**
-     * @var PropertyCancellationPolicies
+     * @var PropertyCancellationPolicy
      */
-    protected PropertyCancellationPolicies $cancellationPolicy;
+    protected PropertyCancellationPolicy $cancellationPolicy;
 
-    public function __construct(PropertyCancellationPolicies $cancellationPolicy)
+    public function __construct(PropertyCancellationPolicy $cancellationPolicy)
     {
         $this->cancellationPolicy = $cancellationPolicy;
     }

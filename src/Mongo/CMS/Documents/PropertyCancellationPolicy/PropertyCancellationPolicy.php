@@ -21,7 +21,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
  *     )
  * @ODM\HasLifecycleCallbacks
  */
-class PropertyCancellationPolicies extends BaseDocument
+class PropertyCancellationPolicy extends BaseDocument
 {
     use HasObjectIdKey, HasAccountId, HasPropertyId, HasTimestamps;
 
