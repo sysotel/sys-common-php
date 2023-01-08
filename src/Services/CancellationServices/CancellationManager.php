@@ -2,6 +2,7 @@
 
 namespace SYSOTEL\APP\Common\Services\CancellationServices;
 
+use Carbon\Carbon;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\PropertyCancellationPolicy;
 
 class CancellationManager
@@ -34,5 +35,14 @@ class CancellationManager
     public function basicInspector(): CancellationPoliciesBasicInspector
     {
         return new CancellationPoliciesBasicInspector($this->cancellationPolicy);
+    }
+
+    /**
+     * @param Carbon $checkInDate
+     * @return CancellationPoliciesAdvanceInspector
+     */
+    public function advanceInspector(Carbon $checkInDate): CancellationPoliciesAdvanceInspector
+    {
+        return new CancellationPoliciesAdvanceInspector($this->cancellationPolicy, $checkInDate);
     }
 }

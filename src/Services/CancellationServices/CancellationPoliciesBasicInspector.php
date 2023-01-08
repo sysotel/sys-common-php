@@ -8,7 +8,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\Cancellati
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\Penalty;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\PropertyCancellationPolicy;
 
-class CancellationPoliciesBasicInspector
+class CancellationPoliciesBasicInspector extends CancellationPoliciesBaseInspector
 {
     /**
      * @return array
