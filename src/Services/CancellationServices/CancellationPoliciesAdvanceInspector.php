@@ -42,7 +42,7 @@ class CancellationPoliciesAdvanceInspector extends CancellationPoliciesBaseInspe
     {
         $cancellationThresholdDate = $this->getFreeCancellationThresholdTimestamp();
 
-        $cancellationThresholdDateString = $cancellationThresholdDate->toDateTimeString();
+        $cancellationThresholdDateString = $cancellationThresholdDate->format('d M Y, H:i');
 
         return "FULL REFUND IF CANCELLED ON OR BEFORE $cancellationThresholdDateString";
     }
@@ -56,10 +56,10 @@ class CancellationPoliciesAdvanceInspector extends CancellationPoliciesBaseInspe
         $penaltyLabel = CancellationHelpers::getPenaltyLabel($rule->getPenalty());
 
         $startTime = $this->getStartTimeForRule($rule);
-        $startTimeString = $startTime->toDateTimeString();
+        $startTimeString = $startTime->format('d M Y, H:i');
 
         $endTime = $this->getEndTimeForRule($rule);
-        $endTimeString = $endTime->toDateTimeString();
+        $endTimeString = $endTime->format('d M Y, H:i');
 
         if ($rule->getEndInterval() === 0) {
             return "$penaltyLabel penalty if cancelled after $endTimeString";
