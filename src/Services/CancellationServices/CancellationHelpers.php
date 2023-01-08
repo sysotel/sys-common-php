@@ -17,7 +17,7 @@ class CancellationHelpers
     {
         $days = $hours / 24;
         return is_int($days)
-            ? self::getDayLabel($hours)
+            ? self::getDayLabel($days)
             : self::getHourLabel($hours);
     }
 

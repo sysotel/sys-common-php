@@ -2,11 +2,7 @@
 
 namespace SYSOTEL\APP\Common\Services\CancellationServices;
 
-use Carbon\Carbon;
-use SYSOTEL\APP\Common\Enums\CMS\PenaltyType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\CancellationPolicyRule;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\Penalty;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\PropertyCancellationPolicy;
 
 class CancellationPoliciesBasicInspector extends CancellationPoliciesBaseInspector
 {
