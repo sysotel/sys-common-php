@@ -28,7 +28,7 @@ class PropertyCancellationPolicy extends BaseDocument
 
     /**
      * @var ArrayCollection & CancellationPolicyRule[]
-     * @ODM\EmbedMany(targetDocument=CancellationPolicyRules::class)
+     * @ODM\EmbedMany(targetDocument=CancellationPolicyRule::class)
      */
     protected $rules;
 
