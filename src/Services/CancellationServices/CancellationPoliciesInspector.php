@@ -25,10 +25,10 @@ class CancellationPoliciesInspector
      */
     public function getAllSentences(): array
     {
-        $ruleSentences[] = $this->sentenceForFreeCancellation();
+        $ruleSentences[] = $this->freeCancellationSentence();
 
         foreach ($this->cancellationPolicy->getRules() as $rule) {
-            $ruleSentences[] = $this->sentenceForRule($rule);
+            $ruleSentences[] = $this->ruleSentence($rule);
         }
 
         return $ruleSentences;
@@ -40,10 +40,10 @@ class CancellationPoliciesInspector
      */
     public function getAllSentencesForCheckInDate(Carbon $checkInDate): array
     {
-        $ruleSentences[] = $this->sentenceForFreeCancellationForCheckInDate($checkInDate);
+        $ruleSentences[] = $this->freeCancellationSentenceForCheckInDate($checkInDate);
 
         foreach ($this->cancellationPolicy->getRules() as $rule) {
-            $ruleSentences[] = $this->sentencesForRuleForCheckInDate($rule, $checkInDate);
+            $ruleSentences[] = $this->ruleSentenceForCheckInDate($rule, $checkInDate);
         }
         return $ruleSentences;
     }
@@ -66,7 +66,7 @@ class CancellationPoliciesInspector
 
         $cancellationRule = $this->getRuleForDates($checkInDate, $cancellationDate);
         if ($cancellationRule) {
-            return $this->sentencesForRuleForCheckInDate($cancellationRule, $checkInDate);
+            return $this->ruleSentenceForCheckInDate($cancellationRule, $checkInDate);
         }
 
         return "";
@@ -102,38 +102,33 @@ class CancellationPoliciesInspector
     /**
      * @return string
      */
-    public function sentenceForFreeCancellation(): string
+    public function freeCancellationSentence(): string
     {
-        $sentence = 'FULL REFUND IF CANCELLED BEFORE ';
-
         $freeCancellationBeforeHours = $this->cancellationPolicy->getFreeCancellationBefore();
-        $freeCancellationBeforeDays = $freeCancellationBeforeHours / 24;
-        $getLabel = $this->getDayOrHourLabel($freeCancellationBeforeHours);
-        $sentence .= $freeCancellationBeforeDays . ' ' . $getLabel;
-        return $sentence;
 
+        $timeLabel = $this->getDayOrHourLabel($freeCancellationBeforeHours);
+
+        return "FULL REFUND IF CANCELLED BEFORE  $timeLabel";
     }
 
     /**
      * @param Carbon $checkInDate
      * @return string
      */
-    public function sentenceForFreeCancellationForCheckInDate(Carbon $checkInDate): string
+    public function freeCancellationSentenceForCheckInDate(Carbon $checkInDate): string
     {
-        $sentence = 'FULL REFUND IF CANCELLED ON OR BEFORE';
+        $cancellationThresholdDate = $this->getFreeCancellationThresholdTimestamp($checkInDate);
 
-        $cancellationThresholdDate = $this->getFreeCancellationThresholdDate($checkInDate);
+        $dateString = $cancellationThresholdDate->toDateTimeString();
 
-        $sentence .= ' ' . $cancellationThresholdDate->toDateTimeString();
-
-        return $sentence;
+        return "FULL REFUND IF CANCELLED ON OR BEFORE $dateString";
     }
 
     /**
      * @param CancellationPolicyRules $rule
      * @return string
      */
-    public function sentenceForRule(CancellationPolicyRules $rule): string
+    public function ruleSentence(CancellationPolicyRules $rule): string
     {
         $penaltyLabel = $this->getPenaltyLabel($rule->getPenalty());
 
@@ -155,7 +150,7 @@ class CancellationPoliciesInspector
      * @param Carbon $checkInDate
      * @return string
      */
-    public function sentencesForRuleForCheckInDate(CancellationPolicyRules $rule, Carbon $checkInDate): string
+    public function ruleSentenceForCheckInDate(CancellationPolicyRules $rule, Carbon $checkInDate): string
     {
         $penaltyLabel = $this->getPenaltyLabel($rule->getPenalty());
 
@@ -197,7 +192,7 @@ class CancellationPoliciesInspector
     public function isFreeCancellationAvailable(Carbon $checkInDate, Carbon $cancellationDate): bool
     {
         $cancelDate = $this->normalizeCancellationDate($cancellationDate);
-        $freeCancellationThresholdDate = $this->getFreeCancellationThresholdDate($checkInDate);
+        $freeCancellationThresholdDate = $this->getFreeCancellationThresholdTimestamp($checkInDate);
 
         $flag = $cancelDate->lt($freeCancellationThresholdDate);
         if ($flag) {
@@ -213,15 +208,22 @@ class CancellationPoliciesInspector
 
 
     /**
-     * @param Carbon $checkInDate
+     * @param Carbon $checkInTime
      * @return Carbon
      */
-    public function getFreeCancellationThresholdDate(Carbon $checkInDate): Carbon
+    public function getFreeCancellationThresholdTimestamp(Carbon $checkInTime): Carbon
     {
-        return $checkInDate->clone()->subHours($this->cancellationPolicy->getFreeCancellationBefore())->subSeconds();
+        // normalize upto seconds
+        $checkInTime->setSecond(0);
+
+        // free cancellation applies before (checkInTime minus freeCancellationBefore hours)
+        // that's why we first minus hours from checkIn time and then sub one second from it.
+        return $checkInTime->clone()->subHours($this->cancellationPolicy->getFreeCancellationBefore())->subSecond();
     }
 
     /**
+     * Returns day, hour, hours or days label based on value
+     *
      * @param int $hours
      * @return string
      */
@@ -234,21 +236,29 @@ class CancellationPoliciesInspector
     }
 
     /**
+     * Returns day or days label based on value
+     *
      * @param int $days
      * @return string
      */
     protected function getDayLabel(int $days): string
     {
-        return $days > 1 ? 'days' : 'day';
+        $postfix = $days > 1 ? 'days' : 'day';
+
+        return "$days $postfix";
     }
 
     /**
-     * @param int $hour
+     * Returns Hour or Hours label based on value
+     *
+     * @param int $hours
      * @return string
      */
-    protected function getHourLabel(int $hour): string
+    protected function getHourLabel(int $hours): string
     {
-        return $hour > 1 ? 'hours' : 'hour';
+        $postfix = $hours > 1 ? 'hours' : 'hour';
+
+        return "$hours $postfix";
     }
 
     /**
@@ -265,6 +275,8 @@ class CancellationPoliciesInspector
     }
 
     /**
+     * Date accuracy is set to 0 millis
+     *
      * @param Carbon $date
      * @return Carbon
      */

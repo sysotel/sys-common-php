@@ -178,7 +178,7 @@ class Amenity extends BaseDocument
     /**
      * @return bool|null
      */
-    public function getIsFeatured(): ?bool
+    public function isFeatured(): ?bool
     {
         return $this->isFeatured;
     }
