@@ -4,22 +4,12 @@ namespace SYSOTEL\APP\Common\Services\CancellationServices;
 
 use Carbon\Carbon;
 use SYSOTEL\APP\Common\Enums\CMS\PenaltyType;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\CancellationPolicyRules;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\CancellationPolicyRule;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\Penalty;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\PropertyCancellationPolicy;
 
 class CancellationPoliciesBasicInspector
 {
-    /**
-     * @var PropertyCancellationPolicy
-     */
-    protected PropertyCancellationPolicy $cancellationPolicy;
-
-    public function __construct(PropertyCancellationPolicy $cancellationPolicy)
-    {
-        $this->cancellationPolicy = $cancellationPolicy;
-    }
-
     /**
      * @return array
      */
@@ -47,10 +37,10 @@ class CancellationPoliciesBasicInspector
     }
 
     /**
-     * @param CancellationPolicyRules $rule
+     * @param CancellationPolicyRule $rule
      * @return string
      */
-    public function ruleSentence(CancellationPolicyRules $rule): string
+    public function ruleSentence(CancellationPolicyRule $rule): string
     {
         $penaltyLabel = CancellationHelpers::getPenaltyLabel($rule->getPenalty());
 

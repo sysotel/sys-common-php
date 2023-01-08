@@ -15,7 +15,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 /**
  * @ODM\EmbeddedDocument
  */
-class CancellationPolicyRules extends EmbeddedDocument
+class CancellationPolicyRule extends EmbeddedDocument
 {
 
     /**

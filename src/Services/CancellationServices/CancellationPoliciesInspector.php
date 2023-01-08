@@ -4,7 +4,7 @@ namespace SYSOTEL\APP\Common\Services\CancellationServices;
 
 use Carbon\Carbon;
 use SYSOTEL\APP\Common\Enums\CMS\PenaltyType;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\CancellationPolicyRules;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\CancellationPolicyRule;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\Penalty;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\PropertyCancellationPolicy;
 
@@ -125,10 +125,10 @@ class CancellationPoliciesInspector
     }
 
     /**
-     * @param CancellationPolicyRules $rule
+     * @param CancellationPolicyRule $rule
      * @return string
      */
-    public function ruleSentence(CancellationPolicyRules $rule): string
+    public function ruleSentence(CancellationPolicyRule $rule): string
     {
         $penaltyLabel = $this->getPenaltyLabel($rule->getPenalty());
 
@@ -146,11 +146,11 @@ class CancellationPoliciesInspector
     }
 
     /**
-     * @param CancellationPolicyRules $rule
+     * @param CancellationPolicyRule $rule
      * @param Carbon $checkInDate
      * @return string
      */
-    public function ruleSentenceForCheckInDate(CancellationPolicyRules $rule, Carbon $checkInDate): string
+    public function ruleSentenceForCheckInDate(CancellationPolicyRule $rule, Carbon $checkInDate): string
     {
         $penaltyLabel = $this->getPenaltyLabel($rule->getPenalty());
 
@@ -169,9 +169,9 @@ class CancellationPoliciesInspector
     /**
      * @param Carbon $checkInDate
      * @param Carbon $cancellationDate
-     * @return CancellationPolicyRules|null
+     * @return CancellationPolicyRule|null
      */
-    public function getRuleForDates(Carbon $checkInDate, Carbon $cancellationDate): CancellationPolicyRules|null
+    public function getRuleForDates(Carbon $checkInDate, Carbon $cancellationDate): CancellationPolicyRule|null
     {
         $cancelDate = $this->normalizeCancellationDate($cancellationDate);
         foreach ($this->cancellationPolicy->getRules() as $rule) {

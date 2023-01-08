@@ -27,7 +27,7 @@ class PropertyCancellationPolicy extends BaseDocument
     use HasObjectIdKey, HasAccountId, HasPropertyId, HasTimestamps;
 
     /**
-     * @var ArrayCollection & CancellationPolicyRules[]
+     * @var ArrayCollection & CancellationPolicyRule[]
      * @ODM\EmbedMany(targetDocument=CancellationPolicyRules::class)
      */
     protected $rules;
@@ -56,7 +56,7 @@ class PropertyCancellationPolicy extends BaseDocument
     }
 
     /**
-     * @return ArrayCollection|Collection|CancellationPolicyRules[]
+     * @return ArrayCollection|Collection|CancellationPolicyRule[]
      */
     public function getRules(): array|ArrayCollection|Collection
     {
@@ -64,14 +64,14 @@ class PropertyCancellationPolicy extends BaseDocument
     }
 
     /**
-     * @param ArrayCollection|Collection|CancellationPolicyRules[] $rules
+     * @param ArrayCollection|Collection|CancellationPolicyRule[] $rules
      */
     public function setRules(array|ArrayCollection|Collection $rules): void
     {
         $this->rules = $rules;
     }
 
-    public function addRule(CancellationPolicyRules $val): static
+    public function addRule(CancellationPolicyRule $val): static
     {
         $this->rules->add($val);
         return $this;
