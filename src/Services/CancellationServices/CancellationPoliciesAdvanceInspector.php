@@ -89,7 +89,7 @@ class CancellationPoliciesAdvanceInspector extends CancellationPoliciesBaseInspe
         $endTimeString = $endTime->format('d M Y, H:i');
 
         if ($rule->getEndInterval() === 0) {
-            return "$penaltyLabel penalty if cancelled after $endTimeString";
+            return "$penaltyLabel penalty if cancelled after $startTimeString";
         }
 
         return "$penaltyLabel penalty if cancelled between $startTimeString to $endTimeString";
