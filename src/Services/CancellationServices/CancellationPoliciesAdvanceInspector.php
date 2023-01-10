@@ -36,6 +36,32 @@ class CancellationPoliciesAdvanceInspector extends CancellationPoliciesBaseInspe
     }
 
     /**
+     * @param Carbon $bookingTime
+     * @return array
+     */
+    public function getAllSentencesForBookingDate(Carbon $bookingTime): array
+    {
+        $ruleSentences = [];
+
+        $cancellationThresholdDate = $this->getFreeCancellationThresholdTimestamp();
+        if($bookingTime->lte($cancellationThresholdDate)) {
+            $ruleSentences[] = $this->freeCancellationSentence();
+        }
+
+        foreach ($this->cancellationPolicy->getRules() as $rule) {
+            if($bookingTime->lte($rule)) {
+                $ruleSentences[] = $this->ruleSentence($rule);
+            }
+        }
+
+        if(!count($ruleSentences)) {
+            $ruleSentences[] = '100% penalty will be charged if cancelled this booking.';
+        }
+
+        return $ruleSentences;
+    }
+
+    /**
      * @return string
      */
     public function freeCancellationSentence(): string
