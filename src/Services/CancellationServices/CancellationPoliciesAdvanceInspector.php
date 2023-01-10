@@ -122,10 +122,9 @@ class CancellationPoliciesAdvanceInspector extends CancellationPoliciesBaseInspe
 
     /**
      * @param Carbon $cancellationTime
-     * @param int|float $bookingAmount
      * @return bool
      */
-    public function isNonRefundable(Carbon $cancellationTime, int|float $bookingAmount): bool
+    public function isNonRefundable(Carbon $cancellationTime): bool
     {
         // normalize
         $cancellationTime = $cancellationTime->copy()->setSeconds(0);
@@ -151,9 +150,9 @@ class CancellationPoliciesAdvanceInspector extends CancellationPoliciesBaseInspe
 
         // if penalty is greater than booking amount,
         // it means booking is nonRefundable
-        if($applicableRule->getPenalty()?->isOfType(PenaltyType::FLAT) && $applicableRule->getPenalty()?->getValue() >= $bookingAmount) {
-            return true;
-        }
+//        if($applicableRule->getPenalty()?->isOfType(PenaltyType::FLAT) && $applicableRule->getPenalty()?->getValue() >= $bookingAmount) {
+//            return true;
+//        }
 
         return false;
     }
