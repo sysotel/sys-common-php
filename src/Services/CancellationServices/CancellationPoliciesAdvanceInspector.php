@@ -49,7 +49,8 @@ class CancellationPoliciesAdvanceInspector extends CancellationPoliciesBaseInspe
         }
 
         foreach ($this->cancellationPolicy->getRules() as $rule) {
-            if($bookingTime->lte($rule)) {
+            $ruleEndTime = $this->getEndTimeForRule($rule);
+            if($bookingTime->lte($ruleEndTime)) {
                 $ruleSentences[] = $this->ruleSentence($rule);
             }
         }
