@@ -140,10 +140,10 @@ class AgePolicy extends EmbeddedDocument
             return '';
         }
 
-        $child = $this->noOfFreeChildGranted != 1 ? 'children' : 'child';
-        $is = $this->noOfFreeChildGranted != 1 ? 'are' : 'is';
+        $child = $this->noOfFreeChildGranted > 1 ? 'children' : 'child';
+        $year = $this->noOfFreeChildGranted > 1 ? 'years' : 'year';
 
-        return "{$this->noOfFreeChildGranted} $child below age {$this->freeChildAgeThreshold} {$is} allowed for FREE when used existing bedding.";
+        return "{$this->noOfFreeChildGranted} $child below {$this->freeChildAgeThreshold} $year stays FREE !";
     }
 
     /**
