@@ -136,8 +136,12 @@ class AgePolicy extends EmbeddedDocument
      */
     public function freeChildDefinition(): string
     {
+        if(!$this->noOfFreeChildGranted || !$this->freeChildAgeThreshold) {
+            return '';
+        }
+
         $guest = $this->noOfFreeChildGranted != 1 ? 'guests' : 'guest';
-        $is = $this->noOfFreeChildGranted != 1 ? 'area' : 'is';
+        $is = $this->noOfFreeChildGranted != 1 ? 'are' : 'is';
 
         return "{$this->noOfFreeChildGranted} $guest below age {$this->freeChildAgeThreshold} {$is} allowed for FREE when used existing bedding.";
     }

@@ -42,11 +42,13 @@ class PropertyPolicyDataGenerator
                 $details['infantAgeDefinition'] = $agePolicy->childAgeDefinition();
                 $details['childAgeDefinition'] = $agePolicy->childAgeDefinition();
                 $details['adultAgeDefinition'] = $agePolicy->childAgeDefinition();
+                $details['freeChildDefinition'] = $agePolicy->freeChildDefinition();
 
                 $details['description'] = [
                     $agePolicy->infantAgeDefinition(),
                     $agePolicy->childAgeDefinition(),
                     $agePolicy->adultAgeDefinition(),
+                    $agePolicy->freeChildDefinition(),
                 ];
             }
 
