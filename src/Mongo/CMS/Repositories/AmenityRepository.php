@@ -20,7 +20,8 @@ class AmenityRepository extends DocumentRepository
         ], $criteria);
 
         $orderBy = array_merge([
-            'isFeatured' => 1
+            'isFeatured' => -1,
+            'featureOrder' => 1
         ], $orderBy);
 
         return Amenity::repository()->findBy($criteria, $orderBy);
@@ -38,7 +39,8 @@ class AmenityRepository extends DocumentRepository
         ], $criteria);
 
         $orderBy = array_merge([
-            'isFeatured' => 1
+            'isFeatured' => -1,
+            'featureOrder' => 1
         ], $orderBy);
 
         return Amenity::repository()->findBy($criteria, $orderBy);
