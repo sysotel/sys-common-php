@@ -140,10 +140,10 @@ class AgePolicy extends EmbeddedDocument
             return '';
         }
 
-        $guest = $this->noOfFreeChildGranted != 1 ? 'guests' : 'guest';
+        $child = $this->noOfFreeChildGranted != 1 ? 'children' : 'child';
         $is = $this->noOfFreeChildGranted != 1 ? 'are' : 'is';
 
-        return "{$this->noOfFreeChildGranted} $guest below age {$this->freeChildAgeThreshold} {$is} allowed for FREE when used existing bedding.";
+        return "{$this->noOfFreeChildGranted} $child below age {$this->freeChildAgeThreshold} {$is} allowed for FREE when used existing bedding.";
     }
 
     /**
