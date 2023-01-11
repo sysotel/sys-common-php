@@ -256,4 +256,18 @@ class SpaceOccupancy extends EmbeddedDocument
         $this->maxChildCount = $maxChildCount;
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function maxGuestsString(): string
+    {
+        if($this->maxCount) {
+            $postfix = $this->maxCount > 1 ? 'Guests' : 'Guest';
+
+            return $this->maxCount . ' ' . $postfix;
+        }
+
+        return '';
+    }
 }

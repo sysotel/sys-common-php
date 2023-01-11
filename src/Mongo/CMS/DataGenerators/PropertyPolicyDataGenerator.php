@@ -38,6 +38,11 @@ class PropertyPolicyDataGenerator
         if($agePolicy = $this->policies->getAgePolicy()) {
 
             if($addDescription) {
+
+                $details['infantAgeDefinition'] = $agePolicy->childAgeDefinition();
+                $details['childAgeDefinition'] = $agePolicy->childAgeDefinition();
+                $details['adultAgeDefinition'] = $agePolicy->childAgeDefinition();
+
                 $details['description'] = [
                     $agePolicy->infantAgeDefinition(),
                     $agePolicy->childAgeDefinition(),
