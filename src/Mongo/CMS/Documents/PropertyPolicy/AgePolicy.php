@@ -151,11 +151,12 @@ class AgePolicy extends EmbeddedDocument
      */
     public function fullDescriptionArray(): array
     {
-        return [
+        return array_filter([
             $this->infantAgeDefinition(),
             $this->childAgeDefinition(),
             $this->adultAgeDefinition(),
-        ];
+            $this->freeChildDefinition(),
+        ]);
     }
 
     public function getFullDescription(): string
