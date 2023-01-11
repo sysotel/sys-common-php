@@ -141,7 +141,7 @@ class AgePolicy extends EmbeddedDocument
         }
 
         $child = $this->noOfFreeChildGranted > 1 ? 'children' : 'child';
-        $year = $this->noOfFreeChildGranted > 1 ? 'years' : 'year';
+        $year = $this->freeChildAgeThreshold > 1 ? 'years' : 'year';
 
         return "{$this->noOfFreeChildGranted} $child below {$this->freeChildAgeThreshold} $year stays FREE !";
     }
