@@ -15,7 +15,7 @@ class ProductDataGenerator
         $this->product = $product;
     }
 
-    public function addBasicDetails($spaceLabel = 'Room'): static
+    public function addBasicDetails($spaceLabel = null): static
     {
         $data = [
             'id' => $this->product->getId(),
@@ -30,7 +30,7 @@ class ProductDataGenerator
             'inclusions' => $this->product->getInclusions()
         ];
 
-        if(!count($data['inclusions'])) {
+        if(!count($data['inclusions']) && $spaceLabel) {
             $data['inclusions'] = ["$spaceLabel Only"];
         }
 
