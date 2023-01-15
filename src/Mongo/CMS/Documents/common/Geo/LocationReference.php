@@ -4,7 +4,6 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
-use MongoDB\BSON\ObjectId;
 use SYSOTEL\APP\Common\Enums\CMS\LocationType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Location;
 
@@ -14,7 +13,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Location;
 class LocationReference extends EmbeddedDocument
 {
     /**
-     * @var ObjectId
+     * @var ?string
      * @ODM\Field(type="object_id")
      */
     protected $id;
@@ -52,17 +51,17 @@ class LocationReference extends EmbeddedDocument
     }
 
     /**
-     * @return ObjectId
+     * @return ?string
      */
-    public function getId(): ObjectId
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     /**
-     * @param ObjectId $id
+     * @param string $id
      */
-    public function setId(ObjectId $id): void
+    public function setId(string $id): void
     {
         $this->id = $id;
     }
