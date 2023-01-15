@@ -58,7 +58,7 @@ class LocationRepository extends DocumentRepository
 
         $criteria = array_merge([
             'type' => LocationType::STATE->value,
-            'country.id' => $countryId
+            'country.id' => new ObjectId($countryId)
         ], $criteria);
 
         $orderBy = array_merge([
@@ -96,7 +96,7 @@ class LocationRepository extends DocumentRepository
      * @param array $orderBy
      * @return Area[]
      */
-    public function findAllAreasForState(string|Area $area, array $criteria = [], array $orderBy = []): array
+    public function findAllAreasForCity(string|Area $area, array $criteria = [], array $orderBy = []): array
     {
         $areaId = $area instanceof Area ? $area->getId() : $area;
 
