@@ -25,26 +25,26 @@ class Address extends EmbeddedDocument implements AddressContract
     private $line1;
 
     /**
-     * @var AreaReference
-     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\AreaReference::class)
+     * @var LocationReference
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
      */
     private $area;
 
     /**
      * @var CityReference
-     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CityReference::class)
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
      */
     private $city;
 
     /**
      * @var StateReference
-     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\StateReference::class)
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
      */
     private $state;
 
     /**
      * @var CountryReference
-     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\CountryReference::class)
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
      */
     private $country;
 
@@ -170,36 +170,36 @@ class Address extends EmbeddedDocument implements AddressContract
     }
 
     /**
-     * @return AreaReference
+     * @return LocationReference
      */
-    public function getArea(): AreaReference
+    public function getArea(): LocationReference
     {
         return $this->area;
     }
 
     /**
-     * @param AreaReference $area
+     * @param LocationReference $area
      * @return Address
      */
-    public function setArea(AreaReference $area): Address
+    public function setArea(LocationReference $area): Address
     {
         $this->area = $area;
         return $this;
     }
 
     /**
-     * @return CityReference
+     * @return LocationReference
      */
-    public function getCity(): CityReference
+    public function getCity(): LocationReference
     {
         return $this->city;
     }
 
     /**
-     * @param CityReference $city
+     * @param LocationReference $city
      * @return Address
      */
-    public function setCity(CityReference $city): Address
+    public function setCity(LocationReference $city): Address
     {
         $this->city = $city;
         return $this;
@@ -214,28 +214,28 @@ class Address extends EmbeddedDocument implements AddressContract
     }
 
     /**
-     * @param StateReference $state
+     * @param LocationReference $state
      * @return Address
      */
-    public function setState(StateReference $state): Address
+    public function setState(LocationReference $state): Address
     {
         $this->state = $state;
         return $this;
     }
 
     /**
-     * @return CountryReference
+     * @return LocationReference
      */
-    public function getCountry(): CountryReference
+    public function getCountry(): LocationReference
     {
         return $this->country;
     }
 
     /**
-     * @param CountryReference $country
+     * @param LocationReference $country
      * @return Address
      */
-    public function setCountry(CountryReference $country): Address
+    public function setCountry(LocationReference $country): Address
     {
         $this->country = $country;
         return $this;

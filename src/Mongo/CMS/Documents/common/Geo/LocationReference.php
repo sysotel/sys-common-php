@@ -26,6 +26,12 @@ class LocationReference extends EmbeddedDocument
     protected $name;
 
     /**
+     * @var string
+     * @ODM\Field(type="string")
+     */
+    protected $categorySlug;
+
+    /**
      * @var ?LocationType
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\LocationType::class)
      */
@@ -40,6 +46,7 @@ class LocationReference extends EmbeddedDocument
         $instance = new self;
         $instance->id = $location->getId();
         $instance->name = $location->getName();
+        $instance->slug = $location->getCategorySlug();
         $instance->type = $location->getType();
         return $instance;
     }
