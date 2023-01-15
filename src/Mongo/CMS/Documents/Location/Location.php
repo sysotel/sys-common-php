@@ -4,6 +4,7 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Location;
 
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\LocationType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
@@ -60,7 +61,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
     protected $searchKeywords = [];
 
     /**
-     * @var ChannelLocationDetailsItem
+     * @var Collection & ChannelLocationDetailsItem[]
      * @ODM\EmbedMany  (targetDocument=ChannelLocationDetailsItem::class)
      */
     protected $channelDetails;
@@ -120,10 +121,12 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 
     /**
      * @param string|null $categorySlug
+     * @return Location
      */
-    public function setCategorySlug(?string $categorySlug): void
+    public function setCategorySlug(?string $categorySlug): static
     {
         $this->categorySlug = $categorySlug;
+        return $this;
     }
 
     /**
@@ -136,10 +139,12 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 
     /**
      * @param string|null $name
+     * @return Location
      */
-    public function setName(?string $name): void
+    public function setName(?string $name): static
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -152,10 +157,12 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 
     /**
      * @param GeoPoint|null $geoPoint
+     * @return Location
      */
-    public function setGeoPoint(?GeoPoint $geoPoint): void
+    public function setGeoPoint(?GeoPoint $geoPoint): static
     {
         $this->geoPoint = $geoPoint;
+        return $this;
     }
 
     /**
@@ -168,26 +175,30 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 
     /**
      * @param array $searchKeywords
+     * @return Location
      */
-    public function setSearchKeywords(array $searchKeywords): void
+    public function setSearchKeywords(array $searchKeywords): static
     {
         $this->searchKeywords = $searchKeywords;
+        return $this;
     }
 
     /**
-     * @return ChannelLocationDetailsItem
+     * @return ChannelLocationDetailsItem[]
      */
-    public function getChannelDetails(): ChannelLocationDetailsItem|ArrayCollection
+    public function getChannelDetails(): Collection
     {
         return $this->channelDetails;
     }
 
     /**
      * @param ChannelLocationDetailsItem $channelDetails
+     * @return Location
      */
-    public function setChannelDetails(ChannelLocationDetailsItem|ArrayCollection $channelDetails): void
+    public function addChannelDetails(ChannelLocationDetailsItem $channelDetails): static
     {
-        $this->channelDetails = $channelDetails;
+        $this->channelDetails->add($channelDetails);
+        return $this;
     }
 
     public static function repository(): LocationRepository

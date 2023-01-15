@@ -20,13 +20,13 @@ class LocationReference extends EmbeddedDocument
     protected $id;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     protected $name;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     protected $categorySlug;
@@ -68,19 +68,39 @@ class LocationReference extends EmbeddedDocument
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
+     * @return LocationReference
      */
-    public function setName(string $name): void
+    public function setName(?string $name): LocationReference
     {
         $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCategorySlug(): ?string
+    {
+        return $this->categorySlug;
+    }
+
+    /**
+     * @param string|null $categorySlug
+     * @return LocationReference
+     */
+    public function setCategorySlug(?string $categorySlug): LocationReference
+    {
+        $this->categorySlug = $categorySlug;
+        return $this;
     }
 
     /**
