@@ -134,7 +134,7 @@ class LocationRepository extends DocumentRepository
      */
     public function findCityForState(string $cityId, string|State $state): ?City
     {
-        $stateId = $state instanceof Country ? $state->getId() : $state;
+        $stateId = $state instanceof State ? $state->getId() : $state;
 
         return $this->findOneBy([
             '_id' => new ObjectId($cityId),
@@ -150,7 +150,7 @@ class LocationRepository extends DocumentRepository
      */
     public function findAreaForCity(string $areaId, string|City $city): ?Area
     {
-        $cityId = $city instanceof Country ? $city->getId() : $city;
+        $cityId = $city instanceof City ? $city->getId() : $city;
 
         return $this->findOneBy([
             '_id' => new ObjectId($areaId),
