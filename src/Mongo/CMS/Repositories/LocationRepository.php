@@ -4,7 +4,6 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Repositories;
 
 use Delta4op\Mongodb\Repositories\DocumentRepository;
 use MongoDB\BSON\ObjectId;
-use MongoDB\Operation\Count;
 use SYSOTEL\APP\Common\Enums\CMS\CountrySlug;
 use SYSOTEL\APP\Common\Enums\CMS\LocationType;
 use SYSOTEL\APP\Common\Enums\CMS\StateSlug;
@@ -154,7 +153,7 @@ class LocationRepository extends DocumentRepository
         $cityId = $city instanceof Country ? $city->getId() : $city;
 
         return $this->findOneBy([
-            '_id' => new ObjectId($areaId),,
+            '_id' => new ObjectId($areaId),
             'type' => LocationType::AREA->value,
             'state.id' => new ObjectId($cityId),
         ]);
