@@ -122,9 +122,9 @@ class LocationRepository extends DocumentRepository
         $countryId = $country instanceof Country ? $country->getId() : $country;
 
         return $this->findOneBy([
-            '_id' => $stateId,
+            '_id' => new ObjectId($stateId),
             'type' => LocationType::STATE->value,
-            'country.id' => $countryId
+            'country.id' => new ObjectId($countryId),
         ]);
     }
 
@@ -138,9 +138,9 @@ class LocationRepository extends DocumentRepository
         $stateId = $state instanceof Country ? $state->getId() : $state;
 
         return $this->findOneBy([
-            '_id' => $cityId,
+            '_id' => new ObjectId($cityId),
             'type' => LocationType::CITY->value,
-            'state.id' => $stateId
+            'state.id' => new ObjectId($stateId),
         ]);
     }
 
@@ -154,9 +154,9 @@ class LocationRepository extends DocumentRepository
         $cityId = $city instanceof Country ? $city->getId() : $city;
 
         return $this->findOneBy([
-            '_id' => $areaId,
+            '_id' => new ObjectId($areaId),,
             'type' => LocationType::AREA->value,
-            'state.id' => $cityId
+            'state.id' => new ObjectId($cityId),
         ]);
     }
 }
