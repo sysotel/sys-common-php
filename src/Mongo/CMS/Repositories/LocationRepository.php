@@ -155,7 +155,7 @@ class LocationRepository extends DocumentRepository
         return $this->findOneBy([
             '_id' => new ObjectId($areaId),
             'type' => LocationType::AREA->value,
-            'state.id' => new ObjectId($cityId),
+            'city.id' => new ObjectId($cityId),
         ]);
     }
 }
