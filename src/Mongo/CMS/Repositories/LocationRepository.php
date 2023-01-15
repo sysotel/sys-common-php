@@ -102,7 +102,7 @@ class LocationRepository extends DocumentRepository
 
         $criteria = array_merge([
             'type' => LocationType::AREA->value,
-            'area.id' => new ObjectId($areaId)
+            'city.id' => new ObjectId($areaId)
         ], $criteria);
 
         $orderBy = array_merge([
