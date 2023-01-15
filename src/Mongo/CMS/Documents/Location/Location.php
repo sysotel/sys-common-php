@@ -2,7 +2,6 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Location;
 
-use Delta4op\Mongodb\Traits\CanResolveStringID;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
@@ -40,7 +39,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
      * @var ?string
      * @ODM\Field
      */
-    protected $slug;
+    protected $categorySlug;
 
     /**
      * @var ?string
@@ -114,17 +113,17 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
     /**
      * @return string|null
      */
-    public function getSlug(): ?string
+    public function getCategorySlug(): ?string
     {
-        return $this->slug;
+        return $this->categorySlug;
     }
 
     /**
-     * @param string|null $slug
+     * @param string|null $categorySlug
      */
-    public function setSlug(?string $slug): void
+    public function setCategorySlug(?string $categorySlug): void
     {
-        $this->slug = $slug;
+        $this->categorySlug = $categorySlug;
     }
 
     /**

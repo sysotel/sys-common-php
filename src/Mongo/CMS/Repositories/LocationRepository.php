@@ -5,7 +5,9 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Repositories;
 use Delta4op\Mongodb\Repositories\DocumentRepository;
 use MongoDB\BSON\ObjectId;
 use MongoDB\Operation\Count;
+use SYSOTEL\APP\Common\Enums\CMS\CountrySlug;
 use SYSOTEL\APP\Common\Enums\CMS\LocationType;
+use SYSOTEL\APP\Common\Enums\CMS\StateSlug;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\Area;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\City;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\Country;
@@ -13,6 +15,28 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\State;
 
 class LocationRepository extends DocumentRepository
 {
+    /**
+     * @return Country[]
+     */
+    public function findCountryBySlug(CountrySlug $slug): array
+    {
+        return $this->findBy([
+            'type' => LocationType::COUNTRY->value,
+            'categorySlug' => $slug
+        ]);
+    }
+
+    /**
+     * @return Country[]
+     */
+    public function findStateBySlug(StateSlug $slug): array
+    {
+        return $this->findBy([
+            'type' => LocationType::STATE->value,
+            'categorySlug' => $slug
+        ]);
+    }
+
     /**
      * @return Country[]
      */
