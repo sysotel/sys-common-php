@@ -16,22 +16,24 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\State;
 class LocationRepository extends DocumentRepository
 {
     /**
-     * @return Country[]
+     * @param CountrySlug $slug
+     * @return Country|null
      */
-    public function findCountryBySlug(CountrySlug $slug): array
+    public function findCountryBySlug(CountrySlug $slug): ?Country
     {
-        return $this->findBy([
+        return $this->findOneBy([
             'type' => LocationType::COUNTRY->value,
             'categorySlug' => $slug->value
         ]);
     }
 
     /**
-     * @return Country[]
+     * @param StateSlug $slug
+     * @return State|null
      */
-    public function findStateBySlug(StateSlug $slug): array
+    public function findStateBySlug(StateSlug $slug): State|null
     {
-        return $this->findBy([
+        return $this->findOneBy([
             'type' => LocationType::STATE->value,
             'categorySlug' => $slug
         ]);
