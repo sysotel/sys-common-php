@@ -4,11 +4,12 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Repositories;
 
 use Delta4op\Mongodb\Repositories\DocumentRepository;
 use MongoDB\BSON\ObjectId;
+use MongoDB\Operation\Count;
 use SYSOTEL\APP\Common\Enums\CMS\LocationType;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\Geo\City;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\Geo\Country;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\Geo\State;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Area;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\Area;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\City;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\Country;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\State;
 
 class LocationRepository extends DocumentRepository
 {
@@ -27,9 +28,11 @@ class LocationRepository extends DocumentRepository
      */
     public function findAllStatesForCountry(string|Country $country, array $criteria = [], array $orderBy = []): array
     {
+        $countryId = $country instanceof Country ? $country->getId() : $country;
+
         $criteria = array_merge([
             'type' => LocationType::COUNTRY,
-            'country.id' => Country::resolveID($country)
+            'country.id' => $countryId
         ], $criteria);
 
         $orderBy = array_merge([
@@ -47,11 +50,11 @@ class LocationRepository extends DocumentRepository
      */
     public function findAllCitiesForState(string|State $state, array $criteria = [], array $orderBy = []): array
     {
-        $stateID = $state instanceof State ? $state->getId() : $state;
+        $stateId = $state instanceof State ? $state->getId() : $state;
 
         $criteria = array_merge([
             'type' => LocationType::STATE,
-            'state.id' => new ObjectId($stateID)
+            'state.id' => new ObjectId($stateId)
         ], $criteria);
 
         $orderBy = array_merge([
@@ -81,5 +84,53 @@ class LocationRepository extends DocumentRepository
         ], $orderBy);
 
         return $this->findBy($criteria, $orderBy);
+    }
+
+    /**
+     * @param string $stateId
+     * @param string|Country $country
+     * @return State|null
+     */
+    public function findStateForCountry(string $stateId, string|Country $country): ?State
+    {
+        $countryId = $country instanceof Country ? $country->getId() : $country;
+
+        return $this->findOneBy([
+            '_id' => $stateId,
+            'type' => LocationType::STATE,
+            'country.id' => $countryId
+        ]);
+    }
+
+    /**
+     * @param string $cityId
+     * @param string|State $state
+     * @return City|null
+     */
+    public function findCityForState(string $cityId, string|State $state): ?City
+    {
+        $stateId = $state instanceof Country ? $state->getId() : $state;
+
+        return $this->findOneBy([
+            '_id' => $cityId,
+            'type' => LocationType::CITY,
+            'state.id' => $stateId
+        ]);
+    }
+
+    /**
+     * @param string $areaId
+     * @param string|City $city
+     * @return Area|null
+     */
+    public function findAreaForCity(string $areaId, string|City $city): ?Area
+    {
+        $cityId = $city instanceof Country ? $city->getId() : $city;
+
+        return $this->findOneBy([
+            '_id' => $areaId,
+            'type' => LocationType::AREA,
+            'state.id' => $cityId
+        ]);
     }
 }

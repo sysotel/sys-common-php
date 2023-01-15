@@ -2,6 +2,7 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Location;
 
+use Delta4op\Mongodb\Traits\CanResolveStringID;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
