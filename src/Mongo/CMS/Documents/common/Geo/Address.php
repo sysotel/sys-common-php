@@ -31,19 +31,19 @@ class Address extends EmbeddedDocument implements AddressContract
     private $area;
 
     /**
-     * @var CityReference
+     * @var LocationReference
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
      */
     private $city;
 
     /**
-     * @var StateReference
+     * @var LocationReference
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
      */
     private $state;
 
     /**
-     * @var CountryReference
+     * @var LocationReference
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
      */
     private $country;
@@ -206,9 +206,9 @@ class Address extends EmbeddedDocument implements AddressContract
     }
 
     /**
-     * @return StateReference
+     * @return LocationReference
      */
-    public function getState(): StateReference
+    public function getState(): LocationReference
     {
         return $this->state;
     }
