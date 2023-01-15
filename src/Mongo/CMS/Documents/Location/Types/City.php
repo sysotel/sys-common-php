@@ -1,9 +1,10 @@
 <?php
 
-namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Location;
+namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Location;
 
 /**
  * @ODM\Document
