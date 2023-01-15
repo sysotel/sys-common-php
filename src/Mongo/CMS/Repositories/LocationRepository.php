@@ -22,7 +22,7 @@ class LocationRepository extends DocumentRepository
     {
         return $this->findBy([
             'type' => LocationType::COUNTRY->value,
-            'categorySlug' => $slug
+            'categorySlug' => $slug->value
         ]);
     }
 

@@ -37,7 +37,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 
     /**
      * @var ?string
-     * @ODM\Field
+     * @ODM\Field(type="string")
      */
     protected $categorySlug;
 
