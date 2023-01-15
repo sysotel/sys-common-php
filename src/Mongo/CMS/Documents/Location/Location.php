@@ -20,10 +20,10 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
  * @ODM\InheritanceType("SINGLE_COLLECTION")
  * @ODM\DiscriminatorField("type")
  * @ODM\DiscriminatorMap({
- *     "Country":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\Country::class,
- *     "State":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\State::class,
- *     "City":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\City::class,
- *     "Area":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\Area::class,
+ *     "COUNTRY":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\Country::class,
+ *     "STATE":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\State::class,
+ *     "CITY":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\City::class,
+ *     "AREA":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\Area::class,
  * })
  */class Location extends BaseDocument
 {
