@@ -8,22 +8,26 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\LocationType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\LocationRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 
 /**
- * @ODM\Document(collection="locations")
+ * @ODM\Document(
+ *     collection="locations",
+ *     repositoryClass=SYSOTEL\APP\Common\Mongo\CMS\Repositories\LocationRepository::class
+ * )
  * @ODM\HasLifecycleCallbacks
- */
-class Location extends BaseDocument
+ * @ODM\InheritanceType("SINGLE_COLLECTION")
+ * @ODM\DiscriminatorField("type")
+ * @ODM\DiscriminatorMap({
+ *     "Country":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Country::class,
+ *     "State":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\State::class,
+ *     "City":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\City::class,
+ *     "Area":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Area::class,
+ * })
+ */class Location extends BaseDocument
 {
     use HasObjectIdKey, HasTimestamps;
-
-    /**
-     * @var ?LocationType
-     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\LocationType::class)
-     */
-    protected $type;
 
     /**
      * @var ?string
@@ -44,12 +48,6 @@ class Location extends BaseDocument
     protected $name;
 
     /**
-     * @var ?string
-     * @ODM\field(type="string")
-     */
-    protected $postalCode;
-
-    /**
      * @var ?GeoPoint
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\GeoLocation::class)
      */
@@ -66,24 +64,6 @@ class Location extends BaseDocument
      * @ODM\EmbedMany  (targetDocument=ChannelLocationDetailsItem::class)
      */
     protected $channelDetails;
-
-    /**
-     * @var ?LocationReference
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
-     */
-    private $country;
-
-    /**
-     * @var ?LocationReference
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
-     */
-    private $state;
-
-    /**
-     * @var ?LocationReference
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
-     */
-    private $city;
 
     public function __construct()
     {
@@ -163,22 +143,6 @@ class Location extends BaseDocument
     }
 
     /**
-     * @return string|null
-     */
-    public function getPostalCode(): ?string
-    {
-        return $this->postalCode;
-    }
-
-    /**
-     * @param string|null $postalCode
-     */
-    public function setPostalCode(?string $postalCode): void
-    {
-        $this->postalCode = $postalCode;
-    }
-
-    /**
      * @return GeoPoint|null
      */
     public function getGeoPoint(): ?GeoPoint
@@ -226,51 +190,8 @@ class Location extends BaseDocument
         $this->channelDetails = $channelDetails;
     }
 
-    /**
-     * @return LocationReference|null
-     */
-    public function getCountry(): ?LocationReference
+    public static function repository(): LocationRepository
     {
-        return $this->country;
-    }
-
-    /**
-     * @param LocationReference|null $country
-     */
-    public function setCountry(?LocationReference $country): void
-    {
-        $this->country = $country;
-    }
-
-    /**
-     * @return LocationReference|null
-     */
-    public function getState(): ?LocationReference
-    {
-        return $this->state;
-    }
-
-    /**
-     * @param LocationReference|null $state
-     */
-    public function setState(?LocationReference $state): void
-    {
-        $this->state = $state;
-    }
-
-    /**
-     * @return LocationReference|null
-     */
-    public function getCity(): ?LocationReference
-    {
-        return $this->city;
-    }
-
-    /**
-     * @param LocationReference|null $city
-     */
-    public function setCity(?LocationReference $city): void
-    {
-        $this->city = $city;
+        return parent::repository();
     }
 }
