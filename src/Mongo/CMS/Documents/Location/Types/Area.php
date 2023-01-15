@@ -3,6 +3,7 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use SYSOTEL\APP\Common\Enums\CMS\LocationType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Location;
 
@@ -97,5 +98,10 @@ class Area extends Location {
     public function setCity(?LocationReference $city): void
     {
         $this->city = $city;
+    }
+
+    public function getType(): LocationType
+    {
+        return LocationType::AREA;
     }
 }

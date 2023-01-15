@@ -26,9 +26,12 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
  *     "CITY":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\City::class,
  *     "AREA":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\Area::class,
  * })
- */class Location extends BaseDocument
+ */
+abstract class Location extends BaseDocument
 {
     use HasObjectIdKey, HasTimestamps;
+
+    public abstract function getType(): LocationType;
 
     /**
      * @var ?string
@@ -77,22 +80,6 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
     public function setId(string $id): void
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return LocationType|null
-     */
-    public function getType(): ?LocationType
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param LocationType|null $type
-     */
-    public function setType(?LocationType $type): void
-    {
-        $this->type = $type;
     }
 
     /**

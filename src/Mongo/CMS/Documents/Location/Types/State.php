@@ -3,14 +3,15 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use SYSOTEL\APP\Common\Enums\CMS\LocationType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Location;
 
 /**
  * @ODM\Document
  */
-class State extends Location {
-
+class State extends Location
+{
     /**
      * @var ?LocationReference
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
@@ -31,5 +32,10 @@ class State extends Location {
     public function setCountry(?LocationReference $country): void
     {
         $this->country = $country;
+    }
+
+    public function getType(): LocationType
+    {
+        return LocationType::STATE;
     }
 }
