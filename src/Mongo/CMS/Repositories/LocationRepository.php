@@ -57,7 +57,7 @@ class LocationRepository extends DocumentRepository
         $countryId = $country instanceof Country ? $country->getId() : $country;
 
         $criteria = array_merge([
-            'type' => LocationType::COUNTRY,
+            'type' => LocationType::STATE->value,
             'country.id' => $countryId
         ], $criteria);
 
@@ -79,7 +79,7 @@ class LocationRepository extends DocumentRepository
         $stateId = $state instanceof State ? $state->getId() : $state;
 
         $criteria = array_merge([
-            'type' => LocationType::STATE,
+            'type' => LocationType::CITY->value,
             'state.id' => new ObjectId($stateId)
         ], $criteria);
 
@@ -101,7 +101,7 @@ class LocationRepository extends DocumentRepository
         $areaId = $area instanceof Area ? $area->getId() : $area;
 
         $criteria = array_merge([
-            'type' => LocationType::AREA,
+            'type' => LocationType::AREA->value,
             'area.id' => new ObjectId($areaId)
         ], $criteria);
 
@@ -123,7 +123,7 @@ class LocationRepository extends DocumentRepository
 
         return $this->findOneBy([
             '_id' => $stateId,
-            'type' => LocationType::STATE,
+            'type' => LocationType::STATE->value,
             'country.id' => $countryId
         ]);
     }
@@ -139,7 +139,7 @@ class LocationRepository extends DocumentRepository
 
         return $this->findOneBy([
             '_id' => $cityId,
-            'type' => LocationType::CITY,
+            'type' => LocationType::CITY->value,
             'state.id' => $stateId
         ]);
     }
@@ -155,7 +155,7 @@ class LocationRepository extends DocumentRepository
 
         return $this->findOneBy([
             '_id' => $areaId,
-            'type' => LocationType::AREA,
+            'type' => LocationType::AREA->value,
             'state.id' => $cityId
         ]);
     }
