@@ -18,7 +18,7 @@ class CancellationPoliciesAdvanceInspector extends CancellationPoliciesBaseInspe
     {
         parent::__construct($cancellationPolicy);
 
-        $this->checkInTime = $checkInDate;
+        $this->checkInTime = $checkInDate->copy();
     }
 
     /**
