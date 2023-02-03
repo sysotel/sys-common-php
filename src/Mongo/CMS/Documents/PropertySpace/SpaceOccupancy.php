@@ -55,11 +55,35 @@ class SpaceOccupancy extends EmbeddedDocument
     protected $maxChildCount;
 
     /**
+     * @return bool
+     */
+    public function isExtraGuestAllowed(): bool
+    {
+        return $this->maxCount > $this->baseCount;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isExtraAdultAllowed(): bool
+    {
+        return $this->isExtraGuestAllowed() && $this->maxAdultCount > 1;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isExtraChildAllowed(): bool
+    {
+        return $this->isExtraGuestAllowed() && $this->maxChildCount > 1;
+    }
+
+    /**
      * @return array
      */
     public function baseRateCounts(): array
     {
-        if($this->minCount > 0 && $this->baseCount >= $this->minCount) {
+        if ($this->minCount > 0 && $this->baseCount >= $this->minCount) {
             return range($this->minCount, $this->baseCount);
         }
         return [];
@@ -71,10 +95,10 @@ class SpaceOccupancy extends EmbeddedDocument
     public function baseRateCountDetails(): array
     {
         $items = [];
-        foreach($this->baseRateCounts() as $count) {
+        foreach ($this->baseRateCounts() as $count) {
             $items[] = [
                 'count' => $count,
-                'label' => match($count) {
+                'label' => match ($count) {
                     1 => 'Single',
                     2 => 'Double',
                     3 => 'Triple',
@@ -87,24 +111,60 @@ class SpaceOccupancy extends EmbeddedDocument
         return $items;
     }
 
+    public function baseRateLabelString()
+    {
+        $string = '';
+
+        foreach ($this->baseRateCountDetails() as $baseRateCountDetail) {
+            $string .= $baseRateCountDetail['label'];
+        }
+
+        return trim($string);
+    }
+
+    /**
+     * @param bool $lite
+     * @return string
+     */
+    public function extraRateLabelString(bool $lite = true)
+    {
+        $str = '';
+
+        if ($lite) {
+            if ($this->isExtraAdultAllowed()) {
+                $str .= 'Extra Adult';
+            }
+
+            if ($this->isExtraChildAllowed()) {
+                $str .= 'Extra Child';
+            }
+        } else {
+            foreach ($this->extraRateCountDetails() as $extraRateCountDetail) {
+                $str .= $extraRateCountDetail['label'] . ' ';
+            }
+        }
+
+        return trim($str);
+    }
+
     /**
      * @param AgeCode|string $ageCode
      * @return array
      */
     public function extraRateCountDetails(AgeCode|string $ageCode): array
     {
-        if(is_string($ageCode)) {
+        if (is_string($ageCode)) {
             $ageCode = AgeCode::from($ageCode);
         }
 
         $items = [];
-        $prefix = match($ageCode) {
+        $prefix = match ($ageCode) {
             AgeCode::ADULT => 'Extra Adult ',
             AgeCode::CHILD => 'Extra Child ',
             default => 'Extra Person '
         };
 
-        foreach($this->extraRateCounts($ageCode) as $count) {
+        foreach ($this->extraRateCounts($ageCode) as $count) {
             $items[] = [
                 'count' => $count,
                 'label' => "$prefix $count",
@@ -121,11 +181,11 @@ class SpaceOccupancy extends EmbeddedDocument
      */
     public function extraRateCounts(AgeCode|string $ageCode): array
     {
-        if(is_string($ageCode)) {
+        if (is_string($ageCode)) {
             $ageCode = AgeCode::from($ageCode);
         }
 
-        if(($this->maxCount - $this->baseCount) > 0) {
+        if (($this->maxCount - $this->baseCount) > 0) {
             return range(1, ($this->maxCount - $this->baseCount));
         }
         return [];
@@ -255,5 +315,19 @@ class SpaceOccupancy extends EmbeddedDocument
     {
         $this->maxChildCount = $maxChildCount;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function maxGuestsString(): string
+    {
+        if ($this->maxCount) {
+            $postfix = $this->maxCount > 1 ? 'Guests' : 'Guest';
+
+            return $this->maxCount . ' ' . $postfix;
+        }
+
+        return '';
     }
 }
