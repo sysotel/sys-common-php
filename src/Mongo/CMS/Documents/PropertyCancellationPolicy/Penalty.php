@@ -36,6 +36,15 @@ class Penalty extends EmbeddedDocument
     }
 
     /**
+     * @param $penaltyType
+     * @return bool
+     */
+    public function isOfType($penaltyType): bool
+    {
+        return $this->type === $penaltyType;
+    }
+
+    /**
      * @param PenaltyType $type
      */
     public function setType(PenaltyType $type): void

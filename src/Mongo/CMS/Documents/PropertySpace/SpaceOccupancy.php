@@ -322,7 +322,8 @@ class SpaceOccupancy extends EmbeddedDocument
      */
     public function maxGuestsString(): string
     {
-        if ($this->maxCount) {
+
+        if($this->maxCount) {
             $postfix = $this->maxCount > 1 ? 'Guests' : 'Guest';
 
             return $this->maxCount . ' ' . $postfix;

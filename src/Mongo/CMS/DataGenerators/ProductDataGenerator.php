@@ -15,9 +15,9 @@ class ProductDataGenerator
         $this->product = $product;
     }
 
-    public function addBasicDetails(): static
+    public function addBasicDetails($spaceLabel = null): static
     {
-        return $this->appendData([
+        $data = [
             'id' => $this->product->getId(),
             'accountId' => $this->product->getAccountId(),
             'propertyId' => $this->product->getPropertyId(),
@@ -28,6 +28,12 @@ class ProductDataGenerator
             'mealPlanCode' => $this->product->getMealPlanCode(),
             'status' => $this->product->getStatus()?->value,
             'inclusions' => $this->product->getInclusions()
-        ]);
+        ];
+
+        if(!count($data['inclusions']) && $spaceLabel) {
+            $data['inclusions'] = ["$spaceLabel Only"];
+        }
+
+        return $this->appendData($data);
     }
 }

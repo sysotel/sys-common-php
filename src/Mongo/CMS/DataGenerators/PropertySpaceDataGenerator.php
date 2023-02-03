@@ -83,7 +83,7 @@ class PropertySpaceDataGenerator
                 'extraChildRateCountDetails' => $occupancy->extraRateCountDetails(AgeCode::CHILD),
                 'extraRateCounts' => array_merge($occupancy->extraRateCounts(AgeCode::ADULT), $occupancy->extraRateCounts(AgeCode::CHILD)),
                 'extraRateCountDetails' => array_merge($occupancy->extraRateCountDetails(AgeCode::ADULT), $occupancy->extraRateCountDetails(AgeCode::CHILD)),
-
+                'maxGuestString' => $occupancy->maxGuestsString()
             ],
         ]);
     }

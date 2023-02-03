@@ -128,6 +128,18 @@ class PropertyImageRepository extends DocumentRepository
      * @param Property|int $property
      * @return PropertyImage[]
      */
+    public function getActivePropertyAndSpaceImages(Property|int $property): array
+    {
+        return $this->getPropertyAndSpaceImages(
+            $property,
+            ['status' => ['$eq' => PropertyImageStatus::ACTIVE]]
+        );
+    }
+
+    /**
+     * @param Property|int $property
+     * @return PropertyImage[]
+     */
     public function getFeaturedPropertyImages(Property|int $property): array
     {
         return $this->getPropertyImages(
@@ -178,6 +190,26 @@ class PropertyImageRepository extends DocumentRepository
         $criteria = array_merge([
             'propertyId' => Property::resolveID($property),
             'target' => PropertyImageTarget::PROPERTY,
+        ], $criteria);
+
+        $orderBy = array_merge([
+            'isFeatured' => -1,
+        ], $orderBy);
+
+        return $this->findBy($criteria, $orderBy);
+    }
+
+    /**
+     * @param Property|int $property
+     * @param array $criteria
+     * @param array $orderBy
+     * @return PropertyImage[]
+     */
+    public function getPropertyAndSpaceImages(Property|int $property, array $criteria = [], array $orderBy = []): array
+    {
+        $criteria = array_merge([
+            'propertyId' => Property::resolveID($property),
+            'target' => ['$in' => [PropertyImageTarget::PROPERTY, PropertyImageTarget::SPACE]],
         ], $criteria);
 
         $orderBy = array_merge([

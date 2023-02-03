@@ -10,9 +10,13 @@ use SYSOTEL\APP\Common\Enums\CMS\AmenityCategory;
 use SYSOTEL\APP\Common\Enums\CMS\AmenityStatus;
 use SYSOTEL\APP\Common\Enums\CMS\AmenityTarget;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\AmenityRepository;
 
 /**
- * @ODM\Document(collection="amenities")
+ * @ODM\Document(
+ *     collection="amenities",
+ *     repositoryClass=SYSOTEL\APP\Common\Mongo\CMS\Repositories\AmenityRepository::class
+ * )
  */
 class Amenity extends BaseDocument
 {
@@ -178,7 +182,7 @@ class Amenity extends BaseDocument
     /**
      * @return bool|null
      */
-    public function getIsFeatured(): ?bool
+    public function isFeatured(): ?bool
     {
         return $this->isFeatured;
     }
@@ -221,5 +225,13 @@ class Amenity extends BaseDocument
     public function setCategoryOrder(?int $categoryOrder): void
     {
         $this->categoryOrder = $categoryOrder;
+    }
+
+    /**
+     * @return AmenityRepository
+     */
+    public static function repository(): AmenityRepository
+    {
+        return parent::repository();
     }
 }

@@ -4,26 +4,34 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Location;
 
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\LocationType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\LocationRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 
 /**
- * @ODM\Document(collection="locations")
+ * @ODM\Document(
+ *     collection="locations",
+ *     repositoryClass=SYSOTEL\APP\Common\Mongo\CMS\Repositories\LocationRepository::class
+ * )
  * @ODM\HasLifecycleCallbacks
+ * @ODM\InheritanceType("SINGLE_COLLECTION")
+ * @ODM\DiscriminatorField("type")
+ * @ODM\DiscriminatorMap({
+ *     "COUNTRY":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\Country::class,
+ *     "STATE":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\State::class,
+ *     "CITY":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\City::class,
+ *     "AREA":SYSOTEL\APP\Common\Mongo\CMS\Documents\Location\Types\Area::class,
+ * })
  */
-class Location extends BaseDocument
+abstract class Location extends BaseDocument
 {
     use HasObjectIdKey, HasTimestamps;
 
-    /**
-     * @var ?LocationType
-     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\LocationType::class)
-     */
-    protected $type;
+    public abstract function getType(): LocationType;
 
     /**
      * @var ?string
@@ -33,21 +41,15 @@ class Location extends BaseDocument
 
     /**
      * @var ?string
-     * @ODM\Field
+     * @ODM\Field(type="string")
      */
-    protected $slug;
+    protected $categorySlug;
 
     /**
      * @var ?string
      * @ODM\Field(type="string")
      */
     protected $name;
-
-    /**
-     * @var ?string
-     * @ODM\field(type="string")
-     */
-    protected $postalCode;
 
     /**
      * @var ?GeoPoint
@@ -62,28 +64,10 @@ class Location extends BaseDocument
     protected $searchKeywords = [];
 
     /**
-     * @var ChannelLocationDetailsItem
+     * @var Collection & ChannelLocationDetailsItem[]
      * @ODM\EmbedMany  (targetDocument=ChannelLocationDetailsItem::class)
      */
     protected $channelDetails;
-
-    /**
-     * @var ?LocationReference
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
-     */
-    private $country;
-
-    /**
-     * @var ?LocationReference
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
-     */
-    private $state;
-
-    /**
-     * @var ?LocationReference
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\LocationReference::class)
-     */
-    private $city;
 
     public function __construct()
     {
@@ -96,22 +80,6 @@ class Location extends BaseDocument
     public function setId(string $id): void
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return LocationType|null
-     */
-    public function getType(): ?LocationType
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param LocationType|null $type
-     */
-    public function setType(?LocationType $type): void
-    {
-        $this->type = $type;
     }
 
     /**
@@ -133,17 +101,19 @@ class Location extends BaseDocument
     /**
      * @return string|null
      */
-    public function getSlug(): ?string
+    public function getCategorySlug(): ?string
     {
-        return $this->slug;
+        return $this->categorySlug;
     }
 
     /**
-     * @param string|null $slug
+     * @param string|null $categorySlug
+     * @return Location
      */
-    public function setSlug(?string $slug): void
+    public function setCategorySlug(?string $categorySlug): static
     {
-        $this->slug = $slug;
+        $this->categorySlug = $categorySlug;
+        return $this;
     }
 
     /**
@@ -156,26 +126,12 @@ class Location extends BaseDocument
 
     /**
      * @param string|null $name
+     * @return Location
      */
-    public function setName(?string $name): void
+    public function setName(?string $name): static
     {
         $this->name = $name;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPostalCode(): ?string
-    {
-        return $this->postalCode;
-    }
-
-    /**
-     * @param string|null $postalCode
-     */
-    public function setPostalCode(?string $postalCode): void
-    {
-        $this->postalCode = $postalCode;
+        return $this;
     }
 
     /**
@@ -188,10 +144,12 @@ class Location extends BaseDocument
 
     /**
      * @param GeoPoint|null $geoPoint
+     * @return Location
      */
-    public function setGeoPoint(?GeoPoint $geoPoint): void
+    public function setGeoPoint(?GeoPoint $geoPoint): static
     {
         $this->geoPoint = $geoPoint;
+        return $this;
     }
 
     /**
@@ -204,73 +162,34 @@ class Location extends BaseDocument
 
     /**
      * @param array $searchKeywords
+     * @return Location
      */
-    public function setSearchKeywords(array $searchKeywords): void
+    public function setSearchKeywords(array $searchKeywords): static
     {
         $this->searchKeywords = $searchKeywords;
+        return $this;
     }
 
     /**
-     * @return ChannelLocationDetailsItem
+     * @return ChannelLocationDetailsItem[]
      */
-    public function getChannelDetails(): ChannelLocationDetailsItem|ArrayCollection
+    public function getChannelDetails(): Collection
     {
         return $this->channelDetails;
     }
 
     /**
      * @param ChannelLocationDetailsItem $channelDetails
+     * @return Location
      */
-    public function setChannelDetails(ChannelLocationDetailsItem|ArrayCollection $channelDetails): void
+    public function addChannelDetails(ChannelLocationDetailsItem $channelDetails): static
     {
-        $this->channelDetails = $channelDetails;
+        $this->channelDetails->add($channelDetails);
+        return $this;
     }
 
-    /**
-     * @return LocationReference|null
-     */
-    public function getCountry(): ?LocationReference
+    public static function repository(): LocationRepository
     {
-        return $this->country;
-    }
-
-    /**
-     * @param LocationReference|null $country
-     */
-    public function setCountry(?LocationReference $country): void
-    {
-        $this->country = $country;
-    }
-
-    /**
-     * @return LocationReference|null
-     */
-    public function getState(): ?LocationReference
-    {
-        return $this->state;
-    }
-
-    /**
-     * @param LocationReference|null $state
-     */
-    public function setState(?LocationReference $state): void
-    {
-        $this->state = $state;
-    }
-
-    /**
-     * @return LocationReference|null
-     */
-    public function getCity(): ?LocationReference
-    {
-        return $this->city;
-    }
-
-    /**
-     * @param LocationReference|null $city
-     */
-    public function setCity(?LocationReference $city): void
-    {
-        $this->city = $city;
+        return parent::repository();
     }
 }

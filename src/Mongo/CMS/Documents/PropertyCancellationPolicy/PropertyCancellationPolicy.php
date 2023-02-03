@@ -2,6 +2,7 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy;
 
+use Carbon\Carbon;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -26,8 +27,8 @@ class PropertyCancellationPolicy extends BaseDocument
     use HasObjectIdKey, HasAccountId, HasPropertyId, HasTimestamps;
 
     /**
-     * @var ArrayCollection & CancellationPolicyRules[]
-     * @ODM\EmbedMany(targetDocument=CancellationPolicyRules::class)
+     * @var ArrayCollection & CancellationPolicyRule[]
+     * @ODM\EmbedMany(targetDocument=CancellationPolicyRule::class)
      */
     protected $rules;
 
@@ -43,13 +44,19 @@ class PropertyCancellationPolicy extends BaseDocument
      */
     protected $status;
 
+    /**
+     * @var ?Carbon
+     * @ODM\Field(type="carbon")
+     */
+    protected $expiredAt;
+
     public function __construct()
     {
         $this->rules = new ArrayCollection;
     }
 
     /**
-     * @return ArrayCollection|Collection|CancellationPolicyRules[]
+     * @return ArrayCollection|Collection|CancellationPolicyRule[]
      */
     public function getRules(): array|ArrayCollection|Collection
     {
@@ -57,14 +64,14 @@ class PropertyCancellationPolicy extends BaseDocument
     }
 
     /**
-     * @param ArrayCollection|Collection|CancellationPolicyRules[] $rules
+     * @param ArrayCollection|Collection|CancellationPolicyRule[] $rules
      */
     public function setRules(array|ArrayCollection|Collection $rules): void
     {
         $this->rules = $rules;
     }
 
-    public function addRule(CancellationPolicyRules $val): static
+    public function addRule(CancellationPolicyRule $val): static
     {
         $this->rules->add($val);
         return $this;
@@ -103,6 +110,22 @@ class PropertyCancellationPolicy extends BaseDocument
     }
 
     /**
+     * @return Carbon|null
+     */
+    public function getExpiredAt(): ?Carbon
+    {
+        return $this->expiredAt;
+    }
+
+    /**
+     * @param Carbon|null $expiredAt
+     */
+    public function setExpiredAt(?Carbon $expiredAt): void
+    {
+        $this->expiredAt = $expiredAt;
+    }
+
+    /**
      * @return PropertyCancellationRepository
      */
     public static function repository(): PropertyCancellationRepository
@@ -116,6 +139,7 @@ class PropertyCancellationPolicy extends BaseDocument
     public function markAsExpired(): static
     {
         $this->status = CancellationPolicyStatus::EXPIRED;
+        $this->expiredAt = now();
         return $this;
     }
 

@@ -3,19 +3,12 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy;
 
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
-use Delta4op\Mongodb\Traits\HasTimestamps;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use SYSOTEL\APP\Common\Enums\CMS\CancellationPolicyStatus;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
-use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
-use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 
 /**
  * @ODM\EmbeddedDocument
  */
-class CancellationPolicyRules extends EmbeddedDocument
+class CancellationPolicyRule extends EmbeddedDocument
 {
 
     /**

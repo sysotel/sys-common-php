@@ -27,13 +27,13 @@ class AgePolicy extends EmbeddedDocument
      * @var int
      * @ODM\Field(type="int")
      */
-    protected $freeChildAgeThreshold = 0;
+    protected $freeChildAgeThreshold;
 
     /**
      * @var int
      * @ODM\Field(type="int")
      */
-    protected $noOfFreeChildGranted = 0;
+    protected $noOfFreeChildGranted;
 
     /**
      * @return int
@@ -136,10 +136,14 @@ class AgePolicy extends EmbeddedDocument
      */
     public function freeChildDefinition(): string
     {
-        $guest = $this->noOfFreeChildGranted != 1 ? 'guests' : 'guest';
-        $is = $this->noOfFreeChildGranted != 1 ? 'area' : 'is';
+        if(!$this->noOfFreeChildGranted || !$this->freeChildAgeThreshold) {
+            return '';
+        }
 
-        return "{$this->noOfFreeChildGranted} $guest below age {$this->freeChildAgeThreshold} {$is} allowed for FREE when used existing bedding.";
+        $child = $this->noOfFreeChildGranted > 1 ? 'children' : 'child';
+        $year = $this->freeChildAgeThreshold > 1 ? 'years' : 'year';
+
+        return "{$this->noOfFreeChildGranted} $child below {$this->freeChildAgeThreshold} $year stays FREE !";
     }
 
     /**
@@ -147,11 +151,12 @@ class AgePolicy extends EmbeddedDocument
      */
     public function fullDescriptionArray(): array
     {
-        return [
+        return array_filter([
             $this->infantAgeDefinition(),
             $this->childAgeDefinition(),
             $this->adultAgeDefinition(),
-        ];
+            $this->freeChildDefinition(),
+        ]);
     }
 
     public function getFullDescription(): string

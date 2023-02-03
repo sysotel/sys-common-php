@@ -2,9 +2,8 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\DataGenerators;
 
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyCancellationPolicy\PropertyCancellationPolicy;
-use SYSOTEL\APP\Common\Services\CancellationServices\CancellationPoliciesInspector;
+use SYSOTEL\APP\Common\Services\CancellationServices\CancellationManager;
 
 class PropertyCancellationPolicyDataGenerator
 {
@@ -44,9 +43,7 @@ class PropertyCancellationPolicyDataGenerator
     public function addDescription(): PropertyCancellationPolicyDataGenerator
     {
         return $this->appendData([
-            'description' => (new CancellationPoliciesInspector($this->policy))->getAllSentences(),
+            'description' => CancellationManager::create($this->policy)->basicInspector()->getAllSentences(),
         ]);
-
     }
-
 }
