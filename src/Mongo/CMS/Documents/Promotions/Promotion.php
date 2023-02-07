@@ -10,7 +10,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionStatus;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
-use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
+use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 
 /**
@@ -21,7 +21,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
  */
 class Promotion extends BaseDocument
 {
-    use CanResolveIntegerID, HasAutoIncrementId, HasTimestamps, HasPropertyId;
+    use HasObjectIdKey, CanResolveIntegerID, HasTimestamps, HasPropertyId;
     use HasDefaultAttributes;
 
     /**
