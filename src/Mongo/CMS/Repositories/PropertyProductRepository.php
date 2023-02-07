@@ -4,11 +4,25 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Repositories;
 
 use Delta4op\Mongodb\Repositories\DocumentRepository;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyProductStatus;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Property\Property;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyProduct\PropertyProduct;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertySpace\PropertySpace;
 
 class PropertyProductRepository extends DocumentRepository
 {
+    /**
+     * @param int $productId
+     * @param Property|int $property
+     * @return PropertySpace|null
+     */
+    public function findOneByIdAndProperty(int $productId, Property|int $property): ?PropertySpace
+    {
+        return $this->findOneBy([
+            '_id' => $productId,
+            'propertyId' => Property::resolveID($property)
+        ]);
+    }
+
     /**
      * @param PropertySpace|int $space
      * @param array $criteria
