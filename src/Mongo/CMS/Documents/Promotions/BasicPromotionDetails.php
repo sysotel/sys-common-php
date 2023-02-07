@@ -9,12 +9,20 @@ use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use SYSOTEL\APP\Common\Enums\CMS\PromotionDateType;
 
 /**
  * @ODM\EmbeddedDocument
  */
 class BasicPromotionDetails extends EmbeddedDocument
 {
+
+    /**
+     * @var ?PromotionDateType
+     * @ODM\Field (type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PromotionDateType::class)
+     */
+    public $promotionDateType;
+
     /**
      * @var ?BookingTimeSpan
     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\BookingTimespan::class)
@@ -36,6 +44,23 @@ class BasicPromotionDetails extends EmbeddedDocument
 
     public function __construct(){
         $this->offers = new ArrayCollection;
+    }
+
+    /**
+     * @return PromotionDateType|null
+     */
+    public function getPromotionDateType(): ?PromotionDateType
+    {
+        return $this->promotionDateType;
+
+    }
+
+    /**
+     * @param PromotionDateType|null $promotionDateType
+     */
+    public function setPromotionDateType(?PromotionDateType $promotionDateType): void
+    {
+        $this->promotionDateType = $promotionDateType;
     }
 
     /**
