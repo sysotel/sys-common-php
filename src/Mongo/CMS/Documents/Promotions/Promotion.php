@@ -51,10 +51,13 @@ class Promotion extends BaseDocument
     /**
      * @var ?BasicPromotionDetails
      * @ODM\EmbedOne(
-     * discriminatorField="type",
      *  discriminatorMap={
-     *  "BASIC": SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\BasicPromotionDetails::class;
+     *  "BASIC"=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\BasicPromotionDetails::class
+     *     },
+     *  discriminatorField="type"
+     * )
      */
+
     protected $details;
 
 
