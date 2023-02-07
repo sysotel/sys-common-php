@@ -4,20 +4,14 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions;
 
 use Carbon\Carbon;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
-use Delta4op\Mongodb\Traits\CanResolveIntegerID;
-use Delta4op\Mongodb\Traits\HasDefaultAttributes;
-use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\OffersSubject;
-use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasAutoIncrementId;
 
 /**
  * @ODM\EmbeddedDocument
  */
 class PromotionOffers extends EmbeddedDocument
 {
-    use CanResolveIntegerID, HasAutoIncrementId, HasTimestamps;
-    use HasDefaultAttributes;
 
     /**
      * @var ?OffersSubject
