@@ -7,6 +7,7 @@ use Delta4op\Mongodb\Traits\CanResolveIntegerID;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use SYSOTEL\APP\Common\Enums\CMS\DateRestrictionType;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionStatus;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
@@ -59,6 +60,25 @@ class Promotion extends BaseDocument
      */
 
     protected $details;
+
+    /**
+     * @var ?DateRestrictionType
+     * @ODM\Field (type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\DateRestrictionType::class)
+     */
+    public $dateRestrictionType;
+
+    /**
+     * @var ?BookingTimeSpan
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\BookingTimespan::class)
+     */
+    public $bookingTimeSpan;
+
+
+    /**
+     * @var ?StayTimespan
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\StayTimespan::class)
+     */
+    public $stayTimeSpan;
 
 
     /**
@@ -151,6 +171,56 @@ class Promotion extends BaseDocument
         $this->details = $details;
         return $this;
     }
+
+    /**
+     * @return DateRestrictionType|null
+     */
+    public function getDateRestrictionType(): ?DateRestrictionType
+    {
+        return $this->dateRestrictionType;
+    }
+
+    /**
+     * @param DateRestrictionType|null $dateRestrictionType
+     */
+    public function setDateRestrictionType(?DateRestrictionType $dateRestrictionType): void
+    {
+        $this->dateRestrictionType = $dateRestrictionType;
+    }
+
+    /**
+     * @return BookingTimeSpan|null
+     */
+    public function getBookingTimeSpan(): ?BookingTimeSpan
+    {
+        return $this->bookingTimeSpan;
+    }
+
+    /**
+     * @param BookingTimeSpan|null $bookingTimeSpan
+     */
+    public function setBookingTimeSpan(?BookingTimeSpan $bookingTimeSpan): void
+    {
+        $this->bookingTimeSpan = $bookingTimeSpan;
+    }
+
+    /**
+     * @return StayTimespan|null
+     */
+    public function getStayTimeSpan(): ?StayTimespan
+    {
+        return $this->stayTimeSpan;
+    }
+
+    /**
+     * @param StayTimespan|null $stayTimeSpan
+     */
+    public function setStayTimeSpan(?StayTimespan $stayTimeSpan): void
+    {
+        $this->stayTimeSpan = $stayTimeSpan;
+    }
+
+
 
 
 

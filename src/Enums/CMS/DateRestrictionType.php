@@ -4,7 +4,7 @@ namespace SYSOTEL\APP\Common\Enums\CMS;
 
 use SYSOTEL\APP\Common\Enums\EnumLabelExtension;
 
-enum PromotionDateType: string
+enum DateRestrictionType: string
 {
     use EnumLabelExtension;
 
