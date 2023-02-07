@@ -117,6 +117,12 @@ class BasicPromotionDetails extends EmbeddedDocument
         return $this;
     }
 
+    public function addOffers(PromotionOffers $offers): static
+    {
+        $this->offers->add($offers);
+        return $this;
+    }
+
 
 
 }
