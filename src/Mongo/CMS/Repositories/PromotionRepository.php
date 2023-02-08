@@ -68,4 +68,18 @@ class PromotionRepository extends DocumentRepository
         return null;
     }
 
+
+    /**
+     * @param int $propertyId
+     * @return array
+     */
+    public function getAllActivePromotionForProperty(int $propertyId): array{
+
+        return $this->findBy([
+            'propertyId' => $propertyId,
+            'status' => PromotionStatus::ACTIVE
+        ]);
+
+    }
+
 }
