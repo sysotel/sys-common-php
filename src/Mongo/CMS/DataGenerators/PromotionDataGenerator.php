@@ -2,11 +2,8 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\DataGenerators;
 
-use SYSOTEL\APP\Common\Enums\CMS\AgeCode;
-use SYSOTEL\APP\Common\Enums\CMS\PromotionType;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\BasicPromotion;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\Promotion;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertySpace\PropertySpace;
 
 class PromotionDataGenerator
 {
@@ -37,8 +34,6 @@ class PromotionDataGenerator
             'type' => $this->promotion->getType(),
             'status' => $this->promotion->getStatus(),
             'dateRestrictionType' => $this->promotion->getDateRestrictionType(),
-
-
         ]);
 
     }
@@ -77,13 +72,26 @@ class PromotionDataGenerator
         return $this;
     }
 
-//    /**
-//     * @return PromotionDataGenerator
-//     */
-//    public function addBasicPromotionDetails(): PromotionDataGenerator
-//    {
-//       if($details = $this->promotion->getDetails()){
-//
-//
-//    }
+    /**
+     * @return PromotionDataGenerator
+     */
+    public function addBasicPromotionDetails(): PromotionDataGenerator
+    {
+        $data = null;
+
+        if($this->promotion instanceof BasicPromotion && $details = $this->promotion->getDetails()) {
+            $data = [
+                'discountForAllUsers' => [
+                    'type' => $details->getDiscountForAllUsers()->getType(),
+                    'value' => $details->getDiscountForAllUsers()->getValue()
+                ],
+                'discountForLoggedInUsers' => [
+                    'type' => $details->getDiscountForLoggedInUsers()->getType(),
+                    'value' => $details->getDiscountForLoggedInUsers()->getValue()
+                ],
+            ];
+        }
+
+        return $this->appendData(['details' => $data]);
+    }
 }

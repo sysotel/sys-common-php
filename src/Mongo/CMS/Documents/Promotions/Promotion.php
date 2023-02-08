@@ -7,7 +7,6 @@ use Delta4op\Mongodb\Traits\CanResolveIntegerID;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use SYSOTEL\APP\BE\Common\Enums\VerificationTokenStatus;
 use SYSOTEL\APP\Common\Enums\CMS\DateRestrictionType;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionStatus;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionType;
@@ -21,8 +20,13 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
  *     collection="promotions",
  * )
  * @ODM\HasLifecycleCallbacks
+ * @ODM\InheritanceType("SINGLE_COLLECTION")
+ * @ODM\DiscriminatorField("type")
+ * @ODM\DiscriminatorMap({
+ *  "BASIC"=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\BasicPromotion::class
+ * })
  */
-class Promotion extends BaseDocument
+abstract class Promotion extends BaseDocument
 {
     use HasObjectIdKey, CanResolveIntegerID, HasTimestamps, HasPropertyId;
     use HasDefaultAttributes;
@@ -57,17 +61,6 @@ class Promotion extends BaseDocument
      */
     protected $status;
 
-    /**
-     * @var ?BasicPromotionDetails
-     * @ODM\EmbedOne(
-     *  discriminatorMap={
-     *  "BASIC"=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\BasicPromotionDetails::class
-     *     },
-     *  discriminatorField="type"
-     * )
-     */
-
-    protected $details;
 
     /**
      * @var ?DateRestrictionType
@@ -166,23 +159,6 @@ class Promotion extends BaseDocument
         return $this;
     }
 
-    /**
-     * @return BasicPromotionDetails|null
-     */
-    public function getDetails(): ?BasicPromotionDetails
-    {
-        return $this->details;
-    }
-
-    /**
-     * @param BasicPromotionDetails|null $details
-     * @return Promotion
-     */
-    public function setDetails(?BasicPromotionDetails $details): Promotion
-    {
-        $this->details = $details;
-        return $this;
-    }
 
     /**
      * @return DateRestrictionType|null
