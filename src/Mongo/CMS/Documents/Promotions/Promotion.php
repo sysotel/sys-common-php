@@ -51,11 +51,6 @@ abstract class Promotion extends BaseDocument
      */
     protected $displayName;
 
-    /**
-     * @var ?PromotionType
-     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PromotionType::class)
-     */
-    protected $type;
 
     /**
      * @var ?PromotionStatus
@@ -121,25 +116,6 @@ abstract class Promotion extends BaseDocument
     public function setDisplayName(?string $displayName): Promotion
     {
         $this->displayName = $displayName;
-        return $this;
-    }
-
-
-    /**
-     * @return PromotionType|null
-     */
-    public function getType(): ?PromotionType
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param PromotionType|null $type
-     * @return Promotion
-     */
-    public function setType(?PromotionType $type): Promotion
-    {
-        $this->type = $type;
         return $this;
     }
 
