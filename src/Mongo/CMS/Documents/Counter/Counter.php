@@ -71,4 +71,21 @@ class Counter extends BaseDocument
         $this->value = $value;
         return $this;
     }
+
+    public static function getNewValue(string $id): int
+    {
+        $counter = Counter::queryBuilder()
+            ->findAndUpdate()
+            ->returnNew()
+            ->field('_id')->equals($id)
+            ->field('value')->inc(1)
+            ->getQuery()
+            ->execute();
+
+        if(!$counter) {
+            abort(500, 'no counter found');
+        }
+
+        return $counter->value;
+    }
 }
