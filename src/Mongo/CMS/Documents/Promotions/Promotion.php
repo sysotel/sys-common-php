@@ -29,7 +29,7 @@ class Promotion extends BaseDocument
 
     /**
      * @var ?int
-     * @ODM\Id (type="int",strategy="NONE")
+     * @ODM\Field(type="int")
      */
     protected $promoId;
 
