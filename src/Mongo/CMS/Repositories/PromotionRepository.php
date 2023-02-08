@@ -47,7 +47,7 @@ class PromotionRepository extends DocumentRepository
     {
         return $this->findOneBy([
             'promoId' => $promoId,
-            'type' => PromotionType::BASIC
+            'type' => PromotionType::BASIC->value
         ], [
             'createdAt' => -1
         ]);
