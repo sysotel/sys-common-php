@@ -12,12 +12,14 @@ use SYSOTEL\APP\Common\Enums\CMS\PromotionStatus;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Counter\Counter;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PromotionRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 
 /**
  * @ODM\Document(
  *     collection="promotions",
+ *     repositoryClass=SYSOTEL\APP\Common\Mongo\CMS\Repositories\PromotionRepository::class
  * )
  * @ODM\HasLifecycleCallbacks
  * @ODM\InheritanceType("SINGLE_COLLECTION")
@@ -241,6 +243,11 @@ abstract class Promotion extends BaseDocument
         $this->status = PromotionStatus::EXPIRED;
         $this->expiredAt = now();
         return $this;
+    }
+
+    public static function repository(): PromotionRepository
+    {
+        return parent::repository();
     }
 
 }
