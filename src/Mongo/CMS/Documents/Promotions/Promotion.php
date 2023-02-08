@@ -7,10 +7,12 @@ use Delta4op\Mongodb\Traits\CanResolveIntegerID;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use SYSOTEL\APP\BE\Common\Enums\VerificationTokenStatus;
 use SYSOTEL\APP\Common\Enums\CMS\DateRestrictionType;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionStatus;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Counter\Counter;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 
@@ -24,6 +26,12 @@ class Promotion extends BaseDocument
 {
     use HasObjectIdKey, CanResolveIntegerID, HasTimestamps, HasPropertyId;
     use HasDefaultAttributes;
+
+    /**
+     * @var ?int
+     * @ODM\Id (type="int",strategy="NONE")
+     */
+    protected $promoId;
 
     /**
      * @var ?string
@@ -65,22 +73,26 @@ class Promotion extends BaseDocument
      * @var ?DateRestrictionType
      * @ODM\Field (type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\DateRestrictionType::class)
      */
-    public $dateRestrictionType;
+    protected $dateRestrictionType;
 
     /**
      * @var ?BookingTimeSpan
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\BookingTimespan::class)
      */
-    public $bookingTimeSpan;
+    protected $bookingTimeSpan;
 
 
     /**
      * @var ?StayTimespan
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\StayTimespan::class)
      */
-    public $stayTimeSpan;
+    protected $stayTimeSpan;
 
-
+    /**
+     * @var ?Carbon
+     * @ODM\Field(type="carbon")
+     */
+    protected $expiredAt;
     /**
      * @return string|null
      */
@@ -221,9 +233,38 @@ class Promotion extends BaseDocument
     }
 
 
+    public function generateNewPromoId(): static
+    {
+        $promoId = Counter::getNewValue('promotions');
+        $this->promoId = $promoId;
+        return $this;
 
+    }
 
+    /**
+     * @return int|null
+     */
+    public function getPromoId(): ?int
+    {
+        return $this->promoId;
+    }
 
+    /**
+     * @param int|null $promoId
+     */
+    public function setPromoId(?int $promoId): void
+    {
+        $this->promoId = $promoId;
+    }
 
+    /**
+     * @return $this
+     */
+    public function markAsExpired(): static
+    {
+        $this->status = PromotionStatus::EXPIRED;
+        $this->expiredAt = now();
+        return $this;
+    }
 
 }
