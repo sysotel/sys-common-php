@@ -12,40 +12,52 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
  */
 class BasicPromotionDetails extends EmbeddedDocument
 {
+    /**
+     * @var ?PromotionsOfferDiscount
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\PromotionsOfferDiscount::class)
+     */
+    public $discountForAllUsers;
+
 
     /**
-     * @var Collection & PromotionOffers[]
-     * @ODM\EmbedMany (targetDocument= SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\PromotionOffers::class)
+     * @var ?PromotionsOfferDiscount
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\PromotionsOfferDiscount::class)
      */
-    public $offers;
+    public $discountForLoggedInUsers;
 
-    public function __construct(){
-        $this->offers = new ArrayCollection;
+    /**
+     * @return PromotionsOfferDiscount|null
+     */
+    public function getDiscountForAllUsers(): ?PromotionsOfferDiscount
+    {
+        return $this->discountForAllUsers;
     }
 
     /**
-     * @return ArrayCollection|Collection|PromotionOffers[]
+     * @param PromotionsOfferDiscount|null $discountForAllUsers
      */
-    public function getOffers(): ArrayCollection|Collection|array
+    public function setDiscountForAllUsers(?PromotionsOfferDiscount $discountForAllUsers): void
     {
-        return $this->offers;
+        $this->discountForAllUsers = $discountForAllUsers;
     }
 
     /**
-     * @param ArrayCollection|Collection|PromotionOffers[] $offers
-     * @return BasicPromotionDetails
+     * @return PromotionsOfferDiscount|null
      */
-    public function setOffers(ArrayCollection|Collection|array $offers): BasicPromotionDetails
+    public function getDiscountForLoggedInUsers(): ?PromotionsOfferDiscount
     {
-        $this->offers = $offers;
-        return $this;
+        return $this->discountForLoggedInUsers;
     }
 
-    public function addOffers(PromotionOffers $offers): static
+    /**
+     * @param PromotionsOfferDiscount|null $discountForLoggedInUsers
+     */
+    public function setDiscountForLoggedInUsers(?PromotionsOfferDiscount $discountForLoggedInUsers): void
     {
-        $this->offers->add($offers);
-        return $this;
+        $this->discountForLoggedInUsers = $discountForLoggedInUsers;
     }
+
+
 
 
 
