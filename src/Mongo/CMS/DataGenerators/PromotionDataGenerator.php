@@ -31,7 +31,6 @@ class PromotionDataGenerator
             'promoId' => $this->promotion->getPromoId(),
             'internalName' => $this->promotion->getInternalName(),
             'displayName' => $this->promotion->getDisplayName(),
-            'type' => $this->promotion->getType(),
             'status' => $this->promotion->getStatus(),
             'dateRestrictionType' => $this->promotion->getDateRestrictionType(),
         ]);
