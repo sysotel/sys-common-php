@@ -6,6 +6,7 @@ use Delta4op\Mongodb\Documents\EmbeddedDocument;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use SYSOTEL\APP\Common\Enums\CMS\PromotionType;
 
 /**
  * @ODM\Document
@@ -35,4 +36,8 @@ class BasicPromotion extends Promotion
     }
 
 
+    public function getType(): PromotionType
+    {
+        return PromotionType::BASIC;
+    }
 }

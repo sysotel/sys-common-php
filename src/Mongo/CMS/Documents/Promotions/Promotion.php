@@ -33,6 +33,8 @@ abstract class Promotion extends BaseDocument
     use HasObjectIdKey, CanResolveIntegerID, HasTimestamps, HasPropertyId;
     use HasDefaultAttributes;
 
+    public abstract function getType(): PromotionType;
+
     /**
      * @var ?int
      * @ODM\Field(type="int")

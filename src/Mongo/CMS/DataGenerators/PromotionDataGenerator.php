@@ -45,8 +45,8 @@ class PromotionDataGenerator
         if($bookingTimeSpan = $this->promotion->getBookingTimeSpan()){
             return $this->appendData([
                 'bookingTimeSpan' => [
-                    'start' => $bookingTimeSpan->getStart(),
-                    'end' => $bookingTimeSpan->getEnd()
+                    'start' => $bookingTimeSpan->getStart()->format('Y-m-d'),
+                    'end' => $bookingTimeSpan->getEnd()->format('Y-m-d')
                 ]
             ]);
         }
@@ -62,8 +62,8 @@ class PromotionDataGenerator
         if($stayTimeSpan = $this->promotion->getStayTimeSpan()){
             return $this->appendData([
                 'stayTimeSpan' => [
-                    'start' => $stayTimeSpan->getStart(),
-                    'end' => $stayTimeSpan->getEnd()
+                    'start' => $stayTimeSpan->getStart()->format('Y-m-d'),
+                    'end' => $stayTimeSpan->getEnd()->format('Y-m-d')
                 ]
             ]);
         }
