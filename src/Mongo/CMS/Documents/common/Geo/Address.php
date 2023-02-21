@@ -55,6 +55,12 @@ class Address extends EmbeddedDocument implements AddressContract
     private $postalCode;
 
     /**
+     * @var GoogleMapDetails
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GoogleMapDetails::class)
+     */
+    private $googleMapDetails;
+
+    /**
      * @var GeoPoint
      * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint::class)
      */
@@ -267,6 +273,24 @@ class Address extends EmbeddedDocument implements AddressContract
     public function setGeoPoint(?GeoPoint $geoPoint): Address
     {
         $this->geoPoint = $geoPoint;
+        return $this;
+    }
+
+    /**
+     * @return GoogleMapDetails
+     */
+    public function getGoogleMapDetails(): GoogleMapDetails
+    {
+        return $this->googleMapDetails;
+    }
+
+    /**
+     * @param GoogleMapDetails $googleMapDetails
+     * @return Address
+     */
+    public function setGoogleMapDetails(GoogleMapDetails $googleMapDetails): Address
+    {
+        $this->googleMapDetails = $googleMapDetails;
         return $this;
     }
 }
