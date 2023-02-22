@@ -34,5 +34,5 @@ class GoogleMapDetails extends EmbeddedDocument
         $this->placeId = $placeId;
         return $this;
     }
-    
+
 }
