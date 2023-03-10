@@ -77,7 +77,7 @@ class PromotionDataGenerator
     /**
      * @return PromotionDataGenerator
      */
-    public function addBasicPromotionDetails(): PromotionDataGenerator
+    public function addDetails(): PromotionDataGenerator
     {
         $data = null;
 
@@ -92,19 +92,7 @@ class PromotionDataGenerator
                     'value' => $details->getDiscountForLoggedInUsers()->getValue()
                 ],
             ];
-        }
-
-        return $this->appendData(['details' => $data]);
-    }
-
-    /**
-     * @return PromotionDataGenerator
-     */
-    public function addLastMinutePromotionDetails(): PromotionDataGenerator
-    {
-        $data = null;
-
-        if($this->promotion instanceof LastMinutePromotion && $details = $this->promotion->getDetails()) {
+        } else if($this->promotion instanceof LastMinutePromotion && $details = $this->promotion->getDetails()) {
             $data = [
                 'discountForAllUsers' => [
                     'type' => $details->getDiscountForAllUsers()->getType(),
@@ -116,19 +104,7 @@ class PromotionDataGenerator
                 ],
                 'windowThresholdInDays' => $details->getWindowThresholdInDays()
             ];
-        }
-
-        return $this->appendData(['details' => $data]);
-    }
-
-    /**
-     * @return PromotionDataGenerator
-     */
-    public function addEarlyBirdPromotionDetails(): PromotionDataGenerator
-    {
-        $data = null;
-
-        if($this->promotion instanceof EarlyBirdPromotion && $details = $this->promotion->getDetails()) {
+        }else if($this->promotion instanceof EarlyBirdPromotion && $details = $this->promotion->getDetails()) {
             $data = [
                 'discountForAllUsers' => [
                     'type' => $details->getDiscountForAllUsers()->getType(),
