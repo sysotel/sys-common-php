@@ -25,9 +25,9 @@ use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
  * @ODM\InheritanceType("SINGLE_COLLECTION")
  * @ODM\DiscriminatorField("type")
  * @ODM\DiscriminatorMap({
- *  "BASIC"=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\BasicPromotion::class
- *  "LAST_MINUTE"=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\LastMinutePromotion\LastMinutePromotion::class
- *   "EARLY_BIRD" =SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\EarlyBirdPromotion\EarlyBirdPromotion
+ *  "BASIC"=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\BasicPromotion::class,
+ *  "LAST_MINUTE"=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\LastMinutePromotion\LastMinutePromotion::class,
+ *  "EARLY_BIRD"=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\EarlyBirdPromotion\EarlyBirdPromotion::class,
  * })
  */
 abstract class Promotion extends BaseDocument
