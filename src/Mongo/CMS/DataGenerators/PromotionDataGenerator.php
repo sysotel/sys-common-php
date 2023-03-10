@@ -3,6 +3,8 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\DataGenerators;
 
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\BasicPromotion;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\EarlyBirdPromotion\EarlyBirdPromotion;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\LastMinutePromotion\LastMinutePromotion;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\Promotion;
 
 class PromotionDataGenerator
@@ -89,6 +91,54 @@ class PromotionDataGenerator
                     'type' => $details->getDiscountForLoggedInUsers()->getType(),
                     'value' => $details->getDiscountForLoggedInUsers()->getValue()
                 ],
+            ];
+        }
+
+        return $this->appendData(['details' => $data]);
+    }
+
+    /**
+     * @return PromotionDataGenerator
+     */
+    public function addLastMinutePromotionDetails(): PromotionDataGenerator
+    {
+        $data = null;
+
+        if($this->promotion instanceof LastMinutePromotion && $details = $this->promotion->getDetails()) {
+            $data = [
+                'discountForAllUsers' => [
+                    'type' => $details->getDiscountForAllUsers()->getType(),
+                    'value' => $details->getDiscountForAllUsers()->getValue()
+                ],
+                'discountForLoggedInUsers' => [
+                    'type' => $details->getDiscountForLoggedInUsers()->getType(),
+                    'value' => $details->getDiscountForLoggedInUsers()->getValue()
+                ],
+                'windowThresholdInDays' => $details->getWindowThresholdInDays()
+            ];
+        }
+
+        return $this->appendData(['details' => $data]);
+    }
+
+    /**
+     * @return PromotionDataGenerator
+     */
+    public function addEarlyBirdPromotionDetails(): PromotionDataGenerator
+    {
+        $data = null;
+
+        if($this->promotion instanceof EarlyBirdPromotion && $details = $this->promotion->getDetails()) {
+            $data = [
+                'discountForAllUsers' => [
+                    'type' => $details->getDiscountForAllUsers()->getType(),
+                    'value' => $details->getDiscountForAllUsers()->getValue()
+                ],
+                'discountForLoggedInUsers' => [
+                    'type' => $details->getDiscountForLoggedInUsers()->getType(),
+                    'value' => $details->getDiscountForLoggedInUsers()->getValue()
+                ],
+                'windowThresholdInDays' => $details->getWindowThresholdInDays()
             ];
         }
 
