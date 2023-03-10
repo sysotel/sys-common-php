@@ -68,6 +68,65 @@ class PromotionRepository extends DocumentRepository
         return null;
     }
 
+    /**
+     * @param int $promoId
+     * @return Promotion
+     */
+    public function getLastMinutePromotionByPromoId(int $promoId): ?Promotion
+    {
+        return $this->findOneBy([
+            'promoId' => $promoId,
+            'type' => PromotionType::LAST_MINUTE->value
+        ], [
+            'createdAt' => -1
+        ]);
+    }
+
+    /**
+     * @param int $promoId
+     * @return Promotion|null
+     */
+    public function getActiveLastMinutePromotionByPromoId(int $promoId): ?Promotion{
+
+        $promotion = $this->getLastMinutePromotionByPromoId($promoId);
+
+        if($promotion && $promotion->getStatus() == PromotionStatus::ACTIVE->value){
+            return $promotion;
+        }
+
+        return null;
+    }
+
+
+    /**
+     * @param int $promoId
+     * @return Promotion
+     */
+    public function getEarlyBirdPromotionByPromoId(int $promoId): ?Promotion
+    {
+        return $this->findOneBy([
+            'promoId' => $promoId,
+            'type' => PromotionType::EARLY_BIRD->value
+        ], [
+            'createdAt' => -1
+        ]);
+    }
+
+    /**
+     * @param int $promoId
+     * @return Promotion|null
+     */
+    public function getActiveEarlyBirdPromotionByPromoId(int $promoId): ?Promotion{
+
+        $promotion = $this->getEarlyBirdPromotionByPromoId($promoId);
+
+        if($promotion && $promotion->getStatus() == PromotionStatus::ACTIVE->value){
+            return $promotion;
+        }
+
+        return null;
+    }
+
 
     /**
      * @param int $propertyId
