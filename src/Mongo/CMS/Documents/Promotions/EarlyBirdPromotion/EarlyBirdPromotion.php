@@ -5,7 +5,6 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\EarlyBirdPromotion;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionType;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\LastMinutePromotion\EarlyBirdPromotionDetails;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\Promotion;
 
 /**
@@ -15,7 +14,7 @@ class EarlyBirdPromotion extends Promotion
 {
     /**
      * @var ?EarlyBirdPromotionDetails
-     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\LastMinutePromotion\LastMinutePromotionDetails::class)
+     * @ODM\EmbedOne (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\EarlyBirdPromotion\EarlyBirdPromotionDetails::class)
      */
     private $details;
 
