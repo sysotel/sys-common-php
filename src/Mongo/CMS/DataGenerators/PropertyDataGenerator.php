@@ -85,6 +85,12 @@ class PropertyDataGenerator
             }
         }
 
+        if($googleMapDetails = $property->getAddress()?->getGoogleMapDetails()) {
+            $data['address']['googleMapDetails'] = [
+                'placeId' => $googleMapDetails->getPlaceId()
+            ];
+        }
+
         if($addAddressStrings) {
             $data['address'] = array_merge($data['address'], [
                 'cityStateString' => $property->getAddress()->cityStateString(),
