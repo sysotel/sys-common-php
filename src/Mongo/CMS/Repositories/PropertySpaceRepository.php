@@ -45,6 +45,7 @@ class PropertySpaceRepository extends DocumentRepository
     public function findAllForProperty(Property|int $property, array $criteria = [], array $orderBy = []): array
     {
         $criteria = array_merge(['propertyId' => Property::resolveID($property)], $criteria);
+        $orderBy = array_merge($orderBy, ['_id' => 1]);
 
         return $this->findBy($criteria, $orderBy);
     }

@@ -1,15 +1,23 @@
 <?php
 
-namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions;
+namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\LastMinutePromotion;
 
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\PromotionsOfferDiscount;
 
 /**
  * @ODM\EmbeddedDocument
  */
-class BasicPromotionDetails extends EmbeddedDocument
+class LastMinutePromotionDetails extends EmbeddedDocument
 {
+
+    /**
+     * @var ?int
+     * @ODM\Field(type="int")
+     */
+    protected  $windowThresholdInDays;
+
     /**
      * @var ?PromotionsOfferDiscount
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\PromotionsOfferDiscount::class)
@@ -54,6 +62,25 @@ class BasicPromotionDetails extends EmbeddedDocument
     {
         $this->discountForLoggedInUsers = $discountForLoggedInUsers;
     }
+
+    /**
+     * @return int|null
+     */
+    public function getWindowThresholdInDays(): ?int
+    {
+        return $this->windowThresholdInDays;
+    }
+
+    /**
+     * @param int|null $windowThresholdInDays
+     */
+    public function setWindowThresholdInDays(?int $windowThresholdInDays): void
+    {
+        $this->windowThresholdInDays = $windowThresholdInDays;
+    }
+
+
+
 
 
 }

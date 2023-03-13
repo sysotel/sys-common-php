@@ -11,19 +11,37 @@ use SYSOTEL\APP\Common\Enums\CMS\DateRestrictionType;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionStatus;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Counter\Counter;
+use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PromotionRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasPropertyId;
 
 /**
  * @ODM\Document(
  *     collection="promotions",
+ *     repositoryClass=SYSOTEL\APP\Common\Mongo\CMS\Repositories\PromotionRepository::class
  * )
  * @ODM\HasLifecycleCallbacks
+ * @ODM\InheritanceType("SINGLE_COLLECTION")
+ * @ODM\DiscriminatorField("type")
+ * @ODM\DiscriminatorMap({
+ *  "BASIC"=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\BasicPromotion::class,
+ *  "LAST_MINUTE"=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\LastMinutePromotion\LastMinutePromotion::class,
+ *  "EARLY_BIRD"=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\EarlyBirdPromotion\EarlyBirdPromotion::class,
+ * })
  */
-class Promotion extends BaseDocument
+abstract class Promotion extends BaseDocument
 {
     use HasObjectIdKey, CanResolveIntegerID, HasTimestamps, HasPropertyId;
     use HasDefaultAttributes;
+
+    public abstract function getType(): PromotionType;
+
+    /**
+     * @var ?int
+     * @ODM\Field(type="int")
+     */
+    protected $promoId;
 
     /**
      * @var ?string
@@ -37,11 +55,6 @@ class Promotion extends BaseDocument
      */
     protected $displayName;
 
-    /**
-     * @var ?PromotionType
-     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PromotionType::class)
-     */
-    protected $type;
 
     /**
      * @var ?PromotionStatus
@@ -49,38 +62,31 @@ class Promotion extends BaseDocument
      */
     protected $status;
 
-    /**
-     * @var ?BasicPromotionDetails
-     * @ODM\EmbedOne(
-     *  discriminatorMap={
-     *  "BASIC"=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\BasicPromotionDetails::class
-     *     },
-     *  discriminatorField="type"
-     * )
-     */
-
-    protected $details;
 
     /**
      * @var ?DateRestrictionType
      * @ODM\Field (type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\DateRestrictionType::class)
      */
-    public $dateRestrictionType;
+    protected $dateRestrictionType;
 
     /**
      * @var ?BookingTimeSpan
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\BookingTimespan::class)
      */
-    public $bookingTimeSpan;
+    protected $bookingTimeSpan;
 
 
     /**
      * @var ?StayTimespan
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\StayTimespan::class)
      */
-    public $stayTimeSpan;
+    protected $stayTimeSpan;
 
-
+    /**
+     * @var ?Carbon
+     * @ODM\Field(type="carbon")
+     */
+    protected $expiredAt;
     /**
      * @return string|null
      */
@@ -117,25 +123,6 @@ class Promotion extends BaseDocument
         return $this;
     }
 
-
-    /**
-     * @return PromotionType|null
-     */
-    public function getType(): ?PromotionType
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param PromotionType|null $type
-     * @return Promotion
-     */
-    public function setType(?PromotionType $type): Promotion
-    {
-        $this->type = $type;
-        return $this;
-    }
-
     /**
      * @return PromotionStatus|null
      */
@@ -154,23 +141,6 @@ class Promotion extends BaseDocument
         return $this;
     }
 
-    /**
-     * @return BasicPromotionDetails|null
-     */
-    public function getDetails(): ?BasicPromotionDetails
-    {
-        return $this->details;
-    }
-
-    /**
-     * @param BasicPromotionDetails|null $details
-     * @return Promotion
-     */
-    public function setDetails(?BasicPromotionDetails $details): Promotion
-    {
-        $this->details = $details;
-        return $this;
-    }
 
     /**
      * @return DateRestrictionType|null
@@ -221,9 +191,43 @@ class Promotion extends BaseDocument
     }
 
 
+    public function generateNewPromoId(): static
+    {
+        $promoId = Counter::getNewValue('promotions');
+        $this->promoId = $promoId;
+        return $this;
 
+    }
 
+    /**
+     * @return int|null
+     */
+    public function getPromoId(): ?int
+    {
+        return $this->promoId;
+    }
 
+    /**
+     * @param int|null $promoId
+     */
+    public function setPromoId(?int $promoId): void
+    {
+        $this->promoId = $promoId;
+    }
 
+    /**
+     * @return $this
+     */
+    public function markAsExpired(): static
+    {
+        $this->status = PromotionStatus::EXPIRED;
+        $this->expiredAt = now();
+        return $this;
+    }
+
+    public static function repository(): PromotionRepository
+    {
+        return parent::repository();
+    }
 
 }
