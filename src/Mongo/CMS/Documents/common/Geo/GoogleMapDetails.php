@@ -18,6 +18,12 @@ class GoogleMapDetails extends EmbeddedDocument
     protected $placeId;
 
     /**
+     * @var string
+     * @ODM\Field(type="string")
+     */
+    protected $phone;
+
+    /**
      * @return string
      */
     public function getPlaceId(): string
@@ -35,4 +41,21 @@ class GoogleMapDetails extends EmbeddedDocument
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     * @return GoogleMapDetails
+     */
+    public function setPhone(string $phone): GoogleMapDetails
+    {
+        $this->phone = $phone;
+        return $this;
+    }
 }
