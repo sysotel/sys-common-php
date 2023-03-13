@@ -54,7 +54,7 @@ class PropertyDataGenerator
         ]);
     }
 
-    public function addAddress(bool $addCoordinates = true, bool $addAddressStrings = true): PropertyDataGenerator
+    public function addAddress(bool $addCoordinates = true, bool $addAddressStrings = true, bool $addGoogleMapDetails = true): PropertyDataGenerator
     {
         $property = $this->property;
 
@@ -83,6 +83,13 @@ class PropertyDataGenerator
                     'longitude' => $property->getAddress()->getGeoPoint()->getLongitude(),
                 ];
             }
+        }
+
+        if($googleMapDetails = $property->getAddress()?->getGoogleMapDetails()) {
+            $data['address']['googleMapDetails'] = [
+                'placeId' => $googleMapDetails->getPlaceId(),
+                'phone' => $googleMapDetails->getPhone(),
+            ];
         }
 
         if($addAddressStrings) {
