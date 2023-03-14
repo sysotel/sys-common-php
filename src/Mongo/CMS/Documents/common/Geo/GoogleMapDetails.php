@@ -12,7 +12,7 @@ use Delta4op\Mongodb\Documents\EmbeddedDocument;
 class GoogleMapDetails extends EmbeddedDocument
 {
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     protected $placeId;
@@ -66,18 +66,24 @@ class GoogleMapDetails extends EmbeddedDocument
     protected $latitude;
 
     /**
-     * @return string
+     * @var ?string
+     * @ODM\Field(type="string")
      */
-    public function getPlaceId(): string
+    protected $phone;
+
+    /**
+     * @return string|null
+     */
+    public function getPlaceId(): ?string
     {
         return $this->placeId;
     }
 
     /**
-     * @param string $placeId
+     * @param string|null $placeId
      * @return GoogleMapDetails
      */
-    public function setPlaceId(string $placeId): GoogleMapDetails
+    public function setPlaceId(?string $placeId): GoogleMapDetails
     {
         $this->placeId = $placeId;
         return $this;
@@ -209,5 +215,23 @@ class GoogleMapDetails extends EmbeddedDocument
     public function setLatitude(string $latitude): void
     {
         $this->latitude = $latitude;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string|null $phone
+     * @return GoogleMapDetails
+     */
+    public function setPhone(?string $phone): GoogleMapDetails
+    {
+        $this->phone = $phone;
+        return $this;
     }
 }
