@@ -87,6 +87,7 @@ class PropertyDataGenerator
 
         if($googleMapDetails = $property->getAddress()?->getGoogleMapDetails()) {
             $data['address']['googleMapDetails'] = [
+
                 'placeId' => $googleMapDetails->getPlaceId(),
                 'businessName' => $googleMapDetails->getName(),
                 'addr1' => $googleMapDetails->getAddr1(),
