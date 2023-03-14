@@ -18,49 +18,49 @@ class GoogleMapDetails extends EmbeddedDocument
     protected $placeId;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     protected $name;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     protected $addr1;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     protected $city;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     protected $province;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     protected $country;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     protected $postalCode;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     protected $longitude;
 
     /**
-     * @var string
+     * @var ?string
      * @ODM\Field(type="string")
      */
     protected $latitude;
@@ -90,132 +90,133 @@ class GoogleMapDetails extends EmbeddedDocument
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      */
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getAddr1(): string
+    public function getAddr1(): ?string
     {
         return $this->addr1;
     }
 
     /**
-     * @param string $addr1
+     * @param string|null $addr1
      */
-    public function setAddr1(string $addr1): void
+    public function setAddr1(?string $addr1): void
     {
         $this->addr1 = $addr1;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCity(): string
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
     /**
-     * @param string $city
+     * @param string|null $city
      */
-    public function setCity(string $city): void
+    public function setCity(?string $city): void
     {
         $this->city = $city;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getProvince(): string
+    public function getProvince(): ?string
     {
         return $this->province;
     }
 
     /**
-     * @param string $province
+     * @param string|null $province
      */
-    public function setProvince(string $province): void
+    public function setProvince(?string $province): void
     {
         $this->province = $province;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCountry(): string
+    public function getCountry(): ?string
     {
         return $this->country;
     }
 
     /**
-     * @param string $country
+     * @param string|null $country
      */
-    public function setCountry(string $country): void
+    public function setCountry(?string $country): void
     {
         $this->country = $country;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPostalCode(): string
+    public function getPostalCode(): ?string
     {
         return $this->postalCode;
     }
 
     /**
-     * @param string $postalCode
+     * @param string|null $postalCode
      */
-    public function setPostalCode(string $postalCode): void
+    public function setPostalCode(?string $postalCode): void
     {
         $this->postalCode = $postalCode;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLongitude(): string
+    public function getLongitude(): ?string
     {
         return $this->longitude;
     }
 
     /**
-     * @param string $longitude
+     * @param string|null $longitude
      */
-    public function setLongitude(string $longitude): void
+    public function setLongitude(?string $longitude): void
     {
         $this->longitude = $longitude;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLatitude(): string
+    public function getLatitude(): ?string
     {
         return $this->latitude;
     }
 
     /**
-     * @param string $latitude
+     * @param string|null $latitude
      */
-    public function setLatitude(string $latitude): void
+    public function setLatitude(?string $latitude): void
     {
         $this->latitude = $latitude;
     }
+
 
     /**
      * @return string|null
