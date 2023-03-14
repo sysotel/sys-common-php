@@ -88,6 +88,14 @@ class PropertyDataGenerator
         if($googleMapDetails = $property->getAddress()?->getGoogleMapDetails()) {
             $data['address']['googleMapDetails'] = [
                 'placeId' => $googleMapDetails->getPlaceId(),
+                'businessName' => $googleMapDetails->getName(),
+                'addr1' => $googleMapDetails->getAddr1(),
+                'city' => $googleMapDetails->getCity(),
+                'province' => $googleMapDetails->getProvince(),
+                'country' => $googleMapDetails->getCountry(),
+                'postalCode' => $googleMapDetails->getPostalCode(),
+                'latitude' => $googleMapDetails->getLatitude(),
+                'longitude' => $googleMapDetails->getLongitude(),
                 'phone' => $googleMapDetails->getPhone(),
             ];
         }
