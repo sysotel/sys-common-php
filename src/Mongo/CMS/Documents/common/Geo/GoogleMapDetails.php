@@ -54,14 +54,14 @@ class GoogleMapDetails extends EmbeddedDocument
     protected $postalCode;
 
     /**
-     * @var ?string
-     * @ODM\Field(type="string")
+     * @var ?float
+     * @ODM\Field(type="float")
      */
     protected $longitude;
 
     /**
-     * @var ?string
-     * @ODM\Field(type="string")
+     * @var ?float
+     * @ODM\Field(type="float")
      */
     protected $latitude;
 
@@ -186,36 +186,37 @@ class GoogleMapDetails extends EmbeddedDocument
     }
 
     /**
-     * @return string|null
+     * @return float|null
      */
-    public function getLongitude(): ?string
+    public function getLongitude(): ?float
     {
         return $this->longitude;
     }
 
     /**
-     * @param string|null $longitude
+     * @param float|null $longitude
      */
-    public function setLongitude(?string $longitude): void
+    public function setLongitude(?float $longitude): void
     {
         $this->longitude = $longitude;
     }
 
     /**
-     * @return string|null
+     * @return float|null
      */
-    public function getLatitude(): ?string
+    public function getLatitude(): ?float
     {
         return $this->latitude;
     }
 
     /**
-     * @param string|null $latitude
+     * @param float|null $latitude
      */
-    public function setLatitude(?string $latitude): void
+    public function setLatitude(?float $latitude): void
     {
         $this->latitude = $latitude;
     }
+
 
 
     /**
