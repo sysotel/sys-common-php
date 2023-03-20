@@ -117,6 +117,13 @@ class Property extends BaseDocument
     protected $longDescription;
 
     /**
+     * @var SocialMediaDetails
+     * @ODM\Field(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Property\SocialMediaDetails::class )
+     */
+    protected $socialMediaDetails;
+
+
+    /**
      * @var Timezone
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\Timezone::class)
      */
@@ -486,6 +493,24 @@ class Property extends BaseDocument
     {
         return in_array($type->value, $this->allowedBookingTypes);
     }
+
+    /**
+     * @return SocialMediaDetails
+     */
+    public function getSocialMediaDetails(): SocialMediaDetails
+    {
+        return $this->socialMediaDetails;
+    }
+
+    /**
+     * @param SocialMediaDetails $socialMediaDetails
+     */
+    public function setSocialMediaDetails(SocialMediaDetails $socialMediaDetails): void
+    {
+        $this->socialMediaDetails = $socialMediaDetails;
+    }
+
+
 
     /**
      * @return PropertyRepository
