@@ -117,7 +117,7 @@ class Property extends BaseDocument
     protected $longDescription;
 
     /**
-     * @var SocialMediaDetails
+     * @var ?SocialMediaDetails
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Property\SocialMediaDetails::class )
      */
     protected $socialMediaDetails;
@@ -495,20 +495,21 @@ class Property extends BaseDocument
     }
 
     /**
-     * @return SocialMediaDetails
+     * @return SocialMediaDetails|null
      */
-    public function getSocialMediaDetails(): SocialMediaDetails
+    public function getSocialMediaDetails(): ?SocialMediaDetails
     {
         return $this->socialMediaDetails;
     }
 
     /**
-     * @param SocialMediaDetails $socialMediaDetails
+     * @param SocialMediaDetails|null $socialMediaDetails
      */
-    public function setSocialMediaDetails(SocialMediaDetails $socialMediaDetails): void
+    public function setSocialMediaDetails(?SocialMediaDetails $socialMediaDetails): void
     {
         $this->socialMediaDetails = $socialMediaDetails;
     }
+
 
 
 
