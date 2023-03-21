@@ -34,4 +34,26 @@ enum PropertyType: string
     {
         return 'Room';
     }
+
+    public function userFriendlyName(): string
+    {
+        return match ($this) {
+            self::HOTEL => 'Hotel',
+            self::RESORT => 'Resort',
+            self::HOMESTAY => 'Homestay',
+            self::VILLA => 'Villa',
+            self::APARTMENT => 'Apartmet',
+            self::GUEST_HOUSE => 'Guest House',
+            self::LODGE => 'Lodge',
+            self::HOUSEBOAT => 'House boat',
+            self::FARM_HOUSE => 'Farm House',
+            self::PALACE => 'Palace',
+            self::MOTEL => 'Motel',
+            self::DHARAMSHALA => 'Dharamshala',
+            self::COTTAGE => 'Cottage',
+            self::CAMP => 'Camp',
+            self::POD => 'Pod',
+            self::OTHER => 'Other'
+        };
+    }
 }

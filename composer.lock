@@ -10396,5 +10396,5 @@
     "platform-dev": {
         "ext-mongodb": "1.13.*|1.14.*"
     },
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }
