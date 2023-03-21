@@ -118,7 +118,7 @@ class Property extends BaseDocument
 
     /**
      * @var SocialMediaDetails
-     * @ODM\Field(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Property\SocialMediaDetails::class )
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Property\SocialMediaDetails::class )
      */
     protected $socialMediaDetails;
 
