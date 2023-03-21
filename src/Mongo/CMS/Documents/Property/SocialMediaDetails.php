@@ -164,6 +164,20 @@ class SocialMediaDetails extends EmbeddedDocument
         $this->websiteUrl = $websiteUrl;
     }
 
+    public function getAllUrls(): array
+    {
+        $urls = [
+            $this->facebookUrl,
+            $this->twitterUrl,
+            $this->instagramUrl,
+            $this->youtubeUrl,
+            $this->linkedinUrl,
+            $this->pinterestUrl,
+            $this->websiteUrl,
+        ];
+
+        return array_filter($urls);
+    }
 
 
 }
