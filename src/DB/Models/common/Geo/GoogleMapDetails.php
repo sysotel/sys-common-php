@@ -2,7 +2,8 @@
 
 namespace SYSOTEL\APP\Common\DB\Models\common\Geo;
 
-use SYSOTEL\APP\Common\DB\Models\BaseModel;
+use SYSOTEL\APP\Common\DB\Models\EmbeddedModel;
+use SYSOTEL\APP\Common\DB\Models\Model;
 
 /**
  * @property ?string $placeId
@@ -16,7 +17,7 @@ use SYSOTEL\APP\Common\DB\Models\BaseModel;
  * @property ?float $latitude
  * @property ?float $phone
  */
-class GoogleMapDetails extends BaseModel
+class GoogleMapDetails extends EmbeddedModel
 {
 
 }

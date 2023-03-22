@@ -3,13 +3,14 @@
 namespace SYSOTEL\APP\Common\DB\Models\common\Geo;
 
 use SYSOTEL\APP\Common\Casts\AsObjectIdString;
-use SYSOTEL\APP\Common\DB\Models\BaseModel;
+use SYSOTEL\APP\Common\DB\Models\EmbeddedModel;
+use SYSOTEL\APP\Common\DB\Models\Model;
 
 /**
  * @property ?string $type
  * @property array $coordinates
  */
-class GeoPoint extends BaseModel
+class GeoPoint extends EmbeddedModel
 {
     protected $attributes = [
         'type' => 'Point',

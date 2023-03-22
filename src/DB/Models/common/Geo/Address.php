@@ -3,7 +3,8 @@
 namespace SYSOTEL\APP\Common\DB\Models\common\Geo;
 
 use Jenssegers\Mongodb\Relations\EmbedsOne;
-use SYSOTEL\APP\Common\DB\Models\BaseModel;
+use SYSOTEL\APP\Common\DB\Models\EmbeddedModel;
+use SYSOTEL\APP\Common\DB\Models\Model;
 use SYSOTEL\APP\Common\Enums\CMS\Account;
 
 /**
@@ -15,7 +16,7 @@ use SYSOTEL\APP\Common\Enums\CMS\Account;
  * @property ?LocationReference $country
  * @property ?string $postalCode
  */
-class Address extends BaseModel
+class Address extends EmbeddedModel
 {
     protected $casts = [
         'accountId' => Account::class,

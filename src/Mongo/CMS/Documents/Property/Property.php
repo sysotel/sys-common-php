@@ -122,7 +122,6 @@ class Property extends BaseDocument
      */
     protected $socialMediaDetails;
 
-
     /**
      * @var Timezone
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\Timezone::class)
