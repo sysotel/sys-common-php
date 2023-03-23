@@ -164,7 +164,7 @@ class SocialMediaDetails extends EmbeddedDocument
         $this->websiteUrl = $websiteUrl;
     }
 
-    public function getAllUrls(): array
+    public function getAllUrls(): array|null
     {
         $urls = [
             $this->facebookUrl,

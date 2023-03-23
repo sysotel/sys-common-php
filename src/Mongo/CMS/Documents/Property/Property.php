@@ -512,7 +512,6 @@ class Property extends BaseDocument
 
 
 
-
     /**
      * @return PropertyRepository
      */
