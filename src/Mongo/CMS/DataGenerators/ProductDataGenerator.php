@@ -3,6 +3,7 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\DataGenerators;
 
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyProduct\PropertyProduct;
+use SYSOTEL\APP\Common\Services\Support\ProductInclusionsGetter;
 
 class ProductDataGenerator
 {
@@ -27,7 +28,7 @@ class ProductDataGenerator
             'longDescription' => $this->product->getLongDescription(),
             'mealPlanCode' => $this->product->getMealPlanCode(),
             'status' => $this->product->getStatus()?->value,
-            'inclusions' => $this->product->getInclusions()
+            'inclusions' => ProductInclusionsGetter::get($this->product)
         ];
 
         if(!count($data['inclusions']) && $spaceLabel) {
