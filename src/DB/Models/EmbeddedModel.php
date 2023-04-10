@@ -4,7 +4,7 @@ namespace SYSOTEL\APP\Common\DB\Models;
 
 use Jenssegers\Mongodb\Eloquent\Model;
 
-class EmbeddedModel extends Model
+abstract class EmbeddedModel extends BaseModel
 {
     protected $primaryKey = null;
     public $timestamps = false;

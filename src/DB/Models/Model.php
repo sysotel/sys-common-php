@@ -2,7 +2,7 @@
 
 namespace SYSOTEL\APP\Common\DB\Models;
 
-class Model extends \Jenssegers\Mongodb\Eloquent\Model
+abstract class Model extends BaseModel
 {
     protected $connection = 'cms';
 

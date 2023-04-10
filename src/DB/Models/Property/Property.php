@@ -71,6 +71,8 @@ class Property extends Model
 
             $slugGenerator = new PropertySlugGenerator($property);
 
+            $property->id = NumericIdGenerator::get($property);
+
             if(!$property->accountSlug) {
                 $property->accountSlug = $slugGenerator->generateAccountSlug();
             }
@@ -78,8 +80,6 @@ class Property extends Model
             if(!$property->slug) {
                 $property->slug = $slugGenerator->generateSlug();
             }
-
-            $property->id = NumericIdGenerator::get($property);
         });
     }
 

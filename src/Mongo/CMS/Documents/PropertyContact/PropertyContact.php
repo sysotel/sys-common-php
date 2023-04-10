@@ -2,7 +2,6 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyContact;
 
-use Delta4op\Mongodb\Documents\Document;
 use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\Common\Collections\ArrayCollection;
