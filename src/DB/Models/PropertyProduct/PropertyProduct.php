@@ -5,7 +5,6 @@ namespace SYSOTEL\APP\Common\DB\Models\PropertyProduct;
 use Jenssegers\Mongodb\Relations\EmbedsOne;
 use SYSOTEL\APP\Common\DB\EloquentQueryBuilders\PropertyProductEQB;
 use SYSOTEL\APP\Common\DB\EloquentRepositories\PropertyProductER;
-use SYSOTEL\APP\Common\DB\Helpers\NumericIdGenerator;
 use SYSOTEL\APP\Common\DB\Models\Model;
 use SYSOTEL\APP\Common\DB\Models\PropertyProduct\embedded\PaymentMode;
 use SYSOTEL\APP\Common\Enums\CMS\Account;
@@ -39,20 +38,10 @@ class PropertyProduct extends Model
         'status' => PropertyProductStatus::class,
     ];
 
-    protected static function booted(): void
-    {
-        static::creating(function (PropertyProduct $product) {
-
-            // sets auto incremental primary key
-            $product->id = NumericIdGenerator::get($product);
-        });
-    }
-
     public function paymentMode(): EmbedsOne
     {
         return $this->embedsOne(PaymentMode::class);
     }
-
 
     public static function query(): PropertyProductEQB
     {

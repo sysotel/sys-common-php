@@ -37,15 +37,6 @@ class PropertyContact extends Model
         'printOnBookingVoucher' => false
     ];
 
-//    protected static function booted(): void
-//    {
-//        static::creating(function (PropertyContact $contact) {
-//
-//            // sets auto incremental primary key
-//            $contact->id = NumericIdGenerator::get($contact);
-//        });
-//    }
-
     public function contactNumbers(): EmbedsMany
     {
         return $this->embedsMany(ContactNumber::class);

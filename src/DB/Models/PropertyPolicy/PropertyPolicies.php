@@ -7,19 +7,12 @@ use Jenssegers\Mongodb\Collection;
 use Jenssegers\Mongodb\Relations\EmbedsMany;
 use Jenssegers\Mongodb\Relations\EmbedsOne;
 use SYSOTEL\APP\Common\DB\EloquentQueryBuilders\PropertyPolicyEQB;
-use SYSOTEL\APP\Common\DB\EloquentQueryBuilders\PropertySpaceEQB;
 use SYSOTEL\APP\Common\DB\EloquentRepositories\PropertyPolicyER;
-use SYSOTEL\APP\Common\DB\EloquentRepositories\PropertySpaceER;
-use SYSOTEL\APP\Common\DB\Helpers\NumericIdGenerator;
 use SYSOTEL\APP\Common\DB\Models\common\UserReference;
 use SYSOTEL\APP\Common\DB\Models\Model;
 use SYSOTEL\APP\Common\DB\Models\PropertySpace\embedded\InventorySettings;
-use SYSOTEL\APP\Common\DB\Models\PropertySpace\embedded\SpaceOccupancy;
-use SYSOTEL\APP\Common\DB\Models\PropertySpace\embedded\SpaceView;
 use SYSOTEL\APP\Common\Enums\CMS\Account;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyPolicyStatus;
-use SYSOTEL\APP\Common\Enums\CMS\PropertySpaceStatus;
-use SYSOTEL\APP\Common\Enums\CMS\SpaceStayType;
 
 /**
  * @property ?int $id
@@ -46,15 +39,6 @@ class PropertyPolicies extends Model
     protected $casts = [
         'status' => PropertyPolicyStatus::class,
     ];
-
-    protected static function booted(): void
-    {
-        static::creating(function (PropertyPolicies $policy) {
-
-            // sets auto incremental primary key
-            $policy->id = NumericIdGenerator::get($policy);
-        });
-    }
 
     public function generalPolicy(): EmbedsOne
     {

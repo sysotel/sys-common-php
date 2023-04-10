@@ -36,21 +36,12 @@ use SYSOTEL\APP\Common\Enums\CMS\SpaceStayType;
 */
 class Promotion extends Model
 {
-
     protected $casts = [
         'dateRestrictionType' => DateRestrictionType::class,
         'bookingTimeSpan' => BookingTimespan::class,
         'stayTimeSpan' => StayTimespan::class,
         'type' => PromotionType::class
     ];
-
-    protected static function booted(): void
-    {
-        static::creating(function (Promotion $promotion) {
-            // sets auto incremental primary key
-            $promotion->id = NumericIdGenerator::get($promotion);
-        });
-    }
 
     public function bookingTimeSpan(): EmbedsOne
     {

@@ -5,7 +5,6 @@ namespace SYSOTEL\APP\Common\DB\Models\PropertySpace;
 use Jenssegers\Mongodb\Relations\EmbedsOne;
 use SYSOTEL\APP\Common\DB\EloquentQueryBuilders\PropertySpaceEQB;
 use SYSOTEL\APP\Common\DB\EloquentRepositories\PropertySpaceER;
-use SYSOTEL\APP\Common\DB\Helpers\NumericIdGenerator;
 use SYSOTEL\APP\Common\DB\Models\Model;
 use SYSOTEL\APP\Common\DB\Models\PropertySpace\embedded\InventorySettings;
 use SYSOTEL\APP\Common\DB\Models\PropertySpace\embedded\SpaceOccupancy;
@@ -43,15 +42,6 @@ class PropertySpace extends Model
         'stayType' => SpaceStayType::class,
         'status' => PropertySpaceStatus::class,
     ];
-
-    protected static function booted(): void
-    {
-        static::creating(function (PropertySpace $space) {
-
-            // sets auto incremental primary key
-            $space->id = NumericIdGenerator::get($space);
-        });
-    }
 
     public function occupancy(): EmbedsOne
     {

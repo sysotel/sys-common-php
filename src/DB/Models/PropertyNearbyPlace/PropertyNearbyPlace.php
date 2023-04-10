@@ -21,15 +21,6 @@ class PropertyNearbyPlace extends Model
         'accountId' => Account::class,
     ];
 
-//    protected static function booted(): void
-//    {
-//        static::creating(function (PropertyNearbyPlace $place) {
-//
-//            // sets auto incremental primary key
-//            $place->id = NumericIdGenerator::get($place);
-//        });
-//    }
-
     public function places(): EmbedsMany
     {
         return $this->embedsMany(NearbyPlaceItem::class);

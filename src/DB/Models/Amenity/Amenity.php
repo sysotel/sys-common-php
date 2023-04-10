@@ -41,14 +41,6 @@ class Amenity extends Model
         'status' => AmenityStatus::class,
     ];
 
-//    protected static function booted(): void
-//    {
-//        static::creating(function (Amenity $amenity) {
-//
-//            // sets auto incremental primary key
-//            $amenity->id = NumericIdGenerator::get($amenity);
-//        });
-//    }
 
     public function template(): EmbedsOne
     {

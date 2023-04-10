@@ -58,7 +58,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "SYSOTEL\\APP\\Common\\ServiceProvider"
+                "SYSOTEL\\APP\\Common\\ServiceProvider",
+                "SYSOTEL\\APP\\Common\\EventServiceProvider"
             ],
             "aliases": {
 

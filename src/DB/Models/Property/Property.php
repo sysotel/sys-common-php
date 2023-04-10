@@ -12,6 +12,7 @@ use SYSOTEL\APP\Common\DB\Models\Model;
 use SYSOTEL\APP\Common\DB\Models\common\Geo\Address;
 use SYSOTEL\APP\Common\DB\Models\common\UserReference;
 use SYSOTEL\APP\Common\DB\Models\Property\embedded\SocialMediaDetails;
+use SYSOTEL\APP\Common\DB\Observers\PropertyObserver;
 use SYSOTEL\APP\Common\Enums\CMS\Account;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyCreationType;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyStarRating;
@@ -64,24 +65,6 @@ class Property extends Model
         'timezone' => Timezone::class,
         'status' => PropertyStatus::class,
     ];
-
-    protected static function booted(): void
-    {
-        static::creating(function (Property $property) {
-
-            $slugGenerator = new PropertySlugGenerator($property);
-
-            $property->id = NumericIdGenerator::get($property);
-
-            if(!$property->accountSlug) {
-                $property->accountSlug = $slugGenerator->generateAccountSlug();
-            }
-
-            if(!$property->slug) {
-                $property->slug = $slugGenerator->generateSlug();
-            }
-        });
-    }
 
     public function address(): EmbedsOne
     {

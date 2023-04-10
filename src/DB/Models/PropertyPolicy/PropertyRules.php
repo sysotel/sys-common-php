@@ -43,16 +43,6 @@ class PropertyRules extends Model
         'stayType' => SpaceStayType::class,
         'status' => PropertySpaceStatus::class,
     ];
-
-    protected static function booted(): void
-    {
-        static::creating(function (PropertySpace $space) {
-
-            // sets auto incremental primary key
-            $space->id = NumericIdGenerator::get($space);
-        });
-    }
-
     public function occupancy(): EmbedsOne
     {
         return $this->embedsOne(SpaceOccupancy::class);

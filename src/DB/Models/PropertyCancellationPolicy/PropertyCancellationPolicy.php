@@ -36,15 +36,6 @@ class PropertyCancellationPolicy extends Model
         'status' => CancellationPolicyStatus::class,
     ];
 
-//    protected static function booted(): void
-//    {
-//        static::creating(function (PropertyCancellationPolicy $cancellationPolicy) {
-//
-//            // sets auto incremental primary key
-//            $cancellationPolicy->id = NumericIdGenerator::get($cancellationPolicy);
-//        });
-//    }
-
     public function rules(): EmbedsMany
     {
         return $this->EmbedsMany(CancellationPolicyRule::class);
