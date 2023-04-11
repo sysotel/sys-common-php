@@ -36,6 +36,9 @@ use SYSOTEL\APP\Common\Enums\CMS\SpaceStayType;
 */
 class Promotion extends Model
 {
+    protected $collection = 'promotions';
+
+
     protected $casts = [
         'dateRestrictionType' => DateRestrictionType::class,
         'bookingTimeSpan' => BookingTimespan::class,
@@ -53,18 +56,18 @@ class Promotion extends Model
         return $this->embedsOne(StayTimespan::class);
     }
 
-    public function details()
+    public function details(): ?EmbedsOne
     {
-        switch ($this->type) {
-            case PromotionType::BASIC:
-                return $this->details ? new BasicPromotion((array)$this->details) : null;
-            case PromotionType::LAST_MINUTE:
-                return $this->details ? new LastMinutePromotion((array)$this->details) : null;
-            case PromotionType::EARLY_BIRD:
-                return $this->details ? new EarlyBirdPromotion((array)$this->details) : null;
-            default:
-                return null;
+        if(PromotionType::tryFrom($this->type->value) === PromotionType::BASIC){
+            return $this->embedsOne(BasicPromotion::class);
+        }elseif(PromotionType::tryFrom($this->type->value) === PromotionType::LAST_MINUTE){
+            return $this->embedsOne(LastMinutePromotion::class);
         }
+        elseif(PromotionType::tryFrom($this->type->value) === PromotionType::EARLY_BIRD){
+            return $this->embedsOne(EarlyBirdPromotion::class);
+        }
+        return null;
+
     }
 
     public static function query(): PromotionEQB

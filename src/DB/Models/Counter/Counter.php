@@ -10,6 +10,7 @@ use SYSOTEL\APP\Common\DB\Models\EmbeddedModel;
 */
 class Counter extends EmbeddedModel
 {
+
     protected $collection = 'counters';
 
     public $incrementing = false;

@@ -3,7 +3,8 @@
 
 namespace SYSOTEL\APP\Common\DB\Models\PropertyImage\embedded;
 
-use Jenssegers\Mongodb\Collection;
+
+use Illuminate\Support\Collection;
 use Jenssegers\Mongodb\Relations\EmbedsMany;
 use SYSOTEL\APP\Common\DB\Models\Model;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyImageVersion;

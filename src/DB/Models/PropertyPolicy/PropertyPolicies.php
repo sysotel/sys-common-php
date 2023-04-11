@@ -3,7 +3,7 @@
 namespace SYSOTEL\APP\Common\DB\Models\PropertyPolicy;
 
 use Carbon\Carbon;
-use Jenssegers\Mongodb\Collection;
+use Illuminate\Support\Collection;
 use Jenssegers\Mongodb\Relations\EmbedsMany;
 use Jenssegers\Mongodb\Relations\EmbedsOne;
 use SYSOTEL\APP\Common\DB\EloquentQueryBuilders\PropertyPolicyEQB;
@@ -29,9 +29,10 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertyPolicyStatus;
  * @property ?UserReference $causer
  * @property ?InventorySettings $inventorySettings
  * @property ?int $sortOrder
-*/
+ */
 class PropertyPolicies extends Model
 {
+    protected $collection = 'propertyPolicies';
     protected $attributes = [
         'status' => PropertyPolicyStatus::ACTIVE,
     ];

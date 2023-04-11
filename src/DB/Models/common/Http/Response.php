@@ -3,7 +3,7 @@
 
 namespace SYSOTEL\APP\Common\DB\Models\common\Http;
 
-use Jenssegers\Mongodb\Collection;
+use Illuminate\Support\Collection;
 use Jenssegers\Mongodb\Relations\EmbedsMany;
 use SYSOTEL\APP\Common\DB\Models\common\KeyValueItem;
 use SYSOTEL\APP\Common\DB\Models\EmbeddedModel;

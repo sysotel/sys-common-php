@@ -25,6 +25,8 @@ use SYSOTEL\APP\Common\Enums\CMS\LocationType;
 */
 class Location extends Model
 {
+    protected $collection = 'locations';
+
     protected $attributes = [
         'searchKeywords' => []
     ];

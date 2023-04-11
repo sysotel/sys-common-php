@@ -2,7 +2,7 @@
 
 namespace SYSOTEL\APP\Common\DB\Models\PropertyNearbyPlace;
 
-use Jenssegers\Mongodb\Collection;
+use Illuminate\Support\Collection;
 use Jenssegers\Mongodb\Relations\EmbedsMany;
 use SYSOTEL\APP\Common\DB\Helpers\NumericIdGenerator;
 use SYSOTEL\APP\Common\DB\Models\Model;
@@ -17,6 +17,7 @@ use SYSOTEL\APP\Common\Enums\CMS\Account;
  */
 class PropertyNearbyPlace extends Model
 {
+    protected $collection = 'propertyNearbyPlaces';
     protected $casts = [
         'accountId' => Account::class,
     ];

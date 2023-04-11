@@ -49,6 +49,7 @@ use SYSOTEL\APP\Common\Enums\Currency;
  */
 class Property extends Model
 {
+    protected $collection = 'properties';
     protected $attributes = [
         'allowedBookingTypes' => [],
         'timezone' => Timezone::ASIA_KOLKATA,

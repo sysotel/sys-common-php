@@ -35,6 +35,7 @@ use SYSOTEL\APP\Common\Enums\CMS\SpaceStayType;
 class Amenity extends Model
 {
 
+    protected $collection = 'amenities';
     protected $casts = [
         'target' => AmenityTarget::class,
         'category' => AmenityCategory::class,

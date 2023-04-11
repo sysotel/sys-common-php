@@ -3,14 +3,11 @@
 namespace SYSOTEL\APP\Common\DB\Models\PropertyContact;
 
 
-use Jenssegers\Mongodb\Collection;
+use Illuminate\Support\Collection;
 use Jenssegers\Mongodb\Relations\EmbedsMany;
-use SYSOTEL\APP\Common\DB\EloquentRepositories\PropertyProductER;
-use SYSOTEL\APP\Common\DB\Helpers\NumericIdGenerator;
 use SYSOTEL\APP\Common\DB\Models\common\ContactNumber;
 use SYSOTEL\APP\Common\DB\Models\common\Email;
 use SYSOTEL\APP\Common\DB\Models\Model;
-use SYSOTEL\APP\Common\DB\Models\PropertyNearbyPlace\embedded\NearbyPlaceItem;
 use SYSOTEL\APP\Common\Enums\CMS\Account;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyContactStatus;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyContactType;
@@ -28,6 +25,7 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertyContactType;
  */
 class PropertyContact extends Model
 {
+    protected $collection = 'propertyContacts';
     protected $casts = [
         'status' => PropertyContactStatus::class,
     ];

@@ -28,9 +28,12 @@ use SYSOTEL\APP\Common\Enums\CMS\SpaceStayType;
  * @property ?PropertySpaceStatus $status
  * @property ?InventorySettings $inventorySettings
  * @property ?int $sortOrder
-*/
+ */
 class PropertySpace extends Model
 {
+
+    protected $collection = 'propertySpaces';
+
     protected $attributes = [
         'status' => PropertySpaceStatus::ACTIVE,
         'stayType' => SpaceStayType::PRIVATE,

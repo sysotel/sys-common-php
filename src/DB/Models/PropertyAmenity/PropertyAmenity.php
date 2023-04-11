@@ -21,6 +21,7 @@ use SYSOTEL\APP\Common\Enums\CMS\AmenityTarget;
  */
 class PropertyAmenity extends Model
 {
+    protected $collection = 'propertyAmenities';
     protected $attributes = [
         'inclusions' => [],
     ];

@@ -27,6 +27,7 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertySpaceStatus;
 */
 class PropertyProduct extends Model
 {
+    protected $collection = 'propertyProducts';
     protected $attributes = [
         'inclusions' => [],
         'status' => PropertySpaceStatus::ACTIVE,

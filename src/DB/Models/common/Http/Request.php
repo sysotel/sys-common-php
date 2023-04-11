@@ -4,7 +4,7 @@
 namespace SYSOTEL\APP\Common\DB\Models\common\Http;
 
 use Carbon\Carbon;
-use Jenssegers\Mongodb\Collection;
+use Illuminate\Support\Collection;
 use Jenssegers\Mongodb\Relations\EmbedsMany;
 use Jenssegers\Mongodb\Relations\EmbedsOne;
 use SYSOTEL\APP\Common\DB\Models\common\KeyValueItem;

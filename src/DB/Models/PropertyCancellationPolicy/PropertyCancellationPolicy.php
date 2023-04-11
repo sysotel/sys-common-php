@@ -31,7 +31,7 @@ use SYSOTEL\APP\Common\Enums\CMS\SpaceStayType;
  */
 class PropertyCancellationPolicy extends Model
 {
-
+    protected $collection = 'propertyCancellationPolicies';
     protected $casts = [
         'status' => CancellationPolicyStatus::class,
     ];

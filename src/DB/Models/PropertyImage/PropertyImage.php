@@ -36,7 +36,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Verification;
  */
 class PropertyImage extends Model
 {
-
+     protected $collection = 'propertyImages';
     protected $attributes = [
         'isFeatured' => false,
         'sortOrder' => 0,
