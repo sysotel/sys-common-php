@@ -4,6 +4,7 @@ namespace SYSOTEL\APP\Common\DB\Models\Property;
 
 use Carbon\Carbon;
 use Jenssegers\Mongodb\Relations\EmbedsOne;
+use SYSOTEL\APP\Common\DB\ArrayGenerators\PropertyDataGenerator;
 use SYSOTEL\APP\Common\DB\EloquentQueryBuilders\PropertyEQB;
 use SYSOTEL\APP\Common\DB\EloquentRepositories\PropertyER;
 use SYSOTEL\APP\Common\DB\Helpers\NumericIdGenerator;
@@ -43,7 +44,7 @@ use SYSOTEL\APP\Common\Enums\Currency;
  * @property ?string $longDescription
  * @property ?Timezone $timezone
  * @property ?PropertyStatus $status
- * @property ?UserReference $userReference
+ * @property ?UserReference $creator
  * @property ?Carbon $createdAt
  * @property ?Carbon $updatedAt
  */
@@ -77,7 +78,7 @@ class Property extends Model
         return $this->embedsOne(SocialMediaDetails::class);
     }
 
-    public function userReference(): EmbedsOne
+    public function creator(): EmbedsOne
     {
         return $this->embedsOne(UserReference::class);
     }
@@ -99,5 +100,10 @@ class Property extends Model
     public static function repository(): PropertyER
     {
         return new PropertyER;
+    }
+
+    public function getArrayGenerator(): PropertyDataGenerator
+    {
+        return new PropertyDataGenerator($this);
     }
 }

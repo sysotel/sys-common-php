@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Jenssegers\Mongodb\Relations\EmbedsMany;
 use Jenssegers\Mongodb\Relations\EmbedsOne;
+use SYSOTEL\APP\Common\DB\ArrayGenerators\PropertyDataGenerator;
+use SYSOTEL\APP\Common\DB\ArrayGenerators\PropertyImageDataGenerator;
 use SYSOTEL\APP\Common\DB\EloquentQueryBuilders\PropertyImageEQB;
 use SYSOTEL\APP\Common\DB\EloquentRepositories\PropertyImageER;
 use SYSOTEL\APP\Common\DB\Helpers\NumericIdGenerator;
@@ -119,5 +121,10 @@ class PropertyImage extends Model
     public function imageItem(PropertyImageVersion $version): ?ImageItem
     {
         return $this->items->firstWhere('version', $version);
+    }
+
+    public function getArrayGenerator(): PropertyImageDataGenerator
+    {
+        return new PropertyImageDataGenerator($this, $baseUrl);
     }
 }
