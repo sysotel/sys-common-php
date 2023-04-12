@@ -3,6 +3,7 @@
 namespace SYSOTEL\APP\Common\DB\Models\Amenity;
 
 use Jenssegers\Mongodb\Relations\EmbedsOne;
+use SYSOTEL\APP\Common\DB\ArrayGenerators\PropertyDataGenerator;
 use SYSOTEL\APP\Common\DB\EloquentQueryBuilders\AmenityEQB;
 use SYSOTEL\APP\Common\DB\EloquentQueryBuilders\PropertySpaceEQB;
 use SYSOTEL\APP\Common\DB\EloquentRepositories\AmenityER;
@@ -65,4 +66,6 @@ class Amenity extends Model
     {
         return new AmenityER;
     }
+
+
 }

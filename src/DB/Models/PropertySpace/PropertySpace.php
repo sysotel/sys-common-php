@@ -3,6 +3,8 @@
 namespace SYSOTEL\APP\Common\DB\Models\PropertySpace;
 
 use Jenssegers\Mongodb\Relations\EmbedsOne;
+use SYSOTEL\APP\Common\DB\ArrayGenerators\PropertyDataGenerator;
+use SYSOTEL\APP\Common\DB\ArrayGenerators\PropertySpaceDataGenerator;
 use SYSOTEL\APP\Common\DB\EloquentQueryBuilders\PropertySpaceEQB;
 use SYSOTEL\APP\Common\DB\EloquentRepositories\PropertySpaceER;
 use SYSOTEL\APP\Common\DB\Models\Model;
@@ -85,5 +87,10 @@ class PropertySpace extends Model
     public static function repository(): PropertySpaceER
     {
         return new PropertySpaceER;
+    }
+
+    public function getArrayGenerator(): PropertySpaceDataGenerator
+    {
+        return new PropertySpaceDataGenerator($this);
     }
 }

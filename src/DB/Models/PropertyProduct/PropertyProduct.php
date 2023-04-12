@@ -3,6 +3,8 @@
 namespace SYSOTEL\APP\Common\DB\Models\PropertyProduct;
 
 use Jenssegers\Mongodb\Relations\EmbedsOne;
+use SYSOTEL\APP\Common\DB\ArrayGenerators\ProductDataGenerator;
+use SYSOTEL\APP\Common\DB\ArrayGenerators\PropertySpaceDataGenerator;
 use SYSOTEL\APP\Common\DB\EloquentQueryBuilders\PropertyProductEQB;
 use SYSOTEL\APP\Common\DB\EloquentRepositories\PropertyProductER;
 use SYSOTEL\APP\Common\DB\Models\Model;
@@ -62,4 +64,9 @@ class PropertyProduct extends Model
     {
         return new PropertyProductER;
     }
+//
+//    public function getArrayGenerator(): ProductDataGenerator
+//    {
+//        return new ProductDataGenerator($this);
+//    }
 }
