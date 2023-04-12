@@ -6,7 +6,13 @@ use Jenssegers\Mongodb\Relations\EmbedsOne;
 use SYSOTEL\APP\Common\DB\EloquentQueryBuilders\PropertySpaceEQB;
 use SYSOTEL\APP\Common\DB\EloquentRepositories\PropertySpaceER;
 use SYSOTEL\APP\Common\DB\Helpers\NumericIdGenerator;
+use SYSOTEL\APP\Common\DB\Models\EmbeddedModel;
 use SYSOTEL\APP\Common\DB\Models\Model;
+use SYSOTEL\APP\Common\DB\Models\PropertyPolicy\Rules\BachelorsRule;
+use SYSOTEL\APP\Common\DB\Models\PropertyPolicy\Rules\GuestDocumentRule;
+use SYSOTEL\APP\Common\DB\Models\PropertyPolicy\Rules\OutsideFoodRule;
+use SYSOTEL\APP\Common\DB\Models\PropertyPolicy\Rules\PetsRule;
+use SYSOTEL\APP\Common\DB\Models\PropertyPolicy\Rules\UnmarriedCoupleRule;
 use SYSOTEL\APP\Common\DB\Models\PropertySpace\embedded\InventorySettings;
 use SYSOTEL\APP\Common\DB\Models\PropertySpace\embedded\SpaceOccupancy;
 use SYSOTEL\APP\Common\DB\Models\PropertySpace\embedded\SpaceView;
@@ -15,64 +21,72 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertySpaceStatus;
 use SYSOTEL\APP\Common\Enums\CMS\SpaceStayType;
 
 /**
- * @property ?GuestDocumentRule $id
- * @property ?Account $accountId
- * @property ?int $propertyId
- * @property ?string $displayName
- * @property ?string $internalName
- * @property ?string $shortDescription
- * @property ?string $longDescription
- * @property ?int $noOfUnits
- * @property ?SpaceOccupancy $occupancy
- * @property ?SpaceView $view
- * @property ?bool $noSmoking
- * @property ?PropertySpaceStatus $status
- * @property ?InventorySettings $inventorySettings
- * @property ?int $sortOrder
+ * @property ?GuestDocumentRule $guestDocumentRule
+ * @property ?UnmarriedCoupleRule $unmarriedCoupleRule
+ * @property ?BachelorsRule $bachelorsRule
+ * @property ?PetsRule $petsRule
+ * @property ?OutsideFoodRule $outsideFoodRule
+
 */
-class PropertyRules extends Model
+class PropertyRules extends EmbeddedModel
 {
-    protected $attributes = [
-        'status' => PropertySpaceStatus::ACTIVE,
-        'stayType' => SpaceStayType::PRIVATE,
-        'sortOrder' => 0
-    ];
 
-    protected $casts = [
-        'accountId' => Account::class,
-        'stayType' => SpaceStayType::class,
-        'status' => PropertySpaceStatus::class,
-    ];
-    public function occupancy(): EmbedsOne
+    public function guestDocumentRule(): EmbedsOne
     {
-        return $this->embedsOne(SpaceOccupancy::class);
+        return $this->embedsOne(GuestDocumentRule::class);
     }
 
-    public function view(): EmbedsOne
+    public function unmarriedCoupleRule(): EmbedsOne
     {
-        return $this->embedsOne(SpaceView::class);
+        return $this->embedsOne(UnmarriedCoupleRule::class);
     }
 
-    public function inventorySettings(): EmbedsOne
+    public function outsideFoodRule(): EmbedsOne
     {
-        return $this->embedsOne(InventorySettings::class);
+        return $this->embedsOne(OutsideFoodRule::class);
     }
 
-    public static function query(): PropertySpaceEQB
+    public function petsRule(): EmbedsOne
     {
-        return parent::query();
+        return $this->embedsOne(PetsRule::class);
     }
 
-    public function newEloquentBuilder($query): PropertySpaceEQB
+    public function bachelorsRule(): EmbedsOne
     {
-        return new PropertySpaceEQB($query);
+        return $this->embedsOne(BachelorsRule::class);
     }
 
     /**
-     * @return PropertySpaceER
+     * @return array
      */
-    public static function repository(): PropertySpaceER
+    public function description(): array
     {
-        return new PropertySpaceER;
+        $rules = [];
+
+        if($this->bachelorsRule) {
+            $rules[] = $this->bachelorsRule->description();
+        }
+
+        if($this->petsRule) {
+            $rules[] = $this->petsRule->description();
+        }
+
+        if($this->unmarriedCoupleRule) {
+            $rules[] = $this->unmarriedCoupleRule->description();
+        }
+
+        if($this->guestDocumentRule) {
+            $rules[] = $this->guestDocumentRule->description();
+        }
+
+        if($this->outsideFoodRule) {
+            $rules[] = $this->guestDocumentRule->description();
+        }
+
+        return array_filter($rules, function($rule){
+            return !empty($rule);
+        });
     }
+
+
 }

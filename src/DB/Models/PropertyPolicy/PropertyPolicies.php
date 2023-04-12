@@ -61,9 +61,9 @@ class PropertyPolicies extends Model
         return $this->embedsOne(CheckOutPolicy::class);
     }
 
-    public function rules(): EmbedsMany
+    public function rules(): EmbedsOne
     {
-        return $this->embedsMany(CustomPolicyItem::class);
+        return $this->embedsOne(PropertyRules::class);
     }
 
     public function causer(): EmbedsOne

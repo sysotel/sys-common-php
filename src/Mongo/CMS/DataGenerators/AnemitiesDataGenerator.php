@@ -23,19 +23,5 @@ class AnemitiesDataGenerator
         $this->amenities = $amenities;
     }
 
-    /**
-     * @return AnemitiesDataGenerator
-     */
-    public function addBasicDetails(): AnemitiesDataGenerator
-    {
 
-    }
-
-    /**
-     * @return AnemitiesDataGenerator
-     */
-    public function addOccupancy(): AnemitiesDataGenerator
-    {
-
-    }
 }

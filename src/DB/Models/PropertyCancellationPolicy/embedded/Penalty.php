@@ -17,4 +17,13 @@ class Penalty extends EmbeddedModel
     protected $casts = [
         'type' => PenaltyType::class,
     ];
+
+    /**
+     * @param $penaltyType
+     * @return bool
+     */
+    public function isOfType($penaltyType): bool
+    {
+        return $this->type === $penaltyType;
+    }
 }

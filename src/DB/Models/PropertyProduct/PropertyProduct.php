@@ -24,6 +24,7 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertySpaceStatus;
  * @property ?PaymentMode $paymentMode
  * @property ?MealPlanCode $mealPlanCode
  *  @property ?PropertyProductStatus $status
+ * @property ?array $inclusions
 */
 class PropertyProduct extends Model
 {

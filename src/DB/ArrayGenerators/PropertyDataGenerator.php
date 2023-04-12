@@ -4,6 +4,7 @@ namespace SYSOTEL\APP\Common\DB\ArrayGenerators;
 
 
 use SYSOTEL\APP\Common\DB\Models\Property\Property;
+use SYSOTEL\APP\Common\DB\Models\PropertyImage\PropertyImage;
 
 class PropertyDataGenerator extends ArrayDataGenerator
 {
@@ -12,6 +13,11 @@ class PropertyDataGenerator extends ArrayDataGenerator
     public function __construct(Property $property)
     {
         $this->property = $property;
+    }
+
+    public static function create(Property $property): static
+    {
+        return new static($property);
     }
 
     public function addBasicDetails(): PropertyDataGenerator
@@ -102,9 +108,9 @@ class PropertyDataGenerator extends ArrayDataGenerator
 
         if($addAddressStrings) {
             $data['address'] = array_merge($data['address'], [
-                'cityStateString' => $property->address->cityStateString,
-                'cityStateCountryString' => $property->address->cityStateCountryString,
-                'areaCityString' => $property->address->cityString,
+                'cityStateString' => $property->address->cityStateString(),
+                'cityStateCountryString' => $property->address->cityStateCountryString(),
+                'areaCityString' => $property->address->areaCityString(),
                 'fullAddress' => $property->address->fullAddress,
             ]);
         }

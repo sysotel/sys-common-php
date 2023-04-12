@@ -8,6 +8,7 @@ use SYSOTEL\APP\Common\DB\EloquentRepositories\PropertySpaceER;
 use SYSOTEL\APP\Common\DB\Models\Model;
 use SYSOTEL\APP\Common\DB\Models\PropertySpace\embedded\InventorySettings;
 use SYSOTEL\APP\Common\DB\Models\PropertySpace\embedded\SpaceOccupancy;
+use SYSOTEL\APP\Common\DB\Models\PropertySpace\embedded\SpaceSize;
 use SYSOTEL\APP\Common\DB\Models\PropertySpace\embedded\SpaceView;
 use SYSOTEL\APP\Common\Enums\CMS\Account;
 use SYSOTEL\APP\Common\Enums\CMS\PropertySpaceStatus;
@@ -24,6 +25,7 @@ use SYSOTEL\APP\Common\Enums\CMS\SpaceStayType;
  * @property ?int $noOfUnits
  * @property ?SpaceOccupancy $occupancy
  * @property ?SpaceView $view
+ * @property ?SpaceSize $size
  * @property ?bool $noSmoking
  * @property ?PropertySpaceStatus $status
  * @property ?InventorySettings $inventorySettings
@@ -55,6 +57,12 @@ class PropertySpace extends Model
     {
         return $this->embedsOne(SpaceView::class);
     }
+
+    public function size(): EmbedsOne
+    {
+        return $this->embedsOne(SpaceSize::class);
+    }
+
 
     public function inventorySettings(): EmbedsOne
     {

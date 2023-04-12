@@ -87,4 +87,9 @@ class LocationER extends EloquentRepository
             ->whereCityId($cityId)
             ->first();
     }
+
+    public function getAllAreasForCity()
+    {
+        
+    }
 }
