@@ -4,6 +4,7 @@ namespace SYSOTEL\APP\Common\DB\EloquentQueryBuilders;
 
 use Jenssegers\Mongodb\Eloquent\Builder;
 use SYSOTEL\APP\Common\DB\Models\Property\Property;
+use SYSOTEL\APP\Common\DB\Models\PropertySpace\PropertySpace;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyImageStatus;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyImageTarget;
 
@@ -14,6 +15,15 @@ class PropertyImageEQB extends Builder
         $propertyId = $property instanceof Property
             ? $property->id
             : $property;
+
+        return $this->where('propertyId', $propertyId);
+    }
+
+    public function whereSpaceId(int|PropertySpace $space): PropertyImageEQB
+    {
+        $propertyId = $space instanceof PropertySpace
+            ? $space->id
+            : $space;
 
         return $this->where('propertyId', $propertyId);
     }

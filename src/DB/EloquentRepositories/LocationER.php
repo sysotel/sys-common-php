@@ -3,6 +3,7 @@
 namespace SYSOTEL\APP\Common\DB\EloquentRepositories;
 
 use Illuminate\Support\Collection;
+use MongoDB\BSON\ObjectId;
 use SYSOTEL\APP\Common\DB\EloquentQueryBuilders\LocationEQB;
 use SYSOTEL\APP\Common\DB\Models\Location\Location;
 use SYSOTEL\APP\Common\Enums\CMS\CountrySlug;
@@ -88,8 +89,67 @@ class LocationER extends EloquentRepository
             ->first();
     }
 
-    public function getAllAreasForCity()
-    {
-        
-    }
+//    /**
+//     * @return State[]
+//     */
+//    public function findAllStatesForCountry(string|Country $country, array $criteria = [], array $orderBy = []): array
+//    {
+//        $countryId = $country instanceof Country ? $country->getId() : $country;
+//
+//        $criteria = array_merge([
+//            'type' => LocationType::STATE->value,
+//            'country.id' => new ObjectId($countryId)
+//        ], $criteria);
+//
+//        $orderBy = array_merge([
+//            'name' => 1
+//        ], $orderBy);
+//
+//        return $this->findBy($criteria, $orderBy);
+//    }
+//
+//    /**
+//     * @param string|State $state
+//     * @param array $criteria
+//     * @param array $orderBy
+//     * @return City[]
+//     */
+//    public function findAllCitiesForState(string|State $state, array $criteria = [], array $orderBy = []): array
+//    {
+//        $stateId = $state instanceof State ? $state->getId() : $state;
+//
+//        $criteria = array_merge([
+//            'type' => LocationType::CITY->value,
+//            'state.id' => new ObjectId($stateId)
+//        ], $criteria);
+//
+//        $orderBy = array_merge([
+//            'name' => 1
+//        ], $orderBy);
+//
+//        return $this->findBy($criteria, $orderBy);
+//    }
+//
+//    /**
+//     * @param string|Area $area
+//     * @param array $criteria
+//     * @param array $orderBy
+//     * @return Area[]
+//     */
+//    public function findAllAreasForCity(string|Area $area, array $criteria = [], array $orderBy = []): array
+//    {
+//        $areaId = $area instanceof Area ? $area->getId() : $area;
+//
+//        $criteria = array_merge([
+//            'type' => LocationType::AREA->value,
+//            'city.id' => new ObjectId($areaId)
+//        ], $criteria);
+//
+//        $orderBy = array_merge([
+//            'name' => 1
+//        ], $orderBy);
+//
+//        return $this->findBy($criteria, $orderBy);
+//    }
+
 }
