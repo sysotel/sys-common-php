@@ -10,7 +10,7 @@ class LocationEQB extends Builder
 {
     public function whereType(LocationType $type): LocationEQB
     {
-        return $this->where('type', $type);
+        return $this->where('type', $type->value);
     }
 
     public function whereCategorySlug(string $slug): LocationEQB

@@ -44,7 +44,7 @@ class LocationER extends EloquentRepository
             ->whereType(LocationType::STATE)
             ->whereCountryId($countryId)
             ->get();
-      }
+    }
 
     public function getCitiesForState(string $stateId): \Illuminate\Database\Eloquent\Collection|array
     {
@@ -89,67 +89,42 @@ class LocationER extends EloquentRepository
             ->first();
     }
 
-//    /**
-//     * @return State[]
-//     */
-//    public function findAllStatesForCountry(string|Country $country, array $criteria = [], array $orderBy = []): array
-//    {
-//        $countryId = $country instanceof Country ? $country->getId() : $country;
-//
-//        $criteria = array_merge([
-//            'type' => LocationType::STATE->value,
-//            'country.id' => new ObjectId($countryId)
-//        ], $criteria);
-//
-//        $orderBy = array_merge([
-//            'name' => 1
-//        ], $orderBy);
-//
-//        return $this->findBy($criteria, $orderBy);
-//    }
-//
-//    /**
-//     * @param string|State $state
-//     * @param array $criteria
-//     * @param array $orderBy
-//     * @return City[]
-//     */
-//    public function findAllCitiesForState(string|State $state, array $criteria = [], array $orderBy = []): array
-//    {
-//        $stateId = $state instanceof State ? $state->getId() : $state;
-//
-//        $criteria = array_merge([
-//            'type' => LocationType::CITY->value,
-//            'state.id' => new ObjectId($stateId)
-//        ], $criteria);
-//
-//        $orderBy = array_merge([
-//            'name' => 1
-//        ], $orderBy);
-//
-//        return $this->findBy($criteria, $orderBy);
-//    }
-//
-//    /**
-//     * @param string|Area $area
-//     * @param array $criteria
-//     * @param array $orderBy
-//     * @return Area[]
-//     */
-//    public function findAllAreasForCity(string|Area $area, array $criteria = [], array $orderBy = []): array
-//    {
-//        $areaId = $area instanceof Area ? $area->getId() : $area;
-//
-//        $criteria = array_merge([
-//            'type' => LocationType::AREA->value,
-//            'city.id' => new ObjectId($areaId)
-//        ], $criteria);
-//
-//        $orderBy = array_merge([
-//            'name' => 1
-//        ], $orderBy);
-//
-//        return $this->findBy($criteria, $orderBy);
-//    }
+    public function findAllStatesForCountry(string|Location $country): array
+    {
+        $countryId = $country instanceof Location ? $country->id : $country;
+
+        return Location::query()
+            ->where('type', LocationType::STATE->value)
+            ->where('country.id', new ObjectId($countryId))
+            ->orderBy('name')
+            ->get();
+
+    }
+
+
+    public function findAllCitiesForState(string|Location $state): array
+    {
+        $stateId = $state instanceof Location ? $state->id : $state;
+
+        return Location::query()
+            ->where('type', LocationType::CITY->value)
+            ->where('country.id', new ObjectId($stateId))
+            ->orderBy('name')
+            ->get();
+
+    }
+
+
+    public function findAllAreasForCity(string|Location $area): array
+    {
+        $areaId = $area instanceof Location ? $area->id : $area;
+
+        return Location::query()
+            ->where('type', LocationType::AREA->value)
+            ->where('country.id', new ObjectId($areaId))
+            ->orderBy('name')
+            ->get();
+
+    }
 
 }
