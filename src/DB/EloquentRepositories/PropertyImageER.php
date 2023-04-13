@@ -29,7 +29,7 @@ class PropertyImageER extends EloquentRepository
         return PropertyImage::query()
             ->wherePropertyId($property)
             ->whereStatus($status)
-            ->where($target, fn($q) => $q->whereTarget($target))
+            ->whereTarget($target)
             ->get();
     }
 
