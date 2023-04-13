@@ -89,7 +89,7 @@ class LocationER extends EloquentRepository
             ->first();
     }
 
-    public function findAllStatesForCountry(string|Location $country): array
+    public function findAllStatesForCountry(string|Location $country)
     {
         $countryId = $country instanceof Location ? $country->id : $country;
 
@@ -98,11 +98,10 @@ class LocationER extends EloquentRepository
             ->where('country.id', new ObjectId($countryId))
             ->orderBy('name')
             ->get();
-
     }
 
 
-    public function findAllCitiesForState(string|Location $state): array
+    public function findAllCitiesForState(string|Location $state)
     {
         $stateId = $state instanceof Location ? $state->id : $state;
 
@@ -115,7 +114,7 @@ class LocationER extends EloquentRepository
     }
 
 
-    public function findAllAreasForCity(string|Location $area): array
+    public function findAllAreasForCity(string|Location $area)
     {
         $areaId = $area instanceof Location ? $area->id : $area;
 
@@ -124,7 +123,6 @@ class LocationER extends EloquentRepository
             ->where('country.id', new ObjectId($areaId))
             ->orderBy('name')
             ->get();
-
     }
 
 }
