@@ -20,10 +20,10 @@ class PropertyImageDataGenerator extends ArrayDataGenerator
         $this->baseUrl = $baseUrl;
     }
 
-//    public static function create(PropertyImage $image, string $baseUrl): static
-//    {
-//        return new static($image, $baseUrl);
-//    }
+    public static function create(PropertyImage $image, string $baseUrl): static
+    {
+        return new static($image, $baseUrl);
+    }
 
     public function addBasicDetails(): PropertyImageDataGenerator
     {
