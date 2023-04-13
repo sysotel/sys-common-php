@@ -2,13 +2,13 @@
 
 namespace SYSOTEL\APP\Common\DB\Models\Counter;
 
-use SYSOTEL\APP\Common\DB\Models\EmbeddedModel;
+use SYSOTEL\APP\Common\DB\Models\Model;
 
 /**
  * @property ?string $id
  * @property ?int $value
 */
-class Counter extends EmbeddedModel
+class Counter extends Model
 {
 
     protected $collection = 'counters';

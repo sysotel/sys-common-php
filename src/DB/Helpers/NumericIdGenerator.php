@@ -17,7 +17,7 @@ class NumericIdGenerator
             abort(500, 'Counter not found for ' . $collection);
         }
 
-        $counter->value += $counter->value + 1;
+        $counter->value = $counter->value + 1;
         $counter->save();
 
         return $counter->value;

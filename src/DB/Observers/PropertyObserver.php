@@ -14,7 +14,8 @@ class PropertyObserver
      */
     public function creating(Property $property): void
     {
-        $property->id = NumericIdGenerator::get($property);
+
+        $property->_id = NumericIdGenerator::get($property);
 
         $slugGenerator = new PropertySlugGenerator($property);
 
@@ -25,5 +26,6 @@ class PropertyObserver
         if(!$property->slug) {
             $property->slug = $slugGenerator->generateSlug();
         }
+
     }
 }

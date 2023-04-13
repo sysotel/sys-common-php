@@ -13,7 +13,7 @@ use SYSOTEL\APP\Common\Enums\UserType;
  */
 class UserReference extends EmbeddedModel
 {
-    protected $attributes = [
+    protected $casts = [
         'type' => UserType::class,
     ];
 

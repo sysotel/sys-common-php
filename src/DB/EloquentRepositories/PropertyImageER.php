@@ -25,7 +25,7 @@ class PropertyImageER extends EloquentRepository
             ->wherePropertyId($property)
             ->whereStatus($status)
              ->whereTarget($target)
-            ->get();
+            ->first();
     }
 
     public function getFeaturedPropertyImage(Property|int $property)
@@ -43,7 +43,7 @@ class PropertyImageER extends EloquentRepository
             ->whereSpaceId($space)
             ->where('target', PropertyImageTarget::SPACE)
             ->where('status', PropertyImageStatus::ACTIVE)
-            ->get();
+            ->first();
     }
 
     public function getFeaturedPropertySpaceImage(PropertySpace $space)
@@ -64,12 +64,12 @@ class PropertyImageER extends EloquentRepository
 //        );
 //    }
 
-    public function getAllImages(Property|int $property): array
+    public function getAllImages(Property|int $property)
     {
 
         return PropertyImage::query()
             ->wherePropertyId($property)
-            ->get();
+            ->first();
     }
 
     public function getPropertyLogo(Property|int $property)
@@ -79,7 +79,7 @@ class PropertyImageER extends EloquentRepository
             ->wherePropertyId($property)
             ->whereTarget(PropertyImageTarget::LOGO)
             ->whereStatus(PropertyImageStatus::ACTIVE)
-            ->get();
+            ->first();
     }
 
     public function getPropertyBanner(Property|int $property)
@@ -88,7 +88,7 @@ class PropertyImageER extends EloquentRepository
             ->wherePropertyId($property)
             ->whereTarget(PropertyImageTarget::BANNER)
             ->whereStatus(PropertyImageStatus::ACTIVE)
-            ->get();
+            ->first();
     }
 
 //    /**
@@ -103,11 +103,8 @@ class PropertyImageER extends EloquentRepository
 //        );
 //    }
 
-    /**
-     * @param Property|int $property
-     * @return PropertyImage[]
-     */
-    public function getActivePropertyAndSpaceImages(Property|int $property): array
+
+    public function getActivePropertyAndSpaceImages(Property|int $property)
     {
         return $this->getPropertyAndSpaceImages(
             $property,
@@ -115,11 +112,8 @@ class PropertyImageER extends EloquentRepository
         );
     }
 
-    /**
-     * @param Property|int $property
-     * @return PropertyImage[]
-     */
-    public function getFeaturedPropertyImages(Property|int $property): array
+
+    public function getFeaturedPropertyImages(Property|int $property)
     {
         return $this->getPropertyImages(
             $property,
@@ -158,33 +152,25 @@ class PropertyImageER extends EloquentRepository
         return count($images) ? $images[0] : null;
     }
 
-    public function getPropertyImages(Property|int $property): array
+    public function getPropertyImages(Property|int $property)
     {
         return PropertyImage::query()
             ->wherePropertyId($property)
             ->whereTarget(PropertyImageTarget::PROPERTY)
-            ->get();
+            ->first();
     }
 
-    /**
-     * @param Property|int $property
-     * @param array $criteria
-     * @param array $orderBy
-     * @return PropertyImage[]
-     */
-    public function getPropertyAndSpaceImages(Property|int $property): array
+
+    public function getPropertyAndSpaceImages(Property|int $property)
     {
         return PropertyImage::query()
             ->wherePropertyId($property)
             ->whereTarget(PropertyImageTarget::PROPERTY, PropertyImageTarget::SPACE)
-            ->get();
+            ->first();
     }
 
-    /**
-     * @param PropertySpace|int $space
-     * @return PropertyImage[]
-     */
-    public function getActiveSpaceImages(PropertySpace|int $space): array
+
+    public function getActiveSpaceImages(PropertySpace|int $space)
     {
         return $this->getAllSpaceImages(
             $space,
@@ -217,11 +203,8 @@ class PropertyImageER extends EloquentRepository
         return count($images) ? $images[0] : null;
     }
 
-    /**
-     * @param PropertySpace|int $space
-     * @return PropertyImage[]
-     */
-    public function getFeaturedSpaceImages(PropertySpace|int $space): array
+
+    public function getFeaturedSpaceImages(PropertySpace|int $space)
     {
         return $this->getAllSpaceImages(
             $space,
@@ -229,12 +212,12 @@ class PropertyImageER extends EloquentRepository
         );
     }
 
-    public function getAllSpaceImages(PropertySpace|int $space): array
+    public function getAllSpaceImages(PropertySpace|int $space)
     {
         return PropertyImage::query()
             ->whereSpaceId($space)
             ->whereTarget( PropertyImageTarget::SPACE)
-            ->get();
+            ->first();
     }
 
 }

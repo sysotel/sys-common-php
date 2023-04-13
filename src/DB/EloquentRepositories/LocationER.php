@@ -107,7 +107,7 @@ class LocationER extends EloquentRepository
 
         return Location::query()
             ->where('type', LocationType::CITY->value)
-            ->where('country.id', new ObjectId($stateId))
+            ->where('state.id', new ObjectId($stateId))
             ->orderBy('name')
             ->get();
 
@@ -120,7 +120,7 @@ class LocationER extends EloquentRepository
 
         return Location::query()
             ->where('type', LocationType::AREA->value)
-            ->where('country.id', new ObjectId($areaId))
+            ->where('city.id', new ObjectId($areaId))
             ->orderBy('name')
             ->get();
     }

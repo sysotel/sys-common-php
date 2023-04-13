@@ -51,11 +51,18 @@ use SYSOTEL\APP\Common\Enums\Currency;
 class Property extends Model
 {
     protected $collection = 'properties';
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->status = PropertyStatus::ACTIVE;
+    }
+
     protected $attributes = [
         'allowedBookingTypes' => [],
         'timezone' => Timezone::ASIA_KOLKATA,
         'baseCurrency' => Currency::INR,
-        'status' => PropertyStatus::ACTIVE,
+     //   'status' => PropertyStatus::ACTIVE,
     ];
 
     protected $casts = [
