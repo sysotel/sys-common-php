@@ -12,7 +12,7 @@ class NumericIdGenerator
         $collection = is_string($model) ? $model : $model->getCollection();
 
         /** @var ?Counter $counter */
-        $counter = Counter::query()->where('id', $collection)->first();
+        $counter = Counter::query()->where('_id', $collection)->first();
         if(! $counter) {
             abort(500, 'Counter not found for ' . $collection);
         }

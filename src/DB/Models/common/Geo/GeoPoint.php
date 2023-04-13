@@ -12,6 +12,9 @@ use SYSOTEL\APP\Common\DB\Models\Model;
  */
 class GeoPoint extends EmbeddedModel
 {
+
+    protected $fillable = ['coordinates'];
+
     protected $attributes = [
         'type' => 'Point',
         'coordinates' => [],
