@@ -18,18 +18,13 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertySpaceStatus;
 
 class PropertyImageER extends EloquentRepository
 {
-    /**
-     * @param Property|int $property
-     * @param PropertyImageStatus|null $status
-     * @param PropertyImageTarget|null $target
-     * @return Collection
-     */
+
     public function getFeaturedOrFirstPropertyImage(Property|int $property, PropertyImageStatus $status = null, PropertyImageTarget $target = null)
     {
         return PropertyImage::query()
             ->wherePropertyId($property)
             ->whereStatus($status)
-            ->whereTarget($target)
+             ->whereTarget($target)
             ->get();
     }
 
@@ -241,10 +236,5 @@ class PropertyImageER extends EloquentRepository
             ->whereTarget( PropertyImageTarget::SPACE)
             ->get();
     }
-
-
-
-
-
 
 }
