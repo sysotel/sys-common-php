@@ -65,7 +65,7 @@ class LocationER extends EloquentRepository
     public function getStateForCountry(string $stateId, string $countryId)
     {
         return Location::query()
-            ->where('id', $stateId)
+            ->where('_id', $stateId)
             ->whereType(LocationType::STATE)
             ->whereCountryId($countryId)
             ->first();
@@ -74,7 +74,7 @@ class LocationER extends EloquentRepository
     public function getCityForState(string $cityId, string $stateId)
     {
         return Location::query()
-            ->where('id', $cityId)
+            ->where('_id', $cityId)
             ->whereType(LocationType::CITY)
             ->whereStateId($stateId)
             ->first();
@@ -83,7 +83,7 @@ class LocationER extends EloquentRepository
     public function getAreaForCity(string $areaId, string $cityId)
     {
         return Location::query()
-            ->where('id', $areaId)
+            ->where('_id', $areaId)
             ->whereType(LocationType::AREA)
             ->whereCityId($cityId)
             ->first();
