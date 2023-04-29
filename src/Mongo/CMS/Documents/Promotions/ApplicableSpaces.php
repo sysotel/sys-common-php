@@ -4,6 +4,7 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions;
 
 use Carbon\Carbon;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionDiscountType;
 
@@ -25,8 +26,8 @@ class ApplicableSpaces extends EmbeddedDocument
     public $applicableOnAllProducts;
 
     /**
-     * @var ?ApplicableProducts
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\ApplicableProducts::class)
+     * @var Collection & ?ApplicableProducts
+     * @ODM\EmbedMany (targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\ApplicableProducts::class)
      */
     public $applicableProducts;
 
@@ -63,19 +64,29 @@ class ApplicableSpaces extends EmbeddedDocument
     }
 
     /**
-     * @return ApplicableProducts|null
+     * @return Collection|ApplicableProducts|null
      */
-    public function getApplicableProducts(): ?ApplicableProducts
+    public function getApplicableProducts(): ApplicableProducts|Collection|null
     {
         return $this->applicableProducts;
     }
 
     /**
-     * @param ApplicableProducts|null $applicableProducts
+     * @param Collection|ApplicableProducts|null $applicableProducts
      */
-    public function setApplicableProducts(?ApplicableProducts $applicableProducts): void
+    public function setApplicableProducts(ApplicableProducts|Collection|null $applicableProducts): void
     {
         $this->applicableProducts = $applicableProducts;
+    }
+
+    /**
+     * @param ApplicableProducts $applicableProducts
+     * @return $this
+     */
+    public function addApplicableProducts(ApplicableProducts $applicableProducts): static
+    {
+        $this->applicableProducts->add($applicableProducts);
+        return $this;
     }
 
 

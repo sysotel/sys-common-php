@@ -4,8 +4,11 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions;
 
 use Carbon\Carbon;
 use Delta4op\Mongodb\Documents\EmbeddedDocument;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionDiscountType;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyImage\ImageItem;
 
 /**
  * @ODM\EmbeddedDocument
@@ -19,8 +22,8 @@ class ApplicableSpaceDetails extends EmbeddedDocument
     public $applicableOnAllSpaces;
 
     /**
-     * @var ?ApplicableSpaces
-     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\ApplicableSpaces::class)
+     * @var Collection & ?ApplicableSpaces
+     * @ODM\EmbedMany(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\ApplicableSpaces::class)
      */
     public $applicableSpaces;
 
@@ -40,20 +43,35 @@ class ApplicableSpaceDetails extends EmbeddedDocument
         $this->applicableOnAllSpaces = $applicableOnAllSpaces;
     }
 
+    public function __construct()
+    {
+        $this->applicableSpaces = new ArrayCollection;
+    }
+
     /**
-     * @return ApplicableSpaces|null
+     * @return ArrayCollection|Collection|ApplicableSpaces|null
      */
-    public function getApplicableSpaces(): ?ApplicableSpaces
+    public function getApplicableSpaces(): ArrayCollection|Collection|ApplicableSpaces|null
     {
         return $this->applicableSpaces;
     }
 
     /**
-     * @param ApplicableSpaces|null $applicableSpaces
+     * @param ArrayCollection|Collection|ApplicableSpaces|null $applicableSpaces
      */
-    public function setApplicableSpaces(?ApplicableSpaces $applicableSpaces): void
+    public function setApplicableSpaces(ArrayCollection|Collection|ApplicableSpaces|null $applicableSpaces): void
     {
         $this->applicableSpaces = $applicableSpaces;
+    }
+
+    /**
+     * @param ApplicableSpaces $applicableSpaces
+     * @return $this
+     */
+    public function addApplicableSpaces(ApplicableSpaces $applicableSpaces): static
+    {
+        $this->applicableSpaces->add($applicableSpaces);
+        return $this;
     }
 
 
