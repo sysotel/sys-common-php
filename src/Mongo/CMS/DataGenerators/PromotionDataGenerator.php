@@ -76,7 +76,7 @@ class PromotionDataGenerator
         return $this;
     }
 
-    public function addApplicableSpaceDetails(bool $addSpaceProductNames = true)
+    public function addApplicableSpaceDetails(bool $addSpaceProductNames = true): PromotionDataGenerator
     {
         $applicableSpaces = [];
 
@@ -129,7 +129,8 @@ class PromotionDataGenerator
             'applicableSpaces' => $applicableSpaces,
         ];
 
-        return response()->json($data);
+        return $this->appendData($data);
+
     }
 
 
