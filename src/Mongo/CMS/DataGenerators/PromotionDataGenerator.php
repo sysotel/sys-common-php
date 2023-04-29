@@ -6,6 +6,8 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\BasicPromotion;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\EarlyBirdPromotion\EarlyBirdPromotion;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\LastMinutePromotion\LastMinutePromotion;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\Promotion;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyProduct\PropertyProduct;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertySpace\PropertySpace;
 
 class PromotionDataGenerator
 {
@@ -13,7 +15,7 @@ class PromotionDataGenerator
 
     /**
      * @var Promotion
-    */
+     */
     protected Promotion $promotion;
 
     /**
@@ -41,11 +43,11 @@ class PromotionDataGenerator
     }
 
     /**
- * @return PromotionDataGenerator
- */
+     * @return PromotionDataGenerator
+     */
     public function addBookingTimeSpan(): PromotionDataGenerator
     {
-        if($bookingTimeSpan = $this->promotion->getBookingTimeSpan()){
+        if ($bookingTimeSpan = $this->promotion->getBookingTimeSpan()) {
             return $this->appendData([
                 'bookingTimeSpan' => [
                     'start' => $bookingTimeSpan->getStart()->format('Y-m-d'),
@@ -62,7 +64,7 @@ class PromotionDataGenerator
      */
     public function addStayTimeSpan(): PromotionDataGenerator
     {
-        if($stayTimeSpan = $this->promotion->getStayTimeSpan()){
+        if ($stayTimeSpan = $this->promotion->getStayTimeSpan()) {
             return $this->appendData([
                 'stayTimeSpan' => [
                     'start' => $stayTimeSpan->getStart()->format('Y-m-d'),
@@ -74,6 +76,56 @@ class PromotionDataGenerator
         return $this;
     }
 
+    public function addApplicableSpaceDetails(bool $addSpaceProductNames = true)
+    {
+        $applicableSpaces = [];
+
+        if ($applicableSpaceDetails = $this->promotion->getApplicableSpaceDetails()) {
+            foreach ($applicableSpaceDetails->getApplicableSpaces() as $spaces) {
+                $spaceId = $spaces->getSpaceId();
+                $applicableToAllProducts = $spaces->getApplicableOnAllProducts();
+                $applicableProducts = [];
+
+                foreach ($spaces->getApplicableProducts() as $product) {
+                    $applicableProducts[] = [
+                        'productId' => $product->getProductId()
+                    ];
+                }
+
+                $space = PropertySpace::repository()->find($spaceId);
+                $spaceName = $space->getName();
+
+                if ($addSpaceProductNames) {
+                    $productNames = [];
+
+                    foreach ($spaces->getApplicableProducts() as $product) {
+                        $productId = $product->getProductId();
+                        $product = PropertyProduct::repository()->find($productId);
+                        $productName = $product->getName();
+
+                        $productNames[] = $productName;
+                    }
+
+                    $applicableProducts = $productNames;
+                }
+
+                $applicableSpaces[] = [
+                    'spaceId' => $spaceId,
+                    'applicableToAllProducts' => $applicableToAllProducts,
+                    'applicableProducts' => $applicableProducts,
+                    'spaceName' => $spaceName,
+                ];
+            }
+        }
+
+        $data = [
+            'applicableSpaces' => $applicableSpaces,
+        ];
+
+        return response()->json($data);
+    }
+
+
     /**
      * @return PromotionDataGenerator
      */
@@ -81,7 +133,7 @@ class PromotionDataGenerator
     {
         $data = null;
 
-        if($this->promotion instanceof BasicPromotion && $details = $this->promotion->getDetails()) {
+        if ($this->promotion instanceof BasicPromotion && $details = $this->promotion->getDetails()) {
             $data = [
                 'discountForAllUsers' => [
                     'type' => $details->getDiscountForAllUsers()->getType(),
@@ -92,7 +144,7 @@ class PromotionDataGenerator
                     'value' => $details->getDiscountForLoggedInUsers()->getValue()
                 ],
             ];
-        } else if($this->promotion instanceof LastMinutePromotion && $details = $this->promotion->getDetails()) {
+        } else if ($this->promotion instanceof LastMinutePromotion && $details = $this->promotion->getDetails()) {
             $data = [
                 'discountForAllUsers' => [
                     'type' => $details->getDiscountForAllUsers()->getType(),
@@ -104,7 +156,7 @@ class PromotionDataGenerator
                 ],
                 'windowThresholdInDays' => $details->getWindowThresholdInDays()
             ];
-        }else if($this->promotion instanceof EarlyBirdPromotion && $details = $this->promotion->getDetails()) {
+        } else if ($this->promotion instanceof EarlyBirdPromotion && $details = $this->promotion->getDetails()) {
             $data = [
                 'discountForAllUsers' => [
                     'type' => $details->getDiscountForAllUsers()->getType(),
