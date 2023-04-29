@@ -83,10 +83,17 @@ abstract class Promotion extends BaseDocument
     protected $stayTimeSpan;
 
     /**
+     * @var ?ApplicableSpaceDetails
+     * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\ApplicableSpaceDetails::class)
+     */
+    protected $applicableSpaceDetails;
+
+    /**
      * @var ?Carbon
      * @ODM\Field(type="carbon")
      */
     protected $expiredAt;
+
     /**
      * @return string|null
      */
@@ -198,6 +205,23 @@ abstract class Promotion extends BaseDocument
         return $this;
 
     }
+
+    /**
+     * @return ApplicableSpaceDetails|null
+     */
+    public function getApplicableSpaceDetails(): ?ApplicableSpaceDetails
+    {
+        return $this->applicableSpaceDetails;
+    }
+
+    /**
+     * @param ApplicableSpaceDetails|null $applicableSpaceDetails
+     */
+    public function setApplicableSpaceDetails(?ApplicableSpaceDetails $applicableSpaceDetails): void
+    {
+        $this->applicableSpaceDetails = $applicableSpaceDetails;
+    }
+
 
     /**
      * @return int|null
