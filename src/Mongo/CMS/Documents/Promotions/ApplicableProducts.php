@@ -13,26 +13,28 @@ use SYSOTEL\APP\Common\Enums\CMS\PromotionDiscountType;
 class ApplicableProducts extends EmbeddedDocument
 {
     /**
-     * @var int
+     * @var ?int
      * @ODM\Field(type="int")
      */
     public $productId;
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getProductId(): int
+    public function getProductId(): ?int
     {
         return $this->productId;
     }
 
     /**
-     * @param int $productId
+     * @param int|null $productId
      */
-    public function setProductId(int $productId): void
+    public function setProductId(?int $productId): void
     {
         $this->productId = $productId;
     }
+
+
 
 
 }

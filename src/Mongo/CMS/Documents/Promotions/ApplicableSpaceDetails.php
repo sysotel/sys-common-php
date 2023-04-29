@@ -13,48 +13,51 @@ use SYSOTEL\APP\Common\Enums\CMS\PromotionDiscountType;
 class ApplicableSpaceDetails extends EmbeddedDocument
 {
     /**
-     * @var bool
+     * @var ?bool
      * @ODM\Field(type="bool")
      */
     public $applicableOnAllSpaces;
 
     /**
-     * @var ApplicableSpaces
+     * @var ?ApplicableSpaces
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\ApplicableSpaces::class)
      */
     public $applicableSpaces;
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isApplicableOnAllSpaces(): bool
+    public function getApplicableOnAllSpaces(): ?bool
     {
         return $this->applicableOnAllSpaces;
     }
 
     /**
-     * @param bool $applicableOnAllSpaces
+     * @param bool|null $applicableOnAllSpaces
      */
-    public function setApplicableOnAllSpaces(bool $applicableOnAllSpaces): void
+    public function setApplicableOnAllSpaces(?bool $applicableOnAllSpaces): void
     {
         $this->applicableOnAllSpaces = $applicableOnAllSpaces;
     }
 
     /**
-     * @return ApplicableSpaces
+     * @return ApplicableSpaces|null
      */
-    public function getApplicableSpaces(): ApplicableSpaces
+    public function getApplicableSpaces(): ?ApplicableSpaces
     {
         return $this->applicableSpaces;
     }
 
     /**
-     * @param ApplicableSpaces $applicableSpaces
+     * @param ApplicableSpaces|null $applicableSpaces
      */
-    public function setApplicableSpaces(ApplicableSpaces $applicableSpaces): void
+    public function setApplicableSpaces(?ApplicableSpaces $applicableSpaces): void
     {
         $this->applicableSpaces = $applicableSpaces;
     }
+
+
+
 
 
 }

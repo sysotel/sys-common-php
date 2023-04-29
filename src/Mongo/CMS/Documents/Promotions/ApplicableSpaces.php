@@ -13,69 +13,71 @@ use SYSOTEL\APP\Common\Enums\CMS\PromotionDiscountType;
 class ApplicableSpaces extends EmbeddedDocument
 {
     /**
-     * @var int
+     * @var ?int
      * @ODM\Field(type="int")
      */
     public $spaceId;
 
     /**
-     * @var bool
+     * @var ?bool
      * @ODM\Field(type="bool")
      */
     public $applicableOnAllProducts;
 
     /**
-     * @var ApplicableProducts
+     * @var ?ApplicableProducts
      * @ODM\EmbedOne(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\ApplicableProducts::class)
      */
     public $applicableProducts;
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getSpaceId(): int
+    public function getSpaceId(): ?int
     {
         return $this->spaceId;
     }
 
     /**
-     * @param int $spaceId
+     * @param int|null $spaceId
      */
-    public function setSpaceId(int $spaceId): void
+    public function setSpaceId(?int $spaceId): void
     {
         $this->spaceId = $spaceId;
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isApplicableOnAllProducts(): bool
+    public function getApplicableOnAllProducts(): ?bool
     {
         return $this->applicableOnAllProducts;
     }
 
     /**
-     * @param bool $applicableOnAllProducts
+     * @param bool|null $applicableOnAllProducts
      */
-    public function setApplicableOnAllProducts(bool $applicableOnAllProducts): void
+    public function setApplicableOnAllProducts(?bool $applicableOnAllProducts): void
     {
         $this->applicableOnAllProducts = $applicableOnAllProducts;
     }
 
     /**
-     * @return ApplicableProducts
+     * @return ApplicableProducts|null
      */
-    public function getApplicableProducts(): ApplicableProducts
+    public function getApplicableProducts(): ?ApplicableProducts
     {
         return $this->applicableProducts;
     }
 
     /**
-     * @param ApplicableProducts $applicableProducts
+     * @param ApplicableProducts|null $applicableProducts
      */
-    public function setApplicableProducts(ApplicableProducts $applicableProducts): void
+    public function setApplicableProducts(?ApplicableProducts $applicableProducts): void
     {
         $this->applicableProducts = $applicableProducts;
     }
+
+
 
 }
