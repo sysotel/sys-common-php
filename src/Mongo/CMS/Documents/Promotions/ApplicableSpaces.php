@@ -11,6 +11,7 @@ use SYSOTEL\APP\Common\Enums\CMS\PromotionDiscountType;
 
 /**
  * @ODM\EmbeddedDocument
+ * @ODM\HasLifecycleCallbacks
  */
 class ApplicableSpaces extends EmbeddedDocument
 {
@@ -71,17 +72,17 @@ class ApplicableSpaces extends EmbeddedDocument
     }
 
     /**
-     * @return Collection|ApplicableProducts[]|null
+     * @return ArrayCollection|Collection|ApplicableProducts[]|null
      */
-    public function getApplicableProducts(): Collection|array|null
+    public function getApplicableProducts(): ArrayCollection|Collection|array|null
     {
         return $this->applicableProducts;
     }
 
     /**
-     * @param Collection|ApplicableProducts[]|null $applicableProducts
+     * @param ArrayCollection|Collection|ApplicableProducts[]|null $applicableProducts
      */
-    public function setApplicableProducts(Collection|array|null $applicableProducts): void
+    public function setApplicableProducts(ArrayCollection|Collection|array|null $applicableProducts): void
     {
         $this->applicableProducts = $applicableProducts;
     }

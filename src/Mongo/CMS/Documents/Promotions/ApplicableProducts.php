@@ -9,6 +9,7 @@ use SYSOTEL\APP\Common\Enums\CMS\PromotionDiscountType;
 
 /**
  * @ODM\EmbeddedDocument
+ * @ODM\HasLifecycleCallbacks
  */
 class ApplicableProducts extends EmbeddedDocument
 {
