@@ -22,7 +22,7 @@ class ApplicableSpaceDetails extends EmbeddedDocument
     public $applicableOnAllSpaces;
 
     /**
-     * @var Collection & ?ApplicableSpaces
+     * @var Collection & ?ApplicableSpaces[]
      * @ODM\EmbedMany(targetDocument=SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\ApplicableSpaces::class)
      */
     public $applicableSpaces;
@@ -49,20 +49,21 @@ class ApplicableSpaceDetails extends EmbeddedDocument
     }
 
     /**
-     * @return ArrayCollection|Collection|ApplicableSpaces|null
+     * @return ArrayCollection|Collection|ApplicableSpaces[]|null
      */
-    public function getApplicableSpaces(): ArrayCollection|Collection|ApplicableSpaces|null
+    public function getApplicableSpaces(): ArrayCollection|array|Collection|null
     {
         return $this->applicableSpaces;
     }
 
     /**
-     * @param ArrayCollection|Collection|ApplicableSpaces|null $applicableSpaces
+     * @param ArrayCollection|Collection|ApplicableSpaces[]|null $applicableSpaces
      */
-    public function setApplicableSpaces(ArrayCollection|Collection|ApplicableSpaces|null $applicableSpaces): void
+    public function setApplicableSpaces(ArrayCollection|array|Collection|null $applicableSpaces): void
     {
         $this->applicableSpaces = $applicableSpaces;
     }
+
 
     /**
      * @param ApplicableSpaces $applicableSpaces
