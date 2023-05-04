@@ -102,27 +102,6 @@ class PromotionDataGenerator
                     $spaceName = $space->getDisplayName();
                 }
 
-                if ($addSpaceProductNames) {
-                    $productNames = [];
-
-                    foreach ($spaces->getApplicableProducts() as $product) {
-                        $productId = $product->getProductId();
-
-                        /**
-                         * @var PropertyProduct $product
-                         */
-                        $product = PropertyProduct::repository()->find($productId);
-
-                        if ($product !== null) {
-                            $productName = $product->getDisplayName();
-                            $productNames[] = $productName;
-
-                        }
-
-                    }
-
-                    $applicableProducts = $productNames;
-                }
 
                 $applicableSpaces[] = [
                     'spaceId' => $spaceId,
