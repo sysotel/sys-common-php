@@ -38,6 +38,7 @@ class PromotionDataGenerator
             'status' => $this->promotion->getStatus(),
             'type' => $this->promotion->getType(),
             'dateRestrictionType' => $this->promotion->getDateRestrictionType(),
+            'applicableToAllSpaces' => $this->promotion->getApplicableSpaceDetails()->getApplicableOnAllSpaces(),
         ]);
 
     }
