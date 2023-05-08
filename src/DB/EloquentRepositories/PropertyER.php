@@ -17,6 +17,11 @@ class PropertyER extends EloquentRepository
         return Property::query()->whereIn('_id', $ids)->get();
     }
 
+    public function getById(int $id): Collection
+    {
+        return Property::query()->where('_id', $id)->get();
+    }
+
     public function getBySlug(string $slug): ?Property
     {
         return Property::query()->whereSlug($slug)->first();
