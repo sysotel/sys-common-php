@@ -285,6 +285,13 @@ abstract class Promotion extends BaseDocument
         $this->code = $code;
     }
 
+    /**
+     * @return bool|null
+     */
+    public function getIsExpired(): ?bool
+    {
+        return $this->isExpired;
+    }
 
     /**
      * @param bool|null $isExpired
@@ -293,6 +300,8 @@ abstract class Promotion extends BaseDocument
     {
         $this->isExpired = $isExpired;
     }
+
+
 
     /**
      * @return PromotionCategory|null
@@ -309,7 +318,6 @@ abstract class Promotion extends BaseDocument
     {
         $this->category = $category;
     }
-
 
 
     public static function repository(): PromotionRepository
