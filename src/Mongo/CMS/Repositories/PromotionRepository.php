@@ -164,6 +164,24 @@ class PromotionRepository extends DocumentRepository
      * @param int $promoId
      * @return Promotion|null
      */
+    public function getBasicPromotionByPromoIdAndCategoryPromoCode(int $promoId): ?Promotion
+    {
+        return $this->findOneBy([
+            'promoId' => $promoId,
+            'type' => PromotionType::BASIC->value,
+            'category' => PromotionCategory::PROMO_CODE->value
+        ], [
+            'createdAt' => -1
+        ]);
+    }
+
+
+
+
+    /**
+     * @param int $promoId
+     * @return Promotion|null
+     */
     public function getActiveEarlyBirdPromotionByPromoId(int $promoId): ?Promotion{
 
         $promotion = $this->getEarlyBirdPromotionByPromoId($promoId);
