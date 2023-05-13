@@ -285,12 +285,13 @@ abstract class Promotion extends BaseDocument
         $this->code = $code;
     }
 
+
     /**
-     * @return bool|null
+     * @param bool|null $isExpired
      */
-    public function isExpired(): ?bool
+    public function isExpired(?bool $isExpired): void
     {
-        return $this->isExpired;
+        $this->isExpired = $isExpired;
     }
 
     /**
