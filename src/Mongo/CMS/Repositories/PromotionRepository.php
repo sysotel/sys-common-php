@@ -196,9 +196,12 @@ class PromotionRepository extends DocumentRepository
 
         return $this->findBy([
             'propertyId' => $propertyId,
-            'status' => ['$ne' => PromotionStatus::EXPIRED]
+            'status' => ['$ne' => PromotionStatus::EXPIRED],
+            'category' => PromotionCategory::PROMOTION->value
         ]);
 
     }
+
+
 
 }
