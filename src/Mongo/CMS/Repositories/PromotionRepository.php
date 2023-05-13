@@ -18,6 +18,7 @@ class PromotionRepository extends DocumentRepository
     public function getPromotionByPromoId(int $promoId): Promotion{
         return $this->findOneBy([
             'promoId' => $promoId,
+            'category' => PromotionCategory::PROMOTION->value
         ], [
             'createdAt' => -1
         ]);
