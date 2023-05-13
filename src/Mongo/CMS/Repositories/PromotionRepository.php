@@ -3,6 +3,7 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\Repositories;
 
 use Delta4op\Mongodb\Repositories\DocumentRepository;
+use SYSOTEL\APP\Common\Enums\CMS\PromotionCategory;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionStatus;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\Promotion;
@@ -55,6 +56,21 @@ class PromotionRepository extends DocumentRepository
 
     /**
      * @param int $promoId
+     * @return Promotion
+     */
+    public function getBasicPromotionByPromoIdAndCategory(int $promoId): Promotion
+    {
+        return $this->findOneBy([
+            'promoId' => $promoId,
+            'type' => PromotionType::BASIC->value,
+            'category' => PromotionCategory::PROMOTION->value
+        ], [
+            'createdAt' => -1
+        ]);
+    }
+
+    /**
+     * @param int $promoId
      * @return Promotion|null
      */
     public function getActiveBasicPromotionByPromoId(int $promoId): ?Promotion{
@@ -70,7 +86,7 @@ class PromotionRepository extends DocumentRepository
 
     /**
      * @param int $promoId
-     * @return Promotion
+     * @return Promotion|null
      */
     public function getLastMinutePromotionByPromoId(int $promoId): ?Promotion
     {
@@ -81,6 +97,22 @@ class PromotionRepository extends DocumentRepository
             'createdAt' => -1
         ]);
     }
+
+    /**
+     * @param int $promoId
+     * @return Promotion|null
+     */
+    public function getLastMinutePromotionByPromoIdAndCategory(int $promoId): ?Promotion
+    {
+        return $this->findOneBy([
+            'promoId' => $promoId,
+            'type' => PromotionType::LAST_MINUTE->value,
+            'category' => PromotionCategory::PROMOTION->value
+        ], [
+            'createdAt' => -1
+        ]);
+    }
+
 
     /**
      * @param int $promoId
@@ -100,13 +132,28 @@ class PromotionRepository extends DocumentRepository
 
     /**
      * @param int $promoId
-     * @return Promotion
+     * @return Promotion|null
      */
     public function getEarlyBirdPromotionByPromoId(int $promoId): ?Promotion
     {
         return $this->findOneBy([
             'promoId' => $promoId,
             'type' => PromotionType::EARLY_BIRD->value
+        ], [
+            'createdAt' => -1
+        ]);
+    }
+
+    /**
+     * @param int $promoId
+     * @return Promotion|null
+     */
+    public function getEarlyBirdPromotionByPromoIdAndCategory(int $promoId): ?Promotion
+    {
+        return $this->findOneBy([
+            'promoId' => $promoId,
+            'type' => PromotionType::EARLY_BIRD->value,
+            'category' => PromotionCategory::PROMOTION->value
         ], [
             'createdAt' => -1
         ]);
