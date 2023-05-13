@@ -9,7 +9,7 @@ use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\Promotion;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyProduct\PropertyProduct;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertySpace\PropertySpace;
 
-class PromotionDataGenerator
+class PromoCodeDataGenerator
 {
     use Helpers;
 
@@ -27,9 +27,9 @@ class PromotionDataGenerator
     }
 
     /**
-     * @return PromotionDataGenerator
+     * @return PromoCodeDataGenerator
      */
-    public function addBasicDetails(): PromotionDataGenerator
+    public function addBasicDetails(): PromoCodeDataGenerator
     {
         return $this->appendData([
             'promoId' => $this->promotion->getPromoId(),
@@ -37,6 +37,7 @@ class PromotionDataGenerator
             'displayName' => $this->promotion->getDisplayName(),
             'status' => $this->promotion->getCategory(),
             'isExpired' => $this->promotion->getIsExpired(),
+            'code' => $this->promotion->getCode(),
             'type' => $this->promotion->getType(),
             'dateRestrictionType' => $this->promotion->getDateRestrictionType(),
             'applicableToAllSpaces' => $this->promotion?->getApplicableSpaceDetails()?->getApplicableOnAllSpaces(),
@@ -45,9 +46,9 @@ class PromotionDataGenerator
     }
 
     /**
-     * @return PromotionDataGenerator
+     * @return PromoCodeDataGenerator
      */
-    public function addBookingTimeSpan(): PromotionDataGenerator
+    public function addBookingTimeSpan(): PromoCodeDataGenerator
     {
         if ($bookingTimeSpan = $this->promotion->getBookingTimeSpan()) {
             return $this->appendData([
@@ -62,9 +63,9 @@ class PromotionDataGenerator
     }
 
     /**
-     * @return PromotionDataGenerator
+     * @return PromoCodeDataGenerator
      */
-    public function addStayTimeSpan(): PromotionDataGenerator
+    public function addStayTimeSpan(): PromoCodeDataGenerator
     {
         if ($stayTimeSpan = $this->promotion->getStayTimeSpan()) {
             return $this->appendData([
@@ -78,7 +79,7 @@ class PromotionDataGenerator
         return $this;
     }
 
-    public function addApplicableSpaceDetails(bool $addSpaceProductNames = true): PromotionDataGenerator
+    public function addApplicableSpaceDetails(bool $addSpaceProductNames = true): PromoCodeDataGenerator
     {
         $applicableSpaces = [];
 
@@ -126,11 +127,10 @@ class PromotionDataGenerator
 
     }
 
-
     /**
-     * @return PromotionDataGenerator
+     * @return PromoCodeDataGenerator
      */
-    public function addDetails(): PromotionDataGenerator
+    public function addDetails(): PromoCodeDataGenerator
     {
         $data = null;
 
@@ -144,30 +144,6 @@ class PromotionDataGenerator
                     'type' => $details->getDiscountForLoggedInUsers()->getType(),
                     'value' => $details->getDiscountForLoggedInUsers()->getValue()
                 ],
-            ];
-        } else if ($this->promotion instanceof LastMinutePromotion && $details = $this->promotion->getDetails()) {
-            $data = [
-                'discountForAllUsers' => [
-                    'type' => $details->getDiscountForAllUsers()->getType(),
-                    'value' => $details->getDiscountForAllUsers()->getValue()
-                ],
-                'discountForLoggedInUsers' => [
-                    'type' => $details->getDiscountForLoggedInUsers()->getType(),
-                    'value' => $details->getDiscountForLoggedInUsers()->getValue()
-                ],
-                'windowThresholdInDays' => $details->getWindowThresholdInDays()
-            ];
-        } else if ($this->promotion instanceof EarlyBirdPromotion && $details = $this->promotion->getDetails()) {
-            $data = [
-                'discountForAllUsers' => [
-                    'type' => $details->getDiscountForAllUsers()->getType(),
-                    'value' => $details->getDiscountForAllUsers()->getValue()
-                ],
-                'discountForLoggedInUsers' => [
-                    'type' => $details->getDiscountForLoggedInUsers()->getType(),
-                    'value' => $details->getDiscountForLoggedInUsers()->getValue()
-                ],
-                'windowThresholdInDays' => $details->getWindowThresholdInDays()
             ];
         }
 
