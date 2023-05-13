@@ -184,7 +184,8 @@ class PromotionRepository extends DocumentRepository
 
         return $this->findBy([
             'propertyId' => $propertyId,
-            'status' => PromotionStatus::ACTIVE
+            'status' => PromotionStatus::ACTIVE,
+            'category' => PromotionCategory::PROMOTION->value
         ]);
 
     }
