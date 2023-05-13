@@ -8,6 +8,7 @@ use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\DateRestrictionType;
+use SYSOTEL\APP\Common\Enums\CMS\PromotionCategory;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionStatus;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
@@ -45,6 +46,12 @@ abstract class Promotion extends BaseDocument
 
     /**
      * @var ?string
+     * @ODM\Field(type="string")
+     */
+    protected $code;
+
+    /**
+     * @var ?string
      * @ODM\Field (type="string")
      */
     protected $internalName;
@@ -61,6 +68,19 @@ abstract class Promotion extends BaseDocument
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PromotionStatus::class)
      */
     protected $status;
+
+
+    /**
+     * @var ?bool
+     * @ODM\Field(type="bool")
+     */
+    protected $isExpired;
+
+    /**
+     * @var ?PromotionCategory
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\PromotionCategory::class)
+     */
+    protected $category;
 
 
     /**
@@ -248,6 +268,48 @@ abstract class Promotion extends BaseDocument
         $this->expiredAt = now();
         return $this;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param string|null $code
+     */
+    public function setCode(?string $code): void
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function isExpired(): ?bool
+    {
+        return $this->isExpired;
+    }
+
+    /**
+     * @return PromotionCategory|null
+     */
+    public function getCategory(): ?PromotionCategory
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param PromotionCategory|null $category
+     */
+    public function setCategory(?PromotionCategory $category): void
+    {
+        $this->category = $category;
+    }
+
+
 
     public static function repository(): PromotionRepository
     {
