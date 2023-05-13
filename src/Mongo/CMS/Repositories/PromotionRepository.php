@@ -42,9 +42,9 @@ class PromotionRepository extends DocumentRepository
 
     /**
      * @param int $promoId
-     * @return Promotion
+     * @return Promotion|null
      */
-    public function getBasicPromotionByPromoId(int $promoId): Promotion
+    public function getBasicPromotionByPromoId(int $promoId): ?Promotion
     {
         return $this->findOneBy([
             'promoId' => $promoId,
@@ -56,9 +56,9 @@ class PromotionRepository extends DocumentRepository
 
     /**
      * @param int $promoId
-     * @return Promotion
+     * @return Promotion|null
      */
-    public function getBasicPromotionByPromoIdAndCategory(int $promoId): Promotion
+    public function getBasicPromotionByPromoIdAndCategory(int $promoId): ?Promotion
     {
         return $this->findOneBy([
             'promoId' => $promoId,
