@@ -222,6 +222,20 @@ class PromotionRepository extends DocumentRepository
 
     }
 
+    /**
+     * @param int $propertyId
+     * @return array
+     */
+    public function getAllActiveAndInactivePromoCodeForProperty(int $propertyId): array{
+
+        return $this->findBy([
+            'propertyId' => $propertyId,
+            'status' => ['$ne' => PromotionStatus::EXPIRED],
+            'category' => PromotionCategory::PROMO_CODE->value
+        ]);
+
+    }
+
 
 
 }
