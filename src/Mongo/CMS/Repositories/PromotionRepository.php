@@ -223,7 +223,6 @@ class PromotionRepository extends DocumentRepository
         return null;
     }
 
-
     /**
      * @param int $propertyId
      * @return array
@@ -233,7 +232,7 @@ class PromotionRepository extends DocumentRepository
         return $this->findBy([
             'propertyId' => $propertyId,
             'status' => PromotionStatus::ACTIVE,
-            //'category' => PromotionCategory::PROMOTION->value
+            'category' => PromotionCategory::PROMOTION->value
         ]);
 
     }
@@ -265,6 +264,21 @@ class PromotionRepository extends DocumentRepository
         ]);
 
     }
+
+    /**
+     * @param int $propertyId
+     * @return array
+     */
+    public function getAllActivePromoCodeForProperty(int $propertyId): array{
+
+        return $this->findBy([
+            'propertyId' => $propertyId,
+            'status' => ['$ne' => PromotionStatus::EXPIRED],
+            'category' => PromotionCategory::PROMO_CODE->value
+        ]);
+
+    }
+
 
 
 
