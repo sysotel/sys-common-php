@@ -3,8 +3,6 @@
 namespace SYSOTEL\APP\Common\Mongo\CMS\DataGenerators;
 
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\BasicPromotion;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\EarlyBirdPromotion\EarlyBirdPromotion;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\LastMinutePromotion\LastMinutePromotion;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\Promotion;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertyProduct\PropertyProduct;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\PropertySpace\PropertySpace;
@@ -35,7 +33,8 @@ class PromoCodeDataGenerator
             'promoId' => $this->promotion->getPromoId(),
             'internalName' => $this->promotion->getInternalName(),
             'displayName' => $this->promotion->getDisplayName(),
-            'status' => $this->promotion->getCategory(),
+            'status' => $this->promotion->getStatus(),
+            'category' => $this->promotion->getCategory(),
             'isExpired' => $this->promotion->getIsExpired(),
             'code' => $this->promotion->getCode(),
             'type' => $this->promotion->getType(),
