@@ -27,6 +27,36 @@ class PromotionRepository extends DocumentRepository
 
     /**
      * @param int $promoId
+     * @return Promotion
+     */
+    public function getPromoCodeByPromoId(int $promoId): Promotion{
+        return $this->findOneBy([
+            'promoId' => $promoId,
+            'category' => PromotionCategory::PROMO_CODE->value
+        ], [
+            'createdAt' => -1
+        ]);
+    }
+
+    /**
+     * @param int $promoId
+     * @return Promotion|null
+     */
+    public function getActivePromoCodeByPromoId(int $promoId): ?Promotion{
+
+        $promoCode = $this->getPromoCodeByPromoId($promoId);
+
+        if($promoCode && $promoCode->getStatus() == PromotionStatus::ACTIVE->value){
+            return $promoCode;
+        }
+
+        return null;
+    }
+
+
+
+    /**
+     * @param int $promoId
      * @return Promotion|null
      */
     public function getActivePromotionByPromoId(int $promoId): ?Promotion{
