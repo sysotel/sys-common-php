@@ -348,7 +348,7 @@ abstract class Promotion extends BaseDocument
 
         foreach ($this->getApplicableSpaceDetails()?->getApplicableSpaces() as $applicableSpace) {
             if ($applicableSpace->getSpaceId() === $spaceId) {
-                if ($applicableSpace->getApplicableToAllProducts() === true) {
+                if ($applicableSpace->getApplicableOnAllProducts() === true) {
                     return true;
                 }
                 foreach ($applicableSpace->getApplicableProducts() as $applicableProduct) {
