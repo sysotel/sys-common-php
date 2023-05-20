@@ -26,9 +26,9 @@ class PromotionRepository extends DocumentRepository
 
     /**
      * @param int $promoId
-     * @return Promotion
+     * @return ?Promotion
      */
-    public function getAllPromotionByPromoId(int $promoId): Promotion{
+    public function getAllPromotionByPromoId(int $promoId): ?Promotion{
         return $this->findOneBy([
             'promoId' => $promoId,
             'status' => PromotionStatus::ACTIVE,
