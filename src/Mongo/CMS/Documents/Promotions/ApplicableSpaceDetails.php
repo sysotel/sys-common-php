@@ -30,7 +30,7 @@ class ApplicableSpaceDetails extends EmbeddedDocument
     /**
      * @return bool|null
      */
-    public function getApplicableOnAllSpaces(): ?bool
+    public function isApplicableOnAllSpaces(): ?bool
     {
         return $this->applicableOnAllSpaces;
     }

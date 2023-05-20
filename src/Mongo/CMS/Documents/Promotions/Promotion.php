@@ -326,7 +326,7 @@ abstract class Promotion extends BaseDocument
 
     public function isSpaceApplicable(int $spaceId): bool
     {
-        if ($this->getApplicableSpaceDetails()?->getApplicableOnAllSpaces() === true) {
+        if ($this->getApplicableSpaceDetails()?->isApplicableOnAllSpaces() === true) {
             return true;
         }
 
@@ -342,7 +342,7 @@ abstract class Promotion extends BaseDocument
 
     public function isProductApplicable(int $spaceId, int $productId): bool
     {
-        if ($this->getApplicableSpaceDetails()?->getApplicableOnAllSpaces() === true) {
+        if ($this->getApplicableSpaceDetails()?->isApplicableOnAllSpaces() === true) {
             return true;
         }
 
@@ -365,7 +365,7 @@ abstract class Promotion extends BaseDocument
 
     public function isAllProductApplicableForSpace(int $spaceId): bool
     {
-        if ($this->getApplicableSpaceDetails()?->getApplicableOnAllSpaces() === true) {
+        if ($this->getApplicableSpaceDetails()?->isApplicableOnAllSpaces() === true) {
             return true;
         }
 

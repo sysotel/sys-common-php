@@ -39,7 +39,7 @@ class PromoCodeDataGenerator
             'code' => $this->promotion->getCode(),
             'type' => $this->promotion->getType(),
             'dateRestrictionType' => $this->promotion->getDateRestrictionType(),
-            'applicableToAllSpaces' => $this->promotion?->getApplicableSpaceDetails()?->getApplicableOnAllSpaces(),
+            'applicableToAllSpaces' => $this->promotion?->getApplicableSpaceDetails()?->isApplicableOnAllSpaces(),
         ]);
 
     }
