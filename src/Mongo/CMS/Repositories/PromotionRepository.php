@@ -24,6 +24,18 @@ class PromotionRepository extends DocumentRepository
         ]);
     }
 
+    /**
+     * @param int $promoId
+     * @return Promotion
+     */
+    public function getAllPromotionByPromoId(int $promoId): Promotion{
+        return $this->findOneBy([
+            'promoId' => $promoId
+        ], [
+            'createdAt' => -1
+        ]);
+    }
+
 
     /**
      * @param int $promoId
