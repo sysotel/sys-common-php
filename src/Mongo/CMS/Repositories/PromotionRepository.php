@@ -30,7 +30,8 @@ class PromotionRepository extends DocumentRepository
      */
     public function getAllPromotionByPromoId(int $promoId): Promotion{
         return $this->findOneBy([
-            'promoId' => $promoId
+            'promoId' => $promoId,
+            'status' => PromotionStatus::ACTIVE,
         ], [
             'createdAt' => -1
         ]);
