@@ -302,7 +302,6 @@ abstract class Promotion extends BaseDocument
     }
 
 
-
     /**
      * @return PromotionCategory|null
      */
@@ -323,6 +322,63 @@ abstract class Promotion extends BaseDocument
     public static function repository(): PromotionRepository
     {
         return parent::repository();
+    }
+
+    public function isSpaceApplicable(int $spaceId): bool
+    {
+        if ($this->getApplicableSpaceDetails()?->getApplicableOnAllSpaces() === true) {
+            return true;
+        }
+
+        foreach ($this->getApplicableSpaceDetails()?->getApplicableSpaces() as $applicableSpace) {
+            if ($applicableSpace->getSpaceId() === $spaceId) {
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+    public function isProductApplicable(int $spaceId, int $productId): bool
+    {
+        if ($this->getApplicableSpaceDetails()?->getApplicableOnAllSpaces() === true) {
+            return true;
+        }
+
+        foreach ($this->getApplicableSpaceDetails()?->getApplicableSpaces() as $applicableSpace) {
+            if ($applicableSpace->getSpaceId() === $spaceId) {
+                if ($applicableSpace->getApplicableToAllProducts() === true) {
+                    return true;
+                }
+                foreach ($applicableSpace->getApplicableProducts() as $applicableProduct) {
+                    if ($applicableProduct->getProductId() === $productId) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
+
+    public function isAllProductApplicableForSpace(int $spaceId): bool
+    {
+        if ($this->getApplicableSpaceDetails()?->getApplicableOnAllSpaces() === true) {
+            return true;
+        }
+
+        foreach ($this->getApplicableSpaceDetails()?->getApplicableSpaces() as $applicableSpace){
+            if($applicableSpace->getSpaceId() === $spaceId){
+                if($applicableSpace->getApplicableOnAllProducts() === true){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+
     }
 
 }
