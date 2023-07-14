@@ -28,7 +28,7 @@ class PropertyDataGenerator extends ArrayDataGenerator
             'slug' => $this->property->slug,
             'accountSlug' => $this->property->accountSlug,
             'displayName' => $this->property->displayName,
-            'starRating' => $this->property->starRating->value,
+            'starRating' => $this->property->starRating?->value,
             'type' => $this->property->type,
             'baseCurrency' => $this->property->baseCurrency?->value,
             'timezone' => $this->property->timezone?->value,
