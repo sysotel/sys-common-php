@@ -8,5 +8,4 @@ enum PromotionStatus: string
     case INACTIVE = 'INACTIVE';
     case EXPIRED = 'EXPIRED';
 
-
 }

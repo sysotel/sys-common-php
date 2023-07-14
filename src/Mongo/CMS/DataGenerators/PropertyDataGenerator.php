@@ -23,7 +23,7 @@ class PropertyDataGenerator
             'slug' => $this->property->getSlug(),
             'accountSlug' => $this->property->getAccountSlug(),
             'displayName' => $this->property->getDisplayName(),
-            'starRating' => $this->property->getStarRating()->value,
+            'starRating' => $this->property->getStarRating()?->value,
             'type' => $this->property->getType(),
             'baseCurrency' => $this->property->getBaseCurrency()?->value,
             'timezone' => $this->property->getTimezone()?->value,
