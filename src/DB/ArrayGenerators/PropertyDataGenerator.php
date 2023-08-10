@@ -4,7 +4,6 @@ namespace SYSOTEL\APP\Common\DB\ArrayGenerators;
 
 
 use SYSOTEL\APP\Common\DB\Models\Property\Property;
-use SYSOTEL\APP\Common\DB\Models\PropertyImage\PropertyImage;
 
 class PropertyDataGenerator extends ArrayDataGenerator
 {
