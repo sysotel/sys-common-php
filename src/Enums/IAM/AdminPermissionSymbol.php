@@ -4,7 +4,7 @@ namespace SYSOTEL\APP\Common\Enums\IAM;
 
 use SYSOTEL\APP\Common\Enums\BackedEnumHelpers;
 
-enum AdminPermissions: string
+enum AdminPermissionSymbol: string
 {
     use BackedEnumHelpers;
 
@@ -31,16 +31,16 @@ enum AdminPermissions: string
 
 
     // ADMIN PERMISSIONS
-    case IAM_AdminPermissions_FullAccess = 'IAM:AdminPermissions:*';
-    case IAM_AdminPermissions_SortPermissions = 'IAM:AdminPermissions:SortPermissions';
-    case IAM_AdminPermissions_ListPermissions = 'IAM:AdminPermissions:ListPermissions';
-    case IAM_AdminPermissions_DescribePermission = 'IAM:AdminPermissions:DescribePermission';
-    case IAM_AdminPermissions_EditPermissions = 'IAM:AdminPermissions:EditPermissions';
-    case IAM_AdminPermissions_ListRoles = 'IAM:AdminPermissions:ListRoles';
-    case IAM_AdminPermissions_DescribeRole = 'IAM:AdminPermissions:DescribeRole';
-    case IAM_AdminPermissions_CreateRole = 'IAM:AdminPermissions:CreateRole';
-    case IAM_AdminPermissions_EditRole = 'IAM:AdminPermissions:EditRole';
-    case IAM_AdminPermissions_EditRolePermissions = 'IAM:AdminPermissions:EditRolePermissions';
+    case IAM_AdminPermissions_FullAccess = 'IAM:AdminPermissionSymbol:*';
+    case IAM_AdminPermissions_SortPermissions = 'IAM:AdminPermissionSymbol:SortPermissions';
+    case IAM_AdminPermissions_ListPermissions = 'IAM:AdminPermissionSymbol:ListPermissions';
+    case IAM_AdminPermissions_DescribePermission = 'IAM:AdminPermissionSymbol:DescribePermission';
+    case IAM_AdminPermissions_EditPermissions = 'IAM:AdminPermissionSymbol:EditPermissions';
+    case IAM_AdminPermissions_ListRoles = 'IAM:AdminPermissionSymbol:ListRoles';
+    case IAM_AdminPermissions_DescribeRole = 'IAM:AdminPermissionSymbol:DescribeRole';
+    case IAM_AdminPermissions_CreateRole = 'IAM:AdminPermissionSymbol:CreateRole';
+    case IAM_AdminPermissions_EditRole = 'IAM:AdminPermissionSymbol:EditRole';
+    case IAM_AdminPermissions_EditRolePermissions = 'IAM:AdminPermissionSymbol:EditRolePermissions';
 
 
     // ADMIN MANAGEMENT
