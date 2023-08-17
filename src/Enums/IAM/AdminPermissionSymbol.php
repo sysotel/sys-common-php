@@ -174,6 +174,10 @@ enum AdminPermissionSymbol: string
 
     case IBE_Guests_UpdateStatus = 'IBE:Guests:UpdateStatus';
 
+    case IBE_Guests_ViewReports = 'IBE:Guests:ViewReports';
+
+    case IBE_Guests_DownloadReports = 'IBE:Guests:DownloadReports';
+
 
 // BOOKING ENGINE GROUPS
 
