@@ -18,13 +18,9 @@ enum AdminPermissionSymbol: string
 
 
     /**
-
      * ------------------------------------------------
-
      * ------------------ ACCOUNT --------------------
-
      * ------------------------------------------------
-
      */
 
 
@@ -37,19 +33,13 @@ enum AdminPermissionSymbol: string
     case ACCOUNT_ChangeProfilePassword = 'ACCOUNT:ChangeProfilePassword';
 
 
-
     /**
-
      * ------------------------------------------------
-
      * -------------------- IAM ----------------------
-
      * ------------------------------------------------
-
      */
 
     case IAM_fullAccess = 'IAM.*';
-
 
 
 // ADMIN PERMISSIONS
@@ -73,7 +63,6 @@ enum AdminPermissionSymbol: string
     case IAM_AdminPermissions_EditRole = 'IAM:AdminPermissions:EditRole';
 
     case IAM_AdminPermissions_EditRolePermissions = 'IAM:AdminPermissions:EditRolePermissions';
-
 
 
 // ADMIN MANAGEMENT
@@ -104,13 +93,9 @@ enum AdminPermissionSymbol: string
 
 
     /**
-
      * ------------------------------------------------
-
      * -------------------- CMS ----------------------
-
      * ------------------------------------------------
-
      */
 
     case CMS_FullAccess = 'CMS.*';
@@ -150,15 +135,10 @@ enum AdminPermissionSymbol: string
     case CMS_PropertyManagement_RevokeExtranetUser = 'CMS:PropertyManagement:RevokeExtranetUser';
 
 
-
     /**
-
      * -----------------------------------------------
-
      * -------------------- IBE ----------------------
-
      * -----------------------------------------------
-
      */
 
     case IBE_FullAccess = 'IBE:*';
@@ -183,6 +163,16 @@ enum AdminPermissionSymbol: string
 
     case IBE_BookingDashboard_ViewCharts = 'IBE:Bookings:ViewCharts';
 
+//Guest
+    case IBE_Guests_FullAccess = 'IBE:Guests:*';
+
+    case IBE_Guests_ListGuests = 'IBE:Guests:ListGuests';
+
+    case IBE_Guests_DescribeGuest = 'IBE:Guests:DescribeGuest';
+
+    case IBE_Guests_ViewContactDetails = 'IBE:Guests:ViewContactDetails';
+
+    case IBE_Guests_UpdateStatus = 'IBE:Guests:UpdateStatus';
 
 
 // BOOKING ENGINE GROUPS
@@ -202,7 +192,6 @@ enum AdminPermissionSymbol: string
     case IBE_BeGroups_RemoveProperty = 'IBE:BeGroups:RemoveProperty';
 
 
-
 // GOOGLE HOTELS
 
     case IBE_GoogleHotels_FullAccess = 'IBE:GoogleHotels:*';
@@ -210,7 +199,6 @@ enum AdminPermissionSymbol: string
     case IBE_GoogleHotels_ListProperties = 'IBE:GoogleHotels:ListProperties';
 
     case IBE_GoogleHotels_DownloadListing = 'IBE:GoogleHotels:DownloadListing';
-
 
 
 // CONNECTIVITY
@@ -274,15 +262,10 @@ enum AdminPermissionSymbol: string
     case IBE_WebsiteSettings_UpdateSettings = 'IBE:WebsiteSettings:UpdateSettings';
 
 
-
     /**
-
      * -----------------------------------------------
-
      * -------------------- IYA ----------------------
-
      * -----------------------------------------------
-
      */
 
     case IYA_FullAccess = 'IYA:*';
@@ -367,7 +350,6 @@ enum AdminPermissionSymbol: string
     case IYA_BookingDataManagement_BookingSummaryInspection_DescribeData = 'IYA:BookingDataManagement:BookingSummaryInspection:DescribeData';
 
 
-
 // BOOKING DATA UPLOAD new
 
     case IYA_BookingDataManagement_FileUploads_FullAccess = 'IYA:BookingDataManagement:FileUploads:*';
@@ -443,7 +425,6 @@ enum AdminPermissionSymbol: string
     case IYA_RateShoppingManagement_RateShoppingActivity_DescribeActivity = 'IYA:RateShoppingManagement:RateShoppingActivity:DescribeActivity';
 
 
-
 // RATE SHOPPING INSPECTION
 
     case IYA_RateShoppingManagement_RateShoppingInspection_FullAccess = 'IYA:RateShoppingManagement:RateShoppingInspection:*';
@@ -451,7 +432,6 @@ enum AdminPermissionSymbol: string
     case IYA_RateShoppingManagement_RateShoppingInspection_ListData = 'IYA:RateShoppingManagement:RateShoppingInspection:ListData';
 
     case IYA_RateShoppingManagement_RateShoppingInspection_DescribeData = 'IYA:RateShoppingManagement:RateShoppingInspection:DescribeData';
-
 
 
 // REVIEW SETUPS
@@ -512,7 +492,6 @@ enum AdminPermissionSymbol: string
     case IYA_ReviewDataManagement_ReviewActivity_DescribeActivity = 'IYA:ReviewDataManagement:ReviewActivity:DescribeActivity';
 
 
-
 // REVIEW SUMMARY ACTIVITY
 
     case IYA_ReviewDataManagement_ReviewSummaryActivity_FullAccess = 'IYA:ReviewDataManagement:ReviewSummaryActivity:*';
@@ -520,7 +499,6 @@ enum AdminPermissionSymbol: string
     case IYA_ReviewDataManagement_ReviewSummaryActivity_ListActivity = 'IYA:ReviewDataManagement:ReviewSummaryActivity:ListActivity';
 
     case IYA_ReviewDataManagement_ReviewSummaryActivity_DescribeActivity = 'IYA:ReviewDataManagement:ReviewSummaryActivity:DescribeActivity';
-
 
 
 // COMPSETS
@@ -545,7 +523,6 @@ enum AdminPermissionSymbol: string
     case IYA_CompsetManagement_Compsets_DisableSetup = 'IYA:CompsetManagement:Compsets:DisableSetup';
 
     case IYA_CompsetManagement_Compsets_DeleteSetup = 'IYA:CompsetManagement:Compsets:DeleteSetup';
-
 
 
 // PROPERTY DEMAND SETUP
@@ -579,7 +556,6 @@ enum AdminPermissionSymbol: string
     case IYA_DemandManagement_PropertyDemandActivity_ListActivity = 'IYA:DemandManagement:PropertyDemandActivity:ListActivity';
 
     case IYA_DemandManagement_PropertyDemandActivity_DescribeActivity = 'IYA:DemandManagement:PropertyDemandActivity:DescribeActivity';
-
 
 
 // PROPERTY DATA UPLOAD new
@@ -618,7 +594,6 @@ enum AdminPermissionSymbol: string
     case IYA_PropertyVariablesSetup_DeleteSetup = 'IYA:PropertyVariablesSetup:DeleteSetup';
 
 
-
 // PROPERTY DEMAND SETUP
 
     case IYA_Automation_FullAccess = 'IYA:Automation:*';
@@ -634,7 +609,6 @@ enum AdminPermissionSymbol: string
     case IYA_Automation_ListTaskAttempts = 'IYA:Automation:ListTaskAttempts';
 
     case IYA_Automation_DescribeTaskAttempt = 'IYA:Automation:DescribeTaskAttempt';
-
 
 
 // INTELLIGENCE
@@ -667,7 +641,6 @@ enum AdminPermissionSymbol: string
     case IYA_ApiLogs_DescribeLog = 'IYA:ApiLogs:DescribeLog';
 
 
-
 // VENDOR
 
     case IYA_VendorManagement_FullAccess = 'IYA:VendorManagement:*';
@@ -694,7 +667,6 @@ enum AdminPermissionSymbol: string
     case IYA_VendorManagement_AiRateMetrics_GetQueueStatus = 'IYA:VendorManagement:AiRateMetrics:GetQueueStatus';
 
     case IYA_VendorManagement_AiRateMetrics_ViewReferenceContent = 'IYA:VendorManagement:AiRateMetrics:ViewReferenceContent';
-
 
 
     case IYA_VendorManagement_AiReviews_FullAccess = 'IYA:VendorManagement:AiReviews:*';
