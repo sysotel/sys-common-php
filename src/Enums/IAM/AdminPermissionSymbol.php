@@ -16,6 +16,8 @@ enum AdminPermissionSymbol: string
 
     case FullAccess = '*';
 
+    case FullReadAccess = 'FullReadAccess';
+
 
     /**
      * ------------------------------------------------
@@ -31,6 +33,8 @@ enum AdminPermissionSymbol: string
     case ACCOUNT_EditProfile = 'ACCOUNT:EditProfile';
 
     case ACCOUNT_ChangeProfilePassword = 'ACCOUNT:ChangeProfilePassword';
+
+
 
 
     /**
