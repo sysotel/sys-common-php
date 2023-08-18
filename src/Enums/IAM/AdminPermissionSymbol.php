@@ -98,19 +98,36 @@ enum AdminPermissionSymbol: string
 
     case IAM_AdminManagement_ChangePassword = 'IAM:AdminManagement:ChangePassword';
 
+    case IAM_PropertyManagement_FullAccess = 'IAM:PropertyManagement:*';
+
+    case IAM_PropertyManagement_ListModules = 'IAM:PropertyManagement:ListModules';
+
+    case IAM_PropertyManagement_DescribeModule = 'IAM:PropertyManagement:DescribeModule';
+
+    case IAM_PropertyManagement_AssignModule = 'IAM:PropertyManagement:AssignModule';
+
+    case IAM_PropertyManagement_RevokeModule = 'IAM:PropertyManagement:RevokeModule';
 
     case IAM_ExtranetUserManagement_FullAccess = 'IAM:ExtranetUserManagement:*';
+
     case IAM_ExtranetUserManagement_ListUsers = 'IAM:ExtranetUserManagement:ListUsers';
+
     case IAM_ExtranetUserManagement_CreateUsers = 'IAM:ExtranetUserManagement:CreateUsers';
-    case IAM_ExtranetUserManagement_EditUsers = 'IAM:ExtranetUserManagement:EditUsers';
 
     case IAM_ExtranetUserManagement_DescribeUser = 'IAM:ExtranetUserManagement:DescribeUser';
+
     case IAM_ExtranetUserManagement_UpdatePassword = 'IAM:ExtranetUserManagement:UpdatePassword';
+
     case IAM_ExtranetUserManagement_UpdateBasicInfo = 'IAM:ExtranetUserManagement:UpdateBasicInfo';
+
     case IAM_ExtranetUserManagement_UpdateEmail = 'IAM:ExtranetUserManagement:UpdateEmail';
+
     case IAM_ExtranetUserManagement_UpdateContactNumber = 'IAM:ExtranetUserManagement:UpdateContactNumber';
+
     case IAM_ExtranetUserManagement_ChangeStatus = 'IAM:ExtranetUserManagement:ChangeStatus';
+
     case IAM_ExtranetUserManagement_AssignProperty = 'IAM:ExtranetUserManagement:AssignProperty';
+
     case IAM_ExtranetUserManagement_RevokeProperty = 'IAM:ExtranetUserManagement:RevokeProperty';
 
 
