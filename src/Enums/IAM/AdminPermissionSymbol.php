@@ -10,7 +10,6 @@ use SYSOTEL\APP\Common\Enums\BackedEnumHelpers;
 enum AdminPermissionSymbol: string
 
 {
-
     use BackedEnumHelpers;
 
 
@@ -33,8 +32,6 @@ enum AdminPermissionSymbol: string
     case ACCOUNT_EditProfile = 'ACCOUNT:EditProfile';
 
     case ACCOUNT_ChangeProfilePassword = 'ACCOUNT:ChangeProfilePassword';
-
-
 
 
     /**
@@ -89,11 +86,29 @@ enum AdminPermissionSymbol: string
 
     case IAM_AdminManagement_RevokeRole = 'IAM:AdminManagement:RevokeRole';
 
+    case IAM_AdminManagement_DescribeRole = 'IAM:AdminManagement:DescribeRole';
+
     case IAM_AdminManagement_AssignDirectPermission = 'IAM:AdminManagement:AssignDirectPermission';
 
     case IAM_AdminManagement_RevokeDirectPermission = 'IAM:AdminManagement:RevokeDirectPermission';
 
+    case IAM_AdminManagement_DescribeDirectPermission = 'IAM:AdminManagement:DescribeDirectPermission';
+
+    case IAM_AdminManagement_ListDirectPermission = 'IAM:AdminManagement:ListDirectPermission';
+
     case IAM_AdminManagement_ChangePassword = 'IAM:AdminManagement:ChangePassword';
+
+
+    case IAM_ExtranetUserManagement_FullAccess = 'IAM:ExtranetUserManagement:*';
+    case IAM_ExtranetUserManagement_ListUsers = 'IAM:ExtranetUserManagement:ListUsers';
+    case IAM_ExtranetUserManagement_DescribeUser = 'IAM:ExtranetUserManagement:DescribeUser';
+    case IAM_ExtranetUserManagement_UpdatePassword = 'IAM:ExtranetUserManagement:UpdatePassword';
+    case IAM_ExtranetUserManagement_UpdateBasicInfo = 'IAM:ExtranetUserManagement:UpdateBasicInfo';
+    case IAM_ExtranetUserManagement_UpdateEmail = 'IAM:ExtranetUserManagement:UpdateEmail';
+    case IAM_ExtranetUserManagement_UpdateContactNumber = 'IAM:ExtranetUserManagement:UpdateContactNumber';
+    case IAM_ExtranetUserManagement_ChangeStatus = 'IAM:ExtranetUserManagement:ChangeStatus';
+    case IAM_ExtranetUserManagement_AssignProperty = 'IAM:ExtranetUserManagement:AssignProperty';
+    case IAM_ExtranetUserManagement_RevokeProperty = 'IAM:ExtranetUserManagement:RevokeProperty';
 
 
     /**
@@ -259,6 +274,9 @@ enum AdminPermissionSymbol: string
     case IBE_ApiLogs_ListLogs = 'IBE:ApiLogs:ListLogs';
 
     case IBE_ApiLogs_DescribeLogs = 'IBE:ApiLogs:DescribeLogs';
+
+
+    case IBE_ApiLogs_DownloadRequestData = 'IBE:ApiLogs:DownloadRequestData';
 
 
 // Website Settings
@@ -647,6 +665,8 @@ enum AdminPermissionSymbol: string
     case IYA_ApiLogs_ListLogs = 'IYA:ApiLogs:ListLogs';
 
     case IYA_ApiLogs_DescribeLog = 'IYA:ApiLogs:DescribeLog';
+
+    case IYA_ApiLogs_DownloadRequestData = 'IYA:ApiLogs:DownloadRequestData';
 
 
 // VENDOR
