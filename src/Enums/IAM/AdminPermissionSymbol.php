@@ -98,6 +98,9 @@ enum AdminPermissionSymbol: string
 
     case IAM_AdminManagement_ChangePassword = 'IAM:AdminManagement:ChangePassword';
 
+
+    //Property Management
+
     case IAM_PropertyManagement_FullAccess = 'IAM:PropertyManagement:*';
 
     case IAM_PropertyManagement_ListModules = 'IAM:PropertyManagement:ListModules';
@@ -107,6 +110,9 @@ enum AdminPermissionSymbol: string
     case IAM_PropertyManagement_AssignModule = 'IAM:PropertyManagement:AssignModule';
 
     case IAM_PropertyManagement_RevokeModule = 'IAM:PropertyManagement:RevokeModule';
+
+
+    //Extranet User Management
 
     case IAM_ExtranetUserManagement_FullAccess = 'IAM:ExtranetUserManagement:*';
 
