@@ -101,6 +101,9 @@ enum AdminPermissionSymbol: string
 
     case IAM_ExtranetUserManagement_FullAccess = 'IAM:ExtranetUserManagement:*';
     case IAM_ExtranetUserManagement_ListUsers = 'IAM:ExtranetUserManagement:ListUsers';
+    case IAM_ExtranetUserManagement_CreateUsers = 'IAM:ExtranetUserManagement:CreateUsers';
+    case IAM_ExtranetUserManagement_EditUsers = 'IAM:ExtranetUserManagement:EditUsers';
+
     case IAM_ExtranetUserManagement_DescribeUser = 'IAM:ExtranetUserManagement:DescribeUser';
     case IAM_ExtranetUserManagement_UpdatePassword = 'IAM:ExtranetUserManagement:UpdatePassword';
     case IAM_ExtranetUserManagement_UpdateBasicInfo = 'IAM:ExtranetUserManagement:UpdateBasicInfo';
