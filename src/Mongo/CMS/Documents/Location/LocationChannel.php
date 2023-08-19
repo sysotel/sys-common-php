@@ -25,6 +25,12 @@ class LocationChannel extends EmbeddedDocument
     protected $mappedId;
 
     /**
+     * @var ?string
+     * @ODM\field(type="string")
+     */
+    protected $mappedName;
+
+    /**
      * @return ChannelId|null
      */
     public function getChannelId(): ?ChannelId
@@ -54,5 +60,21 @@ class LocationChannel extends EmbeddedDocument
     public function setMappedId(?string $mappedId): void
     {
         $this->mappedId = $mappedId;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getMappedName(): ?string
+    {
+        return $this->mappedName;
+    }
+
+    /**
+     * @param string|null $mappedName
+     */
+    public function setMappedName(?string $mappedName): void
+    {
+        $this->mappedName = $mappedName;
     }
 }

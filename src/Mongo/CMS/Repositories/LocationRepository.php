@@ -4,6 +4,7 @@ namespace SYSOTEL\APP\Common\Mongo\CMS\Repositories;
 
 use Delta4op\Mongodb\Repositories\DocumentRepository;
 use MongoDB\BSON\ObjectId;
+use SYSOTEL\APP\Common\Enums\CMS\ChannelId;
 use SYSOTEL\APP\Common\Enums\CMS\CountrySlug;
 use SYSOTEL\APP\Common\Enums\CMS\LocationType;
 use SYSOTEL\APP\Common\Enums\CMS\StateSlug;
@@ -156,6 +157,37 @@ class LocationRepository extends DocumentRepository
             '_id' => new ObjectId($areaId),
             'type' => LocationType::AREA->value,
             'city.id' => new ObjectId($cityId),
+        ]);
+    }
+
+    /**
+     * @return array<City>
+     */
+    public function findAllCities(): array
+    {
+        return $this->findBy([
+            'type' => LocationType::CITY->value,
+        ]);
+    }
+
+    /**
+     * @return array<City>
+     */
+    public function findAllStates(): array
+    {
+        return $this->findBy([
+            'type' => LocationType::STATE->value,
+        ]);
+    }
+
+    /**
+     * @return array<City>
+     */
+    public function findAllCitiesByChannel(ChannelId $channelId): array
+    {
+        return $this->findBy([
+            'channels.channelId' => $channelId->value,
+            'type' => LocationType::STATE->value,
         ]);
     }
 }
