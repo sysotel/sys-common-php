@@ -2,9 +2,6 @@
 
 namespace SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions;
 
-use Delta4op\Mongodb\Documents\EmbeddedDocument;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PromotionType;
 

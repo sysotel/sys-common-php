@@ -9,6 +9,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\LocationType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint;
+use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\LocationChannel;
 use SYSOTEL\APP\Common\Mongo\CMS\Repositories\LocationRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 
@@ -69,9 +70,16 @@ abstract class Location extends BaseDocument
      */
     protected $channelDetails;
 
+    /**
+     * @var Collection<LocationChannel>
+     * @ODM\EmbedMany  (targetDocument=ChannelLocationDetailsItem::class)
+     */
+    protected $channels;
+
     public function __construct()
     {
         $this->channelDetails = new ArrayCollection;
+        $this->channels = new ArrayCollection;
     }
 
     /**
@@ -185,6 +193,24 @@ abstract class Location extends BaseDocument
     public function addChannelDetails(ChannelLocationDetailsItem $channelDetails): static
     {
         $this->channelDetails->add($channelDetails);
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection|Collection
+     */
+    public function getChannels(): ArrayCollection|Collection
+    {
+        return $this->channels;
+    }
+
+    /**
+     * @param LocationChannel $channel
+     * @return Location
+     */
+    public function addLocationChannel(LocationChannel $channel): static
+    {
+        $this->channels->add($channel);
         return $this;
     }
 
