@@ -187,7 +187,7 @@ class LocationRepository extends DocumentRepository
     {
         return $this->findBy([
             'channels.channelId' => $channelId->value,
-            'type' => LocationType::STATE->value,
+            'type' => LocationType::CITY->value,
         ]);
     }
 }
