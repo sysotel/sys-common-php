@@ -10,7 +10,6 @@ use SYSOTEL\APP\Common\Enums\CMS\ChannelId;
 use SYSOTEL\APP\Common\Enums\CMS\LocationType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\common\Geo\GeoPoint;
-use SYSOTEL\APP\Common\Mongo\CMS\Documents\Promotions\LocationChannel;
 use SYSOTEL\APP\Common\Mongo\CMS\Repositories\LocationRepository;
 use SYSOTEL\APP\Common\Mongo\CMS\Traits\HasObjectIdKey;
 
