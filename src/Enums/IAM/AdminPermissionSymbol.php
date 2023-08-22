@@ -304,7 +304,7 @@ enum AdminPermissionSymbol: string
 
     case IBE_ApiLogs_DownloadRequestData = 'IBE:ApiLogs:DownloadRequestData';
 
-    case IBE_ApiLogs_DownloadResponseData = 'IBE_ApiLogs_DownloadResponseData';
+    case IBE_ApiLogs_DownloadResponseData = 'IBE:ApiLogs_DownloadResponseData';
 
 
 
@@ -320,7 +320,7 @@ enum AdminPermissionSymbol: string
 
     /**
      * -----------------------------------------------
-     * -------------------- IYA ----------------------
+     * -------------------- IYA --- -------------------
      * -----------------------------------------------
      */
 
