@@ -72,7 +72,7 @@ abstract class Location extends BaseDocument
 
     /**
      * @var Collection<LocationChannel>
-     * @ODM\EmbedMany  (targetDocument=ChannelLocationDetailsItem::class)
+     * @ODM\EmbedMany  (targetDocument=LocationChannel::class)
      */
     protected $channels;
 
