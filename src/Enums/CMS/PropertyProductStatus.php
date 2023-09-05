@@ -10,4 +10,12 @@ enum PropertyProductStatus: string
 
     case ACTIVE = 'ACTIVE';
     case INACTIVE = 'INACTIVE';
+
+    public function userFriendlyName(): string
+    {
+        return match ($this) {
+            self::ACTIVE => 'Active',
+            self::INACTIVE => 'In Active',
+        };
+    }
 }
