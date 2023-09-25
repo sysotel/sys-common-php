@@ -37,6 +37,19 @@ class PropertyProductRepository extends DocumentRepository
     }
 
     /**
+     * @param Property|int $property
+     * @param array $criteria
+     * @param array $orderBy
+     * @return PropertyProduct[]
+     */
+    public function findAllForProperty(Property|int $property, array $criteria = [], array $orderBy = []): array
+    {
+        $criteria = array_merge(['propertyId' => Property::resolveID($property)], $criteria);
+
+        return $this->findBy($criteria, $orderBy);
+    }
+
+    /**
      * @param PropertySpace|int $space
      * @param array $criteria
      * @return PropertyProduct[]
@@ -46,6 +59,8 @@ class PropertyProductRepository extends DocumentRepository
         $criteria = array_merge(['status' => PropertyProductStatus::ACTIVE], $criteria);
         return $this->findAllForSpace($space, $criteria);
     }
+
+
 
     /**
      * @param PropertySpace|int $space
