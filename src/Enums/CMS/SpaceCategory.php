@@ -24,6 +24,7 @@ enum SpaceCategory: string
     case POWERED_SITE = 'POWERED_SITE';
     case KING = 'KING';
     case QUEEN = 'QUEEN';
+    case OTHER = 'OTHER';
 
     public function userFriendlyName(): string
     {
@@ -47,7 +48,8 @@ enum SpaceCategory: string
             self::TENT => 'Tent',
             self::POWERED_SITE => 'Powered/Unpowered Site',
             self::KING => 'King',
-            self::QUEEN => 'Queen'
+            self::QUEEN => 'Queen',
+            self::OTHER => 'other'
         };
     }
 }
