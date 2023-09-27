@@ -74,13 +74,13 @@ class PropertySpace extends BaseDocument
     protected $view;
 
     /**
-     * @var int
+     * @var ?int
      * @ODM\Field(type="int")
      */
     protected $rackRate;
 
     /**
-     * @var SpaceCategory
+     * @var ?SpaceCategory
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\SpaceCategory::class)
      */
     protected $spaceCategory;
@@ -364,37 +364,36 @@ class PropertySpace extends BaseDocument
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getRackRate(): int
+    public function getRackRate(): ?int
     {
         return $this->rackRate;
     }
 
     /**
-     * @param int $rackRate
+     * @param int|null $rackRate
      */
-    public function setRackRate(int $rackRate): void
+    public function setRackRate(?int $rackRate): void
     {
         $this->rackRate = $rackRate;
     }
 
     /**
-     * @return SpaceCategory
+     * @return SpaceCategory|null
      */
-    public function getSpaceCategory(): SpaceCategory
+    public function getSpaceCategory(): ?SpaceCategory
     {
         return $this->spaceCategory;
     }
 
     /**
-     * @param SpaceCategory $spaceCategory
+     * @param SpaceCategory|null $spaceCategory
      */
-    public function setSpaceCategory(SpaceCategory $spaceCategory): void
+    public function setSpaceCategory(?SpaceCategory $spaceCategory): void
     {
         $this->spaceCategory = $spaceCategory;
     }
-
 
 
     /**

@@ -36,8 +36,8 @@ class PropertySpaceDataGenerator
             'status' => $this->space->getStatus(),
             'longDescription' => $this->space->getLongDescription(),
             'noOfUnits' => $this->space->getNoOfUnits(),
-            'rackRate' => $this->space?->getRackRate() ?? null,
-            'spaceCategory' => $this->space?->getSpaceCategory()?->value ?? null,
+            'rackRate' => $this->space?->getRackRate(),
+            'spaceCategory' => $this->space?->getSpaceCategory()?->value,
             'inventorySettings' => [
                 'accuracy' => $this->space->getInventorySettings()->getAccuracy(),
                 'hourlySlots' => $this->space->getInventorySettings()->getHourlySlots(),
