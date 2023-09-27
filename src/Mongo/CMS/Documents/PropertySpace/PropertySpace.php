@@ -7,6 +7,7 @@ use Delta4op\Mongodb\Traits\HasDefaultAttributes;
 use Delta4op\Mongodb\Traits\HasTimestamps;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use SYSOTEL\APP\Common\Enums\CMS\PropertySpaceStatus;
+use SYSOTEL\APP\Common\Enums\CMS\SpaceCategory;
 use SYSOTEL\APP\Common\Enums\CMS\SpaceStayType;
 use SYSOTEL\APP\Common\Mongo\CMS\Documents\BaseDocument;
 use SYSOTEL\APP\Common\Mongo\CMS\Repositories\PropertySpaceRepository;
@@ -72,6 +73,17 @@ class PropertySpace extends BaseDocument
      */
     protected $view;
 
+    /**
+     * @var int
+     * @ODM\Field(type="int")
+     */
+    protected $rackRate;
+
+    /**
+     * @var SpaceCategory
+     * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\SpaceCategory::class)
+     */
+    protected $spaceCategory;
     /**
      * @var ?SpaceSize
      * @ODM\EmbedOne(targetDocument=SpaceSize::class)
@@ -350,6 +362,40 @@ class PropertySpace extends BaseDocument
         $this->sortOrder = $sortOrder;
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getRackRate(): int
+    {
+        return $this->rackRate;
+    }
+
+    /**
+     * @param int $rackRate
+     */
+    public function setRackRate(int $rackRate): void
+    {
+        $this->rackRate = $rackRate;
+    }
+
+    /**
+     * @return SpaceCategory
+     */
+    public function getSpaceCategory(): SpaceCategory
+    {
+        return $this->spaceCategory;
+    }
+
+    /**
+     * @param SpaceCategory $spaceCategory
+     */
+    public function setSpaceCategory(SpaceCategory $spaceCategory): void
+    {
+        $this->spaceCategory = $spaceCategory;
+    }
+
+
 
     /**
      * @return PropertySpaceRepository
