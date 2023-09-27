@@ -74,8 +74,8 @@ class PropertySpace extends BaseDocument
     protected $view;
 
     /**
-     * @var ?int
-     * @ODM\Field(type="int")
+     * @var ?float
+     * @ODM\field(type="float")
      */
     protected $rackRate;
 
@@ -364,20 +364,21 @@ class PropertySpace extends BaseDocument
     }
 
     /**
-     * @return int|null
+     * @return float|null
      */
-    public function getRackRate(): ?int
+    public function getRackRate(): ?float
     {
         return $this->rackRate;
     }
 
     /**
-     * @param int|null $rackRate
+     * @param float|null $rackRate
      */
-    public function setRackRate(?int $rackRate): void
+    public function setRackRate(?float $rackRate): void
     {
         $this->rackRate = $rackRate;
     }
+
 
     /**
      * @return SpaceCategory|null
