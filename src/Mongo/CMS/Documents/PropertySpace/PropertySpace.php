@@ -83,7 +83,7 @@ class PropertySpace extends BaseDocument
      * @var ?SpaceCategory
      * @ODM\Field(type="string", enumType=SYSOTEL\APP\Common\Enums\CMS\SpaceCategory::class)
      */
-    protected $spaceCategory;
+    protected $category;
     /**
      * @var ?SpaceSize
      * @ODM\EmbedOne(targetDocument=SpaceSize::class)
@@ -382,17 +382,17 @@ class PropertySpace extends BaseDocument
     /**
      * @return SpaceCategory|null
      */
-    public function getSpaceCategory(): ?SpaceCategory
+    public function getCategory(): ?SpaceCategory
     {
-        return $this->spaceCategory;
+        return $this->category;
     }
 
     /**
-     * @param SpaceCategory|null $spaceCategory
+     * @param SpaceCategory|null $category
      */
-    public function setSpaceCategory(?SpaceCategory $spaceCategory): void
+    public function setCategory(?SpaceCategory $category): void
     {
-        $this->spaceCategory = $spaceCategory;
+        $this->category = $category;
     }
 
 
