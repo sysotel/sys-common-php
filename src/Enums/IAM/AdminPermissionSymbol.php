@@ -202,7 +202,6 @@ enum AdminPermissionSymbol: string
 
     case CMS_OpenApiClients_UpdateClient = 'CMS:OpenApiClients:UpdateClient';
 
-
     /**
      * -----------------------------------------------
      * -------------------- IBE ----------------------
