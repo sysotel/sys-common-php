@@ -9,5 +9,5 @@ enum PropertyContactStatus: string
     use BackedEnumHelpers;
 
     case ACTIVE = 'ACTIVE';
-    case DISABLED = 'DISABLED';
+    case INACTIVE = 'INACTIVE';
 }

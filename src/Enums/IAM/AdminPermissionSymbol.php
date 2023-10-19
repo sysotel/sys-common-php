@@ -181,6 +181,27 @@ enum AdminPermissionSymbol: string
 
     case CMS_PropertyManagement_RevokeExtranetUser = 'CMS:PropertyManagement:RevokeExtranetUser';
 
+    case CMS_ApiLogs_FullAccess = 'CMS:ApiLogs:*';
+
+    case CMS_ApiLogs_ListLogs = 'CMS:ApiLogs:ListLogs';
+
+    case CMS_ApiLogs_DescribeLogs = 'CMS:ApiLogs:DescribeLogs';
+
+    case CMS_ApiLogs_DownloadRequestData = 'CMS:ApiLogs:DownloadRequestData';
+
+    case CMS_ApiLogs_DownloadResponseData = 'CMS:ApiLogs_DownloadResponseData';
+
+
+    case CMS_OpenApiClients_FullAccess = 'CMS:OpenApiClients:*';
+
+    case CMS_OpenApiClients_CreateClient = 'CMS:OpenApiClients:CreateClient';
+
+    case CMS_OpenApiClients_ListClients = 'CMS:OpenApiClients:ListClients';
+
+    case CMS_OpenApiClients_DescribeClient = 'CMS:OpenApiClients:DescribeClient';
+
+    case CMS_OpenApiClients_UpdateClient = 'CMS:OpenApiClients:UpdateClient';
+
 
     /**
      * -----------------------------------------------
@@ -309,8 +330,6 @@ enum AdminPermissionSymbol: string
     case IBE_ApiLogs_DownloadResponseData = 'IBE:ApiLogs_DownloadResponseData';
 
 
-
-
 // Website Settings
 
     case IBE_WebsiteSettings_FullAccess = 'IBE:WebsiteSettings:*';
@@ -319,7 +338,15 @@ enum AdminPermissionSymbol: string
 
     case IBE_WebsiteSettings_UpdateSettings = 'IBE:WebsiteSettings:UpdateSettings';
 
+    case IBE_PaymentGateways_FullAccess = 'IBE:PaymentGateways:*';
 
+    case IBE_PaymentGateways_ListData = 'IBE:PaymentGateways:ListData';
+
+    case IBE_PaymentGateways_DescribeData = 'IBE:PaymentGateways:DescribeData';
+
+    case IBE_PaymentGateways_UnlockEditing = 'IBE:PaymentGateways:UnlockEditing';
+
+    case IBE_PaymentGateways_UpdateData = 'IBE:PaymentGateways:UpdateData';
     /**
      * -----------------------------------------------
      * -------------------- IYA --- -------------------

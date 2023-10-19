@@ -8,9 +8,7 @@ enum PropertyContactType: string
 {
     use EnumLabelExtension;
 
-    case OWNER = 'OWNER';
     case GUEST_INQUIRY = 'GUEST_INQUIRY';
     case RESERVATION = 'RESERVATION';
-    case ACCOUNTS = 'ACCOUNTS';
-    case INVENTORY = 'INVENTORY';
+    case BOOKING_INQUIRY = 'BOOKING_INQUIRY';
 }

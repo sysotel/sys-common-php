@@ -8,6 +8,8 @@ use Jenssegers\Mongodb\Relations\EmbedsMany;
 use SYSOTEL\APP\Common\DB\Models\common\ContactNumber;
 use SYSOTEL\APP\Common\DB\Models\common\Email;
 use SYSOTEL\APP\Common\DB\Models\Model;
+use SYSOTEL\APP\Common\DB\Models\PropertyContact\embedded\ContactEmail;
+use SYSOTEL\APP\Common\DB\Models\PropertyContact\embedded\ContactName;
 use SYSOTEL\APP\Common\Enums\CMS\Account;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyContactStatus;
 use SYSOTEL\APP\Common\Enums\CMS\PropertyContactType;
@@ -17,9 +19,9 @@ use SYSOTEL\APP\Common\Enums\CMS\PropertyContactType;
  * @property ?Account $accountId
  * @property ?int $propertyId
  * @property ?PropertyContactType $type
- * @property ?string $receiverName
- * @property ?Collection $emails
- * @property ?Collection $contactNumbers
+ * @property ?ContactName $name
+ * @property ?ContactEmail $emails
+ * @property ?ContactNumber $contactNumbers
  * @property ?PropertyContactStatus $status
  * @property ?bool $printOnBookingVoucher
  */
