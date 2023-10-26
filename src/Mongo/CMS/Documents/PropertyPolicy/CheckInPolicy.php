@@ -26,6 +26,12 @@ class CheckInPolicy extends EmbeddedDocument
     protected $earlyCheckInStatus;
 
     /**
+     * @var ?bool
+     * @ODM\Field(type="bool")
+     */
+    protected $is24HourCheckinAvailable;
+
+    /**
      * @var ?string
      * @ODM\Field(type="string")
      */
@@ -68,6 +74,22 @@ class CheckInPolicy extends EmbeddedDocument
     }
 
     /**
+     * @return bool|null
+     */
+    public function getIs24HourCheckinAvailable(): ?bool
+    {
+        return $this->is24HourCheckinAvailable;
+    }
+
+    /**
+     * @param bool|null $is24HourCheckinAvailable
+     */
+    public function setIs24HourCheckinAvailable(?bool $is24HourCheckinAvailable): void
+    {
+        $this->is24HourCheckinAvailable = $is24HourCheckinAvailable;
+    }
+
+    /**
      * @return string|null
      */
     public function getDetails(): ?string
@@ -91,6 +113,10 @@ class CheckInPolicy extends EmbeddedDocument
      */
     public function checkInTimeDescription(): string
     {
+        if($this->is24HourCheckinAvailable) {
+            return "24 hour check-in is available.";
+        }
+
         if($this->dailyStandardTime) {
             return 'Standard daily check-in time is ' . Carbon::createFromFormat('H:i', $this->dailyStandardTime)->format('h:i A');
         }
