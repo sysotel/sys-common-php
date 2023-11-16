@@ -139,6 +139,37 @@ enum AdminPermissionSymbol: string
     case IAM_ExtranetUserManagement_RevokeProperty = 'IAM:ExtranetUserManagement:RevokeProperty';
 
 
+    //company management
+    case IAM_CompanyManagement_FullAccess = 'IAM:CompanyManagement:*';
+
+    case IAM_CompanyManagement_ListCompany = 'IAM:CompanyManagement:ListCompanies';
+
+    case IAM_CompanyManagement_CreateCompany = 'IAM:CompanyManagement:CreateCompany';
+
+    case IAM_CompanyManagement_UpdateCompany = 'IAM:CompanyManagement:UpdateCompany';
+
+    case IAM_CompanyManagement_UpdateCompanyStatus = 'IAM:CompanyManagement:UpdateCompanyStatus';
+
+    case IAM_CompanyManagement_ManageGroupAssignments = 'IAM:CompanyManagement:ManageGroupAssignments';
+
+    case IAM_CompanyManagement_ManagePropertyAssignments = 'IAM:CompanyManagement:ManagePropertyAssignments';
+
+
+//group management
+    case IAM_GroupManagement_FullAccess = 'IAM:GroupManagement:*';
+
+    case IAM_GroupManagement_ListGroups = 'IAM:GroupManagement:ListGroups';
+
+    case IAM_GroupManagement_CreateGroup = 'IAM:GroupManagement:CreateGroup';
+
+    case IAM_GroupManagement_UpdateGroup = 'IAM:GroupManagement:UpdateGroup';
+
+    case IAM_GroupManagement_UpdateGroupStatus = 'IAM:GroupManagement:UpdateGroupStatus';
+
+    case IAM_GroupManagement_ManageCompanyAssignments = 'IAM:GroupManagement:ManageCompanyAssignments';
+
+    case IAM_GroupManagement_ManagePropertyAssignments = 'IAM:GroupManagement:ManagePropertyAssignments';
+
     /**
      * ------------------------------------------------
      * -------------------- CMS ----------------------
