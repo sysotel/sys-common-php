@@ -153,6 +153,11 @@ enum AdminPermissionSymbol: string
     case CMS_Queues_DescribeQueue = 'CMS:Queues:DescribeQueue';
     case CMS_Queues_UpdateQueue = 'CMS:Queues:UpdateQueue';
 
+    case CMS_GeoData_FullAccess = 'CMS:GeoData:*';
+    case CMS_GeoData_ListData = 'CMS:GeoData:ListData';
+    case CMS_GeoData_DescribeData = 'CMS:GeoData:DescribeData';
+    case CMS_GeoData_UpdateData = 'CMS:GeoData:UpdateData';
+
 
     /**
      * -----------------------------------------------
