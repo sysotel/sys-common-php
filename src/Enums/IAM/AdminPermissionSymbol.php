@@ -589,6 +589,7 @@ enum AdminPermissionSymbol: string
     case IYA_VendorManagement_AiReviews_SearchHotel = 'IYA:VendorManagement:SearchHotel:SearchHotel';
     case IYA_VendorManagement_AiReviews_RequestHotel = 'IYA:VendorManagement:RequestHotel:RequestHotel';
 
+    case COMPANY_FullAccess = 'COMPANY:*';
     case COMPANY_Contacts_FullAccess = 'COMPANY:Contacts:*';
     case COMPANY_Contacts_ListContacts = 'COMPANY:Contacts:ListContacts';
     case COMPANY_Contacts_DescribeContacts = 'COMPANY:Contacts:DescribeContact';
