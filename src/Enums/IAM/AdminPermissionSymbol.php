@@ -945,4 +945,9 @@ enum AdminPermissionSymbol: string
 
     case IYA_VendorManagement_AiReviews_RequestHotel = 'IYA:VendorManagement:RequestHotel:RequestHotel';
 
+    case COMPANY_Contacts_FullAccess = 'COMPANY:Contacts:*';
+    case COMPANY_Contacts_ListContacts = 'COMPANY:Contacts:ListContacts';
+    case COMPANY_Contacts_DescribeContacts = 'COMPANY:Contacts:DescribeContact';
+    case COMPANY_Contacts_UpdateContacts = 'COMPANY:Contacts:UpdateContact';
+    case COMPANY_Contacts_DeleteContact = 'COMPANY:Contacts:DeleteContact';
 }
